@@ -16,4 +16,7 @@ public interface IClienteService
 
      //tarea para recuperar datos de amigos a traves de un List de usernames
      Task<List<Amigos>> ObtenerAmigosAsync(List<string> amigosUsernames);
+
+     //tarea para iniciar chat con un amigo, le pasamos usernamen del amigo y el usuario actual
+        Task<bool> IniciarChatAsync(string usuarioActual, string amigoUsername);
 }
