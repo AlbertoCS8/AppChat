@@ -1,0 +1,230 @@
+
+@using System.IO
+@using Microsoft.AspNetCore.Components.Forms
+@using System.Text.RegularExpressions
+@using pruebaMudBlazor.Client.Services
+@inject ISnackbar Snackbar
+@inject AuthService AuthService  
+@inject IClienteService ClienteService
+
+<MudContainer MaxWidth="MaxWidth.Small" Class="py-4">
+    <MudCard Elevation="3" Class="rounded-lg">
+        <MudCardHeader>
+            <CardHeaderContent>
+                <MudText Typo="Typo.h5">Foto de Perfil</MudText>
+            </CardHeaderContent>
+        </MudCardHeader>
+        
+        <MudCardContent>
+            <div class="d-flex flex-column align-center mb-4">
+                @if (isLoading)
+                {
+                    <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+                }
+                else
+                {
+                    <MudAvatar Style="height:150px; width:150px; font-size: 2rem;" Color="Color.Primary" Class="mb-3">
+                        @if (!string.IsNullOrEmpty(imageDataUrl))
+                        {
+                            <MudImage Src="@imageDataUrl" Alt="Foto de perfil" />
+                        }
+                        else
+                        {
+                            <MudIcon Icon="@Icons.Material.Filled.Person" Size="Size.Large" />
+                        }
+                    </MudAvatar>
+                }
+                
+                <MudText Typo="Typo.body1" Class="my-2">@userName</MudText>
+                
+                <InputFile id="fileInput" OnChange="UploadFiles" hidden accept=".jpg,.jpeg,.png" />
+                <MudButton HtmlTag="label"
+                           Variant="Variant.Filled"
+                           Color="Color.Primary"
+                           StartIcon="@Icons.Material.Filled.CloudUpload"
+                           for="fileInput"
+                           Disabled="isLoading">
+                    Subir foto
+                </MudButton>
+                
+                @if (!string.IsNullOrEmpty(imageDataUrl))
+                {
+                    <MudButton OnClick="DeletePhoto" 
+                               Variant="Variant.Outlined" 
+                               Color="Color.Error" 
+                               StartIcon="@Icons.Material.Filled.Delete" 
+                               Class="mt-3"
+                               Disabled="isLoading">
+                        Eliminar foto
+                    </MudButton>
+                }
+            </div>
+            
+            @if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <MudAlert  Class="mt-3">@errorMessage</MudAlert>
+            }
+            
+            <MudText Typo="Typo.caption" Class="mt-4">
+                Formatos permitidos: JPG, JPEG, PNG
+                <br />
+                Tamaño máximo: 5MB
+            </MudText>
+        </MudCardContent>
+    </MudCard>
+</MudContainer>
+
+@code {
+    private string imageDataUrl;
+    private string userName = ""; // Reemplazar con datos reales del usuario
+    private bool isLoading = false;
+    private string errorMessage = string.Empty;
+    private const long maxFileSize = 5 * 1024 * 1024; // 5MB
+    
+    protected override async Task OnInitializedAsync()
+    {
+        userName = AuthService.Username;
+        imageDataUrl = AuthService.ImagenBase64;
+    }
+    
+    @* private async Task LoadUserProfile()
+    {
+        isLoading = true;
+        try
+        {
+            // Asume que AuthService tiene un método para obtener datos del usuario
+            var userData = AuthService.Username;
+            userName = $"{userData.FirstName} {userData.LastName}";
+            
+            // Si tienes la foto guardada como base64 en tu servicio
+            if (!string.IsNullOrEmpty(AuthService.fotoPerfil))
+            {
+                // Verifica si ya tiene el prefijo data:image
+                if (!AuthService.fotoPerfil.StartsWith("data:image"))
+                {
+                    imageDataUrl = $"data:image/jpeg;base64,{AuthService.fotoPerfil}";
+                }
+                else
+                {
+                    imageDataUrl = AuthService.fotoPerfil;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Error al cargar datos de usuario: " + ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    } *@
+    
+    private async Task UploadFiles(InputFileChangeEventArgs e)
+    {
+        isLoading = true;
+        errorMessage = string.Empty;
+        
+        try
+        {
+            var file = e.File;
+            
+            // Validar tamaño
+            if (file.Size > maxFileSize)
+            {
+                errorMessage = "El archivo es demasiado grande. El tamaño máximo es 5MB.";
+                return;
+            }
+            
+            // Validar tipo
+            string extension = Path.GetExtension(file.Name).ToLowerInvariant();
+            if (!(extension == ".jpg" || extension == ".jpeg" || extension == ".png"))
+            {
+                errorMessage = "Formato de archivo no soportado. Use JPG, JPEG o PNG.";
+                return;
+            }
+            
+            // Leer y convertir a base64
+            var buffer = new byte[file.Size];
+            await file.OpenReadStream(maxFileSize).ReadAsync(buffer);
+            
+            // Determinar el tipo MIME basado en la extensión
+            string mimeType = extension switch
+            {
+                ".png" => "image/png",
+                _ => "image/jpeg"
+            };
+            
+            var base64Image = Convert.ToBase64String(buffer);
+            imageDataUrl = $"data:{mimeType};base64,{base64Image}";
+            
+            // Guardar en tu servicio
+            await SaveProfilePhoto(base64Image, mimeType);
+            
+            Snackbar.Add("Foto de perfil actualizada");
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Error al subir la imagen: " + ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+    
+    private async Task DeletePhoto()
+    {
+        var dialog = await DialogService.ShowMessageBox(
+            "Eliminar foto de perfil",
+            "¿Estás seguro que deseas eliminar tu foto de perfil?",
+            yesText: "Eliminar",
+            noText: "Cancelar"
+        );
+        
+        if (dialog == true)
+        {
+            isLoading = true;
+            
+            try
+            {
+                AuthService.ImagenBase64 = string.Empty;
+                imageDataUrl = string.Empty;
+                await ClienteService.CambiarFotoPerfilAsync(AuthService.Username,"");
+                Snackbar.Add("Foto de perfil eliminada");
+            }
+            catch (Exception ex)
+            {
+                errorMessage = "Error al eliminar la foto: " + ex.Message;
+            }
+            finally
+            {
+                isLoading = false;
+                StateHasChanged();
+            }
+        }
+    }
+    
+   private async Task SaveProfilePhoto(string base64Image, string mimeType)
+{
+    try {
+        var completeImageUrl = $"data:{mimeType};base64,{base64Image}";
+        
+        imageDataUrl = completeImageUrl;
+        
+        AuthService.ImagenBase64 = completeImageUrl;
+        
+        await ClienteService.CambiarFotoPerfilAsync(AuthService.Username, completeImageUrl);
+        
+        Snackbar.Add("Foto de perfil actualizada correctamente", MudBlazor.Severity.Success);
+    }
+    catch (Exception ex) {
+        errorMessage = $"Error al guardar la foto: {ex.Message}";
+        Snackbar.Add(errorMessage, MudBlazor.Severity.Error);
+    }
+}
+    
+    [Inject] private IDialogService DialogService { get; set; }
+}

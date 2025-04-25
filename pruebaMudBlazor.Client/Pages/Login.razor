@@ -1,0 +1,121 @@
+@page "/login"
+@* @layout LoginLayout *@
+@using pruebaMudBlazor.Client.Models
+
+@using pruebaMudBlazor.Client.Services
+@inject IClienteService ClienteService
+@inject AuthService authService
+@inject NavigationManager NavigationManager
+@inject ISnackbar Snackbar
+<MudContainer Class="d-flex align-center justify-center" Style="height: 100vh;">
+    <MudPaper Elevation="4" Class="pa-8" Style="width: 400px;">
+        <div class="d-flex flex-column align-center mb-8">
+            <MudIcon Icon="@Icons.Material.Filled.Login" Size="Size.Large" Class="mb-4" />
+            <MudText Typo="Typo.h4" GutterBottom="true" Align="Align.Center">Login</MudText>
+            <MudText Typo="Typo.body2" Align="Align.Center">
+                ¿No tienes una cuenta todavía?
+                <MudLink Href="/register">Regístrate ya</MudLink>
+            </MudText>
+        </div>
+
+        <MudForm>
+            <MudTextField @bind-Value="@Email" T="string" Placeholder="Introduce tu email"
+                Validation="@(new Func<string, string>(ValidateEmail))" Label="E-mail" Variant="Variant.Outlined"
+                Class="mb-4" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Email"
+                OnlyValidateIfDirty="true" Immediate="true" />
+
+            <MudTextField @bind-Value="@Password" Label="Password" Variant="Variant.Outlined" InputType="@PasswordInput"
+                Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="TogglePasswordVisibility"
+                Class="mb-4" Required="true" Immediate="true" OnlyValidateIfDirty="true" />
+
+            <div Class="d-flex justify-space-between align-center mb-4">
+                <MudCheckBox T="bool" Label="Recuérdame" Color="Color.Primary" Class="ml-n1" />
+            </div>
+            <div class="d-flex justify-space-between text-align-center mb-4">
+                <MudLink Href="/pages/authentication/forgot-password" Color="Color.Primary" Align="Align.Center">
+                    ¿Has olvidado tu contraseña?
+                </MudLink>
+            </div>
+
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" FullWidth="true" Class="mt-4"
+                OnClick="HandleLogin" Disabled="@IsLoginDisabled">
+                Haz login
+            </MudButton>
+        </MudForm>
+    </MudPaper>
+</MudContainer>
+
+@code {
+    private string Email { get; set; } = "";
+    private string Password { get; set; } = "";
+
+    private bool PasswordVisibility;
+    private InputType PasswordInput = InputType.Password;
+    private string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+
+    private bool IsLoginDisabled =>
+    string.IsNullOrWhiteSpace(Email) ||
+    ValidateEmail(Email) != null ||
+    string.IsNullOrWhiteSpace(Password);
+
+    private void TogglePasswordVisibility()
+    {
+        PasswordVisibility = !PasswordVisibility;
+        PasswordInputIcon = PasswordVisibility
+        ? Icons.Material.Filled.Visibility
+        : Icons.Material.Filled.VisibilityOff;
+        PasswordInput = PasswordVisibility
+        ? InputType.Text
+        : InputType.Password;
+    }
+
+    private string ValidateEmail(string email)
+    {
+        if (string.IsNullOrWhiteSpace(email))
+            return "El email es requerido";
+
+        // Validación más robusta de formato de email con regex
+        var emailRegex = new System.Text.RegularExpressions.Regex(
+        @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+        System.Text.RegularExpressions.RegexOptions.Compiled
+        );
+
+        return emailRegex.IsMatch(email) ? null : "Email no válido";
+    }
+
+    private async void HandleLogin()
+    {
+        //Console.WriteLine("Email: " + Email);
+        //Console.WriteLine("Password: " + Password);
+        try
+        {
+            var respuesta = await ClienteService.LoginClienteAsync(Email, Password);
+            @* Console.WriteLine("respuesta desde el server -----> " + respuesta); *@
+            authService.Username = respuesta.NombreUsuario;
+            authService.ImagenBase64 = respuesta.FotoPerfil;
+            authService.Email = respuesta.Email;
+            authService.Nombre = respuesta.Nombre;
+            authService.Apellido = respuesta.Apellido;
+            authService.Amigos = respuesta.Amigos;
+            authService.IsAuthenticated = true;
+            @* Console.WriteLine("Amigos del Usuario autenticado: " + authService.Amigos[0]);
+             *@
+             
+            NavigationManager.NavigateTo("/");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
+            // Manejar el error de login aquí, por ejemplo, mostrar un mensaje al usuario
+            Snackbar.Add($"Error al iniciar sesión: {ex.Message}", MudBlazor.Severity.Error);
+
+        }
+
+
+        //success -->
+        @* respuesta desde el server -----> Nombre: Alberto, Apellido: deee, Usuario: dddddddddd, Email: collantessanchezalberto@gmail.com *@
+        //recibo una repsuesta que es el usaurio entero de la BdD pues guardo la info en el servicio auth
+        // Redirigir a la página de inicio o a otra página
+
+    }
+}

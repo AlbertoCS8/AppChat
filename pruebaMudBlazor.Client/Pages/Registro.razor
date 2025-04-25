@@ -1,0 +1,167 @@
+@page "/registro"
+@using FluentValidation
+@using System.Text.RegularExpressions
+@using pruebaMudBlazor.Client.Models
+@using MudBlazor
+@using pruebaMudBlazor.Client.Services
+@inject IClienteService ClienteService
+@inject NavigationManager NavigationManager
+
+<MudGrid>
+    <MudItem xs="12" sm="8" md="6" lg="4" class="mx-auto">
+        <MudCard Elevation="5">
+            <MudCardContent>
+                <MudText Typo="Typo.h5" Align="Align.Center" Class="mb-4">Registrarse</MudText>
+
+                <!-- Formulario -->
+                <MudForm Model="@model" @ref="form" Validation="@(userValidator.ValidateValue)" ValidationDelay="0" @bind-IsValid="@valido">
+                    <MudTextField @bind-Value="model.Nombre" For="@(() => model.Nombre)" Immediate="true" Label="Nombre" Variant="Variant.Filled" Margin="Margin.Normal" Required="true" OnlyValidateIfDirty="true"/>
+                    <MudTextField @bind-Value="model.Apellido" For="@(() => model.Apellido)" Immediate="true" Label="Apellido" Variant="Variant.Filled" Margin="Margin.Normal" Required="true" OnlyValidateIfDirty="true"/>
+                    <MudTextField @bind-Value="model.NombreUsuario" For="@(() => model.NombreUsuario)" Immediate="true" Label="Nombre de Usuario" Variant="Variant.Filled" Margin="Margin.Normal" Required="true" OnlyValidateIfDirty="true"/>
+                    <MudTextField @bind-Value="model.Email" For="@(() => model.Email)" Immediate="true" Label="Correo Electrónico" Variant="Variant.Filled" Margin="Margin.Normal" Required="true" OnlyValidateIfDirty="true"/>
+
+                    <!-- Contraseña con barra de fuerza -->
+                    <MudTextField @bind-Value="model.Password" For="@(() => model.Password)" Immediate="true" Label="Contraseña" InputType="@PasswordInput" Variant="Variant.Filled" Margin="Margin.Normal" 
+                                  Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="TogglePasswordVisibility" 
+                                  OnInput="ActualizarPassword" Required="true" OnlyValidateIfDirty="true"/>
+                    
+                   @if (!string.IsNullOrEmpty(model.Password)) 
+{
+    <MudProgressLinear Color="@GetPasswordStrengthColor()" Rounded="true" Size="Size.Small" Value="@GetPasswordStrength()"  />
+    <MudText Typo="Typo.caption" Class="text-muted">Fuerza de contraseña: @GetPasswordStrengthText()</MudText>
+}
+                    <!-- Confirmar Contraseña -->
+                    <MudTextField @bind-Value="model.ConfirmarPassword" For="@(() => model.ConfirmarPassword)" Immediate="true" Label="Confirmar Contraseña" InputType="@ConfirmarPasswordInput" Variant="Variant.Filled" Margin="Margin.Normal" 
+                                  Adornment="Adornment.End" AdornmentIcon="@ConfirmarPasswordInputIcon" OnAdornmentClick="ToggleConfirmarPasswordVisibility" Required="true" OnlyValidateIfDirty="true"/>
+                    
+                    <!-- Aceptar términos -->
+                    <MudCheckBox T="bool" Required="true" RequiredError="Debe aceptar los términos y condiciones" Label="Acepto los términos y condiciones" />
+                </MudForm>
+            </MudCardContent>
+            
+            
+            <!-- Botón de registro -->
+            <MudCardActions>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" Disabled="@(!valido)" Class="ml-auto w-full" OnClick="Submit">Registrar</MudButton>
+            </MudCardActions>
+        </MudCard>
+    </MudItem>
+    
+</MudGrid> 
+
+@code {
+    [Inject] ISnackbar Snackbar { get; set; }
+    
+    private MudForm form;
+    private UserModel model = new UserModel();
+    private UserModelValidator userValidator = new UserModelValidator();
+    private bool valido = false;
+    private bool success = false;
+
+   private async Task Submit(MouseEventArgs e)
+{
+    await form.Validate();
+    if (form.IsValid)
+    {
+        try 
+        {
+            var respuesta = await ClienteService.RegistrarClienteAsync(model);
+             @* Console.WriteLine("respuesta desde el server -----> "+respuesta);  *@
+            Snackbar.Add("Te has registrado correctamente");
+            // redirigir a la página de inicio de seson
+            NavigationManager.NavigateTo("/login", forceLoad: false);
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error al registrar: {ex.Message}");
+        }
+    }
+    else
+    {
+        Snackbar.Add("El formulario contiene errores.");
+    }
+}
+
+//probar porque en js se solapan las funcionalidades del navegador y las que ponganmos nosotrso
+    bool PasswordVisibility;
+    bool ConfirmarPasswordVisibility;
+    InputType PasswordInput = InputType.Password;
+    InputType ConfirmarPasswordInput = InputType.Password;
+    string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+    string ConfirmarPasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+
+    void TogglePasswordVisibility()
+    {
+        PasswordVisibility = !PasswordVisibility;
+        PasswordInput = PasswordVisibility ? InputType.Text : InputType.Password;
+        PasswordInputIcon = PasswordVisibility ? Icons.Material.Filled.Visibility : Icons.Material.Filled.VisibilityOff;
+    }
+
+    void ToggleConfirmarPasswordVisibility()
+    {
+        ConfirmarPasswordVisibility = !ConfirmarPasswordVisibility;
+        ConfirmarPasswordInput = ConfirmarPasswordVisibility ? InputType.Text : InputType.Password;
+        ConfirmarPasswordInputIcon = ConfirmarPasswordVisibility ? Icons.Material.Filled.Visibility : Icons.Material.Filled.VisibilityOff;
+    }
+
+    // Evaluación de la fuerza de la contraseña
+    private void ActualizarPassword(ChangeEventArgs e)
+    {
+        model.Password = e.Value?.ToString();
+    }
+
+    private int GetPasswordStrength()
+    {
+        if (string.IsNullOrEmpty(model.Password))
+            return 0;
+
+        int puntuacion = 0;
+
+        if (model.Password.Length >= 8)
+            puntuacion += 20;
+        else
+            puntuacion += (int)((model.Password.Length / 8.0) * 20);
+
+        if (Regex.IsMatch(model.Password, @"\d"))
+            puntuacion += 20;
+
+        if (Regex.IsMatch(model.Password, @"[a-z]"))
+            puntuacion += 20;
+
+        if (Regex.IsMatch(model.Password, @"[A-Z]"))
+            puntuacion += 20;
+
+        if (Regex.IsMatch(model.Password, @"[^a-zA-Z0-9]"))
+            puntuacion += 20;
+
+        return Math.Min(puntuacion, 100);
+    }
+
+    private Color GetPasswordStrengthColor()
+    {
+        int strength = GetPasswordStrength();
+
+        if (strength < 30)
+            return Color.Error;
+        else if (strength < 60)
+            return Color.Warning;
+        else if (strength < 80)
+            return Color.Info;
+        else
+            return Color.Success;
+    }
+
+    private string GetPasswordStrengthText()
+    {
+        int strength = GetPasswordStrength();
+
+        if (strength < 30)
+            return "Muy débil";
+        else if (strength < 60)
+            return "Débil";
+        else if (strength < 80)
+            return "Media";
+        else
+            return "Fuerte";
+    }
+}

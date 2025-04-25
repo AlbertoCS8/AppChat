@@ -1,0 +1,170 @@
+﻿@page "/search"
+@using pruebaMudBlazor.Client.Models
+@using pruebaMudBlazor.Client.Services
+@inject IClienteService ClienteService
+@inject NavigationManager NavigationManager
+@inject AuthService authService
+
+<PageTitle>Búsqueda de Usuarios</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-6">
+    <MudText Typo="Typo.h4" GutterBottom="true" Class="mb-4">Buscar Usuarios</MudText>
+    
+    <MudCard Elevation="2" Class="mb-6">
+        <MudCardContent>
+            <MudTextField @bind-Value="searchTerm" Label="Buscar usuarios" Variant="Variant.Outlined" 
+                          Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" 
+                          AdornmentColor="Color.Primary" OnKeyUp="@SearchOnKeyPress" FullWidth="true"
+                          Placeholder="Username" />
+        </MudCardContent>
+        <MudCardActions Class="pa-4 justify-end">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@SearchUsers">Buscar</MudButton>
+        </MudCardActions>
+    </MudCard>
+
+    @if (isSearching)
+    {
+        <div class="d-flex justify-center my-4">
+            <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+        </div>
+    }
+    else if (searchPerformed && usuarios != null && usuarios.Count > 0)
+    {
+        <MudText Typo="Typo.h6" Class="mb-3">Resultados de la búsqueda: @totalUsuarios usuarios encontrados</MudText>
+        
+        <MudTable Items="@usuariosPaginados" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@isSearching" 
+                  LoadingProgressColor="Color.Primary" Class="mb-4">
+            <HeaderContent>
+                <MudTh>Usuario</MudTh>
+                <MudTh>Nombre</MudTh>
+                <MudTh>Email</MudTh>
+                <MudTh>Acciones</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Usuario">
+                    <div class="d-flex align-center">
+                        <MudAvatar Class="mr-3" Size="Size.Medium">
+                            @if (!string.IsNullOrEmpty(context.FotoPerfil))
+                            {
+                                <MudImage Src="@context.FotoPerfil" Alt="@context.NombreUsuario" />
+                            }
+                            else
+                            {
+                                <MudIcon Icon="@Icons.Material.Filled.Person" />
+                            }
+                        </MudAvatar>
+                        <MudText>@context.NombreUsuario</MudText>
+                    </div>
+                </MudTd>
+                <MudTd DataLabel="Nombre">@context.Nombre @context.Apellido</MudTd>
+                <MudTd DataLabel="Email">@context.Email</MudTd>
+                <MudTd DataLabel="Acciones">
+                    <MudButton Variant="Variant.Outlined" Size="Size.Small" Color="Color.Primary"
+                               OnClick="@(() => AddFriend(context.NombreUsuario))">
+                        Añadir a amigos
+                    </MudButton>
+                </MudTd>
+            </RowTemplate>
+            <NoRecordsContent>
+                <MudText>No se encontraron usuarios.</MudText>
+            </NoRecordsContent>
+        </MudTable>
+        
+        <div class="d-flex flex-column align-center mt-4">
+            <MudPagination BoundaryCount="2" MiddleCount="5" 
+                          Count="@totalPages" 
+                          Selected="@currentPage"
+                          SelectedChanged="PageChanged" 
+                          Color="Color.Primary" />
+        </div>
+    }
+    else if (searchPerformed)
+    {
+        <MudAlert Severity="MudBlazor.Severity.Info" Class="my-4">No se encontraron usuarios que coincidan con tu búsqueda.</MudAlert>
+    }
+</MudContainer>
+
+@code {
+    private string searchTerm = "";
+    private bool isSearching = false;
+    private bool searchPerformed = false;
+    private List<UserModel> usuarios = new();
+    private List<UserModel> usuariosPaginados = new();
+    private int totalUsuarios = 0;
+    private int currentPage = 1;
+    private int pageSize = 5;
+    private int totalPages => (int)Math.Ceiling(totalUsuarios / (double)pageSize);
+    
+    private async Task SearchUsers()
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm)) return;
+        
+        isSearching = true;
+        searchPerformed = true;
+        currentPage = 1;
+        
+        try
+        {
+            usuarios = await ClienteService.BuscarUsuariosAsync(searchTerm);
+            totalUsuarios = usuarios.Count;
+            
+            UpdatePagination();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al buscar usuarios: {ex.Message}");
+            usuarios = new List<UserModel>();
+            totalUsuarios = 0;
+        }
+        finally
+        {
+            isSearching = false;
+            StateHasChanged();
+        }
+    }
+
+    private void UpdatePagination()
+    {
+        @* Console.WriteLine($"Actualizando paginación: página {currentPage} de {totalPages}"); *@
+        
+        // Calcular índice inicial y final para la paginación
+        int startIndex = (currentPage - 1) * pageSize;
+        
+        if (startIndex >= usuarios.Count)
+        {
+            currentPage = 1;
+            startIndex = 0;
+        }
+        
+        usuariosPaginados = usuarios
+            .Skip(startIndex)
+            .Take(pageSize)
+            .ToList();
+        
+        @* Console.WriteLine($"Mostrando usuarios {startIndex+1} a {Math.Min(startIndex+pageSize, totalUsuarios)} de {totalUsuarios}"); *@
+    }
+
+    private void PageChanged(int page)
+    {
+        @* Console.WriteLine($"Cambiando a página: {page}"); *@
+        currentPage = page;
+        UpdatePagination();
+    }
+
+    private async Task SearchOnKeyPress(KeyboardEventArgs args)
+    {
+        if (args.Key == "Enter")
+        {
+            await SearchUsers();
+        }
+    }
+
+    private async void AddFriend(string Username)
+    {
+        var respuesta= await ClienteService.AgregarAmigoAsync(authService.Username,Username);
+        authService.Amigos.Add(Username);
+
+    }
+    
+   
+}
