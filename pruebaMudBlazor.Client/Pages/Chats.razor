@@ -8,6 +8,9 @@
 @inject IClienteService ClienteService
 @inject NavigationManager NavigationManager
 @inject AuthService authService
+@* @inject ClienteService clienteService *@
+@* @inject ChatService chatService *@
+@inject pruebaMudBlazor.Client.Services.ChatService chatService
 
 
 @* @using AdminDashboard.Server.Models  *@
@@ -134,6 +137,7 @@
 @code
 {
     bool open;
+    bool conectadoA_unaSala;
     public List<Amigos> listaAmigos { get; set; } = new List<Amigos>();
     Anchor ChatDrawer { get; set; }
 
@@ -197,7 +201,33 @@
     {
         Console.WriteLine($"Amigo seleccionado: {friend.Username}");
         selectedFriend = friend;
+        loadChatMessages(friend);
+        iniciarChat(friend);
         //pendienteeeeeeeee
+    }
+    private async Task loadChatMessages(Amigos friend)
+    {
+        // Implementar la carga de mensajes del chat aquí
+        // Esto podría ser una llamada a un servicio para obtener los mensajes del amigo seleccionado
+        Console.WriteLine($"Cargando mensajes para: {friend.Username}");
+        @* clienteService.cargarMensajes(friend.Username); *@
+        
+    }
+    private void iniciarChat(Amigos friend)
+    {
+        // Implementar la lógica para iniciar el chat con el amigo seleccionado
+        Console.WriteLine($"Iniciando chat con: {friend.Username}");
+        @* clienteService.IniciarChatAsync(authService.Username,friend.Username);
+        borrar todo lo referente a esto *@
+        //ordenamos alfabeticamente el nombre del amigo seleccionado y el nombre de usuario
+        var roomName = string.Compare(authService.Username, friend.Username) < 0
+            ? $"{authService.Username}_{friend.Username}"
+            : $"{friend.Username}_{authService.Username}";
+        Console.WriteLine($"Nombre de la sala: {roomName}");
+        //conectamos a la sala
+        Console.WriteLine($"Conectando a la sala: {chatService._userId}");
+        chatService.recibir();
+        chatService.ConnectToHub(   roomName);
     }
     
     private Color GetStatusColor(Amigos friend)

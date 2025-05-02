@@ -141,4 +141,27 @@ public async Task<bool> AgregarAmigoAsync(string usuarioActual, string usuarioAm
             return new List<Amigos>();
         }
     }
+
+    public Task<bool> IniciarChatAsync(string usuarioActual, string amigoUsername)
+    {
+        // Console.WriteLine("en servicio iniciar chat los datos son: " + usuarioActual + " " + amigoUsername);
+        var req = new 
+        {
+            user1 = usuarioActual,
+            user2 = amigoUsername
+        };
+        
+        return _httpClient.PostAsJsonAsync("/api/iniciarChat", req)
+            .ContinueWith(task =>
+            {
+                if (task.Result.IsSuccessStatusCode)
+                {
+                    return true;//devolver el tema del response server
+                }
+                else
+                {
+                    return false;
+                }
+            });
+    }
 }

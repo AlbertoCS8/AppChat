@@ -27,6 +27,7 @@ builder.Services.Configure<MongoDbSettings>(
     builder.Configuration.GetSection("MongoDbSettings"));
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<IClienteService,ClienteService>();
+builder.Services.AddScoped<ChatService>();
 
 // Registrar MongoDB en el contenedor de dependencias
 builder.Services.AddSingleton<IMongoClient>(sp => new MongoClient(builder.Configuration.GetValue<string>("MongoDbSettings:ConnectionString")));
@@ -236,12 +237,50 @@ app.MapPost("/api/obtenerAmigos", async (List<string> amigosUsernames,
         });
     }
 });
+// // Endpoint para iniciar un chat con un amigo --> recibe ("/api/iniciarChat", req)
+// app.MapPost("/api/iniciarChat", async (AmigoModel model, 
+//     IMongoCollection<Usuario> usuarios) =>
+// {
+//     try
+//     {
+//         // Verificar que ambos usuarios existen
+//         var usuarioActual = await usuarios.Find(u => u.NombreUsuario == model.UsuarioActual).FirstOrDefaultAsync();
+//         var usuarioAmigo = await usuarios.Find(u => u.NombreUsuario == model.UsuarioAmigo).FirstOrDefaultAsync();
+        
+//         if (usuarioActual == null || usuarioAmigo == null)
+//         {
+//             return Results.NotFound(new ResponseServer { 
+//                 CodigoError = 1, 
+//                 Mensaje = "Uno de los usuarios no existe"
+//             });
+//         }
+        
+//         // Verificar que no son el mismo usuario
+//         if (model.UsuarioActual == model.UsuarioAmigo)
+//         {
+//             return Results.BadRequest(new ResponseServer{ 
+//                 CodigoError = 1, 
+//                 Mensaje = "No puedes iniciar un chat contigo mismo"
+//             });
+//         }
+        
+//         // Aquí puedes agregar la lógica para iniciar el chat (por ejemplo, guardar en una colección de chats)
+        
+//         return Results.Ok("Chat iniciado exitosamente");
+//     }
+//     catch (Exception ex)
+//     {
+//         Console.WriteLine($"Error al iniciar chat: {ex.Message}");
+//         return Results.Problem("Error interno del servidor", statusCode: 500);
+//     }
+// });
 
 
 
 app.UseAntiforgery();
 
-app.MapHub<ChatHub>("/chathub"); // tema signalR
+app.MapHub<ChatHub>("/chathub"); // es un metodo de la clase ChatHub, crea una url y registra la clase
+// para poder usar los metodos de la clase ChatHub de manera remota
 
 
 // Configuración de los recursos estáticos y los componentes de Razor
@@ -249,6 +288,10 @@ app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(pruebaMudBlazor.Client._Imports).Assembly);
+// app.UseBlazorFrameworkFiles();
+// app.UseStaticFiles();
+// app.UseRouting();
+// app.MapFallbackToFile("index.html");   --> esto es para el tema de 
 
 app.Run();
 public class AmigoModel
