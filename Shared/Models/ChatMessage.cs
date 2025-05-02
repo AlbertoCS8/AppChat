@@ -1,5 +1,5 @@
 
-namespace pruebaMudBlazor.Client.Models
+namespace pruebaMudBlazor.Shared.Models
 {
     public class ChatMessage
     {
