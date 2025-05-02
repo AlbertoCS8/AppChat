@@ -1100,10 +1100,10 @@ C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazo
 C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor.Client\obj\Debug\net9.0\compressed\pbfsb06qrw-dh0x4273ng.gz
 C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor.Client\obj\Debug\net9.0\compressed\23qzq1tmz5-qc4oop4dbt.gz
 C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor.Client\obj\Debug\net9.0\compressed\x1e5ua8nlu-9z7i1rzsd8.gz
-C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor.Client\bin\Debug\net9.0\wwwroot\_framework\pruebaMudBlazor.Client.riw1afltxn.pdb
-C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor.Client\bin\Debug\net9.0\wwwroot\_framework\pruebaMudBlazor.Client.f3sk1l3vdd.wasm
-C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor.Client\bin\Debug\net9.0\wwwroot\_framework\pruebaMudBlazor.Client.f3sk1l3vdd.wasm.gz
-C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor.Client\bin\Debug\net9.0\wwwroot\_framework\pruebaMudBlazor.Client.riw1afltxn.pdb.gz
-C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor.Client\obj\Debug\net9.0\compressed\a9n67kl6hv-f3sk1l3vdd.gz
-C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor.Client\obj\Debug\net9.0\compressed\y8a08le7jf-riw1afltxn.gz
-C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor.Client\obj\Debug\net9.0\compressed\axk79yl5e5-botmjiy1q4.gz
+C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor.Client\bin\Debug\net9.0\wwwroot\_framework\pruebaMudBlazor.Client.n5tczuzhbb.pdb
+C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor.Client\bin\Debug\net9.0\wwwroot\_framework\pruebaMudBlazor.Client.lr7h9nugs3.wasm
+C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor.Client\bin\Debug\net9.0\wwwroot\_framework\pruebaMudBlazor.Client.lr7h9nugs3.wasm.gz
+C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor.Client\bin\Debug\net9.0\wwwroot\_framework\pruebaMudBlazor.Client.n5tczuzhbb.pdb.gz
+C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor.Client\obj\Debug\net9.0\compressed\a9n67kl6hv-lr7h9nugs3.gz
+C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor.Client\obj\Debug\net9.0\compressed\y8a08le7jf-n5tczuzhbb.gz
+C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor.Client\obj\Debug\net9.0\compressed\axk79yl5e5-01qkfg7hfh.gz
