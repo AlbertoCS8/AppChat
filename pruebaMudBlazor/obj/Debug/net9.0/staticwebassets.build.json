@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EfaTPLKobNC8a7wN8sNGOMisjUqnuqdhuYUQz1IL3tU=",
+  "Hash": "3SOxt0L6zPD1T4IX2bs5bU8mbbG3ikNrFGTbjmNViQA=",
   "Source": "pruebaMudBlazor",
   "BasePath": "_content/pruebaMudBlazor",
   "Mode": "Default",
@@ -134,8 +134,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "manifest",
-      "Fingerprint": "01qkfg7hfh",
-      "Integrity": "POBnMVjlKvefsXUsLdsrPUNHoxfgltApoAO6rEJ5E+I=",
+      "Fingerprint": "dopuugo85a",
+      "Integrity": "fXsZ9LHyQtgfQ4Y6gl8UF6fAreRO6s5tlVZsxV7veaY=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.boot.json"
@@ -1247,8 +1247,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "symbol",
-      "Fingerprint": "n5tczuzhbb",
-      "Integrity": "ZTbeXHBzvfm/pqD06EJoPYYzA7nh1Y+bRA/esga11oU=",
+      "Fingerprint": "mgzyjbjtrs",
+      "Integrity": "BldbfX6piTlzLyE7CpXhLZdeVfTeKCsq3H0FtVVB3Ok=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\pruebaMudBlazor.Client.pdb"
@@ -1268,8 +1268,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "lr7h9nugs3",
-      "Integrity": "kYYnC9D5orY65QZbFroZT+lVPX8z5R8jgzLoNDObMLs=",
+      "Fingerprint": "lnvrx4ymen",
+      "Integrity": "/zVQyiN+SUSBSbZTaBdAQryXCaZf4uv/YNgSfQxITCg=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\pruebaMudBlazor.Client.wasm"
@@ -6021,12 +6021,12 @@
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a6xnw8fl24-vuf6bd4i5s.gz"
     },
     {
-      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-lr7h9nugs3.gz",
+      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-lnvrx4ymen.gz",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Project",
       "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/pruebaMudBlazor.Client#[.{fingerprint=lr7h9nugs3}]!.wasm.gz",
+      "RelativePath": "_framework/pruebaMudBlazor.Client#[.{fingerprint=lnvrx4ymen}]!.wasm.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -6035,11 +6035,11 @@
       "RelatedAsset": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\pruebaMudBlazor.Client.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "rmhrhnypel",
-      "Integrity": "A19i0qPg2/VawVyo+lhC67q8P3H2OSlQOQzZ8K3r0LA=",
+      "Fingerprint": "7v3pkhds6g",
+      "Integrity": "Ldjv2GRgfZ+IFzMa41u2ydIp3dYVtsZaE1hTk8c5f/o=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-lr7h9nugs3.gz"
+      "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-lnvrx4ymen.gz"
     },
     {
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\ad7a020sas-zxt8non64j.gz",
@@ -6126,7 +6126,7 @@
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\au2puf23d2-weh8h3644m.gz"
     },
     {
-      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\axk79yl5e5-01qkfg7hfh.gz",
+      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\axk79yl5e5-dopuugo85a.gz",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Project",
       "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\",
@@ -6140,11 +6140,11 @@
       "RelatedAsset": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.boot.json",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "sib4sqxmq5",
-      "Integrity": "rBiC0LQLSNHsYx/dVcYnSvrYvdjnSgGUtaNldDRhAjU=",
+      "Fingerprint": "rnns5m9dc3",
+      "Integrity": "OYzIgJRjbxufiE/3nbICddzHRPLV9RdnDMp0cJ7bMVE=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\axk79yl5e5-01qkfg7hfh.gz"
+      "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\axk79yl5e5-dopuugo85a.gz"
     },
     {
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\b17ipr5xxq-k2s3uxabyh.gz",
@@ -9024,12 +9024,12 @@
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y33ycwz49r-l50h3hda5q.gz"
     },
     {
-      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-n5tczuzhbb.gz",
+      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-mgzyjbjtrs.gz",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Project",
       "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/pruebaMudBlazor.Client#[.{fingerprint=n5tczuzhbb}]!.pdb.gz",
+      "RelativePath": "_framework/pruebaMudBlazor.Client#[.{fingerprint=mgzyjbjtrs}]!.pdb.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -9038,11 +9038,11 @@
       "RelatedAsset": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\pruebaMudBlazor.Client.pdb",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "3b5awsckhy",
-      "Integrity": "ofZfiyQikTyQmDRidDiZ8ecKTffKLhK+dYnzPDfXFfA=",
+      "Fingerprint": "jxh2bkfjbi",
+      "Integrity": "uc2LE4KPtmODqMLsJUxcntxtjA4wmaAYm7tEvuS9mV8=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-n5tczuzhbb.gz"
+      "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-mgzyjbjtrs.gz"
     },
     {
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\yam2dj9q8c-fha2j28yuo.gz",
@@ -10190,28 +10190,28 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"POBnMVjlKvefsXUsLdsrPUNHoxfgltApoAO6rEJ5E+I=\""
+          "Value": "\"fXsZ9LHyQtgfQ4Y6gl8UF6fAreRO6s5tlVZsxV7veaY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 14:24:45 GMT"
+          "Value": "Sat, 10 May 2025 16:42:13 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-POBnMVjlKvefsXUsLdsrPUNHoxfgltApoAO6rEJ5E+I="
+          "Value": "sha256-fXsZ9LHyQtgfQ4Y6gl8UF6fAreRO6s5tlVZsxV7veaY="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\axk79yl5e5-01qkfg7hfh.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\axk79yl5e5-dopuugo85a.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000075660135"
+          "Quality": "0.000075654411"
         }
       ],
       "ResponseHeaders": [
@@ -10229,15 +10229,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "13216"
+          "Value": "13217"
         },
         {
           "Name": "ETag",
-          "Value": "\"rBiC0LQLSNHsYx/dVcYnSvrYvdjnSgGUtaNldDRhAjU=\""
+          "Value": "\"OYzIgJRjbxufiE/3nbICddzHRPLV9RdnDMp0cJ7bMVE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 14:21:45 GMT"
+          "Value": "Sat, 10 May 2025 16:37:56 GMT"
         },
         {
           "Name": "Vary",
@@ -10249,19 +10249,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"POBnMVjlKvefsXUsLdsrPUNHoxfgltApoAO6rEJ5E+I=\""
+          "Value": "W/\"fXsZ9LHyQtgfQ4Y6gl8UF6fAreRO6s5tlVZsxV7veaY=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-POBnMVjlKvefsXUsLdsrPUNHoxfgltApoAO6rEJ5E+I="
+          "Value": "sha256-fXsZ9LHyQtgfQ4Y6gl8UF6fAreRO6s5tlVZsxV7veaY="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json.gz",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\axk79yl5e5-01qkfg7hfh.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\axk79yl5e5-dopuugo85a.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10278,7 +10278,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "13216"
+          "Value": "13217"
         },
         {
           "Name": "Content-Type",
@@ -10286,11 +10286,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"rBiC0LQLSNHsYx/dVcYnSvrYvdjnSgGUtaNldDRhAjU=\""
+          "Value": "\"OYzIgJRjbxufiE/3nbICddzHRPLV9RdnDMp0cJ7bMVE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 14:21:45 GMT"
+          "Value": "Sat, 10 May 2025 16:37:56 GMT"
         },
         {
           "Name": "Vary",
@@ -10300,7 +10300,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-rBiC0LQLSNHsYx/dVcYnSvrYvdjnSgGUtaNldDRhAjU="
+          "Value": "sha256-OYzIgJRjbxufiE/3nbICddzHRPLV9RdnDMp0cJ7bMVE="
         }
       ]
     },
@@ -15236,7 +15236,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:00:59 GMT"
+          "Value": "Fri, 02 May 2025 14:38:48 GMT"
         }
       ],
       "EndpointProperties": [
@@ -15287,7 +15287,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -15348,7 +15348,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -15397,7 +15397,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:00:59 GMT"
+          "Value": "Fri, 02 May 2025 14:38:48 GMT"
         }
       ],
       "EndpointProperties": [
@@ -15440,7 +15440,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -15493,7 +15493,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -15534,7 +15534,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:00:59 GMT"
+          "Value": "Fri, 02 May 2025 14:38:48 GMT"
         }
       ],
       "EndpointProperties": [
@@ -15585,7 +15585,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -15646,7 +15646,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -15695,7 +15695,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:00:59 GMT"
+          "Value": "Fri, 02 May 2025 14:38:48 GMT"
         }
       ],
       "EndpointProperties": [
@@ -15738,7 +15738,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -15791,7 +15791,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -15832,7 +15832,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:00:59 GMT"
+          "Value": "Fri, 02 May 2025 14:38:48 GMT"
         }
       ],
       "EndpointProperties": [
@@ -15883,7 +15883,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -15944,7 +15944,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -15993,7 +15993,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:00:59 GMT"
+          "Value": "Fri, 02 May 2025 14:38:48 GMT"
         }
       ],
       "EndpointProperties": [
@@ -16036,7 +16036,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -16089,7 +16089,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -16428,7 +16428,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:00:59 GMT"
+          "Value": "Fri, 02 May 2025 14:38:48 GMT"
         }
       ],
       "EndpointProperties": [
@@ -16479,7 +16479,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -16540,7 +16540,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -16589,7 +16589,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:00:59 GMT"
+          "Value": "Fri, 02 May 2025 14:38:48 GMT"
         }
       ],
       "EndpointProperties": [
@@ -16632,7 +16632,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -16685,7 +16685,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -16726,7 +16726,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:00:59 GMT"
+          "Value": "Fri, 02 May 2025 14:38:48 GMT"
         }
       ],
       "EndpointProperties": [
@@ -16777,7 +16777,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -16838,7 +16838,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -16887,7 +16887,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:00:59 GMT"
+          "Value": "Fri, 02 May 2025 14:38:48 GMT"
         }
       ],
       "EndpointProperties": [
@@ -16930,7 +16930,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -16983,7 +16983,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -17024,7 +17024,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:00:59 GMT"
+          "Value": "Fri, 02 May 2025 14:38:48 GMT"
         }
       ],
       "EndpointProperties": [
@@ -17075,7 +17075,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -17136,7 +17136,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -17185,7 +17185,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:00:59 GMT"
+          "Value": "Fri, 02 May 2025 14:38:48 GMT"
         }
       ],
       "EndpointProperties": [
@@ -17228,7 +17228,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -17281,7 +17281,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -17322,7 +17322,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:00:59 GMT"
+          "Value": "Fri, 02 May 2025 14:38:48 GMT"
         }
       ],
       "EndpointProperties": [
@@ -17373,7 +17373,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -17434,7 +17434,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -17483,7 +17483,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:00:59 GMT"
+          "Value": "Fri, 02 May 2025 14:38:48 GMT"
         }
       ],
       "EndpointProperties": [
@@ -17526,7 +17526,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -17579,7 +17579,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -20004,7 +20004,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:00:59 GMT"
+          "Value": "Fri, 02 May 2025 14:38:48 GMT"
         }
       ],
       "EndpointProperties": [
@@ -20055,7 +20055,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -20116,7 +20116,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -20165,7 +20165,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:00:59 GMT"
+          "Value": "Fri, 02 May 2025 14:38:48 GMT"
         }
       ],
       "EndpointProperties": [
@@ -20208,7 +20208,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -20261,7 +20261,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -25640,7 +25640,7 @@
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.lr7h9nugs3.wasm",
+      "Route": "_framework/pruebaMudBlazor.Client.lnvrx4ymen.wasm",
       "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\pruebaMudBlazor.Client.wasm",
       "Selectors": [],
       "ResponseHeaders": [
@@ -25654,7 +25654,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "152341"
+          "Value": "162069"
         },
         {
           "Name": "Content-Type",
@@ -25662,21 +25662,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"kYYnC9D5orY65QZbFroZT+lVPX8z5R8jgzLoNDObMLs=\""
+          "Value": "\"/zVQyiN+SUSBSbZTaBdAQryXCaZf4uv/YNgSfQxITCg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 14:24:45 GMT"
+          "Value": "Sat, 10 May 2025 16:42:12 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "lr7h9nugs3"
+          "Value": "lnvrx4ymen"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-kYYnC9D5orY65QZbFroZT+lVPX8z5R8jgzLoNDObMLs="
+          "Value": "sha256-/zVQyiN+SUSBSbZTaBdAQryXCaZf4uv/YNgSfQxITCg="
         },
         {
           "Name": "label",
@@ -25685,13 +25685,13 @@
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.lr7h9nugs3.wasm",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-lr7h9nugs3.gz",
+      "Route": "_framework/pruebaMudBlazor.Client.lnvrx4ymen.wasm",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-lnvrx4ymen.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000018221242"
+          "Quality": "0.000017104543"
         }
       ],
       "ResponseHeaders": [
@@ -25709,15 +25709,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "54880"
+          "Value": "58463"
         },
         {
           "Name": "ETag",
-          "Value": "\"A19i0qPg2/VawVyo+lhC67q8P3H2OSlQOQzZ8K3r0LA=\""
+          "Value": "\"Ldjv2GRgfZ+IFzMa41u2ydIp3dYVtsZaE1hTk8c5f/o=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 14:24:45 GMT"
+          "Value": "Sat, 10 May 2025 16:42:13 GMT"
         },
         {
           "Name": "Vary",
@@ -25729,17 +25729,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"kYYnC9D5orY65QZbFroZT+lVPX8z5R8jgzLoNDObMLs=\""
+          "Value": "W/\"/zVQyiN+SUSBSbZTaBdAQryXCaZf4uv/YNgSfQxITCg=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "lr7h9nugs3"
+          "Value": "lnvrx4ymen"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-kYYnC9D5orY65QZbFroZT+lVPX8z5R8jgzLoNDObMLs="
+          "Value": "sha256-/zVQyiN+SUSBSbZTaBdAQryXCaZf4uv/YNgSfQxITCg="
         },
         {
           "Name": "label",
@@ -25748,8 +25748,8 @@
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.lr7h9nugs3.wasm.gz",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-lr7h9nugs3.gz",
+      "Route": "_framework/pruebaMudBlazor.Client.lnvrx4ymen.wasm.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-lnvrx4ymen.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -25766,7 +25766,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "54880"
+          "Value": "58463"
         },
         {
           "Name": "Content-Type",
@@ -25774,11 +25774,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"A19i0qPg2/VawVyo+lhC67q8P3H2OSlQOQzZ8K3r0LA=\""
+          "Value": "\"Ldjv2GRgfZ+IFzMa41u2ydIp3dYVtsZaE1hTk8c5f/o=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 14:24:45 GMT"
+          "Value": "Sat, 10 May 2025 16:42:13 GMT"
         },
         {
           "Name": "Vary",
@@ -25788,11 +25788,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "lr7h9nugs3"
+          "Value": "lnvrx4ymen"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-A19i0qPg2/VawVyo+lhC67q8P3H2OSlQOQzZ8K3r0LA="
+          "Value": "sha256-Ldjv2GRgfZ+IFzMa41u2ydIp3dYVtsZaE1hTk8c5f/o="
         },
         {
           "Name": "label",
@@ -25801,7 +25801,7 @@
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.n5tczuzhbb.pdb",
+      "Route": "_framework/pruebaMudBlazor.Client.mgzyjbjtrs.pdb",
       "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\pruebaMudBlazor.Client.pdb",
       "Selectors": [],
       "ResponseHeaders": [
@@ -25815,7 +25815,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "90424"
+          "Value": "92812"
         },
         {
           "Name": "Content-Type",
@@ -25823,21 +25823,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ZTbeXHBzvfm/pqD06EJoPYYzA7nh1Y+bRA/esga11oU=\""
+          "Value": "\"BldbfX6piTlzLyE7CpXhLZdeVfTeKCsq3H0FtVVB3Ok=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 14:24:45 GMT"
+          "Value": "Sat, 10 May 2025 16:42:12 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "n5tczuzhbb"
+          "Value": "mgzyjbjtrs"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-ZTbeXHBzvfm/pqD06EJoPYYzA7nh1Y+bRA/esga11oU="
+          "Value": "sha256-BldbfX6piTlzLyE7CpXhLZdeVfTeKCsq3H0FtVVB3Ok="
         },
         {
           "Name": "label",
@@ -25846,13 +25846,13 @@
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.n5tczuzhbb.pdb",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-n5tczuzhbb.gz",
+      "Route": "_framework/pruebaMudBlazor.Client.mgzyjbjtrs.pdb",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-mgzyjbjtrs.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000013722692"
+          "Quality": "0.000013503659"
         }
       ],
       "ResponseHeaders": [
@@ -25870,15 +25870,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "72871"
+          "Value": "74053"
         },
         {
           "Name": "ETag",
-          "Value": "\"ofZfiyQikTyQmDRidDiZ8ecKTffKLhK+dYnzPDfXFfA=\""
+          "Value": "\"uc2LE4KPtmODqMLsJUxcntxtjA4wmaAYm7tEvuS9mV8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 14:24:45 GMT"
+          "Value": "Sat, 10 May 2025 16:42:13 GMT"
         },
         {
           "Name": "Vary",
@@ -25890,17 +25890,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"ZTbeXHBzvfm/pqD06EJoPYYzA7nh1Y+bRA/esga11oU=\""
+          "Value": "W/\"BldbfX6piTlzLyE7CpXhLZdeVfTeKCsq3H0FtVVB3Ok=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "n5tczuzhbb"
+          "Value": "mgzyjbjtrs"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-ZTbeXHBzvfm/pqD06EJoPYYzA7nh1Y+bRA/esga11oU="
+          "Value": "sha256-BldbfX6piTlzLyE7CpXhLZdeVfTeKCsq3H0FtVVB3Ok="
         },
         {
           "Name": "label",
@@ -25909,8 +25909,8 @@
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.n5tczuzhbb.pdb.gz",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-n5tczuzhbb.gz",
+      "Route": "_framework/pruebaMudBlazor.Client.mgzyjbjtrs.pdb.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-mgzyjbjtrs.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -25927,7 +25927,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "72871"
+          "Value": "74053"
         },
         {
           "Name": "Content-Type",
@@ -25935,11 +25935,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ofZfiyQikTyQmDRidDiZ8ecKTffKLhK+dYnzPDfXFfA=\""
+          "Value": "\"uc2LE4KPtmODqMLsJUxcntxtjA4wmaAYm7tEvuS9mV8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 14:24:45 GMT"
+          "Value": "Sat, 10 May 2025 16:42:13 GMT"
         },
         {
           "Name": "Vary",
@@ -25949,11 +25949,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "n5tczuzhbb"
+          "Value": "mgzyjbjtrs"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-ofZfiyQikTyQmDRidDiZ8ecKTffKLhK+dYnzPDfXFfA="
+          "Value": "sha256-uc2LE4KPtmODqMLsJUxcntxtjA4wmaAYm7tEvuS9mV8="
         },
         {
           "Name": "label",
@@ -25976,7 +25976,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "90424"
+          "Value": "92812"
         },
         {
           "Name": "Content-Type",
@@ -25984,28 +25984,28 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ZTbeXHBzvfm/pqD06EJoPYYzA7nh1Y+bRA/esga11oU=\""
+          "Value": "\"BldbfX6piTlzLyE7CpXhLZdeVfTeKCsq3H0FtVVB3Ok=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 14:24:45 GMT"
+          "Value": "Sat, 10 May 2025 16:42:12 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ZTbeXHBzvfm/pqD06EJoPYYzA7nh1Y+bRA/esga11oU="
+          "Value": "sha256-BldbfX6piTlzLyE7CpXhLZdeVfTeKCsq3H0FtVVB3Ok="
         }
       ]
     },
     {
       "Route": "_framework/pruebaMudBlazor.Client.pdb",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-n5tczuzhbb.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-mgzyjbjtrs.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000013722692"
+          "Quality": "0.000013503659"
         }
       ],
       "ResponseHeaders": [
@@ -26023,15 +26023,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "72871"
+          "Value": "74053"
         },
         {
           "Name": "ETag",
-          "Value": "\"ofZfiyQikTyQmDRidDiZ8ecKTffKLhK+dYnzPDfXFfA=\""
+          "Value": "\"uc2LE4KPtmODqMLsJUxcntxtjA4wmaAYm7tEvuS9mV8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 14:24:45 GMT"
+          "Value": "Sat, 10 May 2025 16:42:13 GMT"
         },
         {
           "Name": "Vary",
@@ -26043,19 +26043,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"ZTbeXHBzvfm/pqD06EJoPYYzA7nh1Y+bRA/esga11oU=\""
+          "Value": "W/\"BldbfX6piTlzLyE7CpXhLZdeVfTeKCsq3H0FtVVB3Ok=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ZTbeXHBzvfm/pqD06EJoPYYzA7nh1Y+bRA/esga11oU="
+          "Value": "sha256-BldbfX6piTlzLyE7CpXhLZdeVfTeKCsq3H0FtVVB3Ok="
         }
       ]
     },
     {
       "Route": "_framework/pruebaMudBlazor.Client.pdb.gz",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-n5tczuzhbb.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-mgzyjbjtrs.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -26072,7 +26072,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "72871"
+          "Value": "74053"
         },
         {
           "Name": "Content-Type",
@@ -26080,11 +26080,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ofZfiyQikTyQmDRidDiZ8ecKTffKLhK+dYnzPDfXFfA=\""
+          "Value": "\"uc2LE4KPtmODqMLsJUxcntxtjA4wmaAYm7tEvuS9mV8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 14:24:45 GMT"
+          "Value": "Sat, 10 May 2025 16:42:13 GMT"
         },
         {
           "Name": "Vary",
@@ -26094,7 +26094,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ofZfiyQikTyQmDRidDiZ8ecKTffKLhK+dYnzPDfXFfA="
+          "Value": "sha256-uc2LE4KPtmODqMLsJUxcntxtjA4wmaAYm7tEvuS9mV8="
         }
       ]
     },
@@ -26113,7 +26113,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "152341"
+          "Value": "162069"
         },
         {
           "Name": "Content-Type",
@@ -26121,28 +26121,28 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"kYYnC9D5orY65QZbFroZT+lVPX8z5R8jgzLoNDObMLs=\""
+          "Value": "\"/zVQyiN+SUSBSbZTaBdAQryXCaZf4uv/YNgSfQxITCg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 14:24:45 GMT"
+          "Value": "Sat, 10 May 2025 16:42:12 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-kYYnC9D5orY65QZbFroZT+lVPX8z5R8jgzLoNDObMLs="
+          "Value": "sha256-/zVQyiN+SUSBSbZTaBdAQryXCaZf4uv/YNgSfQxITCg="
         }
       ]
     },
     {
       "Route": "_framework/pruebaMudBlazor.Client.wasm",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-lr7h9nugs3.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-lnvrx4ymen.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000018221242"
+          "Quality": "0.000017104543"
         }
       ],
       "ResponseHeaders": [
@@ -26160,15 +26160,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "54880"
+          "Value": "58463"
         },
         {
           "Name": "ETag",
-          "Value": "\"A19i0qPg2/VawVyo+lhC67q8P3H2OSlQOQzZ8K3r0LA=\""
+          "Value": "\"Ldjv2GRgfZ+IFzMa41u2ydIp3dYVtsZaE1hTk8c5f/o=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 14:24:45 GMT"
+          "Value": "Sat, 10 May 2025 16:42:13 GMT"
         },
         {
           "Name": "Vary",
@@ -26180,19 +26180,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"kYYnC9D5orY65QZbFroZT+lVPX8z5R8jgzLoNDObMLs=\""
+          "Value": "W/\"/zVQyiN+SUSBSbZTaBdAQryXCaZf4uv/YNgSfQxITCg=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-kYYnC9D5orY65QZbFroZT+lVPX8z5R8jgzLoNDObMLs="
+          "Value": "sha256-/zVQyiN+SUSBSbZTaBdAQryXCaZf4uv/YNgSfQxITCg="
         }
       ]
     },
     {
       "Route": "_framework/pruebaMudBlazor.Client.wasm.gz",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-lr7h9nugs3.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-lnvrx4ymen.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -26209,7 +26209,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "54880"
+          "Value": "58463"
         },
         {
           "Name": "Content-Type",
@@ -26217,11 +26217,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"A19i0qPg2/VawVyo+lhC67q8P3H2OSlQOQzZ8K3r0LA=\""
+          "Value": "\"Ldjv2GRgfZ+IFzMa41u2ydIp3dYVtsZaE1hTk8c5f/o=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 14:24:45 GMT"
+          "Value": "Sat, 10 May 2025 16:42:13 GMT"
         },
         {
           "Name": "Vary",
@@ -26231,7 +26231,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-A19i0qPg2/VawVyo+lhC67q8P3H2OSlQOQzZ8K3r0LA="
+          "Value": "sha256-Ldjv2GRgfZ+IFzMa41u2ydIp3dYVtsZaE1hTk8c5f/o="
         }
       ]
     },
@@ -46985,7 +46985,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:00:59 GMT"
+          "Value": "Fri, 02 May 2025 14:38:48 GMT"
         }
       ],
       "EndpointProperties": [
@@ -47036,7 +47036,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -47097,7 +47097,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -47146,7 +47146,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:00:59 GMT"
+          "Value": "Fri, 02 May 2025 14:38:48 GMT"
         }
       ],
       "EndpointProperties": [
@@ -47189,7 +47189,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",
@@ -47242,7 +47242,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 10:24:34 GMT"
+          "Value": "Fri, 02 May 2025 14:39:12 GMT"
         },
         {
           "Name": "Vary",

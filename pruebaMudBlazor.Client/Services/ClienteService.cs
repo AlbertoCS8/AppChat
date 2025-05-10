@@ -16,7 +16,7 @@ public class ClienteService : IClienteService
     public async Task<string> RegistrarClienteAsync(UserModel registro)
     {
         var response = await _httpClient.PostAsJsonAsync("/registro", registro);
-        
+
         if (response.IsSuccessStatusCode)
         {
             return await response.Content.ReadAsStringAsync();
@@ -28,23 +28,23 @@ public class ClienteService : IClienteService
     }
     public async Task<UserModel> LoginClienteAsync(string email, string password)
     {
-        Console.WriteLine("en servicio login los datos son: "+email+" "+password);
-        
+        Console.WriteLine("en servicio login los datos son: " + email + " " + password);
+
         // Crea un objeto de login explícito
-        var loginData = new 
+        var loginData = new
         {
             Email = email,
             Password = password
         };
 
         var response = await _httpClient.PostAsJsonAsync("/api/login", loginData);
-        
+
         if (response.IsSuccessStatusCode)
         {
             Console.WriteLine("Inicio de sesión recibido, procesando...");
             return await response.Content.ReadFromJsonAsync<UserModel>();
         }
-        else 
+        else
         {
             var errorContent = await response.Content.ReadAsStringAsync();
             Console.WriteLine($"Error en login: {errorContent}");
@@ -53,28 +53,28 @@ public class ClienteService : IClienteService
     }
 
     public async Task<string> CambiarFotoPerfilAsync(string username, string foto)
-{
-    Console.WriteLine("en servicio cambiar foto los datos son: " + username);
-    
-    // Enviar los datos como un objeto JSON
-    var model = new 
     {
-        Username = username,
-        Foto = foto
-    };
-    
-    var response = await _httpClient.PostAsJsonAsync("/api/cambiarFotoPerfil", model);
-    
-    if (response.IsSuccessStatusCode)
-    {
-        return await response.Content.ReadAsStringAsync();
+        Console.WriteLine("en servicio cambiar foto los datos son: " + username);
+
+        // Enviar los datos como un objeto JSON
+        var model = new
+        {
+            Username = username,
+            Foto = foto
+        };
+
+        var response = await _httpClient.PostAsJsonAsync("/api/cambiarFotoPerfil", model);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return await response.Content.ReadAsStringAsync();
+        }
+        else
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            throw new Exception($"Error al cambiar la foto de perfil: {errorContent}");
+        }
     }
-    else
-    {
-        var errorContent = await response.Content.ReadAsStringAsync();
-        throw new Exception($"Error al cambiar la foto de perfil: {errorContent}");
-    }
-}
 
     public Task<List<UserModel>> BuscarUsuariosAsync(string nombreUsuario)
     {
@@ -83,40 +83,40 @@ public class ClienteService : IClienteService
 
     }
 
-   // En ClienteService.cs
-public async Task<bool> AgregarAmigoAsync(string usuarioActual, string usuarioAmigo)
-{
-    Console.WriteLine($"Agregando amigo: {usuarioActual} -> {usuarioAmigo}");
-    
-    var model = new 
+    // En ClienteService.cs
+    public async Task<bool> AgregarAmigoAsync(string usuarioActual, string usuarioAmigo)
     {
-        UsuarioActual = usuarioActual,
-        UsuarioAmigo = usuarioAmigo
-    };
-    
-    var response = await _httpClient.PostAsJsonAsync("/api/agregarAmigo", model);
-    
-    if (response.IsSuccessStatusCode)
-    {
-        var resultado = await response.Content.ReadFromJsonAsync<ResponseServer>();
-        if (resultado.CodigoError == 0)
+        Console.WriteLine($"Agregando amigo: {usuarioActual} -> {usuarioAmigo}");
+
+        var model = new
         {
-            Console.WriteLine("Amigo agregado exitosamente.");
-            return true;
+            UsuarioActual = usuarioActual,
+            UsuarioAmigo = usuarioAmigo
+        };
+
+        var response = await _httpClient.PostAsJsonAsync("/api/agregarAmigo", model);
+
+        if (response.IsSuccessStatusCode)
+        {
+            var resultado = await response.Content.ReadFromJsonAsync<ResponseServer>();
+            if (resultado.CodigoError == 0)
+            {
+                Console.WriteLine("Amigo agregado exitosamente.");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine($"Error al agregar amigo: {resultado.Mensaje}");
+                return false;
+            }
         }
         else
         {
-            Console.WriteLine($"Error al agregar amigo: {resultado.Mensaje}");
-            return false;
+            var errorContent = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"Error al agregar amigo: {errorContent}");
+            throw new Exception($"Error al agregar amigo: {errorContent}");
         }
     }
-    else
-    {
-        var errorContent = await response.Content.ReadAsStringAsync();
-        Console.WriteLine($"Error al agregar amigo: {errorContent}");
-        throw new Exception($"Error al agregar amigo: {errorContent}");
-    }
-}
 
     public async Task<List<Amigos>> ObtenerAmigosAsync(List<string> amigosUsernames)
     {
@@ -124,7 +124,7 @@ public async Task<bool> AgregarAmigoAsync(string usuarioActual, string usuarioAm
         {
 
             var response = await _httpClient.PostAsJsonAsync("/api/obtenerAmigos", amigosUsernames);
-            
+
             if (response.IsSuccessStatusCode)
             {
                 return await response.Content.ReadFromJsonAsync<List<Amigos>>();
@@ -145,12 +145,12 @@ public async Task<bool> AgregarAmigoAsync(string usuarioActual, string usuarioAm
     public Task<bool> IniciarChatAsync(string usuarioActual, string amigoUsername)
     {
         // Console.WriteLine("en servicio iniciar chat los datos son: " + usuarioActual + " " + amigoUsername);
-        var req = new 
+        var req = new
         {
             user1 = usuarioActual,
             user2 = amigoUsername
         };
-        
+
         return _httpClient.PostAsJsonAsync("/api/iniciarChat", req)
             .ContinueWith(task =>
             {
@@ -164,4 +164,20 @@ public async Task<bool> AgregarAmigoAsync(string usuarioActual, string usuarioAm
                 }
             });
     }
+
+    public async Task<ResponseServer> GuardarMensajeAsync(ChatMessage mensaje, string roomId)
+    {
+        // Console.WriteLine("en servicio guardar mensaje los datos son: " + mensaje.UserName + " " + mensaje.Message);
+        var response = await _httpClient.PostAsJsonAsync("/api/guardarMensaje", new { mensaje, roomId });
+
+        if (response.IsSuccessStatusCode)
+        {
+            return await response.Content.ReadFromJsonAsync<ResponseServer>();
+        }
+        else
+        {
+            throw new Exception("Error al guardar el mensaje");
+        }
+    }
+    
 }
