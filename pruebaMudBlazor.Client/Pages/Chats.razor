@@ -8,13 +8,8 @@
 @inject IClienteService ClienteService
 @inject NavigationManager NavigationManager
 @inject AuthService authService
-@* @inject ClienteService clienteService *@
-@* @inject ChatService chatService *@
 @inject pruebaMudBlazor.Client.Services.ChatService chatService
-
-
-
-@* @using AdminDashboard.Server.Models  *@
+@* @inject UsersConnected usersConnected *@
 
 <div class="d-flex flex-grow-1 flex-row">
     <MudHidden Breakpoint="Breakpoint.SmAndDown">
@@ -55,8 +50,8 @@
                                 </MudAvatar>
                                 <div class="flex-grow-1">
                                     <MudText Typo="Typo.body1">@friend.Username</MudText>
-                                    <MudText Typo="Typo.caption" Color="@GetStatusColor(friend)">
-                                        @GetStatusText(friend)
+                                    <MudText Typo="Typo.caption" Color="@(friend.Status == "En línea" ? Color.Success : Color.Default)">
+                                        @friend.Status
                                     </MudText>
                                 </div>
                                 <MudBadge Content="@GetUnreadCount(friend)" Color="Color.Error" 
@@ -185,14 +180,17 @@
 {
     bool open;
     bool conectadoA_unaSala;
+    bool _isSubscribedToUserConnection = false;
     public List<Amigos> listaAmigos { get; set; } = new List<Amigos>();
     private Amigos selectedFriend; // amigo seleccionado, lo pasare a el tema del chathub para renderizar
     //el tema de la imagen de perfil
+    private UsersConnected usersConnected;
     private string mensajeNuevo = string.Empty;
     string roomName = string.Empty;
+    public List<ChatMessage> chatMessages = new List<ChatMessage>();
      public string IconGift { get; set; } = "<path d=\"M22,12V20A2,2 0 0,1 20,22H4A2,2 0 0,1 2,20V12A1,1 0 0,1 1,11V8A2,2 0 0,1 3,6H6.17C6.06,5.69 6,5.35 6,5A3,3 0 0,1 9,2C10,2 10.88,2.5 11.43,3.24V3.23L12,4L12.57,3.23V3.24C13.12,2.5 14,2 15,2A3,3 0 0,1 18,5C18,5.35 17.94,5.69 17.83,6H21A2,2 0 0,1 23,8V11A1,1 0 0,1 22,12M4,20H11V12H4V20M20,20V12H13V20H20M9,4A1,1 0 0,0 8,5A1,1 0 0,0 9,6A1,1 0 0,0 10,5A1,1 0 0,0 9,4M15,4A1,1 0 0,0 14,5A1,1 0 0,0 15,6A1,1 0 0,0 16,5A1,1 0 0,0 15,4M3,8V10H11V8H3M13,8V10H21V8H13Z\" />";
     public string IconGif { get; set; } = "<path d=\"M11,8H13V16H11V8M7.67,8H4.33C3.53,8 3,8.67 3,9.33V14.67C3,15.33 3.53,16 4.33,16H7.67C8.47,16 9,15.33 9,14.67V12H7V14H5V10H9V9.33C9,8.67 8.47,8 7.67,8M21,10V8H15V16H17V14H19.5V12H17V10H21Z\" />";
-
+    public string roomResponsable { get; set; } = string.Empty;
     Anchor ChatDrawer { get; set; }
 
     ChatUser[] chatUsers = new ChatUser[]
@@ -200,11 +198,7 @@
         new ChatUser { UserName = "Garderoben", UserRoleColor = Colors.DeepPurple.Accent4, OnlineStatus = Color.Success, Spotify = true, AvatarUrl = "https://avatars2.githubusercontent.com/u/10367109?s=460&amp;u=2abf95f9e01132e8e2915def42895ffe99c5d2c6&amp;v=4"},
 };
 
-    ChatMessage[] chatMessages = new ChatMessage[]
-    {
-        new ChatMessage { UserName = "Garderoben", Message = "What is CSS?"},
-        
-    };
+    
     public ChatUser GetUser(string username)
     {
         var chatUser = chatUsers.FirstOrDefault(x => x.UserName == username);
@@ -218,14 +212,19 @@
     protected override async Task OnInitializedAsync()
     {
         listaAmigos = await ClienteService.ObtenerAmigosAsync(authService.Amigos);
+        @* chatService.ObsUserConnection -= OnUserConnection;//desuscripcion
+        chatService.ObsUserConnection += OnUserConnection;//suscripcion *@
+          if (!_isSubscribedToUserConnection)
+    {
+        chatService.ObsUserConnection += OnUserConnection;
+        _isSubscribedToUserConnection = true;
+    }
         //base.OnInitialized; //
     } 
     private void SelectFriend(Amigos friend)
     {
         @* Console.WriteLine($"Amigo seleccionado: {friend.Username}");
         Console.WriteLine($"Foto del amigo seleccionado: {friend.FotoPerfil}"); *@
-        selectedFriend = friend;
-        //loadChatMessages(friend); de momento nada
         iniciarChat(friend);
         //pendienteeeeeeeee
     }
@@ -237,33 +236,38 @@
         @* clienteService.cargarMensajes(friend.Username); *@
         
     }
-    private void iniciarChat(Amigos friend)
+    private async Task iniciarChat(Amigos friend)
     {
-         if (chatService.ObsMensajeRecibido != null)
-    {
-        chatService.ObsMensajeRecibido -= OnMensajeRecibido;
-    }
-        // Implementar la lógica para iniciar el chat con el amigo seleccionado
-        @* Console.WriteLine($"Iniciando chat con: {friend.Username}");         *@
-        @* clienteService.IniciarChatAsync(authService.Username,friend.Username);
-        borrar todo lo referente a esto *@
-        //ordenamos alfabeticamente el nombre del amigo seleccionado y el nombre de usuario
-         roomName = string.Compare(authService.Username, friend.Username) < 0
-            ? $"{authService.Username}_{friend.Username}"
-            : $"{friend.Username}_{authService.Username}";
-        //Console.WriteLine($"Nombre de la sala: {roomName}");
-        //conectamos a la sala
-        chatService.ConnectToHub(roomName);
-        chatService.ObsMensajeRecibido += OnMensajeRecibido;
-        chatMessages = Array.Empty<ChatMessage>();
-            StateHasChanged();
-        @* chatService.ObsMensajeRecibido += ( message) =>
+        try
         {
-            // Aquí puedes manejar la recepción de mensajes
-            Console.WriteLine($"Mensaje recibido ya en el front: {message.Message} , de parte de {message.UserName}"); // al principio parecian duplicados pero era porque el mensaje era el mismo
-            chatMessages = chatMessages.Append(new ChatMessage { UserName = message.UserName, Message = message.Message }).ToArray();
-            StateHasChanged(); // Actualiza la UI 
-        }; *@
+            // Desuscribirse de eventos anteriores
+            if (chatService.ObsMensajeRecibido != null)
+            {
+                chatService.ObsMensajeRecibido -= OnMensajeRecibido;
+            }
+            
+            selectedFriend = friend;
+            
+            // Calcular el nombre de la sala
+            roomName = string.Compare(authService.Username, friend.Username) < 0
+                ? $"{authService.Username}_{friend.Username}"
+                : $"{friend.Username}_{authService.Username}";
+                
+            // Suscribirse al evento de mensajes recibidos
+            chatService.ObsMensajeRecibido += OnMensajeRecibido;
+            
+            // Conectar al hub y obtener la conexión
+            var connection = await chatService.ConnectToHub(authService.Username, roomName);
+            
+            // Obtener mensajes usando la misma conexión
+            chatMessages = await chatService.GetChatMessagesAsync(roomName, connection);
+            
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al iniciar chat: {ex.Message}");
+        }
     }
     private void OnMensajeRecibido(ChatMessage message)
 {
@@ -271,39 +275,39 @@
     Console.WriteLine($"Mensaje recibido en el front: {message.Message}, de parte de {message.UserName}");
     
     // Agregamos el mensaje al array
-    chatMessages = chatMessages.Append(message).ToArray();
+    chatMessages.Add(message);
     
     // Como estamos en un callback de evento, necesitamos invocar StateHasChanged de manera segura
     InvokeAsync(StateHasChanged);
 }
-    
-    private Color GetStatusColor(Amigos friend)
+    private async void OnUserConnection(string username, string isConnected)// isConnected = En línea
     {
-        //pendienteeee fut funcionalidad
-        var random = new Random();
-        var status = random.Next(0, 3);
-        
-        return status switch
+        // Aquí puedes manejar la conexión/desconexión de usuarios
+        Console.WriteLine($"Usuario {username} {(isConnected == "En línea" ? "conectado" : "desconectado")}");
+        @* usersConnected.registConnection(username, isConnected); *@
+        // Actualizar la lista de amigos con el estado de conexión
+        @* if (listaAmigos == null || listaAmigos.Count == 0)
         {
-            0 => Color.Success, // Online
-            1 => Color.Warning, // Away
-            _ => Color.Default  // Offline
-        };
+            Console.WriteLine("⚠️ La lista de amigos está vacía o no ha sido cargada aún.");
+            return;
+        } *@
+        @* foreach (var amigo in listaAmigos)
+        {
+            Console.WriteLine($"Amigo: {amigo.Username}, Estado: {amigo.Status}");
+        } *@
+        var friend = listaAmigos.FirstOrDefault(f => f.Username == username);
+        if (friend != null)
+        {
+            @* Console.WriteLine($"Actualizando estado de conexión para {friend}"); *@
+            friend.Status = isConnected;
+            StateHasChanged();
+        }else
+        {
+            @* Console.WriteLine($"No se encontró el amigo {username} en la lista de amigos."); *@
+        }
     }
     
-    private string GetStatusText(Amigos friend)
-    {
-        // Implementación similar para el texto del estado
-        var random = new Random();
-        var status = random.Next(0, 3);
-        
-        return status switch
-        {
-            0 => "En línea",
-            1 => "Ausente",
-            _ => "Desconectado"
-        };
-    }
+    
     public void EnviarMensaje(string mensaje){
         // Implementar la lógica para enviar un mensaje al amigo seleccionado
         Console.WriteLine($"Enviando mensaje a {selectedFriend.Username}: {mensaje} quer tiene de img de perfil {authService.ImagenBase64}");
@@ -311,7 +315,8 @@
         ChatMessage mensajeRenderiz = new ChatMessage {  UserName= authService.Username, Message= mensaje, Time= DateTime.Now.ToString("hh:mm tt") };
         //solo necesito el mensaje porque el username ya lo estoy pasando
         chatService.SendMessage(roomName, mensajeRenderiz);
-        chatMessages = chatMessages.Append(mensajeRenderiz).ToArray();
+        //guardamos el mensaje en BD para persistirlo
+        chatMessages.Add(mensajeRenderiz);
         mensajeNuevo = string.Empty; // Limpiar el campo de entrada después de enviar el mensaje
         StateHasChanged(); // Actualiza la UI
         
@@ -321,12 +326,18 @@
         //mensajes non leidos, pensar en comom hacero
         return new Random().Next(0, 5);
     }
-    public void Dispose()
+    public async void Dispose()
 {
     if (chatService.ObsMensajeRecibido != null)
     {
         chatService.ObsMensajeRecibido -= OnMensajeRecibido;
     }
+   //logica para recibir quien es el responsable
+   @* roomResponsable = await chatService.ObtenerResponsableAsync(roomName); *@
+   chatService.ObsUserConnection -= OnUserConnection;
+    }
+    // Aqui se puede hacer algo con el responsable, como mostrarlo en la UI o guardarlo en una variable
+   //Console.WriteLine($"Responsable de la sala {roomName}: {roomResponsable}");
     /*Ejemplo de api de musblazor del chat que quiero
     <MudGrid>
     <MudItem xs="12" Class="justify-center">
@@ -389,5 +400,5 @@
     private ChatArrowPosition _selectedArrowPosition = ChatArrowPosition.Top;
 }
     */
-}
+
 }
