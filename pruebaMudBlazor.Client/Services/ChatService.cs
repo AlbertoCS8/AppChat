@@ -10,31 +10,58 @@ public class ChatService
 
     public HubConnection _hubConnection; // hace referencia al hub de chat del servidor 
                                          // de ahi que tenga esos metodos a los que puedo llamnar con el invokasync
-    public HubConnection _globalHubConnection; // Este lo usaremos para eventos globales como conexion de usuarios
+                                         //Lo usamos para enviar mensajes y recibirlos
+    public HubConnection _globalHubConnection; // Este lo usaremos para eventos globales como conexion de usuarios o desconexion
     public Action<ChatMessage> ObsMensajeRecibido { get; set; }// como los observables de angular!!
-    public Action <string, string> ObsUserConnection { get; set; } //para el evento de conexion de usuarios
-    
-    public async Task ConnectToGlobalHub(string username){
-    // Descartar conexión previa si existe
-    if (_globalHubConnection != null)
+    public Action<string, string> ObsUserConnection { get; set; } //para el evento de conexion de usuarios
+
+    public async Task ConnectToGlobalHub(string username)
     {
-        await _globalHubConnection.DisposeAsync();
+        // Descartar conexión previa si existe
+        if (_globalHubConnection != null)
+        {
+            await _globalHubConnection.DisposeAsync();
+        }
+        Console.WriteLine("Conectando al hub global...");
+        _globalHubConnection = new HubConnectionBuilder()
+            .WithUrl("http://localhost:5235/chathub")
+            .WithAutomaticReconnect()
+            .Build();
+
+        //ponemos el _globalHub a la escucha de evenyos
+        _globalHubConnection.On<string, string>("UserConnection", (username, status) =>
+        {
+            ObsUserConnection?.Invoke(username, status);
+            // Notificar cambio de Status de usuarios --> En linea o desconectado...
+        });
+        await _globalHubConnection.StartAsync();
+        await _globalHubConnection.InvokeAsync("UserConnection", $"{username}", "En línea");
     }
-    Console.WriteLine("Conectando al hub global...");
-    _globalHubConnection = new HubConnectionBuilder()
-        .WithUrl("http://localhost:5235/chathub")
-        .WithAutomaticReconnect()
-        .Build();  
-    
-    //ponemos el _globalHub a la escucha de evenyos
-    _globalHubConnection.On<string, string>("UserConnection", (username, status) => {
-        ObsUserConnection?.Invoke(username, status);
-        // Notificar cambio de estado de usuarios
-    });
-    await _globalHubConnection.StartAsync();
-    await _globalHubConnection.InvokeAsync("UserConnection", $"{username}", "En línea");
-    // No unirse a ninguna sala específica
-}
+    //Método para desconectar del hub global
+    public async Task DisconnectFromGlobalHub(string username)
+    {
+        try
+        {
+            if (_globalHubConnection != null && _globalHubConnection.State == HubConnectionState.Connected)
+            {
+                Console.WriteLine($"Notificando desconexión del usuario {username}");
+
+                // Notificar la desconexión antes de cerrar la conexión
+                await _globalHubConnection.InvokeAsync("UserConnection", username, "Desconectado");
+
+                // Detener la conexión
+                await _globalHubConnection.StopAsync();
+                await _globalHubConnection.DisposeAsync();
+                _globalHubConnection = null;
+
+                Console.WriteLine("Desconexión del hub global completada");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al desconectar del hub global: {ex.Message}");
+        }
+    }
     public async Task<HubConnection> ConnectToHub(string UserName, string roomId)
     {
         try
@@ -57,24 +84,18 @@ public class ChatService
             Console.WriteLine("Conectando al hub de chat...");
             _hubConnection = new HubConnectionBuilder()
                 .WithUrl("http://localhost:5235/chathub")
-                .WithAutomaticReconnect() // Añadir reconexión automática
+                .WithAutomaticReconnect() 
                 .Build();
 
-            // Configura los eventos del hub
+            // Eventos que estan a la escucha, cuando desde Chathub se disparan con --> await Clients.OthersInGroup(roomName).SendAsync("ReceiveMessage", mensaje);
+            //se ejecuta el codigo
             _hubConnection.On<ChatMessage>("ReceiveMessage", (ChatMessage mensaje) =>
             {
                 Console.WriteLine($"Mensaje recibido: {mensaje.Message} de parte de {mensaje.UserName}");
                 ObsMensajeRecibido?.Invoke(mensaje);
             });
-
-            // Iniciar conexión
             await _hubConnection.StartAsync();
-            // refactor de planteamniento, esto deberia estar en el login no aqui porque me cargaria el tema de el poder ver a todos los usuarios on line
-
-
-            // Unirse a la sala
             await _hubConnection.InvokeAsync("UnirASala", UserName, roomId);
-
             Console.WriteLine("Conectado al hub de chat.");
             return _hubConnection;
         }
@@ -84,13 +105,13 @@ public class ChatService
             throw;
         }
     }
-    public async Task SendMessage(string roomId, ChatMessage message) //sobra porque guardo en ChatHUb
+    public async Task SendMessage(string roomId, ChatMessage message) 
     {
-        try                                     //este user es quien lo manda
+        try
         {
             if (_hubConnection != null && _hubConnection.State == HubConnectionState.Connected)
             {
-                await _hubConnection.InvokeAsync("EnviarMensaje", roomId, message);//funcion de el chatHUb en la parte del server
+                await _hubConnection.InvokeAsync("EnviarMensaje", roomId, message);
 
             }
             else
@@ -131,38 +152,5 @@ public class ChatService
             return new List<ChatMessage>();
         }
     }
-    //metodo que recibe como parametro el username para guardarlo en el diccionario de usuarios conectados
-    //lo llamamos una vez hacemos login
-    public async void RegistrarConexion(string userName, string status)
-    {
-        try{
-            await _hubConnection.InvokeAsync("RegistrarConexion", userName, status);
-
-        }catch (Exception ex)
-        {
-            Console.WriteLine($"Error al registrar la conexión: {ex.Message}");
-        }
-    }
-    // public async Task<string> ObtenerResponsableAsync(string roomId)
-    // {
-    //     if (_hubConnection != null && _hubConnection.State == HubConnectionState.Connected)
-    //     {
-    //         try
-    //         {
-    //             var responsable = await _hubConnection.InvokeAsync<string>("ObtenerResponsable", roomId);
-    //             Console.WriteLine($"Responsable de la sala {roomId} es: {responsable}");
-    //             return responsable;
-    //         }
-    //         catch (Exception ex)
-    //         {
-    //             Console.WriteLine($"Error al obtener responsable: {ex.Message}");
-    //             return null;
-    //         }
-    //     }
-    //     else
-    //     {
-    //         Console.WriteLine("No estás conectado al hub de chat.");
-    //         return null;
-    //     }
-    // }
+    
 }

@@ -1,65 +1,71 @@
 ﻿@inherits LayoutComponentBase
 @inject AuthService authService
+@inject ThemeService themeService
+@inject NavigationManager Navigation
+
 <MudThemeProvider Theme="@_theme" IsDarkMode="_isDarkMode" />
 <MudPopoverProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
-<MudLayout>
-    <MudAppBar Elevation="1">
-        @* <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        <MudText Typo="Typo.h5" Class="ml-3">Red social</MudText>
-        <MudSpacer /> *@
 
-        @* @if (authService.IsAuthenticated){ <MudNavLink Href="personal/account" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.AccountCircle">Personal</MudNavLink>} *@
-         @if (authService.IsAuthenticated){
-         <MudAppBar Elevation="4">
-        <MudHidden Breakpoint="Breakpoint.SmAndDown">
-            <MudIcon Icon="@Icons.Custom.Brands.Awesome" Size="Size.Large" />
-        </MudHidden>
-        <MudHidden Breakpoint="Breakpoint.MdAndUp">
-            <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        </MudHidden>
-        <MudHidden Breakpoint="Breakpoint.Xs">
-            <MudText Typo="Typo.h6" Class="ml-4">Zirty</MudText>
-        </MudHidden>
-        <MudHidden Breakpoint="Breakpoint.Xs" Invert="true">
-            <MudText Typo="Typo.subtitle2">Admin Dashboard</MudText>
-        </MudHidden>
-        <MudAppBarSpacer />
-        @* <MudMenu Icon="@Icons.Material.Outlined.Translate" Color="Color.Inherit" Direction="Direction.Bottom" OffsetY="true" Dense="true">
-            <MudMenuItem>English</MudMenuItem>
-            <MudMenuItem>Swedish</MudMenuItem>
-            <MudMenuItem>Old Norse</MudMenuItem>
-        </MudMenu> *@
-        <MudMenu Icon="@Icons.Material.Outlined.Widgets" Color="Color.Inherit" Direction="Direction.Bottom" OffsetY="true" Dense="true">
-            <MudMenuItem Link="https://mudblazor.com/">MudBlazor</MudMenuItem>
-            <MudMenuItem Link="https://github.com/Garderoben/MudBlazor.Templates">Source Code</MudMenuItem>
-        </MudMenu>
-        <MudMenu Direction="Direction.Left" OffsetX="true" Dense="true" Class="mt-1 ml-4">
+<MudLayout Class="@GetThemeSelected()">
+    <MudAppBar Elevation="1">
+        @if (authService.IsAuthenticated)
+        {
+            <MudHidden Breakpoint="Breakpoint.SmAndDown">
+                <MudIcon Icon="@Icons.Custom.Brands.Awesome" Size="Size.Large" Class="pr-2" />
+            </MudHidden>
+            <MudHidden Breakpoint="Breakpoint.MdAndUp">
+            </MudHidden>
+            <MudHidden Breakpoint="Breakpoint.Xs">
+                <MudText Typo="Typo.h6" Class="ml-4">Zirty</MudText>
+            </MudHidden>
+            <MudSpacer />
+            <MudIconButton Icon="@(DarkLightModeButtonIcon)" Color="Color.Inherit" OnClick="@DarkModeToggle" />
+            <MudMenu AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight" 
+         Dense="true" Direction="Direction.Bottom" OffsetY="true">
             <ActivatorContent>
-                <MudAvatar Image="images/avatar_jonny.jpg" />
-            </ActivatorContent>
-            <ChildContent>
-                <PersonCard Class="mt-n2" />
-                <MudDivider Class="mb-2" />
-                <MudListItem T="string" Text="Account" Icon="@Icons.Material.Outlined.Person" Href="/personal/account" />
-                <MudListItem T="string" Text="Logout" Icon="@Icons.Material.Outlined.Login" Href="/pages/authentication/login" />
-            </ChildContent>
-        </MudMenu>
-        <MudIconButton Icon="@(DarkLightModeButtonIcon)" Color="Color.Inherit" OnClick="@DarkModeToggle" />
-        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
-    </MudAppBar>}else{
-        <MudIconButton Icon="@(DarkLightModeButtonIcon)" Color="Color.Inherit" OnClick="@DarkModeToggle" />
-        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
-    }</MudAppBar>
-    <MudDrawer id="nav-drawer" @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
+        <MudAvatar Size="Size.Medium" Class="ml-4 cursor-pointer">
+            @if (!string.IsNullOrEmpty(authService.ImagenBase64))
+            {
+                <MudImage Src="@authService.ImagenBase64" Alt="Foto de perfil" />
+            }
+            else
+            {
+                <MudIcon Icon="@Icons.Material.Filled.Person" />
+            }
+        </MudAvatar>
+    </ActivatorContent>
+    <ChildContent>
+        <MudText Class="pa-2" Typo="Typo.subtitle2">@authService.Username</MudText>
+        <MudDivider />
+        <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
+        <MudNavLink Href="personal/account" Icon="@Icons.Material.Filled.AccountCircle">Mi perfil</MudNavLink>
+        <MudNavLink Href="chats" Icon="@Icons.Material.Filled.Chat">Chats</MudNavLink>
+        <MudNavLink Href="search" Icon="@Icons.Material.Filled.PersonAdd">Buscar amigos</MudNavLink>
+        <MudDivider />
+        <MudMenuItem Icon="@Icons.Material.Filled.Logout" >Cerrar sesión</MudMenuItem>
+    </ChildContent>
+</MudMenu>
+        }
+        else
+        {
+            @* <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" /> *@
+            <MudIconButton Icon="@(DarkLightModeButtonIcon)" Color="Color.Inherit" OnClick="@DarkModeToggle" />
+            <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
+        }
+    </MudAppBar>
+    @* <MudDrawer @bind-Open="_drawerOpen" Elevation="1">
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h6">Lista de amigos</MudText>
+        </MudDrawerHeader>
         <NavMenu />
-    </MudDrawer>
-    <MudMainContent Class="mt-16 pa-4">
+    </MudDrawer> Vestigios de ideas pasadas 
+    *@
+    <MudMainContent Class="pa-4">
         @Body
     </MudMainContent>
 </MudLayout>
-
 
 <div id="blazor-error-ui" data-nosnippet>
     An unhandled error has occurred.
@@ -68,20 +74,33 @@
 </div>
 
 @code {
-    private bool _drawerOpen = true;
+    private bool _drawerOpen = false;
     private bool _isDarkMode = true;
     private MudTheme? _theme = null;
-
+    private string _themeSelected = "";
     protected override void OnInitialized()
     {
         base.OnInitialized();
+        if (themeService == null)
+        {
+            ThemeService themeService = new ThemeService();
+        }
+        _isDarkMode = themeService.GetTheme();
 
-        _theme = new()
+        _theme = new MudTheme
         {
             PaletteLight = _lightPalette,
             PaletteDark = _darkPalette,
             LayoutProperties = new LayoutProperties()
         };
+        if (_isDarkMode)
+        {
+            _themeSelected = "degradado-dark";
+        }
+        else
+        {
+            _themeSelected = "degradado-light";
+        }
     }
 
     private void DrawerToggle()
@@ -92,6 +111,7 @@
     private void DarkModeToggle()
     {
         _isDarkMode = !_isDarkMode;
+        themeService.SetTheme(_isDarkMode);
     }
 
     private readonly PaletteLight _lightPalette = new()
@@ -108,16 +128,16 @@
     {
         Primary = "#7e6fff",
         Surface = "#1e1e2d",
-        Background = "#1a1a27",
+        Background = "#00000000", //background de la app desde extremos al card, justo lo que quiero cambiar
         BackgroundGray = "#151521",
-        AppbarText = "#92929f",
-        AppbarBackground = "rgba(26,26,39,0.8)",
+        AppbarText = "#ffffff",
+        AppbarBackground = "00000000",
         DrawerBackground = "#1a1a27",
         ActionDefault = "#74718e",
         ActionDisabled = "#9999994d",
         ActionDisabledBackground = "#605f6d4d",
-        TextPrimary = "#b2b0bf",
-        TextSecondary = "#92929f",
+        TextPrimary = "#ffffff",
+        TextSecondary = "#ffffff",
         TextDisabled = "#ffffff33",
         DrawerIcon = "#92929f",
         DrawerText = "#92929f",
@@ -133,11 +153,11 @@
         OverlayLight = "#1e1e2d80",
     };
 
-    public string DarkLightModeButtonIcon => _isDarkMode switch
+    public string GetThemeSelected()
     {
-        true => Icons.Material.Rounded.AutoMode,
-        false => Icons.Material.Outlined.DarkMode,
-    };
+        return _isDarkMode ? "degradado-dark" : "degradado-light";
+    }
+    public string DarkLightModeButtonIcon => _isDarkMode
+        ? Icons.Material.Outlined.DarkMode
+        : Icons.Material.Filled.WbSunny;
 }
-
-

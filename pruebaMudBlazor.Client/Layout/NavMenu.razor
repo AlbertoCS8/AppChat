@@ -1,13 +1,169 @@
-﻿
+﻿@using pruebaMudBlazor.Client.Models
+@using pruebaMudBlazor.Client.Services
+@inject IClienteService ClienteService
+@inject AuthService authService
+@inject ChatService chatService
+@inject NavigationManager NavigationManager
+@implements IDisposable
+
 <MudNavMenu>
-    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
-    <MudNavLink Href="counter" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Counter</MudNavLink>
-    <MudNavLink Href="registro" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.AppRegistration">Registro</MudNavLink>
-    <MudNavLink Href="login" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Login">Login</MudNavLink>
-    <MudNavLink Href="weather" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Weather</MudNavLink>
-    <MudNavLink Href="personal/account" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.AccountCircle">Personal</MudNavLink>
-    <MudNavLink Href="search" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Search">Buscar Usuarios</MudNavLink>
-    <MudNavLink Href="chats" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Chat">Chats</MudNavLink>
+    
+    @if (listaAmigos == null || !listaAmigos.Any())
+    {
+        <MudAlert Severity="MudBlazor.Severity.Info" Variant="Variant.Filled" Class="mx-2 my-2">
+            No tienes amigos en tu lista.
+        </MudAlert>
+        <MudButton 
+            Variant="Variant.Filled" 
+            Color="Color.Secondary" 
+            FullWidth="true" 
+            EndIcon="@Icons.Material.Filled.PersonAdd"
+            Href="/search"
+            Class="mx-2 mt-4">
+            Buscar Amigos
+        </MudButton>
+    }
+    else
+    {
+        @foreach (var friend in listaAmigos)
+        {
+            <MudCard Elevation="2" Class="@(selectedFriend?.Username == friend.Username ? "selected-friend" : "")" 
+                    @onclick="() => SelectFriend(friend)">
+                <div class="d-flex align-center">
+                    <MudAvatar Size="Size.Medium" Class="mr-3">
+                        @if (!string.IsNullOrEmpty(friend.FotoPerfil))
+                        {
+                            <MudImage Src="@friend.FotoPerfil" Alt="@friend.Username" />
+                        }
+                        else
+                        {
+                            <MudIcon Icon="@Icons.Material.Filled.Person" />
+                        }
+                    </MudAvatar>
+                    <div class="flex-grow-1">
+                        <MudText Typo="Typo.body1">@friend.Username</MudText>
+                        <MudText Typo="Typo.caption" Color="@(friend.Status == "En línea" ? Color.Success : Color.Default)">
+                            @friend.Status
+                        </MudText>
+                    </div>
+                    <MudBadge Content="@GetUnreadCount(friend)" Color="Color.Error" 
+                             Visible="@(GetUnreadCount(friend) > 0)" 
+                             Overlap="true" Class="ml-2">
+                        <MudIconButton Size="Size.Small" Icon="@Icons.Material.Filled.Chat"
+                                      Color="@(selectedFriend?.Username == friend.Username ? Color.Primary : Color.Default)" />
+                    </MudBadge>
+                </div>
+            </MudCard>
+        }
+    }
 </MudNavMenu>
 
+<style>
+    .friend-card {
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+    .friend-card:hover {
+        background-color: var(--mud-palette-background-grey);
+    }
+    .selected-friend {
+        background-color: var(--mud-palette-primary-lighten);
+        border-left: 3px solid var(--mud-palette-primary);
+    }
+</style>
 
+@code {
+    public List<Amigos> listaAmigos { get; set; } = new List<Amigos>();
+    private Amigos selectedFriend;
+    private bool _isSubscribedToUserConnection = false;
+    private string currentUrl = string.Empty;
+    
+    [Parameter]
+    public EventCallback<Amigos> OnFriendSelected { get; set; }
+
+    // Se ejecuta en cada renderizado
+    protected override async Task OnParametersSetAsync()
+    {
+        // Verificar si estamos en la página de chats
+        if (NavigationManager.Uri.Contains("/chats") && authService.IsAuthenticated)
+        {
+            // Solo cargar amigos si no tenemos datos o si cambiamos de página
+            if (!listaAmigos.Any() || currentUrl != NavigationManager.Uri)
+            {
+                currentUrl = NavigationManager.Uri;
+                await CargarAmigos();
+            }
+        }
+        
+        await base.OnParametersSetAsync();
+    }
+    
+    protected override void OnInitialized()
+    {
+        // Registrar el callback de navegación
+        NavigationManager.LocationChanged += HandleLocationChanged;
+        
+        // Comprobar si necesitamos suscribirnos a eventos de conexión
+        if (!_isSubscribedToUserConnection)
+        {
+            chatService.ObsUserConnection += OnUserConnection;
+            _isSubscribedToUserConnection = true;
+        }
+    }
+    
+    private void HandleLocationChanged(object sender, LocationChangedEventArgs e)
+    {
+        // Si navegamos a la página de chats, intentar cargar amigos
+        if (e.Location.Contains("/chats") && authService.IsAuthenticated)
+        {
+            InvokeAsync(CargarAmigos);
+        }
+        
+        currentUrl = e.Location;
+    }
+    
+    private async Task CargarAmigos()
+    {
+        try {
+            listaAmigos = await ClienteService.ObtenerAmigosAsync(authService.Amigos);
+            StateHasChanged();
+        }
+        catch (Exception ex) {
+            Console.WriteLine($"Error al cargar amigos: {ex.Message}");
+        }
+    }
+
+    private async Task SelectFriend(Amigos friend)
+    {
+        selectedFriend = friend;
+        
+        // Notificar al componente padre sobre la selección
+        await OnFriendSelected.InvokeAsync(friend);
+    }
+
+    private async void OnUserConnection(string username, string isConnected)
+    {
+        var friend = listaAmigos.FirstOrDefault(f => f.Username == username);
+        if (friend != null)
+        {
+            friend.Status = isConnected;
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    private int GetUnreadCount(Amigos friend)
+    {
+        // Implementación simulada - en producción obtendrías esto de un servicio
+        return 0; // Cambié a 0 para que no muestre notificaciones falsas
+    }
+
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= HandleLocationChanged;
+        
+        if (_isSubscribedToUserConnection)
+        {
+            chatService.ObsUserConnection -= OnUserConnection;
+        }
+    }
+}

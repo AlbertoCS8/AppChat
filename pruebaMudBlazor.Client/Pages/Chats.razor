@@ -9,131 +9,156 @@
 @inject NavigationManager NavigationManager
 @inject AuthService authService
 @inject pruebaMudBlazor.Client.Services.ChatService chatService
-@* @inject UsersConnected usersConnected *@
 
-<div class="d-flex flex-grow-1 flex-row">
-    <MudHidden Breakpoint="Breakpoint.SmAndDown">
-        <MudPaper Elevation="25" Class="pa-3 mr-6" MinWidth="250px">
-            <MudText Typo="Typo.h6" Class="mb-4">Tus Contactos</MudText>
-            
-            @if (listaAmigos == null || !listaAmigos.Any())
+<MudContainer Class="mt-16" Style="height: 100%; min-height: 100vh; width:100%;">
+<div class="d-flex flex-grow-1 flex-row" >
+    
+    <MudPaper Elevation="25" Class="py-4 flex-grow-1 card-dark">
+        <MudToolBar Dense="true" Class="mb-4">
+            @if(selectedFriend != null)
             {
-                <MudAlert Severity="MudBlazor.Severity.Info" Variant="Variant.Filled" Class="my-2">
-                    No tienes amigos en tu lista de contactos.
-                </MudAlert>
-                <MudButton 
-                    Variant="Variant.Filled" 
-                    Color="Color.Secondary" 
-                    FullWidth="true" 
-                    EndIcon="@Icons.Material.Filled.PersonAdd"
-                    Href="/search"
-                    Class="mt-4">
-                    Buscar Amigos
-                </MudButton>
+                <MudText Typo="Typo.h6" Inline="true" Class="mr-2" Style="font-size: 1rem;">Chat con @selectedFriend.Username</MudText>
+            }else{
+                <MudText Typo="Typo.h6"  Inline="true" Class="mr-2" Style="font-size: 1rem;">Instrucciones para empezar un chat</MudText>
             }
-            else
-            {
-                <div class="d-flex flex-column gap-2">
-                    @foreach (var friend in listaAmigos)
-                    {
-                        <MudCard Elevation="2" Class="pa-2 friend-card" @onclick="() => SelectFriend(friend)">
-                            <div class="d-flex align-center">
-                                <MudAvatar Size="Size.Large" Class="mr-3">
-                                    @if (!string.IsNullOrEmpty(friend.FotoPerfil))
-                                    {
-                                        <MudImage Src="@friend.FotoPerfil" Alt="@friend.Username" />
-                                    }
-                                    else
-                                    {
-                                        <MudIcon Icon="@Icons.Material.Filled.Person" />
-                                    }
-                                </MudAvatar>
-                                <div class="flex-grow-1">
-                                    <MudText Typo="Typo.body1">@friend.Username</MudText>
-                                    <MudText Typo="Typo.caption" Color="@(friend.Status == "En línea" ? Color.Success : Color.Default)">
-                                        @friend.Status
-                                    </MudText>
-                                </div>
-                                <MudBadge Content="@GetUnreadCount(friend)" Color="Color.Error" 
-                                         Visible="@(GetUnreadCount(friend) > 0)" 
-                                         Overlap="true" Class="ml-2">
-                                    <MudIconButton Size="Size.Small" Icon="@Icons.Material.Filled.Chat"
-                                                  Color="@(selectedFriend?.Username == friend.Username ? Color.Primary : Color.Default)" />
-                                </MudBadge>
-                            </div>
-                        </MudCard>
-                    }
-                </div>
-            }
-        </MudPaper>
-    </MudHidden>
-    <MudPaper Elevation="25" Class="py-4 flex-grow-1">
-        <MudToolBar Dense="true">
-            <MudHidden Breakpoint="Breakpoint.MdAndUp">
-                <MudIconButton OnClick="@(() => OpenDrawer(Anchor.Left))" Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" Class="mr-2 ml-n2" />
-            </MudHidden>
-            <MudText Typo="Typo.h6" Inline="true" Class="mr-2">#</MudText>
-            <MudText Typo="Typo.h6">chat</MudText>
             <MudToolBarSpacer />
             <MudIconButton Icon="@Icons.Material.Outlined.Notifications" />
             <MudIconButton Icon="@Icons.Material.Outlined.PushPin" />
-            <MudHidden Breakpoint="Breakpoint.MdAndUp">
                 <MudIconButton OnClick="@(() => OpenDrawer(Anchor.Right))" Icon="@Icons.Material.Outlined.PeopleAlt" Color="Color.Inherit" Class="ml-3" />
-            </MudHidden>
         </MudToolBar>
         <div class="d-flex flex-column px-4" style="max-height:800px; overflow:scroll;">
-           @foreach (var message in chatMessages)
+          @if (chatMessages.ToArray().Length > 0)
 {
-    <div class="@(message.UserName == authService.Username ? "d-flex justify-end mb-2" : "d-flex mb-2")">
-        @if (message.UserName != authService.Username) // El mensaje no es mio por tanto lo saco de selectedFriend
-        {
-            <MudAvatar Size="Size.Medium" Class="mr-2">
-                @if (string.IsNullOrEmpty(message.profileImg) && selectedFriend != null)
-                {//signalR no soporta pasarle una imagen en base 64a cholon por tanto hayq ue tirar de picaresca
-                    //<MudImage Src="@message.profileImg" />
-                    //usamos la mmisma logica para determinar si el mensaje es nuestro o del amigo y depende
-                    //de eso sacamos la imagen de authService o de selectedFriend
-          
-                        //Console.WriteLine("entramos por el if osea que la imagen es de selectedFriend",selectedFriend.FotoPerfil);
-                        //<MudImage Src="@selectedFriend.FotoPerfil" Alt="@message.UserName" />
-                        @if (string.IsNullOrEmpty(selectedFriend.FotoPerfil))
+    string? lastSenderMsg = null;
+    bool isFirst = true;
+
+    @foreach (var message in chatMessages)
+    {
+        bool isMine = message.UserName == authService.Username; // si es mio lo renderizo de una manera u otra
+        bool showSender = isFirst || lastSenderMsg != message.UserName; // a lo moderno la imagen se mnuestra solo la primera vez y no
+        //para lkos mensajes que stackean debajo
+        //izq o derecha dependiendo de quien lo haya enviado
+       <div class="d-flex flex-column mb-2" style="@(isMine ? "align-items: flex-end;" : "align-items: flex-start;")"> 
+            @if (showSender)// lo mismo que xcon la imagen, solo lo muestro la primera vez
+            {
+                <MudText Typo="Typo.caption" Color="@(isMine ? Color.Secondary : Color.Primary)" Class="mb-1">
+                    @message.UserName
+                </MudText>
+            }
+
+            <div class="d-flex @(isMine ? "flex-row-reverse" : "")"> 
+                @if (showSender)
+                {
+                    <MudAvatar Size="Size.Medium" Class="@(isMine ? "ml-2 mt-1" : "mr-2 mt-1")">
+                        @if (isMine)
                         {
-                            <MudIcon Icon="@Icons.Material.Filled.Person" />
-                        } else
-                        {
-                            <MudImage Src="@selectedFriend.FotoPerfil" Alt="@message.UserName" />
+                            @if (string.IsNullOrEmpty(authService.ImagenBase64))
+                            {
+                                <MudIcon Icon="@Icons.Material.Filled.Person" />
+                            }
+                            else
+                            {
+                                <MudImage Src="@authService.ImagenBase64" Alt="@message.UserName" />
+                            }
                         }
+                        else
+                        {
+                            @if (string.IsNullOrEmpty(message.profileImg) && selectedFriend != null)
+                            {
+                                @if (string.IsNullOrEmpty(selectedFriend.FotoPerfil))
+                                {
+                                    <MudIcon Icon="@Icons.Material.Filled.Person" />
+                                }
+                                else
+                                {
+                                    <MudImage Src="@selectedFriend.FotoPerfil" Alt="@message.UserName" />
+                                }
+                            }
+                        }
+                    </MudAvatar>
                 }
-            </MudAvatar>
-        }
-        
-        <MudPaper Elevation="3" 
-                 Class="@(message.UserName == authService.Username ? "mud-theme-primary pa-2" : "pa-2")" 
-                 Style="max-width: 80%; border-radius: 12px;">
-            <MudText>@message.Message</MudText>
-            <MudText Typo="Typo.caption" Class="d-flex justify-end mt-1">
-                @message.Time
-            </MudText>
-        </MudPaper>
-        @if (message.UserName == authService.Username) // el mensaje es mio por tanto lo saco de authService
-        {
-            <MudAvatar Size="Size.Medium" Class="ml-2">
-                @if (string.IsNullOrEmpty(authService.ImagenBase64))
+                else
                 {
-                    <MudIcon Icon="@Icons.Material.Filled.Person" />
-                }else
-                {
-                    <MudImage Src="@authService.ImagenBase64" Alt="@message.UserName" />
+                    <div style="width: 40px;" class="mr-2"></div>
                 }
-            </MudAvatar>
-    }        
-    </div>
-}
+
+                <MudPaper Elevation="3"
+          Class="@(isMine ? "mud-theme-primary pa-2" : "pa-2 bg-dark")"
+          Style="max-width: 90vw; width: fit-content; border-radius: 12px; word-break: break-word;">
+    <MudText Style="word-break: break-word; white-space: pre-wrap;">@message.Message</MudText>
+    <MudText Typo="Typo.caption" Class="d-flex justify-end mt-1">@message.Time</MudText>
+</MudPaper>
+
+            </div>
         </div>
+
+        lastSenderMsg = message.UserName;
+        isFirst = false;
+    }
+}
+    @*
+        Comentario de algo que hablamos en clase
+        //primerMensaje.UserName = null;  (ChatMessage primerMensaje = chatMessages.FirstOrDefault();) --> eso antes de entrar al foreach
+        //! FATALLLLLLLL   PARA PABLO SI LEES ESTO --> llevo una hora con este bug, al cerrar el menu de amigos me recargaba la 
+        //lista de mensajes y me movia el primer mensaje siempre a la izquierda aunque el mensaje fuera mio porque estaba modificando
+        //directamente username de primerMensaje, que es el primer objeto de mi lista de mensajes y al ponerlo a null hacia que
+        //nunca fuese igual que mi username y por tanto siempre me lo pintaba a la izquierda CAGADON HISTÓRICO
+        //¡¡¡ referencia a objeto apunta al mismo objeto en memoria, ref a propiedad crea una copia !!!
+    *@
+
+            else // este es cuando no hayt mensajes en la conversacion, lo dejo como un mini tutorial
+            {
+                <div class="d-flex flex-column px-4" style="max-height:800px; overflow:scroll;">
+                <div class="d-flex flex-column mb-2">
+                    <MudText Typo="Typo.subtitle2" Class="mb-1" Color="Color.Primary">AlbertoCS8</MudText>
+                    <div class="d-flex">
+                        <MudAvatar Size="Size.Medium" Class="mr-2 mt-2">
+                            <MudIcon Icon="@Icons.Custom.Brands.GitHub" />
+                        </MudAvatar>
+                        <MudPaper Elevation="3"
+                                  Class="mud-theme-primary pa-2"
+                                  Style="max-width: 60%; border-radius: 12px;">
+                            <MudText>Para empezar un chat con un usuario primero lo tienes que tener agregado como amigo</MudText>
+                            <MudText Typo="Typo.caption" Class="d-flex justify-end mt-1">69:69</MudText>
+                        </MudPaper>
+                    </div>
+                </div>
+                <div class="d-flex flex-column mb-2">
+                    <div class="d-flex">
+                        <MudAvatar Size="Size.Medium" Class="mr-2 mt-2 invisible">
+                            <MudIcon Icon="@Icons.Custom.Brands.GitHub" />
+                        </MudAvatar>
+                        <MudPaper Elevation="3"
+                                  Class="mud-theme-primary pa-2"
+                                  Style="max-width: 60%; border-radius: 12px;">
+                            <MudText>después al hacer click sobre el icono de arriba a la derecha sobre esta misma ventana de chat nos abrirá un panel con los amigos agregados</MudText>
+                            <MudText Typo="Typo.caption" Class="d-flex justify-end mt-1">69:69</MudText>
+                        </MudPaper>
+                    </div>
+                </div>
+                <div class="d-flex flex-column mb-4">
+                    <div class="d-flex">
+                        <MudAvatar Size="Size.Medium" Class="mr-2 mt-2 invisible">
+                            <MudIcon Icon="@Icons.Custom.Brands.GitHub" />
+                        </MudAvatar>
+                        <MudPaper Elevation="3"
+                                  Class="mud-theme-primary pa-2"
+                                  Style="max-width: 60%; border-radius: 12px;">
+                            <MudText>acto seguido simplemente seleccione a un usuario de su lista de amigos y empiece a chatear con el</MudText>
+                            <MudText Typo="Typo.caption" Class="d-flex justify-end mt-1">69:69</MudText>
+                        </MudPaper>
+                    </div>
+                </div>
+
+                </div>
+            }
+        </div>
+
+        @* Barra de entrada de mensajes *@
         <MudPaper Elevation="25" Class="d-flex flex-row px-2 mx-4" Style="background-color: var(--mud-palette-background-grey);">
             <MudIconButton Icon="@Icons.Material.Filled.AddCircle"></MudIconButton>
             <MudTextField @bind-Value="mensajeNuevo" Placeholder="Escribe un mensaje" DisableUnderLine="true" 
-                 Class="mt-n2 mx-4" ></MudTextField>
+                 Class="mt-n2 justify-center" ></MudTextField>
             <MudIconButton Icon="@Icons.Material.Filled.Send" 
                   Color="Color.Primary"
                   OnClick="@(() => EnviarMensaje(mensajeNuevo))"
@@ -141,27 +166,36 @@
             </MudIconButton>
         </MudPaper>
     </MudPaper>
-    <MudHidden Breakpoint="Breakpoint.SmAndDown">
-        <MudPaper Elevation="25" Class="pa-3 pb-16 ml-6" MinWidth="250px">
-            <ChatUsers chatUsers="chatUsers" />
-        </MudPaper>
-    </MudHidden>
 </div>
 
 <MudDrawer @bind-Open="@open" Anchor="@ChatDrawer" Elevation="1" Variant="@DrawerVariant.Temporary">
-    @if (ChatDrawer == Anchor.Left)
+    <MudText Typo="Typo.h6" Class="mb-4">Tus amigos</MudText> 
+    @foreach (var friend in listaAmigos)
     {
-        <MudButton EndIcon="@Icons.Material.Filled.Add" Color="Color.Secondary" Class="mx-4 mt-6 mb-4">Create Channel</MudButton>
-        <ChatChannels />
-    }
-    else if (ChatDrawer == Anchor.Right)
-    {
-        <div class="pa-3">
-            <ChatUsers chatUsers="chatUsers" />
-        </div>
+        <MudCard Elevation="2" Class="pa-2 mb-1 friend-card" @onclick="() => SelectFriend(friend)">
+            <div class="d-flex align-center">
+                <MudAvatar Size="Size.Large" Class="mr-3">
+                    @if (!string.IsNullOrEmpty(friend.FotoPerfil))
+                    {
+                        <MudImage Src="@friend.FotoPerfil" Alt="@friend.Username" />
+                    }
+                    else
+                    {
+                        <MudIcon Icon="@Icons.Material.Filled.Person" />
+                    }
+                </MudAvatar>
+                <div class="flex-grow-1">
+                    <MudText Typo="Typo.body1">@friend.Username</MudText>
+                    <MudText Typo="Typo.caption" Color="@(friend.Status == "En línea" ? Color.Success : Color.Default)">
+                        @friend.Status
+                    </MudText>
+                </div>
+             
+            </div>
+        </MudCard>
     }
 </MudDrawer>
-
+</MudContainer>
 <style>
     .friend-card {
         cursor: pointer;
@@ -191,6 +225,7 @@
      public string IconGift { get; set; } = "<path d=\"M22,12V20A2,2 0 0,1 20,22H4A2,2 0 0,1 2,20V12A1,1 0 0,1 1,11V8A2,2 0 0,1 3,6H6.17C6.06,5.69 6,5.35 6,5A3,3 0 0,1 9,2C10,2 10.88,2.5 11.43,3.24V3.23L12,4L12.57,3.23V3.24C13.12,2.5 14,2 15,2A3,3 0 0,1 18,5C18,5.35 17.94,5.69 17.83,6H21A2,2 0 0,1 23,8V11A1,1 0 0,1 22,12M4,20H11V12H4V20M20,20V12H13V20H20M9,4A1,1 0 0,0 8,5A1,1 0 0,0 9,6A1,1 0 0,0 10,5A1,1 0 0,0 9,4M15,4A1,1 0 0,0 14,5A1,1 0 0,0 15,6A1,1 0 0,0 16,5A1,1 0 0,0 15,4M3,8V10H11V8H3M13,8V10H21V8H13Z\" />";
     public string IconGif { get; set; } = "<path d=\"M11,8H13V16H11V8M7.67,8H4.33C3.53,8 3,8.67 3,9.33V14.67C3,15.33 3.53,16 4.33,16H7.67C8.47,16 9,15.33 9,14.67V12H7V14H5V10H9V9.33C9,8.67 8.47,8 7.67,8M21,10V8H15V16H17V14H19.5V12H17V10H21Z\" />";
     public string roomResponsable { get; set; } = string.Empty;
+    public string lastSenderMsg { get; set; } = "";
     Anchor ChatDrawer { get; set; }
 
     ChatUser[] chatUsers = new ChatUser[]
@@ -211,6 +246,9 @@
     }
     protected override async Task OnInitializedAsync()
     {
+        if(!authService.IsAuthenticated){
+            NavigationManager.NavigateTo("/", forceLoad: false);
+        }else{
         listaAmigos = await ClienteService.ObtenerAmigosAsync(authService.Amigos);
         @* chatService.ObsUserConnection -= OnUserConnection;//desuscripcion
         chatService.ObsUserConnection += OnUserConnection;//suscripcion *@
@@ -220,7 +258,7 @@
         _isSubscribedToUserConnection = true;
     }
         //base.OnInitialized; //
-    } 
+    } }
     private void SelectFriend(Amigos friend)
     {
         @* Console.WriteLine($"Amigo seleccionado: {friend.Username}");
@@ -282,19 +320,7 @@
 }
     private async void OnUserConnection(string username, string isConnected)// isConnected = En línea
     {
-        // Aquí puedes manejar la conexión/desconexión de usuarios
-        Console.WriteLine($"Usuario {username} {(isConnected == "En línea" ? "conectado" : "desconectado")}");
-        @* usersConnected.registConnection(username, isConnected); *@
-        // Actualizar la lista de amigos con el estado de conexión
-        @* if (listaAmigos == null || listaAmigos.Count == 0)
-        {
-            Console.WriteLine("⚠️ La lista de amigos está vacía o no ha sido cargada aún.");
-            return;
-        } *@
-        @* foreach (var amigo in listaAmigos)
-        {
-            Console.WriteLine($"Amigo: {amigo.Username}, Estado: {amigo.Status}");
-        } *@
+        @* Console.WriteLine($"Usuario {username} {(isConnected == "En línea" ? "conectado" : "desconectado")}"); *@
         var friend = listaAmigos.FirstOrDefault(f => f.Username == username);
         if (friend != null)
         {
@@ -332,73 +358,8 @@
     {
         chatService.ObsMensajeRecibido -= OnMensajeRecibido;
     }
-   //logica para recibir quien es el responsable
-   @* roomResponsable = await chatService.ObtenerResponsableAsync(roomName); *@
    chatService.ObsUserConnection -= OnUserConnection;
     }
-    // Aqui se puede hacer algo con el responsable, como mostrarlo en la UI o guardarlo en una variable
-   //Console.WriteLine($"Responsable de la sala {roomName}: {roomResponsable}");
-    /*Ejemplo de api de musblazor del chat que quiero
-    <MudGrid>
-    <MudItem xs="12" Class="justify-center">
-        <MudStack>
-            <MudStack Row>
-                <MudCheckBox Label="Dense" @bind-Value="_dense" />
-                <MudCheckBox Label="Square" @bind-Value="_square" />
-            </MudStack>
-            <MudRadioGroup @bind-Value="_variant">
-                <MudRadio Value="@Variant.Text" Label="Text" />
-                <MudRadio Value="@Variant.Outlined" Label="Outlined" />
-                <MudRadio Value="@Variant.Filled" Label="Filled" />
-            </MudRadioGroup>
-            <MudStack Row Class="ml-4" Style="max-width:600px;">
-                <MudSelect Class="mr-1" T="MudBlazor.Color" Label="Chat Color" @bind-Value="_selectedColor">
-                    @foreach (MudBlazor.Color color in Enum.GetValues(typeof(MudBlazor.Color)))
-                    {
-                        <MudSelectItem Value="@color">@color.ToString()</MudSelectItem>
-                    }
-                </MudSelect>
-                <MudSelect T="MudBlazor.ChatArrowPosition" Label="Chat Arrow" @bind-Value="_selectedArrowPosition">
-                    @foreach (MudBlazor.ChatArrowPosition pos in Enum.GetValues(typeof(MudBlazor.ChatArrowPosition)))
-                    {
-                        <MudSelectItem Value="@pos">@pos.ToString()</MudSelectItem>
-                    }
-                </MudSelect>
-            </MudStack>
-            <MudSlider @bind-Value="_elevation" Min="0" Max="25" Color="Color.Info" Class="ml-4 mb-6" Style="max-width:600px;">Elevation: @_elevation.ToString()</MudSlider>
-        </MudStack>
-    </MudItem>
-</MudGrid>
-
-<MudChat Color="_selectedColor" Dense="@_dense" Elevation="@_elevation" Variant="@_variant" Square="_square" ArrowPosition="_selectedArrowPosition" ChatPosition="ChatBubblePosition.Start">
-    <MudChatHeader Name="Anakin" Time="12:46" />
-    <MudAvatar Size="@(_dense ? Size.Small : Size.Medium)">
-        <MudImage Src="images/toiletvisit.jpg" />
-    </MudAvatar>
-    <MudChatBubble>What kind of nonsense is this</MudChatBubble>
-    <MudChatBubble>Put me on the Council and not make me a Master!??</MudChatBubble>
-    <MudChatBubble>That's never been done in the history of the Jedi. It's insulting!</MudChatBubble>
-    <MudChatFooter Text="Seen at 12:46" />
-</MudChat>
-
-<MudChat Color="_selectedColor" Dense="@_dense" Elevation="@_elevation" Variant="@_variant" Square="_square" ArrowPosition="_selectedArrowPosition" ChatPosition="ChatBubblePosition.End">
-    <MudChatHeader Name="Obi-Wan Kenobi" Time="12:45" />
-    <MudAvatar Size="@(_dense ? Size.Small : Size.Medium)">
-        <MudImage Src="images/jonny.jpg" />
-    </MudAvatar>
-    <MudChatBubble>Calm down, Anakin. You have been given a great honor. <br/> To be on the Council at your age.</MudChatBubble>
-    <MudChatBubble Color="Color.Primary">It's never happened before.</MudChatBubble>
-    <MudChatFooter Text="Delivered" />
-</MudChat>
-
-@code {
-    private bool _dense = true;
-    private bool _square = false;
-    private int _elevation = 5;
-    private Variant _variant = Variant.Text;
-    private Color _selectedColor = Color.Default;
-    private ChatArrowPosition _selectedArrowPosition = ChatArrowPosition.Top;
-}
-    */
+    
 
 }

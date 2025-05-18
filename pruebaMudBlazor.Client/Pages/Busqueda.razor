@@ -7,12 +7,12 @@
 
 <PageTitle>Búsqueda de Usuarios</PageTitle>
 
-<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-6">
-    <MudText Typo="Typo.h4" GutterBottom="true" Class="mb-4">Buscar Usuarios</MudText>
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-16" Style="min-height: 100vh; height: 100%;">
+    <MudText Typo="Typo.h6" GutterBottom="true" Class="mb-4">Busca usuarios y agrégalos para chatear con ellos</MudText>
     
-    <MudCard Elevation="2" Class="mb-6">
+    <MudCard Elevation="2" Class="mb-6 card-dark">
         <MudCardContent>
-            <MudTextField @bind-Value="searchTerm" Label="Buscar usuarios" Variant="Variant.Outlined" 
+            <MudTextField @bind-Value="searchTerm" Label="" Variant="Variant.Outlined" 
                           Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" 
                           AdornmentColor="Color.Primary" OnKeyUp="@SearchOnKeyPress" FullWidth="true"
                           Placeholder="Username" />
@@ -30,10 +30,10 @@
     }
     else if (searchPerformed && usuarios != null && usuarios.Count > 0)
     {
-        <MudText Typo="Typo.h6" Class="mb-3">Resultados de la búsqueda: @totalUsuarios usuarios encontrados</MudText>
+        <MudText Typo="Typo.subtitle1" Class="mb-3">Resultados de la búsqueda: @totalUsuarios usuarios encontrados</MudText>
         
         <MudTable Items="@usuariosPaginados" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@isSearching" 
-                  LoadingProgressColor="Color.Primary" Class="mb-4">
+                  LoadingProgressColor="Color.Primary" Class="mb-4 card-dark">
             <HeaderContent>
                 <MudTh>Usuario</MudTh>
                 <MudTh>Nombre</MudTh>
@@ -164,6 +164,12 @@
         var respuesta= await ClienteService.AgregarAmigoAsync(authService.Username,Username);
         authService.Amigos.Add(Username);
 
+    }
+    //al cargar la pagina, si hay un amigo nuevo, lo agrego a la lista de amigos
+    protected override async Task OnInitializedAsync(){
+         if(!authService.IsAuthenticated){
+            NavigationManager.NavigateTo("/", forceLoad: false);
+        }
     }
     
    
