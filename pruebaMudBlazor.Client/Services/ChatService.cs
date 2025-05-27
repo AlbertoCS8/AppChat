@@ -14,7 +14,12 @@ public class ChatService
     public HubConnection _globalHubConnection; // Este lo usaremos para eventos globales como conexion de usuarios o desconexion
     public Action<ChatMessage> ObsMensajeRecibido { get; set; }// como los observables de angular!!
     public Action<string, string> ObsUserConnection { get; set; } //para el evento de conexion de usuarios
-
+    private NavigationManager _navigationManager;
+    public ChatService(NavigationManager navigationManager)
+    {
+        _navigationManager = navigationManager;
+    }
+    private string baseUrl => _navigationManager.BaseUri;
     public async Task ConnectToGlobalHub(string username)
     {
         // Descartar conexión previa si existe
@@ -24,7 +29,7 @@ public class ChatService
         }
         Console.WriteLine("Conectando al hub global...");
         _globalHubConnection = new HubConnectionBuilder()
-            .WithUrl("http://localhost:5235/chathub")
+             .WithUrl($"{baseUrl}chathub")
             .WithAutomaticReconnect()
             .Build();
 
@@ -83,8 +88,8 @@ public class ChatService
 
             Console.WriteLine("Conectando al hub de chat...");
             _hubConnection = new HubConnectionBuilder()
-                .WithUrl("http://localhost:5235/chathub")
-                .WithAutomaticReconnect() 
+                .WithUrl($"{baseUrl}chathub")
+                .WithAutomaticReconnect()
                 .Build();
 
             // Eventos que estan a la escucha, cuando desde Chathub se disparan con --> await Clients.OthersInGroup(roomName).SendAsync("ReceiveMessage", mensaje);
@@ -105,7 +110,7 @@ public class ChatService
             throw;
         }
     }
-    public async Task SendMessage(string roomId, ChatMessage message) 
+    public async Task SendMessage(string roomId, ChatMessage message)
     {
         try
         {
@@ -152,5 +157,5 @@ public class ChatService
             return new List<ChatMessage>();
         }
     }
-    
+
 }

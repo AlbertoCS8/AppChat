@@ -179,5 +179,26 @@ public class ClienteService : IClienteService
             throw new Exception("Error al guardar el mensaje");
         }
     }
-    
+
+    public Task<bool> EliminarAmigoAsync(string usuarioActual, string amigoUsername)
+    {
+        var model = new
+        {
+            UsuarioActual = usuarioActual,
+            UsuarioAmigo = amigoUsername 
+        };
+
+        var response = _httpClient.PostAsJsonAsync("/api/eliminarAmigo", model);
+        return response.ContinueWith(task =>
+        {
+            if (task.Result.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        });
+    }
 }

@@ -40,3 +40,9 @@
 .mud-table{
     background-color: transparent !important;
 }
+.table-light{
+    background-color: rgba(255, 255, 255, 0.74) !important;
+}
+/* body{
+    scrollbar-color: #50E3C2 #090d14 !important;
+} */

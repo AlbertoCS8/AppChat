@@ -6,11 +6,12 @@
 @using pruebaMudBlazor.Client.Services
 @inject IClienteService ClienteService
 @inject NavigationManager NavigationManager
+@inject ThemeService themeService
 
 <MudContainer Class="d-flex align-center justify-center mt-16 mb-16" Style="height: 100vh;" >
 <MudGrid>
     <MudItem xs="12" sm="8" md="6" lg="4" class="mx-auto mt-5">
-        <MudCard Elevation="5" Class="card card-dark">
+        <MudCard Elevation="5" Class="@(themeService._isDarkMode ? "card card-dark" : "card card-light")">
             <MudCardContent Class="ma-5">
                 <div class="d-flex flex-column align-center mb-8">
                 <MudIcon Icon="@Icons.Material.Filled.AssignmentInd" Size="Size.Large" Class="mb-4 " />
@@ -167,5 +168,19 @@
             return "Media";
         else
             return "Fuerte";
+    }
+     protected override void OnInitialized()
+    {
+        themeService.OnThemeChanged += ThemeChanged;
+    }
+
+    private void ThemeChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        themeService.OnThemeChanged -= ThemeChanged;
     }
 }

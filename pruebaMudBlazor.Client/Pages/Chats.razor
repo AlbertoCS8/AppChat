@@ -8,12 +8,13 @@
 @inject IClienteService ClienteService
 @inject NavigationManager NavigationManager
 @inject AuthService authService
+@inject ThemeService themeService
 @inject pruebaMudBlazor.Client.Services.ChatService chatService
 
 <MudContainer Class="mt-16" Style="height: 100%; min-height: 100vh; width:100%;">
 <div class="d-flex flex-grow-1 flex-row" >
-    
-    <MudPaper Elevation="25" Class="py-4 flex-grow-1 card-dark">
+    @* Class="@(themeService.GetTheme() ? "mb-6 card-dark" : "mb-6 card-light")" *@
+    <MudPaper Elevation="25" Class="@(themeService._isDarkMode ? "py-4 flex-grow-1 card-dark": "py-4 flex-grow-1 card-light")">
         <MudToolBar Dense="true" Class="mb-4">
             @if(selectedFriend != null)
             {
@@ -34,6 +35,7 @@
 
     @foreach (var message in chatMessages)
     {
+        
         bool isMine = message.UserName == authService.Username; // si es mio lo renderizo de una manera u otra
         bool showSender = isFirst || lastSenderMsg != message.UserName; // a lo moderno la imagen se mnuestra solo la primera vez y no
         //para lkos mensajes que stackean debajo
@@ -41,9 +43,22 @@
        <div class="d-flex flex-column mb-2" style="@(isMine ? "align-items: flex-end;" : "align-items: flex-start;")"> 
             @if (showSender)// lo mismo que xcon la imagen, solo lo muestro la primera vez
             {
-                <MudText Typo="Typo.caption" Color="@(isMine ? Color.Secondary : Color.Primary)" Class="mb-1">
-                    @message.UserName
-                </MudText>
+                @* <MudChatHeader Name="@message.UserName" Time="@message.Time" /> //no quiero hora, quiero hace x  *@
+                //minutos hasta que sea mayor que 30 p ejemplo
+                @if(comodinHora != null && comodinHora != string.Empty && comodinHora != DateUtils.GetRelativeTime(message.Time))
+                {
+                    // si la hora es diferente a la del mensaje anterior, la renderizo
+                    // comodinHora = DateUtils.GetRelativeTime(message.Time);
+                    // si es mio lo renderizo de un color y si no de otro
+                    <MudChatHeader Name="@message.UserName" Time="@DateUtils.GetRelativeTime(message.Time)" />
+                }
+
+            }else{
+                @if(comodinHora != null && comodinHora != string.Empty && comodinHora != DateUtils.GetRelativeTime(message.Time))
+                {
+                    <MudChatHeader Time="@DateUtils.GetRelativeTime(message.Time)" />
+                }
+                
             }
 
             <div class="d-flex @(isMine ? "flex-row-reverse" : "")"> 
@@ -86,15 +101,18 @@
           Class="@(isMine ? "mud-theme-primary pa-2" : "pa-2 bg-dark")"
           Style="max-width: 90vw; width: fit-content; border-radius: 12px; word-break: break-word;">
     <MudText Style="word-break: break-word; white-space: pre-wrap;">@message.Message</MudText>
-    <MudText Typo="Typo.caption" Class="d-flex justify-end mt-1">@message.Time</MudText>
 </MudPaper>
 
             </div>
+            @* <MudText Typo="Typo.caption" Class="d-flex justify-end mt-1">@message.Time</MudText> *@
         </div>
 
         lastSenderMsg = message.UserName;
         isFirst = false;
+        //metemos el valor que se va a renderizar que indica la hora del mensaje 
+        comodinHora = DateUtils.GetRelativeTime(message.Time);
     }
+    
 }
     @*
         Comentario de algo que hablamos en clase
@@ -226,6 +244,7 @@
     public string IconGif { get; set; } = "<path d=\"M11,8H13V16H11V8M7.67,8H4.33C3.53,8 3,8.67 3,9.33V14.67C3,15.33 3.53,16 4.33,16H7.67C8.47,16 9,15.33 9,14.67V12H7V14H5V10H9V9.33C9,8.67 8.47,8 7.67,8M21,10V8H15V16H17V14H19.5V12H17V10H21Z\" />";
     public string roomResponsable { get; set; } = string.Empty;
     public string lastSenderMsg { get; set; } = "";
+    public string comodinHora { get; set; } = string.Empty;
     Anchor ChatDrawer { get; set; }
 
     ChatUser[] chatUsers = new ChatUser[]
@@ -336,9 +355,10 @@
     
     public void EnviarMensaje(string mensaje){
         // Implementar la lógica para enviar un mensaje al amigo seleccionado
-        Console.WriteLine($"Enviando mensaje a {selectedFriend.Username}: {mensaje} quer tiene de img de perfil {authService.ImagenBase64}");
+        @* Console.WriteLine($"Enviando mensaje a {selectedFriend.Username}: {mensaje} quer tiene de img de perfil {authService.ImagenBase64}"); *@
         //enviaremos el selectedFriend y una clase ChatMessage con el username, el mensaje , el base64 de la de perfil yl el time
-        ChatMessage mensajeRenderiz = new ChatMessage {  UserName= authService.Username, Message= mensaje, Time= DateTime.Now.ToString("hh:mm tt") };
+        //la sobreescribiremos en el servidor pero en el cliente la renderizamos primero con la hora local
+        ChatMessage mensajeRenderiz = new ChatMessage {  UserName= authService.Username, Message= mensaje, Time= DateTime.Now.ToString("dd-MM-yyyy HH:mm") };//luego obtendremos hora en servidor
         //solo necesito el mensaje porque el username ya lo estoy pasando
         chatService.SendMessage(roomName, mensajeRenderiz);
         //guardamos el mensaje en BD para persistirlo
@@ -354,12 +374,21 @@
     }
     public async void Dispose()
 {
+    themeService.OnThemeChanged -= ThemeChanged;
     if (chatService.ObsMensajeRecibido != null)
     {
         chatService.ObsMensajeRecibido -= OnMensajeRecibido;
     }
    chatService.ObsUserConnection -= OnUserConnection;
     }
-    
+     protected override void OnInitialized()
+    {
+        themeService.OnThemeChanged += ThemeChanged;
+    }
+
+    private void ThemeChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
 
 }
