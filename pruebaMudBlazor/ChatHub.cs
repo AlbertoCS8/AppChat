@@ -1,28 +1,33 @@
 using Microsoft.AspNetCore.SignalR;
 using MongoDB.Driver;
+using MudBlazor.Extensions;
 using pruebaMudBlazor.Models;
-
 public class ChatHub : Hub
 {
     private readonly ChatResponsables _chatResponsables;
     private UsersConnected _usersConnected;
-    private readonly IMongoCollection<Chat> _chatsCollection;    
+    private readonly IMongoCollection<Chat> _chatsCollection;
+    private readonly Rest _rest;
     // Inyección por constructor
-    public ChatHub(ChatResponsables chatResponsables, IMongoCollection<Chat> chatsCollection, UsersConnected usersConnected)
+    public ChatHub(ChatResponsables chatResponsables, IMongoCollection<Chat> chatsCollection, UsersConnected usersConnected, Rest rest)
+        : base()
     {
         _chatResponsables = chatResponsables;
         _chatsCollection = chatsCollection;
         _usersConnected = usersConnected;
+        _rest = rest;
     }
      //funcion para enviar mensajes a un grupo, los guarda en BdD
     public async Task EnviarMensaje(string roomName,ChatMessage mensaje)
     {
         //Console.WriteLine($"Mensaje recibido: {mensaje.Message} de parte de {mensaje.UserName} en la sala {roomName}");
-        if (_chatsCollection.Find(c => c.Id == roomName).CountDocuments() == 0) 
+        mensaje.Time = await _rest.GetMadridTimeFormatted(); //pillamos mejor la hora desde una api 
+       // Console.WriteLine($"Mensaje recibido: {mensaje.Message} de parte de {mensaje.UserName} en la sala {roomName} a las {mensaje.Time}");
+        if (_chatsCollection.Find(c => c.Id == roomName).CountDocuments() == 0)
         {
-        //si no existe la sala en la base de datos la creamos
-        // esta consulta cada vez que se manda un mensaje nos la podemos ahorrar con una sola al unirse a la sala
-        // guardando el resultado en un diccionario o algo asi y consultas el dicc cada vez que te unes a la sala
+            //si no existe la sala en la base de datos la creamos
+            // esta consulta cada vez que se manda un mensaje nos la podemos ahorrar con una sola al unirse a la sala
+            // guardando el resultado en un diccionario o algo asi y consultas el dicc cada vez que te unes a la sala
             var chat = new Chat { Id = roomName, Mensajes = new List<ChatMessage>() };
             _chatsCollection.InsertOne(chat);
         }

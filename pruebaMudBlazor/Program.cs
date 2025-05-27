@@ -39,6 +39,7 @@ builder.Services.AddSingleton<IMongoCollection<Chat>>(sp => sp.GetRequiredServic
 // Registrar el servicio MongoDbService (si lo necesitas para la lógica adicional)
 builder.Services.AddSingleton<MongoDbService>();
 builder.Services.AddSingleton<ChatResponsables>();// quitar
+builder.Services.AddSingleton<Rest>(); // --> este es un diccionario que contiene los responsables de cada chat, para poder enviar mensajes a los usuarios conectados
 builder.Services.AddSingleton<UsersConnected>();// --> va a ser un diccionario de usuarios conectados al que accederemos si queremos reflejar el status de los usuarios
 
 var app = builder.Build();
@@ -208,13 +209,67 @@ app.MapPost("/api/guardarMensaje", async (pruebaMudBlazor.Models.ChatMessage men
     {
         // Guardamos el mensaje en Bdd Coleccion Chats crearemos un objeto Chat por ejemplo que contenga
         //ChatMessages y el roomId lo puedo usar para identificar el chat
-                
-        
+
+
         return Results.Ok("Mensaje guardado exitosamente");
     }
     catch (Exception ex)
     {
         Console.WriteLine($"Error al guardar el mensaje: {ex.Message}");
+        return Results.Problem("Error interno del servidor", statusCode: 500);
+    }
+});
+app.MapPost("/api/eliminarAmigo", async (AmigoModel model, 
+    IMongoCollection<Usuario> usuarios, IMongoCollection<Chat> chatsCollection) =>
+{
+    try
+    {
+        // Verificar que ambos usuarios existen
+        var usuarioActual = await usuarios.Find(u => u.NombreUsuario == model.UsuarioActual).FirstOrDefaultAsync();
+        var usuarioAmigo = await usuarios.Find(u => u.NombreUsuario == model.UsuarioAmigo).FirstOrDefaultAsync();
+        if (usuarioActual == null || usuarioAmigo == null)
+        {
+            return Results.NotFound(new ResponseServer { 
+                CodigoError = 1, 
+                Mensaje = "Uno de los usuarios no existe"
+            });
+        }
+        // Verificar que no son el mismo usuario
+        if (model.UsuarioActual == model.UsuarioAmigo)
+        {
+            return Results.BadRequest(new ResponseServer{ 
+                CodigoError = 1, 
+                Mensaje = "No puedes eliminarte a ti mismo como amigo"
+            });
+        }
+        // Verificar si son amigos
+        if (!usuarioActual.Amigos.Contains(model.UsuarioAmigo))
+        {
+            return Results.BadRequest(new ResponseServer{ 
+                CodigoError = 1, 
+                Mensaje = "No son amigos"
+            });
+        }
+        usuarioActual.Amigos.Remove(model.UsuarioAmigo);
+        // Actualizar usuario en la base de datos
+        await usuarios.ReplaceOneAsync(u => u.Id == usuarioActual.Id, usuarioActual);
+        //borramos los chats que existan entre ambos usuarios coleccion chats (chqat tiene _id que es los dos usernames separados por _ y ordenado alfabeticamente)
+        var primeroUsername = model.UsuarioActual.CompareTo(model.UsuarioAmigo) < 0 ? model.UsuarioActual : model.UsuarioAmigo;
+        var segundoUsername = model.UsuarioActual.CompareTo(model.UsuarioAmigo) < 0 ? model.UsuarioAmigo : model.UsuarioActual;
+        var roomId = $"{primeroUsername}_{segundoUsername}";
+        // Eliminamos el chat de la colección
+         chatsCollection.DeleteOne(c =>
+            c.Id == roomId 
+            );
+        return Results.Ok(new ResponseServer
+        {
+            CodigoError = 0,
+            Mensaje = "Amigo eliminado exitosamente"
+        });
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error al eliminar amigo: {ex.Message}");
         return Results.Problem("Error interno del servidor", statusCode: 500);
     }
 });

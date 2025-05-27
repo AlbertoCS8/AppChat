@@ -2,6 +2,7 @@
 @inject AuthService authService
 @inject ThemeService themeService
 @inject NavigationManager Navigation
+@inject pruebaMudBlazor.Client.Services.ChatService chatService
 
 <MudThemeProvider Theme="@_theme" IsDarkMode="_isDarkMode" />
 <MudPopoverProvider />
@@ -44,7 +45,7 @@
         <MudNavLink Href="chats" Icon="@Icons.Material.Filled.Chat">Chats</MudNavLink>
         <MudNavLink Href="search" Icon="@Icons.Material.Filled.PersonAdd">Buscar amigos</MudNavLink>
         <MudDivider />
-        <MudMenuItem Icon="@Icons.Material.Filled.Logout" >Cerrar sesión</MudMenuItem>
+        <MudMenuItem Icon="@Icons.Material.Filled.Logout" OnClick="@Logout">Cerrar sesión</MudMenuItem>
     </ChildContent>
 </MudMenu>
         }
@@ -96,10 +97,12 @@
         if (_isDarkMode)
         {
             _themeSelected = "degradado-dark";
+            themeService.SetTheme(_isDarkMode);
         }
         else
         {
             _themeSelected = "degradado-light";
+            themeService.SetTheme(_isDarkMode);
         }
     }
 
@@ -120,13 +123,21 @@
         AppbarText = "#424242",
         AppbarBackground = "rgba(255,255,255,0.8)",
         DrawerBackground = "#ffffff",
+        @* TextPrimary = "#000000", tendría que cambiar el color de los iconos tbn conforme al tema, futura actualizacion
+        TextSecondary = "#000000", *@
         GrayLight = "#e8e8e8",
         GrayLighter = "#f9f9f9",
+        @* --mud-palette-primary
+rgb(66 124 161)
+: rgb(66 124 161); *@
+        Primary = "#4284a1",
+
     };
 
     private readonly PaletteDark _darkPalette = new()
     {
         Primary = "#7e6fff",
+        Secondary = "#ffffff",
         Surface = "#1e1e2d",
         Background = "#00000000", //background de la app desde extremos al card, justo lo que quiero cambiar
         BackgroundGray = "#151521",
@@ -160,4 +171,16 @@
     public string DarkLightModeButtonIcon => _isDarkMode
         ? Icons.Material.Outlined.DarkMode
         : Icons.Material.Filled.WbSunny;
+    private void Logout()
+    {
+        chatService.DisconnectFromGlobalHub(authService.Username);
+        authService.IsAuthenticated = false;
+        authService.Username = string.Empty;
+        authService.ImagenBase64 = string.Empty;
+        authService.Email = string.Empty;
+        authService.Nombre = string.Empty;
+        authService.Apellido = string.Empty;
+        authService.Amigos.Clear();
+        Navigation.NavigateTo("/");
+    }
 }
