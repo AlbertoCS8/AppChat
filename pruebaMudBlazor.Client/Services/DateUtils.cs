@@ -12,7 +12,7 @@ public static class DateUtils
             // Console.WriteLine($"Parsed date: {parsedDate}, Now: {now}, Diff: {diff}");
             if (diff.TotalMinutes < 1)
                 return "justo ahora";
-            if (diff.TotalMinutes < 30)
+            if (diff.TotalMinutes < 60)
                 return $"hace {Math.Floor(diff.TotalMinutes)} min";
             if (diff.TotalHours < 24)
                 return $"hace {Math.Floor(diff.TotalHours)} h";
