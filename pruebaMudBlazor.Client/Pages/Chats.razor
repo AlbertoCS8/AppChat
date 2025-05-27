@@ -14,7 +14,8 @@
 <MudContainer Class="mt-16" Style="height: 100%; min-height: 100vh; width:100%;">
 <div class="d-flex flex-grow-1 flex-row" >
     @* Class="@(themeService.GetTheme() ? "mb-6 card-dark" : "mb-6 card-light")" *@
-    <MudPaper Elevation="25" Class="@(themeService._isDarkMode ? "py-4 flex-grow-1 card-dark": "py-4 flex-grow-1 card-light")">
+    <MudPaper Elevation="25" Class="@(themeService._isDarkMode ? "py-1 flex-grow-1 card-dark": "py-1 flex-grow-1 card-light")" 
+    Style="max-height: 85vh; overflow:scroll;">
         <MudToolBar Dense="true" Class="mb-4">
             @if(selectedFriend != null)
             {
@@ -94,7 +95,10 @@
                 }
                 else
                 {
+                    //si estamos en movil como no tengo mucho espacio para la imagen, la oculto
+                    <MudHidden Breakpoint="Breakpoint.MdAndDown">
                     <div style="width: 40px;" class="mr-2"></div>
+                    </MudHidden>
                 }
 
                 <MudPaper Elevation="3"
@@ -104,7 +108,6 @@
 </MudPaper>
 
             </div>
-            @* <MudText Typo="Typo.caption" Class="d-flex justify-end mt-1">@message.Time</MudText> *@
         </div>
 
         lastSenderMsg = message.UserName;
@@ -149,7 +152,7 @@
                         <MudPaper Elevation="3"
                                   Class="mud-theme-primary pa-2"
                                   Style="max-width: 60%; border-radius: 12px;">
-                            <MudText>después al hacer click sobre el icono de arriba a la derecha sobre esta misma ventana de chat nos abrirá un panel con los amigos agregados</MudText>
+                            <MudText>después al hacer click sobre el icono de arriba a la izquerda sobre esta misma ventana de chat nos abrirá un panel con los amigos agregados</MudText>
                             <MudText Typo="Typo.caption" Class="d-flex justify-end mt-1">69:69</MudText>
                         </MudPaper>
                     </div>
@@ -173,21 +176,25 @@
         </div>
 
         @* Barra de entrada de mensajes *@
-        <MudPaper Elevation="25" Class="d-flex flex-row px-2 mx-4" Style="background-color: var(--mud-palette-background-grey);">
-            <MudIconButton Icon="@Icons.Material.Filled.AddCircle"></MudIconButton>
-            <MudTextField @bind-Value="mensajeNuevo" Placeholder="Escribe un mensaje" DisableUnderLine="true" 
-                 Class="mt-n2 justify-center" ></MudTextField>
-            <MudIconButton Icon="@Icons.Material.Filled.Send" 
-                  Color="Color.Primary"
-                  OnClick="@(() => EnviarMensaje(mensajeNuevo))"
-                  Disabled="@string.IsNullOrWhiteSpace(mensajeNuevo)">
-            </MudIconButton>
-        </MudPaper>
+        @if(selectedFriend != null)
+        {
+        <MudPaper Class="d-flex flex-row mb-1 ml-3 mr-3 mt-4" Style="background-color: var(--mud-palette-background-grey);">
+        <MudTextField @bind-Value="mensajeNuevo" Placeholder="Escribe un mensaje" DisableUnderLine="true" 
+                     Class="mt-2 mb-4 px-4" OnKeyUp="@((e) => { if (e.Key == "Enter") EnviarMensaje(mensajeNuevo); })">
+        </MudTextField>
+        <MudIconButton Icon="@Icons.Material.Filled.Send" 
+                      Color="Color.Primary"
+                      OnClick="@(() => EnviarMensaje(mensajeNuevo))"
+                      Disabled="@string.IsNullOrWhiteSpace(mensajeNuevo)"
+                      Class="ml-2 mb-1">
+        </MudIconButton>
+        </MudPaper>    
+        }
     </MudPaper>
 </div>
 
 <MudDrawer @bind-Open="@open" Anchor="@ChatDrawer" Elevation="1" Variant="@DrawerVariant.Temporary">
-    <MudText Typo="Typo.h6" Class="mb-4">Tus amigos</MudText> 
+    <MudText Typo="Typo.h6" Class="mb-4 mt-4" Align="Align.Center">Tus amigos</MudText> 
     @foreach (var friend in listaAmigos)
     {
         <MudCard Elevation="2" Class="pa-2 mb-1 friend-card" @onclick="() => SelectFriend(friend)">
