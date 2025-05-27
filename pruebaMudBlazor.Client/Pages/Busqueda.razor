@@ -106,7 +106,15 @@
         
         try
         {
-            usuarios = await ClienteService.BuscarUsuariosAsync(searchTerm);
+            // Obtener todos los usuarios que coincidan con la búsqueda
+            var todosLosUsuarios = await ClienteService.BuscarUsuariosAsync(searchTerm);
+            
+            // Filtrar: excluir usuarios que ya son amigos y el propio usuario
+            usuarios = todosLosUsuarios
+                .Where(u => !authService.Amigos.Contains(u.NombreUsuario) && 
+                           u.NombreUsuario != authService.Username)
+                .ToList();
+                
             totalUsuarios = usuarios.Count;
             
             UpdatePagination();
