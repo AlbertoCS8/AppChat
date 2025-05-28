@@ -27,16 +27,20 @@ builder.Services.Configure<MongoDbSettings>(
     builder.Configuration.GetSection("MongoDbSettings"));
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<IClienteService,ClienteService>();
-
+builder.Services.AddScoped<ChatService>();
+builder.Services.AddScoped<ThemeService>();
 // Registrar MongoDB en el contenedor de dependencias
 builder.Services.AddSingleton<IMongoClient>(sp => new MongoClient(builder.Configuration.GetValue<string>("MongoDbSettings:ConnectionString")));
 
 builder.Services.AddSingleton<IMongoDatabase>(sp => sp.GetRequiredService<IMongoClient>().GetDatabase(builder.Configuration.GetValue<string>("MongoDbSettings:DatabaseName")));
 builder.Services.AddSingleton<IMongoCollection<Usuario>>(sp => sp.GetRequiredService<IMongoDatabase>().GetCollection<Usuario>("Usuarios"));
-builder.Services.AddSingleton<IMongoCollection<ImagenPredefinida>>(sp => sp.GetRequiredService<IMongoDatabase>().GetCollection<ImagenPredefinida>("ImagenPredefinida"));
-
+// builder.Services.AddSingleton<IMongoCollection<ImagenPredefinida>>(sp => sp.GetRequiredService<IMongoDatabase>().GetCollection<ImagenPredefinida>("ImagenPredefinida"));
+builder.Services.AddSingleton<IMongoCollection<Chat>>(sp => sp.GetRequiredService<IMongoDatabase>().GetCollection<Chat>("Chats"));
 // Registrar el servicio MongoDbService (si lo necesitas para la lógica adicional)
 builder.Services.AddSingleton<MongoDbService>();
+builder.Services.AddSingleton<ChatResponsables>();// quitar
+builder.Services.AddSingleton<Rest>(); // --> este es un diccionario que contiene los responsables de cada chat, para poder enviar mensajes a los usuarios conectados
+builder.Services.AddSingleton<UsersConnected>();// --> va a ser un diccionario de usuarios conectados al que accederemos si queremos reflejar el status de los usuarios
 
 var app = builder.Build();
 
@@ -55,50 +59,21 @@ app.UseHttpsRedirection();
 
 // Endpoint para registrar un usuario
 app.MapPost("/registro", async (pruebaMudBlazor.Models.UserModel registro, 
-    IMongoCollection<Usuario> usuarios,
-    IMongoCollection<ImagenPredefinida> imagenesPredefinidas) =>
+    IMongoCollection<Usuario> usuarios) =>
 {
     Console.WriteLine("Registro de usuario recibido, procesando...");
-    
-    
     var usuario = UserMapper.MapToUsuario(registro);
-    
-    // Asignamos la imagen predefinida al usuario (descartao)
-    //l quitamos porque usare la los iconos de el tema este de mudblazor
-    // await AsignarImagenPredefinida(usuario, imagenesPredefinidas);
-    
     // Guardamos el usuario en la base de datos
     await usuarios.InsertOneAsync(usuario);
-    
     return Results.Ok("Registro exitoso desde el endpoint");
 });
 
-// metodo para asignar la imagen predefinida al usuario(deprecated)
-// static async Task AsignarImagenPredefinida(Usuario usuario, IMongoCollection<ImagenPredefinida> imagenesPredefinidas)
-// {
-//     // Buscamos la imagen predefinida por nombre (asumimos "predefinido" como nombre por defecto)
-//     var imagenPredefinida = await imagenesPredefinidas
-//         .Find(img => img.nombre == "predefinido")
-//         .FirstOrDefaultAsync();
-    
-//     if (imagenPredefinida != null)
-//     {
-//         // Asignamos el contenido base64 al usuario
-//         usuario.FotoPerfil = imagenPredefinida.path;
-//     }
-//     else
-//     {
-//         // Si no encontramos la imagen predefinida, dejamos el campo vacío o asignamos una imagen por defecto
-//         usuario.FotoPerfil = string.Empty;
-//         Console.WriteLine("Advertencia: No se encontró la imagen predefinida");
-//     }
-// }
-
 // Endpoint para iniciar sesión
 app.MapPost("/api/login", async (LoginModel loginModel, 
-    IMongoCollection<Usuario> usuarios) => 
+    IMongoCollection<Usuario> usuarios,
+    Rest _rest) => 
 {
-    Console.WriteLine($"iniciio de sesión recibido en server {loginModel.Email} {loginModel.Password}");
+    // Console.WriteLine($"iniciio de sesión recibido en server {loginModel.Email} {loginModel.Password}");
 
     var usuario = await usuarios.Find(u => u.Email == loginModel.Email).FirstOrDefaultAsync();
     
@@ -108,10 +83,16 @@ app.MapPost("/api/login", async (LoginModel loginModel,
         // var authState = scope.ServiceProvider.GetRequiredService<AuthService>();
 
         // Guardamos el estado del usuario en AuthState
-       // authState.Username = usuario.NombreUsuario;
-       // authState.ImagenBase64 = usuario.FotoPerfil;
+        // authState.Username = usuario.NombreUsuario;
+        // authState.ImagenBase64 = usuario.FotoPerfil;
         //authState.IsAuthenticated = true;
-    var respuesta = UserMapper.MapToUserModel(usuario);
+        // Actualizamos la última conexión del usuario
+        Console.WriteLine($"Hora de madridddddd {await _rest.GetMadridTimeFormatted()}");
+        await usuarios.UpdateOneAsync(
+            u => u.Email == usuario.Email,
+            Builders<Usuario>.Update.Set("UltimaConexion", await _rest.GetMadridTimeFormatted())
+        );
+        var respuesta = UserMapper.MapToUserModel(usuario);
         
         return Results.Ok(respuesta);
     }
@@ -156,7 +137,6 @@ app.MapPost("/api/agregarAmigo", async (AmigoModel model, IMongoCollection<Usuar
         // Verificar que ambos usuarios existen
         var usuarioActual = await usuarios.Find(u => u.NombreUsuario == model.UsuarioActual).FirstOrDefaultAsync();
         var usuarioAmigo = await usuarios.Find(u => u.NombreUsuario == model.UsuarioAmigo).FirstOrDefaultAsync();
-        
         if (usuarioActual == null || usuarioAmigo == null)
         {
             return Results.NotFound(new ResponseServer { 
@@ -164,7 +144,6 @@ app.MapPost("/api/agregarAmigo", async (AmigoModel model, IMongoCollection<Usuar
                 Mensaje = "Uno de los usuarios no existe"
             });
         }
-        
         // Verificar que no son el mismo usuario
         if (model.UsuarioActual == model.UsuarioAmigo)
         {
@@ -173,13 +152,11 @@ app.MapPost("/api/agregarAmigo", async (AmigoModel model, IMongoCollection<Usuar
                 Mensaje = "No puedes agregar a ti mismo como amigo"
             });
         }
-        
         // Inicializar la lista de amigos si es null
         if (usuarioActual.Amigos == null)
         {
             usuarioActual.Amigos = new List<string>();
         }
-        
         // Verificar si ya son amigos -->Z futuro cambio que salga un boton con un texto distinto indicando que ya son amigos
         if (usuarioActual.Amigos.Contains(model.UsuarioAmigo))
         {
@@ -188,19 +165,14 @@ app.MapPost("/api/agregarAmigo", async (AmigoModel model, IMongoCollection<Usuar
                 Mensaje = "Ya son amigos"
             });
         }
-        
         usuarioActual.Amigos.Add(model.UsuarioAmigo);
-        
         // Actualizar usuario en la base de datos
         await usuarios.ReplaceOneAsync(u => u.Id == usuarioActual.Id, usuarioActual);
-        
         //devolvemos modelo ResponseServer
         return Results.Ok(new ResponseServer{ 
             CodigoError = 0, 
             Mensaje = "Amigo agregado exitosamente"
         });
-        
-
     }
     catch (Exception ex)
     {
@@ -211,7 +183,7 @@ app.MapPost("/api/agregarAmigo", async (AmigoModel model, IMongoCollection<Usuar
 // Endpoint para obtener amigos --> en el perfil a la hora de ver la lista de amigos veremos usernames y fotos
 //y cuando iniciemos chats igual
 app.MapPost("/api/obtenerAmigos", async (List<string> amigosUsernames, 
-    IMongoCollection<Usuario> usuarios) =>
+    IMongoCollection<Usuario> usuarios,UsersConnected usersConnected) =>
 {
     try
     {
@@ -222,7 +194,9 @@ app.MapPost("/api/obtenerAmigos", async (List<string> amigosUsernames,
         var amigos = usuarios_encontrados.Select(u => new Amigos
         {
             Username = u.NombreUsuario,
-            FotoPerfil = u.FotoPerfil
+            FotoPerfil = u.FotoPerfil,
+            Status = usersConnected.GetUserStatus(u.NombreUsuario),
+            UltimaConexion = u.UltimaConexion
         }).ToList();
         
         return Results.Ok(amigos);
@@ -236,19 +210,90 @@ app.MapPost("/api/obtenerAmigos", async (List<string> amigosUsernames,
         });
     }
 });
+// Endpoint para guardar un mensaje en la base de datos
+app.MapPost("/api/guardarMensaje", async (pruebaMudBlazor.Models.ChatMessage mensaje, string roomId) =>
+{
+    try
+    {
+        // Guardamos el mensaje en Bdd Coleccion Chats crearemos un objeto Chat por ejemplo que contenga
+        //ChatMessages y el roomId lo puedo usar para identificar el chat
+
+
+        return Results.Ok("Mensaje guardado exitosamente");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error al guardar el mensaje: {ex.Message}");
+        return Results.Problem("Error interno del servidor", statusCode: 500);
+    }
+});
+app.MapPost("/api/eliminarAmigo", async (AmigoModel model, 
+    IMongoCollection<Usuario> usuarios, IMongoCollection<Chat> chatsCollection) =>
+{
+    try
+    {
+        // Verificar que ambos usuarios existen
+        var usuarioActual = await usuarios.Find(u => u.NombreUsuario == model.UsuarioActual).FirstOrDefaultAsync();
+        var usuarioAmigo = await usuarios.Find(u => u.NombreUsuario == model.UsuarioAmigo).FirstOrDefaultAsync();
+        if (usuarioActual == null || usuarioAmigo == null)
+        {
+            return Results.NotFound(new ResponseServer { 
+                CodigoError = 1, 
+                Mensaje = "Uno de los usuarios no existe"
+            });
+        }
+        // Verificar que no son el mismo usuario
+        if (model.UsuarioActual == model.UsuarioAmigo)
+        {
+            return Results.BadRequest(new ResponseServer{ 
+                CodigoError = 1, 
+                Mensaje = "No puedes eliminarte a ti mismo como amigo"
+            });
+        }
+        // Verificar si son amigos
+        if (!usuarioActual.Amigos.Contains(model.UsuarioAmigo))
+        {
+            return Results.BadRequest(new ResponseServer{ 
+                CodigoError = 1, 
+                Mensaje = "No son amigos"
+            });
+        }
+        usuarioActual.Amigos.Remove(model.UsuarioAmigo);
+        // Actualizar usuario en la base de datos
+        await usuarios.ReplaceOneAsync(u => u.Id == usuarioActual.Id, usuarioActual);
+        //borramos los chats que existan entre ambos usuarios coleccion chats (chqat tiene _id que es los dos usernames separados por _ y ordenado alfabeticamente)
+        var primeroUsername = model.UsuarioActual.CompareTo(model.UsuarioAmigo) < 0 ? model.UsuarioActual : model.UsuarioAmigo;
+        var segundoUsername = model.UsuarioActual.CompareTo(model.UsuarioAmigo) < 0 ? model.UsuarioAmigo : model.UsuarioActual;
+        var roomId = $"{primeroUsername}_{segundoUsername}";
+        // Eliminamos el chat de la colección
+         chatsCollection.DeleteOne(c =>
+            c.Id == roomId 
+            );
+        return Results.Ok(new ResponseServer
+        {
+            CodigoError = 0,
+            Mensaje = "Amigo eliminado exitosamente"
+        });
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error al eliminar amigo: {ex.Message}");
+        return Results.Problem("Error interno del servidor", statusCode: 500);
+    }
+});
 
 
 
 app.UseAntiforgery();
 
-app.MapHub<ChatHub>("/chathub"); // tema signalR
+app.MapHub<ChatHub>("/chathub"); // es un metodo de la clase ChatHub, crea una url y registra la clase
+// para poder usar los metodos de la clase ChatHub de manera remota
 
 
-// Configuración de los recursos estáticos y los componentes de Razor
 app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveWebAssemblyRenderMode()
-    .AddAdditionalAssemblies(typeof(pruebaMudBlazor.Client._Imports).Assembly);
+    .AddAdditionalAssemblies(typeof(pruebaMudBlazor.Client._Imports).Assembly); 
 
 app.Run();
 public class AmigoModel

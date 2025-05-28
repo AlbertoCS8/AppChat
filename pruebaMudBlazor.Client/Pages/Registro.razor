@@ -6,22 +6,26 @@
 @using pruebaMudBlazor.Client.Services
 @inject IClienteService ClienteService
 @inject NavigationManager NavigationManager
+@inject ThemeService themeService
 
+<MudContainer Class="d-flex align-center justify-center mt-16 mb-16" Style="height: 100vh;" >
 <MudGrid>
-    <MudItem xs="12" sm="8" md="6" lg="4" class="mx-auto">
-        <MudCard Elevation="5">
-            <MudCardContent>
-                <MudText Typo="Typo.h5" Align="Align.Center" Class="mb-4">Registrarse</MudText>
-
+    <MudItem xs="12" sm="8" md="6" lg="4" class="mx-auto mt-5">
+        <MudCard Elevation="5" Class="@(themeService._isDarkMode ? "card card-dark" : "card card-light")">
+            <MudCardContent Class="ma-5">
+                <div class="d-flex flex-column align-center mb-8">
+                <MudIcon Icon="@Icons.Material.Filled.AssignmentInd" Size="Size.Large" Class="mb-4 " />
+                <MudText Typo="Typo.h4" Align="Align.Center" Class="">Registrarse</MudText>
+                </div>
                 <!-- Formulario -->
                 <MudForm Model="@model" @ref="form" Validation="@(userValidator.ValidateValue)" ValidationDelay="0" @bind-IsValid="@valido">
-                    <MudTextField @bind-Value="model.Nombre" For="@(() => model.Nombre)" Immediate="true" Label="Nombre" Variant="Variant.Filled" Margin="Margin.Normal" Required="true" OnlyValidateIfDirty="true"/>
-                    <MudTextField @bind-Value="model.Apellido" For="@(() => model.Apellido)" Immediate="true" Label="Apellido" Variant="Variant.Filled" Margin="Margin.Normal" Required="true" OnlyValidateIfDirty="true"/>
-                    <MudTextField @bind-Value="model.NombreUsuario" For="@(() => model.NombreUsuario)" Immediate="true" Label="Nombre de Usuario" Variant="Variant.Filled" Margin="Margin.Normal" Required="true" OnlyValidateIfDirty="true"/>
-                    <MudTextField @bind-Value="model.Email" For="@(() => model.Email)" Immediate="true" Label="Correo Electrónico" Variant="Variant.Filled" Margin="Margin.Normal" Required="true" OnlyValidateIfDirty="true"/>
+                    <MudTextField @bind-Value="model.Nombre" For="@(() => model.Nombre)" Immediate="true" Label="Nombre" Variant="Variant.Outlined" Margin="Margin.Normal" Required="true"  OnlyValidateIfDirty="true"/>
+                    <MudTextField @bind-Value="model.Apellido" For="@(() => model.Apellido)" Immediate="true" Label="Apellido" Variant="Variant.Outlined" Margin="Margin.Normal" Required="true" OnlyValidateIfDirty="true"/>
+                    <MudTextField @bind-Value="model.NombreUsuario" For="@(() => model.NombreUsuario)" Immediate="true" Label="Nombre de Usuario" Variant="Variant.Outlined" Margin="Margin.Normal" Required="true" OnlyValidateIfDirty="true"/>
+                    <MudTextField @bind-Value="model.Email" For="@(() => model.Email)" Immediate="true" Label="Correo Electrónico" Variant="Variant.Outlined" Margin="Margin.Normal" Required="true" OnlyValidateIfDirty="true"/>
 
                     <!-- Contraseña con barra de fuerza -->
-                    <MudTextField @bind-Value="model.Password" For="@(() => model.Password)" Immediate="true" Label="Contraseña" InputType="@PasswordInput" Variant="Variant.Filled" Margin="Margin.Normal" 
+                    <MudTextField @bind-Value="model.Password" For="@(() => model.Password)" Immediate="true" Label="Contraseña" InputType="@PasswordInput" Variant="Variant.Outlined" Margin="Margin.Normal" 
                                   Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="TogglePasswordVisibility" 
                                   OnInput="ActualizarPassword" Required="true" OnlyValidateIfDirty="true"/>
                     
@@ -31,23 +35,26 @@
     <MudText Typo="Typo.caption" Class="text-muted">Fuerza de contraseña: @GetPasswordStrengthText()</MudText>
 }
                     <!-- Confirmar Contraseña -->
-                    <MudTextField @bind-Value="model.ConfirmarPassword" For="@(() => model.ConfirmarPassword)" Immediate="true" Label="Confirmar Contraseña" InputType="@ConfirmarPasswordInput" Variant="Variant.Filled" Margin="Margin.Normal" 
+                    <MudTextField @bind-Value="model.ConfirmarPassword" For="@(() => model.ConfirmarPassword)" Immediate="true" Label="Confirmar Contraseña" InputType="@ConfirmarPasswordInput" Variant="Variant.Outlined" Margin="Margin.Normal" 
                                   Adornment="Adornment.End" AdornmentIcon="@ConfirmarPasswordInputIcon" OnAdornmentClick="ToggleConfirmarPasswordVisibility" Required="true" OnlyValidateIfDirty="true"/>
                     
                     <!-- Aceptar términos -->
                     <MudCheckBox T="bool" Required="true" RequiredError="Debe aceptar los términos y condiciones" Label="Acepto los términos y condiciones" />
                 </MudForm>
-            </MudCardContent>
-            
-            
             <!-- Botón de registro -->
             <MudCardActions>
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" Disabled="@(!valido)" Class="ml-auto w-full" OnClick="Submit">Registrar</MudButton>
+                @* <MudButton Variant="Variant.Filled" Color="Color.Primary" Disabled="@(!valido)" Class="ml-auto w-full" OnClick="Submit">Registrar</MudButton> *@
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" FullWidth="true" Class="mt-4"
+                OnClick="Submit" Disabled="@(!valido)">
+                Registrarse
+            </MudButton>
             </MudCardActions>
+            </MudCardContent>  
         </MudCard>
     </MudItem>
     
 </MudGrid> 
+</MudContainer>
 
 @code {
     [Inject] ISnackbar Snackbar { get; set; }
@@ -66,10 +73,9 @@
         try 
         {
             var respuesta = await ClienteService.RegistrarClienteAsync(model);
-             @* Console.WriteLine("respuesta desde el server -----> "+respuesta);  *@
             Snackbar.Add("Te has registrado correctamente");
             // redirigir a la página de inicio de seson
-            NavigationManager.NavigateTo("/login", forceLoad: false);
+            NavigationManager.NavigateTo("/", forceLoad: false);
         }
         catch (Exception ex)
         {
@@ -104,7 +110,6 @@
         ConfirmarPasswordInputIcon = ConfirmarPasswordVisibility ? Icons.Material.Filled.Visibility : Icons.Material.Filled.VisibilityOff;
     }
 
-    // Evaluación de la fuerza de la contraseña
     private void ActualizarPassword(ChangeEventArgs e)
     {
         model.Password = e.Value?.ToString();
@@ -163,5 +168,19 @@
             return "Media";
         else
             return "Fuerte";
+    }
+     protected override void OnInitialized()
+    {
+        themeService.OnThemeChanged += ThemeChanged;
+    }
+
+    private void ThemeChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        themeService.OnThemeChanged -= ThemeChanged;
     }
 }

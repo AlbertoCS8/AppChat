@@ -1,5 +1,5 @@
 ﻿@page "/chats"
-
+@implements IDisposable
 
 <PageTitle>Xhats</PageTitle>
 
@@ -8,115 +8,285 @@
 @inject IClienteService ClienteService
 @inject NavigationManager NavigationManager
 @inject AuthService authService
+@inject ThemeService themeService
+@inject pruebaMudBlazor.Client.Services.ChatService chatService
 
-
-@* @using AdminDashboard.Server.Models  *@
-
-<div class="d-flex flex-grow-1 flex-row">
+<MudContainer Class="mt-16" Style="height: 100%; min-height: 100vh; width:100%;">
+<div class="d-flex flex-grow-1 flex-row" >
+    @* Class="@(themeService.GetTheme() ? "mb-6 card-dark" : "mb-6 card-light")" *@
     <MudHidden Breakpoint="Breakpoint.SmAndDown">
-        <MudPaper Elevation="25" Class="pa-3 mr-6" MinWidth="250px">
-            <MudText Typo="Typo.h6" Class="mb-4">Tus Contactos</MudText>
-            
-            @if (listaAmigos == null || !listaAmigos.Any())
-            {
-                <MudAlert Severity="MudBlazor.Severity.Info" Variant="Variant.Filled" Class="my-2">
-                    No tienes amigos en tu lista de contactos.
-                </MudAlert>
-                <MudButton 
-                    Variant="Variant.Filled" 
-                    Color="Color.Secondary" 
-                    FullWidth="true" 
-                    EndIcon="@Icons.Material.Filled.PersonAdd"
-                    Href="/search"
-                    Class="mt-4">
-                    Buscar Amigos
-                </MudButton>
-            }
-            else
-            {
-                <div class="d-flex flex-column gap-2">
-                    @foreach (var friend in listaAmigos)
-                    {
-                        <MudCard Elevation="2" Class="pa-2 friend-card" @onclick="() => SelectFriend(friend)">
-                            <div class="d-flex align-center">
-                                <MudAvatar Size="Size.Medium" Class="mr-3">
-                                    @if (!string.IsNullOrEmpty(friend.FotoPerfil))
-                                    {
-                                        <MudImage Src="@friend.FotoPerfil" Alt="@friend.Username" />
-                                    }
-                                    else
-                                    {
-                                        <MudIcon Icon="@Icons.Material.Filled.Person" />
-                                    }
-                                </MudAvatar>
-                                <div class="flex-grow-1">
-                                    <MudText Typo="Typo.body1">@friend.Username</MudText>
-                                    <MudText Typo="Typo.caption" Color="@GetStatusColor(friend)">
-                                        @GetStatusText(friend)
-                                    </MudText>
-                                </div>
-                                <MudBadge Content="@GetUnreadCount(friend)" Color="Color.Error" 
-                                         Visible="@(GetUnreadCount(friend) > 0)" 
-                                         Overlap="true" Class="ml-2">
-                                    <MudIconButton Size="Size.Small" Icon="@Icons.Material.Filled.Chat"
-                                                  Color="@(selectedFriend?.Username == friend.Username ? Color.Primary : Color.Default)" />
-                                </MudBadge>
-                            </div>
-                        </MudCard>
-                    }
-                </div>
-            }
-        </MudPaper>
-    </MudHidden>
-    <MudPaper Elevation="25" Class="py-4 flex-grow-1">
-        <MudToolBar Dense="true">
-            <MudHidden Breakpoint="Breakpoint.MdAndUp">
-                <MudIconButton OnClick="@(() => OpenDrawer(Anchor.Left))" Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" Class="mr-2 ml-n2" />
-            </MudHidden>
-            <MudText Typo="Typo.h6" Inline="true" Class="mr-2">#</MudText>
-            <MudText Typo="Typo.h6">chat</MudText>
+        
+    <MudPaper Elevation="25" Class="@(themeService._isDarkMode ? "py-1 flex-grow-1 card-dark hide-scrollbar": "py-1 flex-grow-1 card-light hide-scrollbar")"
+    Style="max-height: 85vh; overflow:scroll; width:20%; margin-right: 20px;">
+        <MudToolBar Dense="true" Class="mb-4">
+            <MudText Typo="Typo.h6" Inline="true" Class="mr-2" Style="font-size: 1rem;">Chats</MudText>
             <MudToolBarSpacer />
             <MudIconButton Icon="@Icons.Material.Outlined.Notifications" />
             <MudIconButton Icon="@Icons.Material.Outlined.PushPin" />
-            <MudHidden Breakpoint="Breakpoint.MdAndUp">
+        </MudToolBar>
+        @* Lista de chats *@
+        @if (authService.Amigos != null && authService.Amigos.Count > 0)
+        {
+            @foreach (var amigo in listaAmigos)
+            {
+                <MudCard Elevation="2" Class=@($"ma-1 mb-1 friend-card hide-scrollbar {(selectedFriend != null && selectedFriend.Username == amigo.Username ? "selected-friend" : "")}")
+                                         @onclick="() => SelectFriend(amigo)"
+                                         Style="cursor: pointer;
+                                         overflow-wrap: anywhere;">
+                    <div class="d-flex align-center">
+                        <MudAvatar Size="Size.Large" Class="mr-3">
+                            @if (!string.IsNullOrEmpty(amigo.FotoPerfil))
+                            {
+                                <MudImage Src="@amigo.FotoPerfil" Alt="@amigo.Username" />
+                            }
+                            else
+                            {
+                                <MudIcon Icon="@Icons.Material.Filled.Person" />
+                            }
+                        </MudAvatar>
+                        <div class="flex-grow-1">
+                            <MudText Typo="Typo.body1">@amigo.Username</MudText>
+                            @if (amigo.Status == "En línea")
+                            {
+                                <MudText Typo="Typo.caption" Color="Color.Success" Style="font-size: 0.8rem;">
+                                    @amigo.Status
+                                </MudText>
+                            }
+                            else
+                            {
+                                <MudText Typo="Typo.caption" Color="Color.Error" Style="font-size: 0.65rem;">
+                                    Última conexión: @DateUtils.GetRelativeTime(amigo.UltimaConexion)
+                                </MudText>
+                            }
+                        </div>
+                    </div>
+                </MudCard>
+            }
+        }
+        else
+        {
+            <MudText Typo="Typo.body1" Class="pa-4">No tienes amigos agregados. Agrega amigos para empezar a chatear.</MudText>
+        }
+    </MudPaper>
+    </MudHidden>
+    <MudPaper Elevation="25" Class="@(themeService._isDarkMode ? "py-1 flex-grow-1 card-dark hide-scrollbar": "py-1 flex-grow-1 card-light hide-scrollbar")" 
+    Style="max-height: 85vh; overflow:scroll; width:80%; min-height: 85vh;">
+        <MudToolBar Dense="true" Class="mb-4">
+            @if(selectedFriend != null)
+            {
+                <MudText Typo="Typo.h6" Inline="true" Class="mr-2" Style="font-size: 1rem;">Chat con @selectedFriend.Username</MudText>
+            }else{
+                <MudText Typo="Typo.h6"  Inline="true" Class="mr-2" Style="font-size: 1rem;">Instrucciones para empezar un chat</MudText>
+            }
+            <MudToolBarSpacer />
+            <MudIconButton Icon="@Icons.Material.Outlined.Notifications" />
+            <MudIconButton Icon="@Icons.Material.Outlined.PushPin" />
+            <MudHidden Breakpoint="Breakpoint.SmAndUp">
                 <MudIconButton OnClick="@(() => OpenDrawer(Anchor.Right))" Icon="@Icons.Material.Outlined.PeopleAlt" Color="Color.Inherit" Class="ml-3" />
             </MudHidden>
         </MudToolBar>
-        <div class="d-flex flex-column px-4" style="max-height:800px; overflow:scroll;">
-            @foreach (var message in chatMessages)
+        <div class="d-flex flex-column px-4 hide-scrollbar" style="max-height:800px; overflow:scroll; height:75%;">
+          @if (chatMessages.ToArray().Length > 0)
+{
+    string? lastSenderMsg = null;
+    bool isFirst = true;
+
+    @foreach (var message in chatMessages)
+    {
+        
+        bool isMine = message.UserName == authService.Username; // si es mio lo renderizo de una manera u otra
+        bool showSender = isFirst || lastSenderMsg != message.UserName; // a lo moderno la imagen se mnuestra solo la primera vez y no
+        //para lkos mensajes que stackean debajo
+        //izq o derecha dependiendo de quien lo haya enviado
+       <div class="d-flex flex-column mb-2" style="@(isMine ? "align-items: flex-end;" : "align-items: flex-start;")"> 
+            @if (showSender)// lo mismo que xcon la imagen, solo lo muestro la primera vez
             {
-                <UserMessage UserName="@message.UserName" Message="@message.Message" ChatUser="@GetUser(message.UserName)" />
+                @* <MudChatHeader Name="@message.UserName" Time="@message.Time" /> //no quiero hora, quiero hace x  *@
+                //minutos hasta que sea mayor que 30 p ejemplo
+                @if(comodinHora != null && comodinHora != string.Empty && comodinHora != DateUtils.GetRelativeTime(message.Time))
+                {
+                    // si la hora es diferente a la del mensaje anterior, la renderizo
+                    // comodinHora = DateUtils.GetRelativeTime(message.Time);
+                    // si es mio lo renderizo de un color y si no de otro
+                    <MudChatHeader Name="@message.UserName" Time="@DateUtils.GetRelativeTime(message.Time)" />
+                }
+
+            }else{
+                @if(comodinHora != null && comodinHora != string.Empty && comodinHora != DateUtils.GetRelativeTime(message.Time))
+                {
+                    <MudChatHeader Time="@DateUtils.GetRelativeTime(message.Time)" />
+                }
+                
+            }
+
+            <div class="d-flex @(isMine ? "flex-row-reverse" : "")"> 
+                @if (showSender)
+                {
+                    <MudAvatar Size="Size.Medium" Class="@(isMine ? "ml-2 mt-1" : "mr-2 mt-1")">
+                        @if (isMine)
+                        {
+                            @if (string.IsNullOrEmpty(authService.ImagenBase64))
+                            {
+                                <MudIcon Icon="@Icons.Material.Filled.Person" />
+                            }
+                            else
+                            {
+                                <MudImage Src="@authService.ImagenBase64" Alt="@message.UserName" />
+                            }
+                        }
+                        else
+                        {
+                            @if (string.IsNullOrEmpty(message.profileImg) && selectedFriend != null)
+                            {
+                                @if (string.IsNullOrEmpty(selectedFriend.FotoPerfil))
+                                {
+                                    <MudIcon Icon="@Icons.Material.Filled.Person" />
+                                }
+                                else
+                                {
+                                    <MudImage Src="@selectedFriend.FotoPerfil" Alt="@message.UserName" />
+                                }
+                            }
+                        }
+                    </MudAvatar>
+                }
+                else
+                {
+                    //si estamos en movil como no tengo mucho espacio para la imagen, la oculto
+                    <MudHidden Breakpoint="Breakpoint.MdAndDown">
+                    <div style="width: 40px;" class="mr-2"></div>
+                    </MudHidden>
+                }
+
+                <MudPaper Elevation="3"
+          Class="@(isMine ? "mud-theme-primary pa-2" : "pa-2 bg-dark")"
+          Style="max-width: 90vw; width: fit-content; border-radius: 12px; word-break: break-word;">
+    <MudText Style="word-break: break-word; white-space: pre-wrap;">@message.Message</MudText>
+</MudPaper>
+
+            </div>
+        </div>
+
+        lastSenderMsg = message.UserName;
+        isFirst = false;
+        //metemos el valor que se va a renderizar que indica la hora del mensaje 
+        comodinHora = DateUtils.GetRelativeTime(message.Time);
+    }
+    
+}
+    @*
+        Comentario de algo que hablamos en clase
+        //primerMensaje.UserName = null;  (ChatMessage primerMensaje = chatMessages.FirstOrDefault();) --> eso antes de entrar al foreach
+        //! FATALLLLLLLL   PARA PABLO SI LEES ESTO --> llevo una hora con este bug, al cerrar el menu de amigos me recargaba la 
+        //lista de mensajes y me movia el primer mensaje siempre a la izquierda aunque el mensaje fuera mio porque estaba modificando
+        //directamente username de primerMensaje, que es el primer objeto de mi lista de mensajes y al ponerlo a null hacia que
+        //nunca fuese igual que mi username y por tanto siempre me lo pintaba a la izquierda CAGADON HISTÓRICO
+        //¡¡¡ referencia a objeto apunta al mismo objeto en memoria, ref a propiedad crea una copia !!!
+    *@
+
+            else // este es cuando no hayt mensajes en la conversacion, lo dejo como un mini tutorial
+            {
+                <div class="d-flex flex-column px-4 hide-scrollbar" style="max-height:800px; overflow:scroll;">
+                <div class="d-flex flex-column mb-2">
+                    <MudText Typo="Typo.subtitle2" Class="mb-1" Color="Color.Primary">AlbertoCS8</MudText>
+                    <div class="d-flex">
+                        <MudAvatar Size="Size.Medium" Class="mr-2 mt-2">
+                            <MudIcon Icon="@Icons.Custom.Brands.GitHub" />
+                        </MudAvatar>
+                        <MudPaper Elevation="3"
+                                  Class="mud-theme-primary pa-2"
+                                  Style="max-width: 60%; border-radius: 12px;">
+                            <MudText>Para empezar un chat con un usuario primero lo tienes que tener agregado como amigo</MudText>
+                            <MudText Typo="Typo.caption" Class="d-flex justify-end mt-1">69:69</MudText>
+                        </MudPaper>
+                    </div>
+                </div>
+                <div class="d-flex flex-column mb-2">
+                    <div class="d-flex">
+                        <MudAvatar Size="Size.Medium" Class="mr-2 mt-2 invisible">
+                            <MudIcon Icon="@Icons.Custom.Brands.GitHub" />
+                        </MudAvatar>
+                        <MudPaper Elevation="3"
+                                  Class="mud-theme-primary pa-2"
+                                  Style="max-width: 60%; border-radius: 12px;">
+                            <MudText>después al hacer click sobre el icono de arriba a la izquerda sobre esta misma ventana de chat nos abrirá un panel con los amigos agregados</MudText>
+                            <MudText Typo="Typo.caption" Class="d-flex justify-end mt-1">69:69</MudText>
+                        </MudPaper>
+                    </div>
+                </div>
+                <div class="d-flex flex-column mb-4">
+                    <div class="d-flex">
+                        <MudAvatar Size="Size.Medium" Class="mr-2 mt-2 invisible">
+                            <MudIcon Icon="@Icons.Custom.Brands.GitHub" />
+                        </MudAvatar>
+                        <MudPaper Elevation="3"
+                                  Class="mud-theme-primary pa-2"
+                                  Style="max-width: 60%; border-radius: 12px;">
+                            <MudText>acto seguido simplemente seleccione a un usuario de su lista de amigos y empiece a chatear con el</MudText>
+                            <MudText Typo="Typo.caption" Class="d-flex justify-end mt-1">69:69</MudText>
+                        </MudPaper>
+                    </div>
+                </div>
+
+                </div>
             }
         </div>
-        <MudPaper Elevation="25" Class="d-flex flex-row px-2 mx-4" Style="background-color: var(--mud-palette-background-grey);">
-            <MudIconButton Icon="@Icons.Material.Filled.AddCircle"></MudIconButton>
-            <MudTextField T="string" Placeholder="Message #chat" DisableUnderLine="true" Class="mt-n2 mx-4"></MudTextField>
-            <MudIconButton Icon="@IconGift"></MudIconButton>
-            <MudIconButton Icon="@IconGif"></MudIconButton>
-            <MudIconButton Icon="@Icons.Material.Outlined.Sick" Color="Color.Warning"></MudIconButton>
-        </MudPaper>
+
+        @* Barra de entrada de mensajes *@
+        @if(selectedFriend != null)
+        {
+        <MudPaper Class="d-flex flex-row ml-3 mr-3 mt-4" Style="background-color: var(--mud-palette-background-grey);">
+        <MudTextField @bind-Value="mensajeNuevo" Placeholder="Escribe un mensaje" DisableUnderLine="true" 
+                     Class="mt-2 px-4" OnKeyUp="@((e) => { if (e.Key == "Enter") EnviarMensaje(mensajeNuevo); })">
+        </MudTextField>
+        <MudIconButton Icon="@Icons.Material.Filled.Send" 
+                      Color="Color.Primary"
+                      OnClick="@(() => EnviarMensaje(mensajeNuevo))"
+                      Disabled="@string.IsNullOrWhiteSpace(mensajeNuevo)"
+                      Class="ml-2">
+        </MudIconButton>
+        </MudPaper>    
+        }
     </MudPaper>
-    <MudHidden Breakpoint="Breakpoint.SmAndDown">
-        <MudPaper Elevation="25" Class="pa-3 pb-16 ml-6" MinWidth="250px">
-            <ChatUsers chatUsers="chatUsers" />
-        </MudPaper>
-    </MudHidden>
 </div>
 
 <MudDrawer @bind-Open="@open" Anchor="@ChatDrawer" Elevation="1" Variant="@DrawerVariant.Temporary">
-    @if (ChatDrawer == Anchor.Left)
+    <MudText Typo="Typo.h6" Class="mb-4 mt-4" Align="Align.Center">Tus amigos</MudText> 
+    @foreach (var friend in listaAmigos)
     {
-        <MudButton EndIcon="@Icons.Material.Filled.Add" Color="Color.Secondary" Class="mx-4 mt-6 mb-4">Create Channel</MudButton>
-        <ChatChannels />
-    }
-    else if (ChatDrawer == Anchor.Right)
-    {
-        <div class="pa-3">
-            <ChatUsers chatUsers="chatUsers" />
-        </div>
+        <MudCard Elevation="2" Class="pa-2 mb-1 friend-card" @onclick="() => SelectFriend(friend)">
+            <div class="d-flex align-center">
+                <MudAvatar Size="Size.Large" Class="mr-3">
+                    @if (!string.IsNullOrEmpty(friend.FotoPerfil))
+                    {
+                        <MudImage Src="@friend.FotoPerfil" Alt="@friend.Username" />
+                    }
+                    else
+                    {
+                        <MudIcon Icon="@Icons.Material.Filled.Person" />
+                    }
+                </MudAvatar>
+                <div class="flex-grow-1">
+                    <MudText Typo="Typo.body1">@friend.Username</MudText>
+                    @if (friend.Status == "En línea")
+                    {
+                        <MudText Typo="Typo.caption" Color="Color.Success">
+                        @friend.Status
+                    </MudText>
+                    }
+                    else
+                    {
+                         <MudText Typo="Typo.caption" Color="Color.Error">
+                            Última conexión: @DateUtils.GetRelativeTime(friend.UltimaConexion)
+                        </MudText>
+                    } 
+                    
+                </div>
+            </div>
+        </MudCard>
     }
 </MudDrawer>
-
+</MudContainer>
 <style>
     .friend-card {
         cursor: pointer;
@@ -134,104 +304,162 @@
 @code
 {
     bool open;
+    bool conectadoA_unaSala;
+    bool _isSubscribedToUserConnection = false;
     public List<Amigos> listaAmigos { get; set; } = new List<Amigos>();
+    private Amigos selectedFriend; // amigo seleccionado, lo pasare a el tema del chathub para renderizar
+    //el tema de la imagen de perfil
+    private UsersConnected usersConnected;
+    private string mensajeNuevo = string.Empty;
+    string roomName = string.Empty;
+    public List<ChatMessage> chatMessages = new List<ChatMessage>();
+     public string IconGift { get; set; } = "<path d=\"M22,12V20A2,2 0 0,1 20,22H4A2,2 0 0,1 2,20V12A1,1 0 0,1 1,11V8A2,2 0 0,1 3,6H6.17C6.06,5.69 6,5.35 6,5A3,3 0 0,1 9,2C10,2 10.88,2.5 11.43,3.24V3.23L12,4L12.57,3.23V3.24C13.12,2.5 14,2 15,2A3,3 0 0,1 18,5C18,5.35 17.94,5.69 17.83,6H21A2,2 0 0,1 23,8V11A1,1 0 0,1 22,12M4,20H11V12H4V20M20,20V12H13V20H20M9,4A1,1 0 0,0 8,5A1,1 0 0,0 9,6A1,1 0 0,0 10,5A1,1 0 0,0 9,4M15,4A1,1 0 0,0 14,5A1,1 0 0,0 15,6A1,1 0 0,0 16,5A1,1 0 0,0 15,4M3,8V10H11V8H3M13,8V10H21V8H13Z\" />";
+    public string IconGif { get; set; } = "<path d=\"M11,8H13V16H11V8M7.67,8H4.33C3.53,8 3,8.67 3,9.33V14.67C3,15.33 3.53,16 4.33,16H7.67C8.47,16 9,15.33 9,14.67V12H7V14H5V10H9V9.33C9,8.67 8.47,8 7.67,8M21,10V8H15V16H17V14H19.5V12H17V10H21Z\" />";
+    public string roomResponsable { get; set; } = string.Empty;
+    public string lastSenderMsg { get; set; } = "";
+    public string comodinHora { get; set; } = string.Empty;
     Anchor ChatDrawer { get; set; }
 
     ChatUser[] chatUsers = new ChatUser[]
 {
         new ChatUser { UserName = "Garderoben", UserRoleColor = Colors.DeepPurple.Accent4, OnlineStatus = Color.Success, Spotify = true, AvatarUrl = "https://avatars2.githubusercontent.com/u/10367109?s=460&amp;u=2abf95f9e01132e8e2915def42895ffe99c5d2c6&amp;v=4"},
-        new ChatUser { UserName = "Henon", UserRoleColor = Colors.DeepPurple.Accent4, OnlineStatus = Color.Success, Spotify = false, AvatarUrl = "https://avatars.githubusercontent.com/u/44090?s=460&v=4"},
-        new ChatUser { UserName = "Flaflo", UserRoleColor = Colors.Red.Accent3, OnlineStatus = Color.Success, Spotify = true, AvatarUrl = "https://avatars.githubusercontent.com/u/12973684?s=460&u=ea557f04c5d9c54f902f8c700292baefe59217d0&v=4"},
-        new ChatUser { UserName = "porkopek", UserRoleColor = Colors.Red.Accent3, OnlineStatus = Color.Warning, Spotify = false, AvatarUrl = "https://avatars.githubusercontent.com/u/13745954?s=460&u=81ef9118f63113ad64bde35add178cbd9ca3bb38&v=4"},
-        new ChatUser { UserName = "mike-gh", UserRoleColor = Colors.Red.Accent3, OnlineStatus = Color.Warning, Spotify = false, AvatarColor = Color.Success},
-        new ChatUser { UserName = "tungi52", UserRoleColor = Colors.Red.Accent3, OnlineStatus = Color.Warning, Spotify = false, AvatarColor = Color.Success},
-        new ChatUser { UserName = "svenovic", UserRoleColor = Colors.Red.Accent3, OnlineStatus = Color.Dark, Spotify = false, AvatarColor = Color.Success},
-        new ChatUser { UserName = "Artroxa", UserRoleColor = Colors.BlueGray.Lighten1, OnlineStatus = Color.Success, Spotify = false, AvatarUrl = "https://avatars2.githubusercontent.com/u/71094850?s=460&u=66c16f5bb7d27dc751f6759a82a3a070c8c7fe4b&v=4"},
-        new ChatUser { UserName = "II ARROWS", UserRoleColor = Colors.BlueGray.Lighten1, OnlineStatus = Color.Success, Spotify = false, AvatarUrl = "https://avatars.githubusercontent.com/u/14835013?s=460&u=8d9acfca411be6941ceb44f710c4357857350c2a&v=4"},
-        new ChatUser { UserName = "rangsk", UserRoleColor = Colors.BlueGray.Lighten1, OnlineStatus = Color.Success, Spotify = false, AvatarUrl = "https://avatars.githubusercontent.com/u/10701249?s=460&u=f806998af6e29fd4402736ba2efc2649adae9e39&v=4"},
-        new ChatUser { UserName = "Svarta Änkan", UserRoleColor = Colors.BlueGray.Lighten1, OnlineStatus = Color.Error, Spotify = true, AvatarColor = Color.Error},
-        new ChatUser { UserName = "TommyG", UserRoleColor = Colors.BlueGray.Lighten1, OnlineStatus = Color.Warning, Spotify = false, AvatarUrl = "https://avatars.githubusercontent.com/u/4773183?s=460&u=7d0ebb28e29ae5103a74070471ffd506cdbf03fd&v=4"},
 };
 
-    ChatMessage[] chatMessages = new ChatMessage[]
-    {
-        new ChatMessage { UserName = "Garderoben", Message = "What is CSS?"},
-        new ChatMessage { UserName = "Henon", Message = "idk?"},
-        new ChatMessage { UserName = "Garderoben", Message = "me neither, anyone else?"},
-        new ChatMessage { UserName = "Artroxa", Message = "lololololol"},
-        new ChatMessage { UserName = "svenovic", Message = "Cascading Style Sheets"},
-        new ChatMessage { UserName = "rangsk", Message = "CSS is a style sheet language used for describing the presentation of a document written in a markup language such as HTML."},
-        new ChatMessage { UserName = "II ARROWS", Message = "We're on a mission from Glod."},
-        new ChatMessage { UserName = "TommyG", Message = "Wth dude, i love Terry Pratchett"},
-        new ChatMessage { UserName = "tungi52", Message = "Did you guys read his discworld book series?"},
-        new ChatMessage { UserName = "TommyG", Message = "Yeah! It's great!"},
-        new ChatMessage { UserName = "Garderoben", Message = "no more talk about books, this is very serious coder chat!"},
-        new ChatMessage { UserName = "Artroxa", Message = "Yes, blazor is cool coding for cool kids" },
-        new ChatMessage { UserName = "Flaflo", Message = "@Garderoben hey have you even started working on issue #294 on git?"},
-        new ChatMessage { UserName = "Henon", Message = "Don't worry Flaflo, i took care of it."},
-    };
-
+    
     public ChatUser GetUser(string username)
     {
         var chatUser = chatUsers.FirstOrDefault(x => x.UserName == username);
         return chatUser;
     }
-
     void OpenDrawer(Anchor anchor)
     {
         ChatDrawer = anchor;
         open = true;
     }
-
     protected override async Task OnInitializedAsync()
     {
+        if(!authService.IsAuthenticated){
+            NavigationManager.NavigateTo("/", forceLoad: false);
+        }else{
         listaAmigos = await ClienteService.ObtenerAmigosAsync(authService.Amigos);
+        foreach (var amigo in listaAmigos)
+        {
+            Console.WriteLine(amigo.ToString()); // Inicialmente todos están desconectados
+        }
+        @* chatService.ObsUserConnection -= OnUserConnection;//desuscripcion
+        chatService.ObsUserConnection += OnUserConnection;//suscripcion *@
+          if (!_isSubscribedToUserConnection)
+    {
+        chatService.ObsUserConnection += OnUserConnection;
+        _isSubscribedToUserConnection = true;
     }
-
-    public string IconGift { get; set; } = "<path d=\"M22,12V20A2,2 0 0,1 20,22H4A2,2 0 0,1 2,20V12A1,1 0 0,1 1,11V8A2,2 0 0,1 3,6H6.17C6.06,5.69 6,5.35 6,5A3,3 0 0,1 9,2C10,2 10.88,2.5 11.43,3.24V3.23L12,4L12.57,3.23V3.24C13.12,2.5 14,2 15,2A3,3 0 0,1 18,5C18,5.35 17.94,5.69 17.83,6H21A2,2 0 0,1 23,8V11A1,1 0 0,1 22,12M4,20H11V12H4V20M20,20V12H13V20H20M9,4A1,1 0 0,0 8,5A1,1 0 0,0 9,6A1,1 0 0,0 10,5A1,1 0 0,0 9,4M15,4A1,1 0 0,0 14,5A1,1 0 0,0 15,6A1,1 0 0,0 16,5A1,1 0 0,0 15,4M3,8V10H11V8H3M13,8V10H21V8H13Z\" />";
-    public string IconGif { get; set; } = "<path d=\"M11,8H13V16H11V8M7.67,8H4.33C3.53,8 3,8.67 3,9.33V14.67C3,15.33 3.53,16 4.33,16H7.67C8.47,16 9,15.33 9,14.67V12H7V14H5V10H9V9.33C9,8.67 8.47,8 7.67,8M21,10V8H15V16H17V14H19.5V12H17V10H21Z\" />";
-
-    private Amigos selectedFriend;
-    
+        //base.OnInitialized; //
+    } }
     private void SelectFriend(Amigos friend)
     {
-        Console.WriteLine($"Amigo seleccionado: {friend.Username}");
-        selectedFriend = friend;
+        @* Console.WriteLine($"Amigo seleccionado: {friend.Username}");
+        Console.WriteLine($"Foto del amigo seleccionado: {friend.FotoPerfil}"); *@
+        iniciarChat(friend);
         //pendienteeeeeeeee
     }
-    
-    private Color GetStatusColor(Amigos friend)
+    private async Task iniciarChat(Amigos friend)
     {
-        //pendienteeee fut funcionalidad
-        var random = new Random();
-        var status = random.Next(0, 3);
-        
-        return status switch
+        try
         {
-            0 => Color.Success, // Online
-            1 => Color.Warning, // Away
-            _ => Color.Default  // Offline
-        };
+            // Desuscribirse de eventos anteriores
+            if (chatService.ObsMensajeRecibido != null)
+            {
+                chatService.ObsMensajeRecibido -= OnMensajeRecibido;
+            }
+            
+            selectedFriend = friend;
+            
+            // Calcular el nombre de la sala
+            roomName = string.Compare(authService.Username, friend.Username) < 0
+                ? $"{authService.Username}_{friend.Username}"
+                : $"{friend.Username}_{authService.Username}";
+                
+            // Suscribirse al evento de mensajes recibidos
+            chatService.ObsMensajeRecibido += OnMensajeRecibido;
+            
+            // Conectar al hub y obtener la conexión
+            var connection = await chatService.ConnectToHub(authService.Username, roomName);
+            
+            // Obtener mensajes usando la misma conexión
+            chatMessages = await chatService.GetChatMessagesAsync(roomName, connection);
+            
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al iniciar chat: {ex.Message}");
+        }
+    }
+    private void OnMensajeRecibido(ChatMessage message)
+{
+    // Aquí puedes manejar la recepción de mensajes
+    Console.WriteLine($"Mensaje recibido en el front: {message.Message}, de parte de {message.UserName}");
+    
+    // Agregamos el mensaje al array
+    chatMessages.Add(message);
+    
+    // Como estamos en un callback de evento, necesitamos invocar StateHasChanged de manera segura
+    InvokeAsync(StateHasChanged);
+}
+    private async void OnUserConnection(string username, string isConnected)// isConnected = En línea
+    {
+        @* Console.WriteLine($"Usuario {username} {(isConnected == "En línea" ? "conectado" : "desconectado")}"); *@
+        var friend = listaAmigos.FirstOrDefault(f => f.Username == username);
+        if (friend != null)
+        {
+            @* Console.WriteLine($"Actualizando estado de conexión para {friend}"); *@
+            friend.Status = isConnected;
+            //recargamos amigos para que cargue la desconexion desde bdd
+            listaAmigos = await ClienteService.ObtenerAmigosAsync(authService.Amigos);
+            StateHasChanged();
+        }else
+        {
+            @* Console.WriteLine($"No se encontró el amigo {username} en la lista de amigos."); *@
+        }
     }
     
-    private string GetStatusText(Amigos friend)
-    {
-        // Implementación similar para el texto del estado
-        var random = new Random();
-        var status = random.Next(0, 3);
-        
-        return status switch
-        {
-            0 => "En línea",
-            1 => "Ausente",
-            _ => "Desconectado"
-        };
-    }
     
+    public void EnviarMensaje(string mensaje){
+        // Implementar la lógica para enviar un mensaje al amigo seleccionado
+        @* Console.WriteLine($"Enviando mensaje a {selectedFriend.Username}: {mensaje} quer tiene de img de perfil {authService.ImagenBase64}"); *@
+        //enviaremos el selectedFriend y una clase ChatMessage con el username, el mensaje , el base64 de la de perfil yl el time
+        //la sobreescribiremos en el servidor pero en el cliente la renderizamos primero con la hora local
+        ChatMessage mensajeRenderiz = new ChatMessage {  UserName= authService.Username, Message= mensaje, Time= DateTime.Now.ToString("dd-MM-yyyy HH:mm") };//luego obtendremos hora en servidor
+        //solo necesito el mensaje porque el username ya lo estoy pasando
+        chatService.SendMessage(roomName, mensajeRenderiz);
+        //guardamos el mensaje en BD para persistirlo
+        chatMessages.Add(mensajeRenderiz);
+        mensajeNuevo = string.Empty; // Limpiar el campo de entrada después de enviar el mensaje
+        StateHasChanged(); // Actualiza la UI
+        
+    }
     private int GetUnreadCount(Amigos friend)
     {
         //mensajes non leidos, pensar en comom hacero
         return new Random().Next(0, 5);
     }
-    
+    public async void Dispose()
+{
+    themeService.OnThemeChanged -= ThemeChanged;
+    if (chatService.ObsMensajeRecibido != null)
+    {
+        chatService.ObsMensajeRecibido -= OnMensajeRecibido;
+    }
+   chatService.ObsUserConnection -= OnUserConnection;
+    }
+     protected override void OnInitialized()
+    {
+        themeService.OnThemeChanged += ThemeChanged;
+    }
+
+    private void ThemeChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
 }

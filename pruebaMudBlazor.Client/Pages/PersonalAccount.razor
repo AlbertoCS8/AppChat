@@ -9,17 +9,18 @@
 @using pruebaMudBlazor.Client.Services
 @using pruebaMudBlazor.Client.Models
 @inject IClienteService ClienteService
+@inject ThemeService themeService
 
 @using System.Text.RegularExpressions
 @using System.ComponentModel.DataAnnotations
 
-
+<MudContainer Class="mt-16" Style="height: 100%; min-height: 100vh;" >
 <MudText Typo="Typo.h5" Color="Color.Primary" Class="mb-4">Mi cuenta</MudText>
-<MudTabs Elevation="25" Color="Color.Transparent" Rounded="true" PanelClass="mt-6">
-    <MudTabPanel Text="General">
+<MudTabs Elevation="25" Color="Color.Transparent" Rounded="true" PanelClass="mt-6" Class="@(themeService._isDarkMode ? "card-dark pl-6 pr-6 pb-6":"card-light pl-6 pr-6 pb-6")">
+    <MudTabPanel Text="General" >
         <MudGrid>
             <MudItem xs="12" sm="4" md="3">
-                <MudCard Elevation="25">
+                <MudCard Elevation="25" Class="@(themeService._isDarkMode ? "card-dark" : "card-light")">
                     <MudCardHeader>
                         <CardHeaderContent>
                             <MudText>Public Profile</MudText> @*quizas aqui poner lo el nombre de usuario y quitarlo de el otro lado*@   
@@ -27,17 +28,9 @@
                     </MudCardHeader>
                     <MudCardContent>
                         <div class="d-flex justify-center mb-4">
-                            @* <MudAvatar 
-                            Image="@AvatarImageLink" Style="height:100px; width:100px;">
-                                @if(AvatarImageLink == null)
-                                {
-                                    <MudIcon Icon="@AvatarIcon" Size="Size.Large"></MudIcon>
-                                }
-                            </MudAvatar> *@
                             <MudAvatar Style="height:100px; width:100px;">
                                 @if(AvatarImageLink != "")
                                 {
-                                    
                                     <MudImage Src="@AvatarImageLink" >
                                     </MudImage>
                                 }else{
@@ -48,14 +41,12 @@
                         </div>
                         <MudText Align="Align.Center">@authService.Username</MudText>
                     </MudCardContent>
-                    <MudCardActions Class="d-flex justify-center">
-                        @* <MudButton OnClick="DeletePicture" Color="@AvatarButtonColor">@AvatarButtonText</MudButton> *@
-                        
+                    <MudCardActions Class="d-flex justify-center">                        
                     </MudCardActions>
                 </MudCard>
             </MudItem>
             <MudItem xs="12" sm="8" md="9">
-                <MudCard Elevation="25">
+                <MudCard Elevation="25" Class="@(themeService._isDarkMode ? "card-dark" : "card-light")">
                     <MudCardHeader>
                         <CardHeaderContent>
                             <MudText>Profile Details</MudText>
@@ -80,16 +71,16 @@
                                     <b>Visible Only To Friends</b>
                                 </MudText>
                                 <MudText Typo="Typo.body2">
-                                    Means that only your friends will be able to see your contact details.
+                                    @* Means that only your friends will be able to see your contact details.
     using Blazored.Modal.Services;
-    using Blazored.Modal.Services;
+    using Blazored.Modal.Services; *@
                                 </MudText>
                                 @* <MudSwitch @bind-Checked="@FriendSwitch" Color="Color.Secondary" /> *@
                             </MudItem>
                         </MudGrid>
-    using pruebaMudBlazor.Client.Models;
+    @* using pruebaMudBlazor.Client.Models;
     using Blazored.Modal.Services;
-    using Blazored.Modal.Services;
+    using Blazored.Modal.Services; *@
                     </MudCardContent>
                     <MudCardActions Class="pb-4 pl-4">
                         @* <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" @onclick="@(() => SaveChanges("Profile details saved", Severity.Warning))">Save Changes</MudButton> *@
@@ -102,13 +93,8 @@
         </MudGrid>
     </MudTabPanel>
     <MudTabPanel Text="Notifications">
-        <MudCard>
-            <MudCardHeader>
-                <CardHeaderContent>
-                    <MudText>Notifications</MudText>
-                </CardHeaderContent>
-            </MudCardHeader>
-            <MudCardContent>
+        <MudCard Class="@(themeService._isDarkMode ? "card-dark" : "card-light")">
+            <MudCardContent >
                 <MudGrid>
                     <MudItem xs="12" sm="4">
                         <MudText>
@@ -147,22 +133,18 @@
     </MudTabPanel>
     @* panel para lista de amigos  *@
     <MudTabPanel Text="Friends">
-        <MudCard>
-            <MudCardHeader>
-                <CardHeaderContent>
-                    <MudText>Friends</MudText>
-                </CardHeaderContent>
-            </MudCardHeader>
-            <MudCardContent>
+        <MudCard Class="@(themeService._isDarkMode ? "card-dark" : "card-light")">
+            
+            <MudCardContent >
                 <MudGrid>
                     @foreach (var friend in listaAmigos)
                     {
-                        <MudItem xs="12" sm="6" md="4" lg="3" class="mb-4">
-                            <MudCard Elevation="5" Class="mb-4">
+                        <MudItem xs="12" sm="6" md="4" lg="2" class="mb-4 ">
+                            <MudCard Elevation="5" Class="mb-4 profile-card " >
                                 <MudCardHeader>
                                     <CardHeaderContent>
                                         <div class="d-flex align-center justify-center">
-                                            <MudAvatar Size="Size.Large" Class="mr-3" Style="height:70px; width:70px;">
+                                            <MudAvatar Size="Size.Large">
                                                 @if(friend.FotoPerfil != "")
                                                 {
                                                     <MudImage Src="@friend.FotoPerfil" Alt="@friend.Username"></MudImage>
@@ -176,11 +158,12 @@
                                 <MudCardContent Class="d-flex flex-column align-center">
                                     <MudText>@friend.Username</MudText>
                                 </MudCardContent>
-                                <MudCardActions Class="pb-4 pl-4">
-                                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto d-flex flex-column align-center" >Send Message</MudButton>
+                                <MudCardActions Class="pb-4 pl-4 justify-center">
+                                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="d-flex flex-column align-center" >Send Message</MudButton>
                                 </MudCardActions>
-                                <MudCardActions Class="pb-4 pl-4">
-                                    @* <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Remove Friend</MudButton> *@
+                                <MudCardActions Class="pb-4 pl-4 justify-center">
+                                    <MudButton Variant="Variant.Filled" Color="Color.Error" Class="d-flex flex-column align-center" @onclick="() => RemoveFriend(friend.Username)">Remove Friend</MudButton>
+                                    @* <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="d-flex flex-column align-center">Remove Friend</MudButton> *@
                                 </MudCardActions>
                             </MudCard>
                         </MudItem>
@@ -189,35 +172,8 @@
             </MudCardContent>
         </MudCard>
     </MudTabPanel>
-    @* <MudTabPanel Text="Security">
-        <MudForm @ref="form">
-            <MudCard>
-                <MudCardHeader>
-                    <CardHeaderContent>
-                        <MudText>Change Password</MudText>
-                    </CardHeaderContent>
-                </MudCardHeader>
-                 Por si quieres cambiar la contraseña, lo dejo como esquemiita para hacer algun otro menu
-                 <MudCardContent>
-                    <MudGrid>
-                        <MudItem xs="12" md="6">
-                            <MudTextField T="string" Label="Password" Variant="Variant.Outlined" InputType="InputType.Password" @ref="pwField1" Validation="@(new Func<string, IEnumerable<string>>(PasswordStrength))" Required="true" RequiredError="Password is required!" />
-                        </MudItem>
-                        <MudItem xs="12" md="6">
-                            <MudTextField T="string" Label="Password Confirmation" Variant="Variant.Outlined" InputType="InputType.Password" Validation="@(new Func<string, string>(PasswordMatch))" />
-                        </MudItem>
-                        <MudItem xs="12">
-                            <MudTextField T="string" Label="Current Password" Variant="Variant.Outlined" InputType="InputType.Password" />
-                        </MudItem>
-                    </MudGrid>
-                </MudCardContent> 
-                <MudCardActions Class="pb-4 pl-4">
-                    @* <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" @onclick="@(() => SaveChanges("Current Password is incorrect", Severity.Error))">Change Password</MudButton> 
-                </MudCardActions>
-            </MudCard>
-        </MudForm>
-    </MudTabPanel>*@
 </MudTabs>
+</MudContainer>
 
 @code {
     //quitar variables y usar authservice. 
@@ -225,11 +181,10 @@
     public string AvatarIcon { get; set; } = Icons.Material.Outlined.Person;
     public string AvatarButtonText { get; set; } = "Delete Picture";
     public Color AvatarButtonColor { get; set; } = Color.Error;
-    public string FirstName { get; set; }
+    public string FirstName { get; set; } = "";
     public string LastName { get; set; } = "";
     public string Username { get; set; } = "";
     public string Email { get; set; } = "";
-    public bool FriendSwitch { get; set; } = true;
     public List<Amigos> listaAmigos { get; set; } = new List<Amigos>();
     
     void DeletePicture()
@@ -254,18 +209,19 @@
             config.ShowCloseIcon = false;
         });
     }
+
+    void RemoveFriend(string friendUsername)
+    {
+            SaveChanges("Friend removed", MudBlazor.Severity.Warning);
+            ClienteService.EliminarAmigoAsync(authService.Username, friendUsername);
+            StateHasChanged();
+    }
+
     public Task  OpenDialogAsync()
     {
         var options = new DialogOptions { CloseOnEscapeKey = true , CloseButton= true};
 
         return DialogService.ShowAsync<Modal>("Cambia foto de perfil", options);
-    }
-    public Task CreateRoom()
-    {
-        @* NavigationManager.NavigateTo("/chat/room", forceLoad: false); *@
-        Console.WriteLine("Create room clicked");
-        return Task.CompletedTask;
-
     }
 
     
@@ -274,7 +230,7 @@
     protected override async Task OnInitializedAsync()
     {   
         if(!authService.IsAuthenticated){
-            NavigationManager.NavigateTo("/login", forceLoad: false);
+            NavigationManager.NavigateTo("/", forceLoad: false);
         }else{
             FirstName = authService.Nombre;
             AvatarImageLink = authService.ImagenBase64;
@@ -283,6 +239,20 @@
             Email = authService.Email;
             listaAmigos = await ClienteService.ObtenerAmigosAsync(authService.Amigos);
         }
+    }
+     protected override void OnInitialized()
+    {
+        themeService.OnThemeChanged += ThemeChanged;
+    }
+
+    private void ThemeChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        themeService.OnThemeChanged -= ThemeChanged;
     }
 
 }

@@ -4,15 +4,16 @@
 @inject IClienteService ClienteService
 @inject NavigationManager NavigationManager
 @inject AuthService authService
+@inject ThemeService themeService
 
 <PageTitle>Búsqueda de Usuarios</PageTitle>
 
-<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-6">
-    <MudText Typo="Typo.h4" GutterBottom="true" Class="mb-4">Buscar Usuarios</MudText>
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-16" Style="min-height: 100vh; height: 100%;">
+    <MudText Typo="Typo.h6" GutterBottom="true" Class="mb-4">Busca usuarios y agrégalos para chatear con ellos</MudText>
     
-    <MudCard Elevation="2" Class="mb-6">
+    <MudCard Elevation="2" Class="@(themeService.GetTheme() ? "mb-6 card-dark" : "mb-6 card-light")">
         <MudCardContent>
-            <MudTextField @bind-Value="searchTerm" Label="Buscar usuarios" Variant="Variant.Outlined" 
+            <MudTextField @bind-Value="searchTerm" Label="" Variant="Variant.Outlined" 
                           Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" 
                           AdornmentColor="Color.Primary" OnKeyUp="@SearchOnKeyPress" FullWidth="true"
                           Placeholder="Username" />
@@ -30,10 +31,10 @@
     }
     else if (searchPerformed && usuarios != null && usuarios.Count > 0)
     {
-        <MudText Typo="Typo.h6" Class="mb-3">Resultados de la búsqueda: @totalUsuarios usuarios encontrados</MudText>
+        <MudText Typo="Typo.subtitle1" Class="mb-3">Resultados de la búsqueda: @totalUsuarios usuarios encontrados</MudText>
         
         <MudTable Items="@usuariosPaginados" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@isSearching" 
-                  LoadingProgressColor="Color.Primary" Class="mb-4">
+                  LoadingProgressColor="Color.Primary" Class="@(themeService.GetTheme() ? "mb-6 card-dark" : "mb-6 card-light table-light")">
             <HeaderContent>
                 <MudTh>Usuario</MudTh>
                 <MudTh>Nombre</MudTh>
@@ -59,7 +60,7 @@
                 <MudTd DataLabel="Nombre">@context.Nombre @context.Apellido</MudTd>
                 <MudTd DataLabel="Email">@context.Email</MudTd>
                 <MudTd DataLabel="Acciones">
-                    <MudButton Variant="Variant.Outlined" Size="Size.Small" Color="Color.Primary"
+                    <MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Primary" 
                                OnClick="@(() => AddFriend(context.NombreUsuario))">
                         Añadir a amigos
                     </MudButton>
@@ -105,7 +106,15 @@
         
         try
         {
-            usuarios = await ClienteService.BuscarUsuariosAsync(searchTerm);
+            // Obtener todos los usuarios que coincidan con la búsqueda
+            var todosLosUsuarios = await ClienteService.BuscarUsuariosAsync(searchTerm);
+            
+            // Filtrar: excluir usuarios que ya son amigos y el propio usuario
+            usuarios = todosLosUsuarios
+                .Where(u => !authService.Amigos.Contains(u.NombreUsuario) && 
+                           u.NombreUsuario != authService.Username)
+                .ToList();
+                
             totalUsuarios = usuarios.Count;
             
             UpdatePagination();
@@ -164,6 +173,26 @@
         var respuesta= await ClienteService.AgregarAmigoAsync(authService.Username,Username);
         authService.Amigos.Add(Username);
 
+    }
+    //al cargar la pagina, si hay un amigo nuevo, lo agrego a la lista de amigos
+    protected override async Task OnInitializedAsync(){
+         if(!authService.IsAuthenticated){
+            NavigationManager.NavigateTo("/", forceLoad: false);
+        }
+    }
+     protected override void OnInitialized()
+    {
+        themeService.OnThemeChanged += ThemeChanged;
+    }
+
+    private void ThemeChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        themeService.OnThemeChanged -= ThemeChanged;
     }
     
    

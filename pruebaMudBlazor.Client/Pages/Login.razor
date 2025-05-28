@@ -1,4 +1,4 @@
-@page "/login"
+@page "/"
 @* @layout LoginLayout *@
 @using pruebaMudBlazor.Client.Models
 
@@ -7,35 +7,38 @@
 @inject AuthService authService
 @inject NavigationManager NavigationManager
 @inject ISnackbar Snackbar
-<MudContainer Class="d-flex align-center justify-center" Style="height: 100vh;">
-    <MudPaper Elevation="4" Class="pa-8" Style="width: 400px;">
+@inject ChatService chatService
+@inject ThemeService themeService
+
+<MudContainer Class="d-flex align-center justify-center" Style="height: 100vh;" >
+    <MudPaper Elevation="4" Class="@(themeService._isDarkMode ? "pa-8 card card-dark" : "pa-8 card card-light")" Style="width: 400px;">
         <div class="d-flex flex-column align-center mb-8">
             <MudIcon Icon="@Icons.Material.Filled.Login" Size="Size.Large" Class="mb-4" />
             <MudText Typo="Typo.h4" GutterBottom="true" Align="Align.Center">Login</MudText>
-            <MudText Typo="Typo.body2" Align="Align.Center">
-                ¿No tienes una cuenta todavía?
-                <MudLink Href="/register">Regístrate ya</MudLink>
-            </MudText>
         </div>
 
         <MudForm>
-            <MudTextField @bind-Value="@Email" T="string" Placeholder="Introduce tu email"
+            <MudTextField @bind-Value="@Email" T="string"
                 Validation="@(new Func<string, string>(ValidateEmail))" Label="E-mail" Variant="Variant.Outlined"
                 Class="mb-4" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Email"
                 OnlyValidateIfDirty="true" Immediate="true" />
 
             <MudTextField @bind-Value="@Password" Label="Password" Variant="Variant.Outlined" InputType="@PasswordInput"
-                Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="TogglePasswordVisibility"
+                Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon"  OnAdornmentClick="TogglePasswordVisibility"
                 Class="mb-4" Required="true" Immediate="true" OnlyValidateIfDirty="true" />
 
             <div Class="d-flex justify-space-between align-center mb-4">
                 <MudCheckBox T="bool" Label="Recuérdame" Color="Color.Primary" Class="ml-n1" />
             </div>
-            <div class="d-flex justify-space-between text-align-center mb-4">
+            @* <div class="d-flex justify-space-between text-align-center mb-4">
                 <MudLink Href="/pages/authentication/forgot-password" Color="Color.Primary" Align="Align.Center">
                     ¿Has olvidado tu contraseña?
                 </MudLink>
-            </div>
+            </div> 
+            Futura axtualizaciion*@
+            <MudLink Href="/registro" Color="Color.Primary" Align="Align.Center">
+                ¿No tienes cuenta? Regístrate
+            </MudLink>
 
             <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" FullWidth="true" Class="mt-4"
                 OnClick="HandleLogin" Disabled="@IsLoginDisabled">
@@ -85,8 +88,7 @@
 
     private async void HandleLogin()
     {
-        //Console.WriteLine("Email: " + Email);
-        //Console.WriteLine("Password: " + Password);
+        @* Console.WriteLine("themeservice._isDarkMode -----> " + themeService._isDarkMode); *@
         try
         {
             var respuesta = await ClienteService.LoginClienteAsync(Email, Password);
@@ -98,15 +100,14 @@
             authService.Apellido = respuesta.Apellido;
             authService.Amigos = respuesta.Amigos;
             authService.IsAuthenticated = true;
-            @* Console.WriteLine("Amigos del Usuario autenticado: " + authService.Amigos[0]);
-             *@
-             
-            NavigationManager.NavigateTo("/");
+            chatService.ConnectToGlobalHub(authService.Username);
+            //una vez hago login lo guardo en el diccionario de users de la parte de back para ver que el user esta en linea
+
+            NavigationManager.NavigateTo("/chats");
         }
         catch (Exception ex)
         {
             Console.WriteLine("Error: " + ex.Message);
-            // Manejar el error de login aquí, por ejemplo, mostrar un mensaje al usuario
             Snackbar.Add($"Error al iniciar sesión: {ex.Message}", MudBlazor.Severity.Error);
 
         }
@@ -117,5 +118,19 @@
         //recibo una repsuesta que es el usaurio entero de la BdD pues guardo la info en el servicio auth
         // Redirigir a la página de inicio o a otra página
 
+    }
+     protected override void OnInitialized()
+    {
+        themeService.OnThemeChanged += ThemeChanged;
+    }
+
+    private void ThemeChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        themeService.OnThemeChanged -= ThemeChanged;
     }
 }

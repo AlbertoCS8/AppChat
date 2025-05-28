@@ -4,8 +4,8 @@ using MongoDB.Bson.Serialization.Attributes;
 
 public class Usuario
 {
-    [BsonId] 
-    [BsonRepresentation(BsonType.ObjectId)] 
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; }
 
     [BsonElement("nombre")]
@@ -28,6 +28,9 @@ public class Usuario
 
     [BsonElement("fotoPerfil")]
     public string FotoPerfil { get; set; } // contenido imagen en base64
+    [BsonElement("ultimaConexion")]
+    public string UltimaConexion { get; set; } = string.Empty; // fecha y hora de la ultima conexion --> nos evitammos formatos de fechas
+    
     
     
 }

@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\appsettings.json"
     },
     {
+      "Id": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\wwwroot\\css\\custom.css",
+      "PackagePath": "staticwebassets\\css\\custom.css"
+    },
+    {
       "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.pruebaMudBlazor.Client.props",
       "PackagePath": "build\\pruebaMudBlazor.Client.props"
     },
