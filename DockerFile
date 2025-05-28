@@ -1,27 +1,34 @@
-# Imagen base runtime .NET 9.0 (aunque mencionas .NET 8.0, usas 9.0, ok)
+# Imagen base runtime .NET 9.0
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 WORKDIR /app
 EXPOSE 8080
+
+# 🛠️ Instalar certificados y librerías necesarias para TLS/MongoDB Atlas
+RUN apt-get update && apt-get install -y \
+    ca-certificates \
+    openssl \
+    libssl3 \
+    && rm -rf /var/lib/apt/lists/*
 
 # Imagen SDK para build
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
-# Copiar solo archivos .csproj y restaurar antes para cachear bien
+# Copiar archivos .csproj y restaurar paquetes
 COPY ["pruebaMudBlazor/pruebaMudBlazor.csproj", "pruebaMudBlazor/"]
 COPY ["pruebaMudBlazor.Client/pruebaMudBlazor.Client.csproj", "pruebaMudBlazor.Client/"]
 
 RUN dotnet restore "pruebaMudBlazor/pruebaMudBlazor.csproj"
 
-# Copiar todo el código fuente
+# Copiar el resto del código
 COPY pruebaMudBlazor/ pruebaMudBlazor/
 COPY pruebaMudBlazor.Client/ pruebaMudBlazor.Client/
 
-# Publicar la app (sin --no-restore porque ya restauramos)
+# Publicar la aplicación
 WORKDIR /src/pruebaMudBlazor
 RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
 
-# Imagen final
+# Imagen final (runtime)
 FROM base AS final
 WORKDIR /app
 COPY --from=build /app/publish .
