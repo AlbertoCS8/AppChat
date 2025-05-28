@@ -1,0 +1,33 @@
+# Usar la imagen base de .NET 8.0
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+WORKDIR /app
+EXPOSE 8080
+
+# Usar la imagen SDK para build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+# Copiar archivos de proyecto del servidor y cliente
+COPY ["pruebaMudBlazor/*.csproj", "./pruebaMudBlazor/"]
+COPY ["pruebaMudBlazor.Client/*.csproj", "./pruebaMudBlazor.Client/"]
+
+# Restaurar dependencias
+RUN dotnet restore "./pruebaMudBlazor/pruebaMudBlazor.csproj"
+
+# Copiar todo el código fuente
+COPY ["pruebaMudBlazor/", "./pruebaMudBlazor/"]
+COPY ["pruebaMudBlazor.Client/", "./pruebaMudBlazor.Client/"]
+
+# Publicar la aplicación servidor
+WORKDIR "/src/pruebaMudBlazor"
+RUN dotnet publish "pruebaMudBlazor.csproj" -c Release -o /app/publish /p:UseAppHost=false --no-restore
+
+# Imagen final
+FROM base AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+
+# Variable de entorno para el puerto
+ENV ASPNETCORE_URLS=http://+:8080
+
+ENTRYPOINT ["dotnet", "pruebaMudBlazor.dll"]
