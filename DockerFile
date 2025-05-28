@@ -16,7 +16,6 @@ RUN dotnet restore "pruebaMudBlazor/pruebaMudBlazor.csproj"
 # Copiar todo el código fuente
 COPY pruebaMudBlazor/ pruebaMudBlazor/
 COPY pruebaMudBlazor.Client/ pruebaMudBlazor.Client/
-COPY pruebaMudBlazor.Shared/ pruebaMudBlazor.Shared/
 
 # Publicar la app (sin --no-restore porque ya restauramos)
 WORKDIR /src/pruebaMudBlazor
