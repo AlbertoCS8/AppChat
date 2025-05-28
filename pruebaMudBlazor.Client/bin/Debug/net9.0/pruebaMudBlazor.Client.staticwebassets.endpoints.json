@@ -61157,17 +61157,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"6BHkf80kvx8NxJK39GL0z9GgJk4iZCfDqS7QoixpQmA=\""
+          "Value": "\"IauxJImmhcAI3evahs6yvkMjstpMW701K8qFQtDHYWk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:31:37 GMT"
+          "Value": "Wed, 28 May 2025 12:04:59 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-6BHkf80kvx8NxJK39GL0z9GgJk4iZCfDqS7QoixpQmA="
+          "Value": "sha256-IauxJImmhcAI3evahs6yvkMjstpMW701K8qFQtDHYWk="
         }
       ]
     },
@@ -61204,15 +61204,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"DCNXaAPTE4XGJQI4f8QXzrelZ5BTjLTj9Cwl9KqhjoA=\""
+          "Value": "\"/vBX6fBOiHHkoD+vRRAFHZNlPCjjcgOd+XYzGfyvXuw=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"6BHkf80kvx8NxJK39GL0z9GgJk4iZCfDqS7QoixpQmA=\""
+          "Value": "W/\"IauxJImmhcAI3evahs6yvkMjstpMW701K8qFQtDHYWk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:29:23 GMT"
+          "Value": "Wed, 28 May 2025 12:00:07 GMT"
         },
         {
           "Name": "Vary",
@@ -61222,7 +61222,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-6BHkf80kvx8NxJK39GL0z9GgJk4iZCfDqS7QoixpQmA="
+          "Value": "sha256-IauxJImmhcAI3evahs6yvkMjstpMW701K8qFQtDHYWk="
         }
       ]
     },
@@ -61253,11 +61253,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"DCNXaAPTE4XGJQI4f8QXzrelZ5BTjLTj9Cwl9KqhjoA=\""
+          "Value": "\"/vBX6fBOiHHkoD+vRRAFHZNlPCjjcgOd+XYzGfyvXuw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:29:23 GMT"
+          "Value": "Wed, 28 May 2025 12:00:07 GMT"
         },
         {
           "Name": "Vary",
@@ -61267,7 +61267,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-DCNXaAPTE4XGJQI4f8QXzrelZ5BTjLTj9Cwl9KqhjoA="
+          "Value": "sha256-/vBX6fBOiHHkoD+vRRAFHZNlPCjjcgOd+XYzGfyvXuw="
         }
       ]
     },
@@ -64687,8 +64687,8 @@
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.820foo2dpl.wasm",
-      "AssetFile": "_framework/pruebaMudBlazor.Client.820foo2dpl.wasm",
+      "Route": "_framework/pruebaMudBlazor.Client.c8rfbpnyue.wasm",
+      "AssetFile": "_framework/pruebaMudBlazor.Client.c8rfbpnyue.wasm",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -64709,21 +64709,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"EIYFDd5Q5gh06haslCbndDvpfIH/zg9PJaLqKYVnp+Q=\""
+          "Value": "\"nBYk4CDsCsMTLuJalMecw1t4paUo0sC0oFKrM1nIlfc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:31:37 GMT"
+          "Value": "Wed, 28 May 2025 12:00:07 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "820foo2dpl"
+          "Value": "c8rfbpnyue"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-EIYFDd5Q5gh06haslCbndDvpfIH/zg9PJaLqKYVnp+Q="
+          "Value": "sha256-nBYk4CDsCsMTLuJalMecw1t4paUo0sC0oFKrM1nIlfc="
         },
         {
           "Name": "label",
@@ -64732,13 +64732,13 @@
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.820foo2dpl.wasm",
-      "AssetFile": "_framework/pruebaMudBlazor.Client.820foo2dpl.wasm.gz",
+      "Route": "_framework/pruebaMudBlazor.Client.c8rfbpnyue.wasm",
+      "AssetFile": "_framework/pruebaMudBlazor.Client.c8rfbpnyue.wasm.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000017465724"
+          "Quality": "0.000017462674"
         }
       ],
       "ResponseHeaders": [
@@ -64756,7 +64756,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "57254"
+          "Value": "57264"
         },
         {
           "Name": "Content-Type",
@@ -64764,15 +64764,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"xFO6cUbFs385UmnHy0I5M546gJe2IKD7rKl57p0+/vU=\""
+          "Value": "\"1y76Xuy8cU/2EFlyEQIWIEuYMYaxrGSGDmW0r3xhC/o=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"EIYFDd5Q5gh06haslCbndDvpfIH/zg9PJaLqKYVnp+Q=\""
+          "Value": "W/\"nBYk4CDsCsMTLuJalMecw1t4paUo0sC0oFKrM1nIlfc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:31:37 GMT"
+          "Value": "Wed, 28 May 2025 12:00:07 GMT"
         },
         {
           "Name": "Vary",
@@ -64782,11 +64782,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "820foo2dpl"
+          "Value": "c8rfbpnyue"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-EIYFDd5Q5gh06haslCbndDvpfIH/zg9PJaLqKYVnp+Q="
+          "Value": "sha256-nBYk4CDsCsMTLuJalMecw1t4paUo0sC0oFKrM1nIlfc="
         },
         {
           "Name": "label",
@@ -64795,8 +64795,8 @@
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.820foo2dpl.wasm.gz",
-      "AssetFile": "_framework/pruebaMudBlazor.Client.820foo2dpl.wasm.gz",
+      "Route": "_framework/pruebaMudBlazor.Client.c8rfbpnyue.wasm.gz",
+      "AssetFile": "_framework/pruebaMudBlazor.Client.c8rfbpnyue.wasm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -64813,7 +64813,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "57254"
+          "Value": "57264"
         },
         {
           "Name": "Content-Type",
@@ -64821,11 +64821,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"xFO6cUbFs385UmnHy0I5M546gJe2IKD7rKl57p0+/vU=\""
+          "Value": "\"1y76Xuy8cU/2EFlyEQIWIEuYMYaxrGSGDmW0r3xhC/o=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:31:37 GMT"
+          "Value": "Wed, 28 May 2025 12:00:07 GMT"
         },
         {
           "Name": "Vary",
@@ -64835,11 +64835,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "820foo2dpl"
+          "Value": "c8rfbpnyue"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-xFO6cUbFs385UmnHy0I5M546gJe2IKD7rKl57p0+/vU="
+          "Value": "sha256-1y76Xuy8cU/2EFlyEQIWIEuYMYaxrGSGDmW0r3xhC/o="
         },
         {
           "Name": "label",
@@ -64848,145 +64848,8 @@
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.pdb",
-      "AssetFile": "_framework/pruebaMudBlazor.Client.pnkrpa1nov.pdb",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "91536"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"q20GQxC/C76gCB9yKslvKlCKV5ENZk7bC6UTcqrTv38=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:31:37 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-q20GQxC/C76gCB9yKslvKlCKV5ENZk7bC6UTcqrTv38="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/pruebaMudBlazor.Client.pdb",
-      "AssetFile": "_framework/pruebaMudBlazor.Client.pnkrpa1nov.pdb.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000013964140"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "71611"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"mGcy2dk7XAAuEjBReBE6pbP9oG/jzC3yT1o+ZDA/3kE=\""
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"q20GQxC/C76gCB9yKslvKlCKV5ENZk7bC6UTcqrTv38=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:31:37 GMT"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-q20GQxC/C76gCB9yKslvKlCKV5ENZk7bC6UTcqrTv38="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/pruebaMudBlazor.Client.pdb.gz",
-      "AssetFile": "_framework/pruebaMudBlazor.Client.pnkrpa1nov.pdb.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "71611"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"mGcy2dk7XAAuEjBReBE6pbP9oG/jzC3yT1o+ZDA/3kE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:31:37 GMT"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-mGcy2dk7XAAuEjBReBE6pbP9oG/jzC3yT1o+ZDA/3kE="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/pruebaMudBlazor.Client.pnkrpa1nov.pdb",
-      "AssetFile": "_framework/pruebaMudBlazor.Client.pnkrpa1nov.pdb",
+      "Route": "_framework/pruebaMudBlazor.Client.gbm1llivkl.pdb",
+      "AssetFile": "_framework/pruebaMudBlazor.Client.gbm1llivkl.pdb",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -64999,7 +64862,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "91536"
+          "Value": "91532"
         },
         {
           "Name": "Content-Type",
@@ -65007,21 +64870,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"q20GQxC/C76gCB9yKslvKlCKV5ENZk7bC6UTcqrTv38=\""
+          "Value": "\"xE/ES9kjtNX/TiNLEi8x5mfayG65lAoArWWfXbOjXe4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:31:37 GMT"
+          "Value": "Wed, 28 May 2025 12:00:07 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "pnkrpa1nov"
+          "Value": "gbm1llivkl"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-q20GQxC/C76gCB9yKslvKlCKV5ENZk7bC6UTcqrTv38="
+          "Value": "sha256-xE/ES9kjtNX/TiNLEi8x5mfayG65lAoArWWfXbOjXe4="
         },
         {
           "Name": "label",
@@ -65030,13 +64893,13 @@
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.pnkrpa1nov.pdb",
-      "AssetFile": "_framework/pruebaMudBlazor.Client.pnkrpa1nov.pdb.gz",
+      "Route": "_framework/pruebaMudBlazor.Client.gbm1llivkl.pdb",
+      "AssetFile": "_framework/pruebaMudBlazor.Client.gbm1llivkl.pdb.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000013964140"
+          "Quality": "0.000013965310"
         }
       ],
       "ResponseHeaders": [
@@ -65054,7 +64917,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "71611"
+          "Value": "71605"
         },
         {
           "Name": "Content-Type",
@@ -65062,15 +64925,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"mGcy2dk7XAAuEjBReBE6pbP9oG/jzC3yT1o+ZDA/3kE=\""
+          "Value": "\"6JmVuyphtEn/EghVOxBQLPoBg2lJ7R4Pfw2HyPMUIZw=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"q20GQxC/C76gCB9yKslvKlCKV5ENZk7bC6UTcqrTv38=\""
+          "Value": "W/\"xE/ES9kjtNX/TiNLEi8x5mfayG65lAoArWWfXbOjXe4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:31:37 GMT"
+          "Value": "Wed, 28 May 2025 12:00:07 GMT"
         },
         {
           "Name": "Vary",
@@ -65080,11 +64943,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "pnkrpa1nov"
+          "Value": "gbm1llivkl"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-q20GQxC/C76gCB9yKslvKlCKV5ENZk7bC6UTcqrTv38="
+          "Value": "sha256-xE/ES9kjtNX/TiNLEi8x5mfayG65lAoArWWfXbOjXe4="
         },
         {
           "Name": "label",
@@ -65093,8 +64956,8 @@
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.pnkrpa1nov.pdb.gz",
-      "AssetFile": "_framework/pruebaMudBlazor.Client.pnkrpa1nov.pdb.gz",
+      "Route": "_framework/pruebaMudBlazor.Client.gbm1llivkl.pdb.gz",
+      "AssetFile": "_framework/pruebaMudBlazor.Client.gbm1llivkl.pdb.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -65111,7 +64974,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "71611"
+          "Value": "71605"
         },
         {
           "Name": "Content-Type",
@@ -65119,11 +64982,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"mGcy2dk7XAAuEjBReBE6pbP9oG/jzC3yT1o+ZDA/3kE=\""
+          "Value": "\"6JmVuyphtEn/EghVOxBQLPoBg2lJ7R4Pfw2HyPMUIZw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:31:37 GMT"
+          "Value": "Wed, 28 May 2025 12:00:07 GMT"
         },
         {
           "Name": "Vary",
@@ -65133,11 +64996,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "pnkrpa1nov"
+          "Value": "gbm1llivkl"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-mGcy2dk7XAAuEjBReBE6pbP9oG/jzC3yT1o+ZDA/3kE="
+          "Value": "sha256-6JmVuyphtEn/EghVOxBQLPoBg2lJ7R4Pfw2HyPMUIZw="
         },
         {
           "Name": "label",
@@ -65146,8 +65009,145 @@
       ]
     },
     {
+      "Route": "_framework/pruebaMudBlazor.Client.pdb",
+      "AssetFile": "_framework/pruebaMudBlazor.Client.gbm1llivkl.pdb",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "91532"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"xE/ES9kjtNX/TiNLEi8x5mfayG65lAoArWWfXbOjXe4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 May 2025 12:00:07 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-xE/ES9kjtNX/TiNLEi8x5mfayG65lAoArWWfXbOjXe4="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/pruebaMudBlazor.Client.pdb",
+      "AssetFile": "_framework/pruebaMudBlazor.Client.gbm1llivkl.pdb.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000013965310"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "71605"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6JmVuyphtEn/EghVOxBQLPoBg2lJ7R4Pfw2HyPMUIZw=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"xE/ES9kjtNX/TiNLEi8x5mfayG65lAoArWWfXbOjXe4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 May 2025 12:00:07 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-xE/ES9kjtNX/TiNLEi8x5mfayG65lAoArWWfXbOjXe4="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/pruebaMudBlazor.Client.pdb.gz",
+      "AssetFile": "_framework/pruebaMudBlazor.Client.gbm1llivkl.pdb.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "71605"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6JmVuyphtEn/EghVOxBQLPoBg2lJ7R4Pfw2HyPMUIZw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 May 2025 12:00:07 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6JmVuyphtEn/EghVOxBQLPoBg2lJ7R4Pfw2HyPMUIZw="
+        }
+      ]
+    },
+    {
       "Route": "_framework/pruebaMudBlazor.Client.wasm",
-      "AssetFile": "_framework/pruebaMudBlazor.Client.820foo2dpl.wasm",
+      "AssetFile": "_framework/pruebaMudBlazor.Client.c8rfbpnyue.wasm",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -65168,28 +65168,28 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"EIYFDd5Q5gh06haslCbndDvpfIH/zg9PJaLqKYVnp+Q=\""
+          "Value": "\"nBYk4CDsCsMTLuJalMecw1t4paUo0sC0oFKrM1nIlfc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:31:37 GMT"
+          "Value": "Wed, 28 May 2025 12:00:07 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-EIYFDd5Q5gh06haslCbndDvpfIH/zg9PJaLqKYVnp+Q="
+          "Value": "sha256-nBYk4CDsCsMTLuJalMecw1t4paUo0sC0oFKrM1nIlfc="
         }
       ]
     },
     {
       "Route": "_framework/pruebaMudBlazor.Client.wasm",
-      "AssetFile": "_framework/pruebaMudBlazor.Client.820foo2dpl.wasm.gz",
+      "AssetFile": "_framework/pruebaMudBlazor.Client.c8rfbpnyue.wasm.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000017465724"
+          "Quality": "0.000017462674"
         }
       ],
       "ResponseHeaders": [
@@ -65207,7 +65207,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "57254"
+          "Value": "57264"
         },
         {
           "Name": "Content-Type",
@@ -65215,15 +65215,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"xFO6cUbFs385UmnHy0I5M546gJe2IKD7rKl57p0+/vU=\""
+          "Value": "\"1y76Xuy8cU/2EFlyEQIWIEuYMYaxrGSGDmW0r3xhC/o=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"EIYFDd5Q5gh06haslCbndDvpfIH/zg9PJaLqKYVnp+Q=\""
+          "Value": "W/\"nBYk4CDsCsMTLuJalMecw1t4paUo0sC0oFKrM1nIlfc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:31:37 GMT"
+          "Value": "Wed, 28 May 2025 12:00:07 GMT"
         },
         {
           "Name": "Vary",
@@ -65233,13 +65233,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-EIYFDd5Q5gh06haslCbndDvpfIH/zg9PJaLqKYVnp+Q="
+          "Value": "sha256-nBYk4CDsCsMTLuJalMecw1t4paUo0sC0oFKrM1nIlfc="
         }
       ]
     },
     {
       "Route": "_framework/pruebaMudBlazor.Client.wasm.gz",
-      "AssetFile": "_framework/pruebaMudBlazor.Client.820foo2dpl.wasm.gz",
+      "AssetFile": "_framework/pruebaMudBlazor.Client.c8rfbpnyue.wasm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -65256,7 +65256,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "57254"
+          "Value": "57264"
         },
         {
           "Name": "Content-Type",
@@ -65264,11 +65264,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"xFO6cUbFs385UmnHy0I5M546gJe2IKD7rKl57p0+/vU=\""
+          "Value": "\"1y76Xuy8cU/2EFlyEQIWIEuYMYaxrGSGDmW0r3xhC/o=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:31:37 GMT"
+          "Value": "Wed, 28 May 2025 12:00:07 GMT"
         },
         {
           "Name": "Vary",
@@ -65278,7 +65278,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-xFO6cUbFs385UmnHy0I5M546gJe2IKD7rKl57p0+/vU="
+          "Value": "sha256-1y76Xuy8cU/2EFlyEQIWIEuYMYaxrGSGDmW0r3xhC/o="
         }
       ]
     },
