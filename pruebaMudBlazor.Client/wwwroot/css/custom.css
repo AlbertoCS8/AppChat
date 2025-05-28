@@ -51,3 +51,13 @@
     backdrop-filter: blur(25px) saturate(100%);
     -webkit-backdrop-filter: blur(25px) saturate(100%);
  }
+/* Clase para ocultar scrollbars */
+.hide-scrollbar {
+    overflow: auto; /* Mejor que 'overlay' que está obsoleto */
+    scrollbar-width: none;        /* Firefox */
+    -ms-overflow-style: none;     /* IE 10+ */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;               /* Chrome/Safari/Edge */
+}

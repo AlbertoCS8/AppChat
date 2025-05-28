@@ -16,7 +16,7 @@
     @* Class="@(themeService.GetTheme() ? "mb-6 card-dark" : "mb-6 card-light")" *@
     <MudHidden Breakpoint="Breakpoint.SmAndDown">
         
-    <MudPaper Elevation="25" Class="@(themeService._isDarkMode ? "py-1 flex-grow-1 card-dark": "py-1 flex-grow-1 card-light")"
+    <MudPaper Elevation="25" Class="@(themeService._isDarkMode ? "py-1 flex-grow-1 card-dark hide-scrollbar": "py-1 flex-grow-1 card-light hide-scrollbar")"
     Style="max-height: 85vh; overflow:scroll; width:20%; margin-right: 20px;">
         <MudToolBar Dense="true" Class="mb-4">
             <MudText Typo="Typo.h6" Inline="true" Class="mr-2" Style="font-size: 1rem;">Chats</MudText>
@@ -29,7 +29,7 @@
         {
             @foreach (var amigo in listaAmigos)
             {
-                <MudCard Elevation="2" Class=@($"ma-1 mb-1 friend-card {(selectedFriend != null && selectedFriend.Username == amigo.Username ? "selected-friend" : "")}")
+                <MudCard Elevation="2" Class=@($"ma-1 mb-1 friend-card hide-scrollbar {(selectedFriend != null && selectedFriend.Username == amigo.Username ? "selected-friend" : "")}")
                                          @onclick="() => SelectFriend(amigo)"
                                          Style="cursor: pointer;
                                          overflow-wrap: anywhere;">
@@ -69,7 +69,7 @@
         }
     </MudPaper>
     </MudHidden>
-    <MudPaper Elevation="25" Class="@(themeService._isDarkMode ? "py-1 flex-grow-1 card-dark": "py-1 flex-grow-1 card-light")" 
+    <MudPaper Elevation="25" Class="@(themeService._isDarkMode ? "py-1 flex-grow-1 card-dark hide-scrollbar": "py-1 flex-grow-1 card-light hide-scrollbar")" 
     Style="max-height: 85vh; overflow:scroll; width:80%; min-height: 85vh;">
         <MudToolBar Dense="true" Class="mb-4">
             @if(selectedFriend != null)
@@ -85,7 +85,7 @@
                 <MudIconButton OnClick="@(() => OpenDrawer(Anchor.Right))" Icon="@Icons.Material.Outlined.PeopleAlt" Color="Color.Inherit" Class="ml-3" />
             </MudHidden>
         </MudToolBar>
-        <div class="d-flex flex-column px-4" style="max-height:800px; overflow:scroll; height:75%;">
+        <div class="d-flex flex-column px-4 hide-scrollbar" style="max-height:800px; overflow:scroll; height:75%;">
           @if (chatMessages.ToArray().Length > 0)
 {
     string? lastSenderMsg = null;
@@ -186,7 +186,7 @@
 
             else // este es cuando no hayt mensajes en la conversacion, lo dejo como un mini tutorial
             {
-                <div class="d-flex flex-column px-4" style="max-height:800px; overflow:scroll;">
+                <div class="d-flex flex-column px-4 hide-scrollbar" style="max-height:800px; overflow:scroll;">
                 <div class="d-flex flex-column mb-2">
                     <MudText Typo="Typo.subtitle2" Class="mb-1" Color="Color.Primary">AlbertoCS8</MudText>
                     <div class="d-flex">
