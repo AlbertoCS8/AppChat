@@ -10,7 +10,6 @@ WORKDIR /src
 # Copiar solo archivos .csproj y restaurar antes para cachear bien
 COPY ["pruebaMudBlazor/pruebaMudBlazor.csproj", "pruebaMudBlazor/"]
 COPY ["pruebaMudBlazor.Client/pruebaMudBlazor.Client.csproj", "pruebaMudBlazor.Client/"]
-COPY ["pruebaMudBlazor.Shared/pruebaMudBlazor.Shared.csproj", "pruebaMudBlazor.Shared/"]
 
 RUN dotnet restore "pruebaMudBlazor/pruebaMudBlazor.csproj"
 
