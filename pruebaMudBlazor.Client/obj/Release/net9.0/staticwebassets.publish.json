@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "6v6DpRYsvJ70u5GlQAcba5utNAcSiWVff99g0y2ErEA=",
+  "Hash": "3X/uvcHFSbUxevwAw329YL73Eohb9tGvxQjI1S/E5cs=",
   "Source": "pruebaMudBlazor.Client",
   "BasePath": "/",
   "Mode": "Default",
@@ -125,7 +125,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\wwwroot\\_framework\\dotnet.js",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/dotnet#[.{fingerprint}]?.js",
       "AssetKind": "Publish",
@@ -146,7 +146,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\wwwroot\\_framework\\dotnet.native.8bti36lthm.js",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/dotnet.native.8bti36lthm.js",
       "AssetKind": "Publish",
@@ -167,7 +167,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\wwwroot\\_framework\\dotnet.native.tr0cyonrwt.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/dotnet.native.tr0cyonrwt.wasm",
       "AssetKind": "Publish",
@@ -188,7 +188,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\wwwroot\\_framework\\dotnet.runtime.tsg4gsv2hg.js",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/dotnet.runtime.tsg4gsv2hg.js",
       "AssetKind": "Publish",
@@ -209,7 +209,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\wwwroot\\_framework\\icudt_CJK.tjcz0u77k5.dat",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/icudt_CJK.tjcz0u77k5.dat",
       "AssetKind": "Publish",
@@ -230,7 +230,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\wwwroot\\_framework\\icudt_EFIGS.tptq2av103.dat",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/icudt_EFIGS.tptq2av103.dat",
       "AssetKind": "Publish",
@@ -251,7 +251,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\wwwroot\\_framework\\icudt_no_CJK.lfu7j35m59.dat",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/icudt_no_CJK.lfu7j35m59.dat",
       "AssetKind": "Publish",
@@ -272,7 +272,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\blazor.publish.boot.json",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/blazor.boot.json",
       "AssetKind": "Publish",
@@ -283,8 +283,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "manifest",
-      "Fingerprint": "zvxjne3e1g",
-      "Integrity": "sa65PSIPS4jYD6ihEkml9bk1VRQcWp4635k7i06Nsxo=",
+      "Fingerprint": "k0l2gkxlbw",
+      "Integrity": "HPln1bqofk/vPTl4WS6PtG5REF1kIOfoXjqbfSyJHtM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "obj\\Release\\net9.0\\blazor.publish.boot.json"
@@ -314,7 +314,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\1dhxpx6wn8-tsg4gsv2hg.gz",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/dotnet.runtime#[.{fingerprint=tsg4gsv2hg}]!.js.gz",
       "AssetKind": "Publish",
@@ -335,7 +335,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\5tr44n2stm-aqp76xwkzt.gz",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/dotnet#[.{fingerprint=aqp76xwkzt}]?.js.gz",
       "AssetKind": "Publish",
@@ -356,7 +356,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\6sed39w30x-8bti36lthm.gz",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/dotnet.native#[.{fingerprint=8bti36lthm}]!.js.gz",
       "AssetKind": "Publish",
@@ -563,12 +563,12 @@
       "OriginalItemSpec": "C:\\Users\\Alberto\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\MudBlazor.min.js"
     },
     {
-      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-ero8se3l16.br",
+      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-jydhrm63hy.br",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\",
       "BasePath": "/",
-      "RelativePath": "_framework/pruebaMudBlazor.Client#[.{fingerprint=ero8se3l16}]!.wasm.br",
+      "RelativePath": "_framework/pruebaMudBlazor.Client#[.{fingerprint=jydhrm63hy}]!.wasm.br",
       "AssetKind": "Publish",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -577,19 +577,19 @@
       "RelatedAsset": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\pruebaMudBlazor.Client.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "br",
-      "Fingerprint": "jxmkqxdpyg",
-      "Integrity": "Fz9S1dakrEkOWsGBtuVn/bnA2WKh1BQAP3yDW3bDe3o=",
+      "Fingerprint": "3u0bnbwaca",
+      "Integrity": "+9t+sJpnRmFneCeAFuTKdENG7oOUJAUMO8d51ngxGeY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\pruebaMudBlazor.Client.wasm"
     },
     {
-      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-ero8se3l16.gz",
+      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-jydhrm63hy.gz",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\",
       "BasePath": "/",
-      "RelativePath": "_framework/pruebaMudBlazor.Client#[.{fingerprint=ero8se3l16}]!.wasm.gz",
+      "RelativePath": "_framework/pruebaMudBlazor.Client#[.{fingerprint=jydhrm63hy}]!.wasm.gz",
       "AssetKind": "Publish",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -598,8 +598,8 @@
       "RelatedAsset": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\pruebaMudBlazor.Client.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "43uopbaxhx",
-      "Integrity": "sKx2zRAv7XnSYvmfvL56qokfNW16STQ8hJvuORcNBpg=",
+      "Fingerprint": "wgrj8zc3py",
+      "Integrity": "MPovD+az7VvnFs0Ms0d149BOfqlIikUeU2MfMUxnIT4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\pruebaMudBlazor.Client.wasm"
@@ -1298,7 +1298,7 @@
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.AspNetCore.Components.WebAssembly.wasm"
     },
     {
-      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\b31gy0ypjc-zvxjne3e1g.br",
+      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\b31gy0ypjc-k0l2gkxlbw.br",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\",
@@ -1312,14 +1312,14 @@
       "RelatedAsset": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\blazor.publish.boot.json",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "br",
-      "Fingerprint": "yjq4ltfxcp",
-      "Integrity": "blgaWATxlX9Qx0AJBhNmo03muTE+q6EUhSxlFvJvcTg=",
+      "Fingerprint": "8izs2a4m0v",
+      "Integrity": "wAwkvOn2N546t6MlopTaHJmM+Za1bKxyvKgR0Sk70oA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\blazor.publish.boot.json"
     },
     {
-      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\b31gy0ypjc-zvxjne3e1g.gz",
+      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\b31gy0ypjc-k0l2gkxlbw.gz",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\",
@@ -1333,8 +1333,8 @@
       "RelatedAsset": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\blazor.publish.boot.json",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "wbsohqfc50",
-      "Integrity": "bO77QaxJdJ5+5XmRbySVsWCqbBn1tFJUiaCV80bCBrc=",
+      "Fingerprint": "921li9gt4x",
+      "Integrity": "X7E99JiKUzySIZI0ovE5IF/kC8faQ1x2keqTvkVQdxI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\blazor.publish.boot.json"
@@ -3611,7 +3611,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\wfxekbd1yr-tr0cyonrwt.gz",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/dotnet.native#[.{fingerprint=tr0cyonrwt}]!.wasm.gz",
       "AssetKind": "Publish",
@@ -3674,7 +3674,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Blazored.Modal.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Blazored.Modal#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -3695,7 +3695,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\FluentValidation.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/FluentValidation#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -3716,7 +3716,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.AspNetCore.Components.Forms.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.AspNetCore.Components.Forms#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -3737,7 +3737,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.AspNetCore.Components.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.AspNetCore.Components#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -3758,7 +3758,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.AspNetCore.Components.Web.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.AspNetCore.Components.Web#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -3779,7 +3779,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.AspNetCore.Components.WebAssembly.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.AspNetCore.Components.WebAssembly#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -3800,7 +3800,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.AspNetCore.Connections.Abstractions.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.AspNetCore.Connections.Abstractions#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -3821,7 +3821,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.AspNetCore.Http.Connections.Client.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.AspNetCore.Http.Connections.Client#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -3842,7 +3842,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.AspNetCore.Http.Connections.Common.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.AspNetCore.Http.Connections.Common#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -3863,7 +3863,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.AspNetCore.SignalR.Client.Core.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.AspNetCore.SignalR.Client.Core#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -3884,7 +3884,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.AspNetCore.SignalR.Client.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.AspNetCore.SignalR.Client#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -3905,7 +3905,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.AspNetCore.SignalR.Common.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.AspNetCore.SignalR.Common#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -3926,7 +3926,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.AspNetCore.SignalR.Protocols.Json.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.AspNetCore.SignalR.Protocols.Json#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -3947,7 +3947,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.Extensions.Configuration.Abstractions.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.Extensions.Configuration.Abstractions#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -3968,7 +3968,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.Extensions.Configuration.Json.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.Extensions.Configuration.Json#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -3989,7 +3989,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.Extensions.Configuration.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.Extensions.Configuration#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4010,7 +4010,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.Extensions.DependencyInjection.Abstractions.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.Extensions.DependencyInjection.Abstractions#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4031,7 +4031,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.Extensions.DependencyInjection.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.Extensions.DependencyInjection#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4052,7 +4052,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.Extensions.Features.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.Extensions.Features#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4073,7 +4073,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.Extensions.Localization.Abstractions.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.Extensions.Localization.Abstractions#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4094,7 +4094,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.Extensions.Localization.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.Extensions.Localization#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4115,7 +4115,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.Extensions.Logging.Abstractions.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.Extensions.Logging.Abstractions#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4136,7 +4136,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.Extensions.Logging.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.Extensions.Logging#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4157,7 +4157,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.Extensions.Options.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.Extensions.Options#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4178,7 +4178,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.Extensions.Primitives.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.Extensions.Primitives#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4199,7 +4199,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.JSInterop.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.JSInterop#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4220,7 +4220,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\Microsoft.JSInterop.WebAssembly.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.JSInterop.WebAssembly#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4241,7 +4241,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\MudBlazor.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/MudBlazor#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4262,7 +4262,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\pruebaMudBlazor.Client.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/pruebaMudBlazor.Client#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4273,8 +4273,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "ero8se3l16",
-      "Integrity": "pswFu3hjHfiHO0tUdlMeUB+ZtsOp9o8Qq8v3G07SM6I=",
+      "Fingerprint": "jydhrm63hy",
+      "Integrity": "65PojZ9c7xwexriMJyKqB4Telt7UmryAF0WpoIp/sRY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\pruebaMudBlazor.Client.wasm"
@@ -4283,7 +4283,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Collections.Concurrent.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Collections.Concurrent#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4304,7 +4304,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Collections.Immutable.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Collections.Immutable#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4325,7 +4325,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Collections.NonGeneric.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Collections.NonGeneric#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4346,7 +4346,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Collections.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Collections#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4367,7 +4367,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.ComponentModel.Annotations.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.ComponentModel.Annotations#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4388,7 +4388,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.ComponentModel.Primitives.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.ComponentModel.Primitives#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4409,7 +4409,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.ComponentModel.TypeConverter.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.ComponentModel.TypeConverter#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4430,7 +4430,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.ComponentModel.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.ComponentModel#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4451,7 +4451,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Console.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Console#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4472,7 +4472,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Diagnostics.DiagnosticSource.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Diagnostics.DiagnosticSource#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4493,7 +4493,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.IO.Pipelines.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.IO.Pipelines#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4514,7 +4514,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Linq.Expressions.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Linq.Expressions#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4535,7 +4535,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Linq.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Linq#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4556,7 +4556,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Memory.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Memory#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4577,7 +4577,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Net.Http.Json.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Net.Http.Json#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4598,7 +4598,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Net.Http.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Net.Http#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4619,7 +4619,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Net.Primitives.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Net.Primitives#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4640,7 +4640,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Net.Requests.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Net.Requests#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4661,7 +4661,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Net.Security.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Net.Security#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4682,7 +4682,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Net.ServerSentEvents.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Net.ServerSentEvents#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4703,7 +4703,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Net.WebSockets.Client.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Net.WebSockets.Client#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4724,7 +4724,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Net.WebSockets.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Net.WebSockets#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4745,7 +4745,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.ObjectModel.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.ObjectModel#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4766,7 +4766,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Private.CoreLib.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Private.CoreLib#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4787,7 +4787,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Private.Uri.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Private.Uri#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4808,7 +4808,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Runtime.InteropServices.JavaScript.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Runtime.InteropServices.JavaScript#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4829,7 +4829,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Runtime.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Runtime#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4850,7 +4850,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Security.Cryptography.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Security.Cryptography#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4871,7 +4871,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Text.Encodings.Web.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Text.Encodings.Web#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4892,7 +4892,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Text.Json.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Text.Json#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4913,7 +4913,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Text.RegularExpressions.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Text.RegularExpressions#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4934,7 +4934,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Threading.Channels.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Threading.Channels#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4955,7 +4955,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.Threading.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System.Threading#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -4976,7 +4976,7 @@
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\System.wasm",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Release\\net9.0\\publish\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor\\out\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/System#[.{fingerprint}]!.wasm",
       "AssetKind": "Publish",
@@ -6115,11 +6115,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"sa65PSIPS4jYD6ihEkml9bk1VRQcWp4635k7i06Nsxo=\""
+          "Value": "\"HPln1bqofk/vPTl4WS6PtG5REF1kIOfoXjqbfSyJHtM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:32:00 GMT"
+          "Value": "Wed, 28 May 2025 11:03:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6129,18 +6129,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-sa65PSIPS4jYD6ihEkml9bk1VRQcWp4635k7i06Nsxo="
+          "Value": "sha256-HPln1bqofk/vPTl4WS6PtG5REF1kIOfoXjqbfSyJHtM="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\b31gy0ypjc-zvxjne3e1g.br",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\b31gy0ypjc-k0l2gkxlbw.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.000239635754"
+          "Quality": "0.000239463602"
         }
       ],
       "ResponseHeaders": [
@@ -6150,15 +6150,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4172"
+          "Value": "4175"
         },
         {
           "Name": "ETag",
-          "Value": "\"blgaWATxlX9Qx0AJBhNmo03muTE+q6EUhSxlFvJvcTg=\""
+          "Value": "\"wAwkvOn2N546t6MlopTaHJmM+Za1bKxyvKgR0Sk70oA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:32:00 GMT"
+          "Value": "Wed, 28 May 2025 11:03:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6178,24 +6178,24 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"sa65PSIPS4jYD6ihEkml9bk1VRQcWp4635k7i06Nsxo=\""
+          "Value": "W/\"HPln1bqofk/vPTl4WS6PtG5REF1kIOfoXjqbfSyJHtM=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-sa65PSIPS4jYD6ihEkml9bk1VRQcWp4635k7i06Nsxo="
+          "Value": "sha256-HPln1bqofk/vPTl4WS6PtG5REF1kIOfoXjqbfSyJHtM="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\b31gy0ypjc-zvxjne3e1g.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\b31gy0ypjc-k0l2gkxlbw.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000219202104"
+          "Quality": "0.000219154065"
         }
       ],
       "ResponseHeaders": [
@@ -6205,15 +6205,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4561"
+          "Value": "4562"
         },
         {
           "Name": "ETag",
-          "Value": "\"bO77QaxJdJ5+5XmRbySVsWCqbBn1tFJUiaCV80bCBrc=\""
+          "Value": "\"X7E99JiKUzySIZI0ovE5IF/kC8faQ1x2keqTvkVQdxI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:32:00 GMT"
+          "Value": "Wed, 28 May 2025 11:03:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6233,19 +6233,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"sa65PSIPS4jYD6ihEkml9bk1VRQcWp4635k7i06Nsxo=\""
+          "Value": "W/\"HPln1bqofk/vPTl4WS6PtG5REF1kIOfoXjqbfSyJHtM=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-sa65PSIPS4jYD6ihEkml9bk1VRQcWp4635k7i06Nsxo="
+          "Value": "sha256-HPln1bqofk/vPTl4WS6PtG5REF1kIOfoXjqbfSyJHtM="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json.br",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\b31gy0ypjc-zvxjne3e1g.br",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\b31gy0ypjc-k0l2gkxlbw.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -6254,7 +6254,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4172"
+          "Value": "4175"
         },
         {
           "Name": "Content-Type",
@@ -6262,11 +6262,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"blgaWATxlX9Qx0AJBhNmo03muTE+q6EUhSxlFvJvcTg=\""
+          "Value": "\"wAwkvOn2N546t6MlopTaHJmM+Za1bKxyvKgR0Sk70oA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:32:00 GMT"
+          "Value": "Wed, 28 May 2025 11:03:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6284,13 +6284,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-blgaWATxlX9Qx0AJBhNmo03muTE+q6EUhSxlFvJvcTg="
+          "Value": "sha256-wAwkvOn2N546t6MlopTaHJmM+Za1bKxyvKgR0Sk70oA="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json.gz",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\b31gy0ypjc-zvxjne3e1g.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\b31gy0ypjc-k0l2gkxlbw.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -6299,7 +6299,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4561"
+          "Value": "4562"
         },
         {
           "Name": "Content-Type",
@@ -6307,11 +6307,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"bO77QaxJdJ5+5XmRbySVsWCqbBn1tFJUiaCV80bCBrc=\""
+          "Value": "\"X7E99JiKUzySIZI0ovE5IF/kC8faQ1x2keqTvkVQdxI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:32:00 GMT"
+          "Value": "Wed, 28 May 2025 11:03:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6329,7 +6329,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-bO77QaxJdJ5+5XmRbySVsWCqbBn1tFJUiaCV80bCBrc="
+          "Value": "sha256-X7E99JiKUzySIZI0ovE5IF/kC8faQ1x2keqTvkVQdxI="
         }
       ]
     },
@@ -6450,7 +6450,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:31:41 GMT"
+          "Value": "Fri, 14 Mar 2025 17:04:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6548,7 +6548,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:31:41 GMT"
+          "Value": "Fri, 14 Mar 2025 17:04:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7154,7 +7154,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:31:41 GMT"
+          "Value": "Thu, 16 Jan 2025 19:03:16 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7331,7 +7331,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:31:41 GMT"
+          "Value": "Thu, 16 Jan 2025 19:03:16 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7423,7 +7423,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:31:41 GMT"
+          "Value": "Thu, 16 Jan 2025 19:03:16 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7576,7 +7576,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:31:41 GMT"
+          "Value": "Thu, 16 Jan 2025 19:03:16 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23223,13 +23223,13 @@
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.ero8se3l16.wasm",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-ero8se3l16.br",
+      "Route": "_framework/pruebaMudBlazor.Client.jydhrm63hy.wasm",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-jydhrm63hy.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.000022769189"
+          "Quality": "0.000022744331"
         }
       ],
       "ResponseHeaders": [
@@ -23239,15 +23239,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "43918"
+          "Value": "43966"
         },
         {
           "Name": "ETag",
-          "Value": "\"Fz9S1dakrEkOWsGBtuVn/bnA2WKh1BQAP3yDW3bDe3o=\""
+          "Value": "\"+9t+sJpnRmFneCeAFuTKdENG7oOUJAUMO8d51ngxGeY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:31:49 GMT"
+          "Value": "Wed, 28 May 2025 11:03:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23267,13 +23267,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"pswFu3hjHfiHO0tUdlMeUB+ZtsOp9o8Qq8v3G07SM6I=\""
+          "Value": "W/\"65PojZ9c7xwexriMJyKqB4Telt7UmryAF0WpoIp/sRY=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ero8se3l16"
+          "Value": "jydhrm63hy"
         },
         {
           "Name": "label",
@@ -23281,18 +23281,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-pswFu3hjHfiHO0tUdlMeUB+ZtsOp9o8Qq8v3G07SM6I="
+          "Value": "sha256-65PojZ9c7xwexriMJyKqB4Telt7UmryAF0WpoIp/sRY="
         }
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.ero8se3l16.wasm",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-ero8se3l16.gz",
+      "Route": "_framework/pruebaMudBlazor.Client.jydhrm63hy.wasm",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-jydhrm63hy.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000018339875"
+          "Quality": "0.000018338529"
         }
       ],
       "ResponseHeaders": [
@@ -23302,15 +23302,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "54525"
+          "Value": "54529"
         },
         {
           "Name": "ETag",
-          "Value": "\"sKx2zRAv7XnSYvmfvL56qokfNW16STQ8hJvuORcNBpg=\""
+          "Value": "\"MPovD+az7VvnFs0Ms0d149BOfqlIikUeU2MfMUxnIT4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:31:49 GMT"
+          "Value": "Wed, 28 May 2025 11:03:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23330,13 +23330,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"pswFu3hjHfiHO0tUdlMeUB+ZtsOp9o8Qq8v3G07SM6I=\""
+          "Value": "W/\"65PojZ9c7xwexriMJyKqB4Telt7UmryAF0WpoIp/sRY=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ero8se3l16"
+          "Value": "jydhrm63hy"
         },
         {
           "Name": "label",
@@ -23344,12 +23344,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-pswFu3hjHfiHO0tUdlMeUB+ZtsOp9o8Qq8v3G07SM6I="
+          "Value": "sha256-65PojZ9c7xwexriMJyKqB4Telt7UmryAF0WpoIp/sRY="
         }
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.ero8se3l16.wasm",
+      "Route": "_framework/pruebaMudBlazor.Client.jydhrm63hy.wasm",
       "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\webcil\\publish\\pruebaMudBlazor.Client.wasm",
       "Selectors": [],
       "ResponseHeaders": [
@@ -23367,11 +23367,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pswFu3hjHfiHO0tUdlMeUB+ZtsOp9o8Qq8v3G07SM6I=\""
+          "Value": "\"65PojZ9c7xwexriMJyKqB4Telt7UmryAF0WpoIp/sRY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:31:49 GMT"
+          "Value": "Wed, 28 May 2025 11:03:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23381,7 +23381,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ero8se3l16"
+          "Value": "jydhrm63hy"
         },
         {
           "Name": "label",
@@ -23389,13 +23389,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-pswFu3hjHfiHO0tUdlMeUB+ZtsOp9o8Qq8v3G07SM6I="
+          "Value": "sha256-65PojZ9c7xwexriMJyKqB4Telt7UmryAF0WpoIp/sRY="
         }
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.ero8se3l16.wasm.br",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-ero8se3l16.br",
+      "Route": "_framework/pruebaMudBlazor.Client.jydhrm63hy.wasm.br",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-jydhrm63hy.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -23404,7 +23404,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "43918"
+          "Value": "43966"
         },
         {
           "Name": "Content-Type",
@@ -23412,11 +23412,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Fz9S1dakrEkOWsGBtuVn/bnA2WKh1BQAP3yDW3bDe3o=\""
+          "Value": "\"+9t+sJpnRmFneCeAFuTKdENG7oOUJAUMO8d51ngxGeY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:31:49 GMT"
+          "Value": "Wed, 28 May 2025 11:03:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23434,7 +23434,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ero8se3l16"
+          "Value": "jydhrm63hy"
         },
         {
           "Name": "label",
@@ -23442,13 +23442,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Fz9S1dakrEkOWsGBtuVn/bnA2WKh1BQAP3yDW3bDe3o="
+          "Value": "sha256-+9t+sJpnRmFneCeAFuTKdENG7oOUJAUMO8d51ngxGeY="
         }
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.ero8se3l16.wasm.gz",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-ero8se3l16.gz",
+      "Route": "_framework/pruebaMudBlazor.Client.jydhrm63hy.wasm.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-jydhrm63hy.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -23457,7 +23457,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "54525"
+          "Value": "54529"
         },
         {
           "Name": "Content-Type",
@@ -23465,11 +23465,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"sKx2zRAv7XnSYvmfvL56qokfNW16STQ8hJvuORcNBpg=\""
+          "Value": "\"MPovD+az7VvnFs0Ms0d149BOfqlIikUeU2MfMUxnIT4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:31:49 GMT"
+          "Value": "Wed, 28 May 2025 11:03:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23487,7 +23487,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ero8se3l16"
+          "Value": "jydhrm63hy"
         },
         {
           "Name": "label",
@@ -23495,18 +23495,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-sKx2zRAv7XnSYvmfvL56qokfNW16STQ8hJvuORcNBpg="
+          "Value": "sha256-MPovD+az7VvnFs0Ms0d149BOfqlIikUeU2MfMUxnIT4="
         }
       ]
     },
     {
       "Route": "_framework/pruebaMudBlazor.Client.wasm",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-ero8se3l16.br",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-jydhrm63hy.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "br",
-          "Quality": "0.000022769189"
+          "Quality": "0.000022744331"
         }
       ],
       "ResponseHeaders": [
@@ -23516,15 +23516,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "43918"
+          "Value": "43966"
         },
         {
           "Name": "ETag",
-          "Value": "\"Fz9S1dakrEkOWsGBtuVn/bnA2WKh1BQAP3yDW3bDe3o=\""
+          "Value": "\"+9t+sJpnRmFneCeAFuTKdENG7oOUJAUMO8d51ngxGeY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:31:49 GMT"
+          "Value": "Wed, 28 May 2025 11:03:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23544,24 +23544,24 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"pswFu3hjHfiHO0tUdlMeUB+ZtsOp9o8Qq8v3G07SM6I=\""
+          "Value": "W/\"65PojZ9c7xwexriMJyKqB4Telt7UmryAF0WpoIp/sRY=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pswFu3hjHfiHO0tUdlMeUB+ZtsOp9o8Qq8v3G07SM6I="
+          "Value": "sha256-65PojZ9c7xwexriMJyKqB4Telt7UmryAF0WpoIp/sRY="
         }
       ]
     },
     {
       "Route": "_framework/pruebaMudBlazor.Client.wasm",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-ero8se3l16.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-jydhrm63hy.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000018339875"
+          "Quality": "0.000018338529"
         }
       ],
       "ResponseHeaders": [
@@ -23571,15 +23571,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "54525"
+          "Value": "54529"
         },
         {
           "Name": "ETag",
-          "Value": "\"sKx2zRAv7XnSYvmfvL56qokfNW16STQ8hJvuORcNBpg=\""
+          "Value": "\"MPovD+az7VvnFs0Ms0d149BOfqlIikUeU2MfMUxnIT4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:31:49 GMT"
+          "Value": "Wed, 28 May 2025 11:03:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23599,13 +23599,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"pswFu3hjHfiHO0tUdlMeUB+ZtsOp9o8Qq8v3G07SM6I=\""
+          "Value": "W/\"65PojZ9c7xwexriMJyKqB4Telt7UmryAF0WpoIp/sRY=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pswFu3hjHfiHO0tUdlMeUB+ZtsOp9o8Qq8v3G07SM6I="
+          "Value": "sha256-65PojZ9c7xwexriMJyKqB4Telt7UmryAF0WpoIp/sRY="
         }
       ]
     },
@@ -23628,11 +23628,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pswFu3hjHfiHO0tUdlMeUB+ZtsOp9o8Qq8v3G07SM6I=\""
+          "Value": "\"65PojZ9c7xwexriMJyKqB4Telt7UmryAF0WpoIp/sRY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:31:49 GMT"
+          "Value": "Wed, 28 May 2025 11:03:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23642,13 +23642,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pswFu3hjHfiHO0tUdlMeUB+ZtsOp9o8Qq8v3G07SM6I="
+          "Value": "sha256-65PojZ9c7xwexriMJyKqB4Telt7UmryAF0WpoIp/sRY="
         }
       ]
     },
     {
       "Route": "_framework/pruebaMudBlazor.Client.wasm.br",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-ero8se3l16.br",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-jydhrm63hy.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -23657,7 +23657,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "43918"
+          "Value": "43966"
         },
         {
           "Name": "Content-Type",
@@ -23665,11 +23665,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Fz9S1dakrEkOWsGBtuVn/bnA2WKh1BQAP3yDW3bDe3o=\""
+          "Value": "\"+9t+sJpnRmFneCeAFuTKdENG7oOUJAUMO8d51ngxGeY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:31:49 GMT"
+          "Value": "Wed, 28 May 2025 11:03:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23687,13 +23687,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Fz9S1dakrEkOWsGBtuVn/bnA2WKh1BQAP3yDW3bDe3o="
+          "Value": "sha256-+9t+sJpnRmFneCeAFuTKdENG7oOUJAUMO8d51ngxGeY="
         }
       ]
     },
     {
       "Route": "_framework/pruebaMudBlazor.Client.wasm.gz",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-ero8se3l16.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Release\\net9.0\\compressed\\publish\\1k536ksqtm-jydhrm63hy.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -23702,7 +23702,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "54525"
+          "Value": "54529"
         },
         {
           "Name": "Content-Type",
@@ -23710,11 +23710,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"sKx2zRAv7XnSYvmfvL56qokfNW16STQ8hJvuORcNBpg=\""
+          "Value": "\"MPovD+az7VvnFs0Ms0d149BOfqlIikUeU2MfMUxnIT4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 09:31:49 GMT"
+          "Value": "Wed, 28 May 2025 11:03:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23732,7 +23732,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-sKx2zRAv7XnSYvmfvL56qokfNW16STQ8hJvuORcNBpg="
+          "Value": "sha256-MPovD+az7VvnFs0Ms0d149BOfqlIikUeU2MfMUxnIT4="
         }
       ]
     },
