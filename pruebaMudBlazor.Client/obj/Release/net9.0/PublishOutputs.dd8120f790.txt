@@ -1,0 +1,1 @@
+C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor.Client\bin\Release\net9.0\publish\web.config
