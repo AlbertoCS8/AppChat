@@ -12,10 +12,11 @@ namespace pruebaMudBlazor.Models
         public string Email { get; set; } = "";
         public string FotoPerfil { get; set; } = "";
         public List<string> Amigos { get; set; } = new List<string>();
+        public string UltConexion { get; set; } = string.Empty; // fecha y hora de la ultima conexion
     //          public override string ToString()
-    // {
-    //     return $"Nombre: {Nombre}, Apellido: {Apellido}, Usuario: {NombreUsuario}, Email: {Email}";
-    // }
+        // {
+        //     return $"Nombre: {Nombre}, Apellido: {Apellido}, Usuario: {NombreUsuario}, Email: {Email}";
+        // }
     }
 
     public class UserModelValidator : AbstractValidator<UserModel>

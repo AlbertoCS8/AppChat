@@ -2,6 +2,8 @@ using System.Text.Json;
 
 public class Rest
 {
+    //al principio lo usaba de comodin para los criterios del trabajo pero ahora me he dado cuenta que viene genial para
+    //obtener hora con el gmt unificado porque los .now de todos los objetos DateTime son UTC
     public async Task<string> GetMadridTimeFormatted()
     {
         using var httpClient = new HttpClient();

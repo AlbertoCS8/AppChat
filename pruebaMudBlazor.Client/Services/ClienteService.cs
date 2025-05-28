@@ -28,7 +28,7 @@ public class ClienteService : IClienteService
     }
     public async Task<UserModel> LoginClienteAsync(string email, string password)
     {
-        Console.WriteLine("en servicio login los datos son: " + email + " " + password);
+        // Console.WriteLine("en servicio login los datos son: " + email + " " + password);
 
         // Crea un objeto de login explícito
         var loginData = new

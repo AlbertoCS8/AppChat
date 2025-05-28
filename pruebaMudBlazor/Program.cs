@@ -70,9 +70,10 @@ app.MapPost("/registro", async (pruebaMudBlazor.Models.UserModel registro,
 
 // Endpoint para iniciar sesión
 app.MapPost("/api/login", async (LoginModel loginModel, 
-    IMongoCollection<Usuario> usuarios) => 
+    IMongoCollection<Usuario> usuarios,
+    Rest _rest) => 
 {
-    Console.WriteLine($"iniciio de sesión recibido en server {loginModel.Email} {loginModel.Password}");
+    // Console.WriteLine($"iniciio de sesión recibido en server {loginModel.Email} {loginModel.Password}");
 
     var usuario = await usuarios.Find(u => u.Email == loginModel.Email).FirstOrDefaultAsync();
     
@@ -82,10 +83,16 @@ app.MapPost("/api/login", async (LoginModel loginModel,
         // var authState = scope.ServiceProvider.GetRequiredService<AuthService>();
 
         // Guardamos el estado del usuario en AuthState
-       // authState.Username = usuario.NombreUsuario;
-       // authState.ImagenBase64 = usuario.FotoPerfil;
+        // authState.Username = usuario.NombreUsuario;
+        // authState.ImagenBase64 = usuario.FotoPerfil;
         //authState.IsAuthenticated = true;
-    var respuesta = UserMapper.MapToUserModel(usuario);
+        // Actualizamos la última conexión del usuario
+        Console.WriteLine($"Hora de madridddddd {await _rest.GetMadridTimeFormatted()}");
+        await usuarios.UpdateOneAsync(
+            u => u.Email == usuario.Email,
+            Builders<Usuario>.Update.Set("UltimaConexion", await _rest.GetMadridTimeFormatted())
+        );
+        var respuesta = UserMapper.MapToUserModel(usuario);
         
         return Results.Ok(respuesta);
     }
@@ -188,7 +195,8 @@ app.MapPost("/api/obtenerAmigos", async (List<string> amigosUsernames,
         {
             Username = u.NombreUsuario,
             FotoPerfil = u.FotoPerfil,
-            Status = usersConnected.GetUserStatus(u.NombreUsuario) 
+            Status = usersConnected.GetUserStatus(u.NombreUsuario),
+            UltimaConexion = u.UltimaConexion
         }).ToList();
         
         return Results.Ok(amigos);

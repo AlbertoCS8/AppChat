@@ -88,7 +88,7 @@
 
     private async void HandleLogin()
     {
-        Console.WriteLine("themeservice._isDarkMode -----> " + themeService._isDarkMode);
+        @* Console.WriteLine("themeservice._isDarkMode -----> " + themeService._isDarkMode); *@
         try
         {
             var respuesta = await ClienteService.LoginClienteAsync(Email, Password);

@@ -27,7 +27,8 @@ public static class UserMapper
             NombreUsuario = usuario.NombreUsuario,
             Email = usuario.Email,
             FotoPerfil = usuario.FotoPerfil,
-            Amigos = usuario.Amigos
+            Amigos = usuario.Amigos,
+            UltConexion = usuario.UltimaConexion,
         };
     }
 

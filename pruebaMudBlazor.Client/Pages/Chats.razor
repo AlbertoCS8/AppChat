@@ -14,8 +14,63 @@
 <MudContainer Class="mt-16" Style="height: 100%; min-height: 100vh; width:100%;">
 <div class="d-flex flex-grow-1 flex-row" >
     @* Class="@(themeService.GetTheme() ? "mb-6 card-dark" : "mb-6 card-light")" *@
+    <MudHidden Breakpoint="Breakpoint.SmAndDown">
+        
+    <MudPaper Elevation="25" Class="@(themeService._isDarkMode ? "py-1 flex-grow-1 card-dark": "py-1 flex-grow-1 card-light")"
+    Style="max-height: 85vh; overflow:scroll; width:20%; margin-right: 20px;">
+        <MudToolBar Dense="true" Class="mb-4">
+            <MudText Typo="Typo.h6" Inline="true" Class="mr-2" Style="font-size: 1rem;">Chats</MudText>
+            <MudToolBarSpacer />
+            <MudIconButton Icon="@Icons.Material.Outlined.Notifications" />
+            <MudIconButton Icon="@Icons.Material.Outlined.PushPin" />
+        </MudToolBar>
+        @* Lista de chats *@
+        @if (authService.Amigos != null && authService.Amigos.Count > 0)
+        {
+            @foreach (var amigo in listaAmigos)
+            {
+                <MudCard Elevation="2" Class=@($"ma-1 mb-1 friend-card {(selectedFriend != null && selectedFriend.Username == amigo.Username ? "selected-friend" : "")}")
+                                         @onclick="() => SelectFriend(amigo)"
+                                         Style="cursor: pointer;
+                                         overflow-wrap: anywhere;">
+                    <div class="d-flex align-center">
+                        <MudAvatar Size="Size.Large" Class="mr-3">
+                            @if (!string.IsNullOrEmpty(amigo.FotoPerfil))
+                            {
+                                <MudImage Src="@amigo.FotoPerfil" Alt="@amigo.Username" />
+                            }
+                            else
+                            {
+                                <MudIcon Icon="@Icons.Material.Filled.Person" />
+                            }
+                        </MudAvatar>
+                        <div class="flex-grow-1">
+                            <MudText Typo="Typo.body1">@amigo.Username</MudText>
+                            @if (amigo.Status == "En línea")
+                            {
+                                <MudText Typo="Typo.caption" Color="Color.Success" Style="font-size: 0.8rem;">
+                                    @amigo.Status
+                                </MudText>
+                            }
+                            else
+                            {
+                                <MudText Typo="Typo.caption" Color="Color.Error" Style="font-size: 0.65rem;">
+                                    Última conexión: @DateUtils.GetRelativeTime(amigo.UltimaConexion)
+                                </MudText>
+                            }
+                        </div>
+                    </div>
+                </MudCard>
+            }
+        }
+        else
+        {
+            <MudText Typo="Typo.body1" Class="pa-4">No tienes amigos agregados. Agrega amigos para empezar a chatear.</MudText>
+        }
+    </MudPaper>
+    </MudHidden>
     <MudPaper Elevation="25" Class="@(themeService._isDarkMode ? "py-1 flex-grow-1 card-dark": "py-1 flex-grow-1 card-light")" 
-    Style="max-height: 85vh; overflow:scroll;">
+    Style="max-height: 85vh; overflow:scroll; width:80%; min-height: 85vh;">
         <MudToolBar Dense="true" Class="mb-4">
             @if(selectedFriend != null)
             {
@@ -26,9 +81,11 @@
             <MudToolBarSpacer />
             <MudIconButton Icon="@Icons.Material.Outlined.Notifications" />
             <MudIconButton Icon="@Icons.Material.Outlined.PushPin" />
+            <MudHidden Breakpoint="Breakpoint.SmAndUp">
                 <MudIconButton OnClick="@(() => OpenDrawer(Anchor.Right))" Icon="@Icons.Material.Outlined.PeopleAlt" Color="Color.Inherit" Class="ml-3" />
+            </MudHidden>
         </MudToolBar>
-        <div class="d-flex flex-column px-4" style="max-height:800px; overflow:scroll;">
+        <div class="d-flex flex-column px-4" style="max-height:800px; overflow:scroll; height:75%;">
           @if (chatMessages.ToArray().Length > 0)
 {
     string? lastSenderMsg = null;
@@ -178,15 +235,15 @@
         @* Barra de entrada de mensajes *@
         @if(selectedFriend != null)
         {
-        <MudPaper Class="d-flex flex-row mb-1 ml-3 mr-3 mt-4" Style="background-color: var(--mud-palette-background-grey);">
+        <MudPaper Class="d-flex flex-row ml-3 mr-3 mt-4" Style="background-color: var(--mud-palette-background-grey);">
         <MudTextField @bind-Value="mensajeNuevo" Placeholder="Escribe un mensaje" DisableUnderLine="true" 
-                     Class="mt-2 mb-4 px-4" OnKeyUp="@((e) => { if (e.Key == "Enter") EnviarMensaje(mensajeNuevo); })">
+                     Class="mt-2 px-4" OnKeyUp="@((e) => { if (e.Key == "Enter") EnviarMensaje(mensajeNuevo); })">
         </MudTextField>
         <MudIconButton Icon="@Icons.Material.Filled.Send" 
                       Color="Color.Primary"
                       OnClick="@(() => EnviarMensaje(mensajeNuevo))"
                       Disabled="@string.IsNullOrWhiteSpace(mensajeNuevo)"
-                      Class="ml-2 mb-1">
+                      Class="ml-2">
         </MudIconButton>
         </MudPaper>    
         }
@@ -211,11 +268,20 @@
                 </MudAvatar>
                 <div class="flex-grow-1">
                     <MudText Typo="Typo.body1">@friend.Username</MudText>
-                    <MudText Typo="Typo.caption" Color="@(friend.Status == "En línea" ? Color.Success : Color.Default)">
+                    @if (friend.Status == "En línea")
+                    {
+                        <MudText Typo="Typo.caption" Color="Color.Success">
                         @friend.Status
                     </MudText>
+                    }
+                    else
+                    {
+                         <MudText Typo="Typo.caption" Color="Color.Error">
+                            Última conexión: @DateUtils.GetRelativeTime(friend.UltimaConexion)
+                        </MudText>
+                    } 
+                    
                 </div>
-             
             </div>
         </MudCard>
     }
@@ -276,6 +342,10 @@
             NavigationManager.NavigateTo("/", forceLoad: false);
         }else{
         listaAmigos = await ClienteService.ObtenerAmigosAsync(authService.Amigos);
+        foreach (var amigo in listaAmigos)
+        {
+            Console.WriteLine(amigo.ToString()); // Inicialmente todos están desconectados
+        }
         @* chatService.ObsUserConnection -= OnUserConnection;//desuscripcion
         chatService.ObsUserConnection += OnUserConnection;//suscripcion *@
           if (!_isSubscribedToUserConnection)
@@ -291,14 +361,6 @@
         Console.WriteLine($"Foto del amigo seleccionado: {friend.FotoPerfil}"); *@
         iniciarChat(friend);
         //pendienteeeeeeeee
-    }
-    private async Task loadChatMessages(Amigos friend)
-    {
-        // Implementar la carga de mensajes del chat aquí
-        // Esto podría ser una llamada a un servicio para obtener los mensajes del amigo seleccionado
-        Console.WriteLine($"Cargando mensajes para: {friend.Username}");
-        @* clienteService.cargarMensajes(friend.Username); *@
-        
     }
     private async Task iniciarChat(Amigos friend)
     {
@@ -352,6 +414,8 @@
         {
             @* Console.WriteLine($"Actualizando estado de conexión para {friend}"); *@
             friend.Status = isConnected;
+            //recargamos amigos para que cargue la desconexion desde bdd
+            listaAmigos = await ClienteService.ObtenerAmigosAsync(authService.Amigos);
             StateHasChanged();
         }else
         {
