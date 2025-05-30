@@ -23,9 +23,12 @@
             </MudHidden>
             <MudSpacer />
             <MudIconButton Icon="@(DarkLightModeButtonIcon)" Color="Color.Inherit" OnClick="@DarkModeToggle" />
-            <MudMenu AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight" 
+            <MudNavLink Href="personal/account" Icon="@Icons.Material.Filled.AccountCircle">Mi perfil</MudNavLink>
+        <MudNavLink Href="chats" Icon="@Icons.Material.Filled.Chat">Chats</MudNavLink>
+        <MudNavLink Href="search" Icon="@Icons.Material.Filled.PersonAdd">Buscar amigos</MudNavLink>
+    <MudMenu AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight" 
          Dense="true" Direction="Direction.Bottom" OffsetY="true">
-            <ActivatorContent>
+    <ActivatorContent>
         <MudAvatar Size="Size.Medium" Class="ml-4 cursor-pointer">
             @if (!string.IsNullOrEmpty(authService.ImagenBase64))
             {
