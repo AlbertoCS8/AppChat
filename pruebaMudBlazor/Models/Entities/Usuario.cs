@@ -30,7 +30,8 @@ public class Usuario
     public string FotoPerfil { get; set; } // contenido imagen en base64
     [BsonElement("ultimaConexion")]
     public string UltimaConexion { get; set; } = string.Empty; // fecha y hora de la ultima conexion --> nos evitammos formatos de fechas
-    
+    [BsonElement("notificaciones")]
+    public List<FriendRequest> Notificaciones { get; set; } = new List<FriendRequest>(); // Lista de notificaciones (IDs o mensajes)
     
     
 }

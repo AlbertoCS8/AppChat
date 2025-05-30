@@ -92,5 +92,5 @@ C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazo
 C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor\bin\Debug\net9.0\Microsoft.JSInterop.dll
 C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor\bin\Debug\net9.0\System.Net.ServerSentEvents.dll
 C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor\bin\Debug\net9.0\System.Threading.Channels.dll
-C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor\obj\Debug\net9.0\compressed\tzxjg6is5z-u34o0xbo4m.gz
-C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor\obj\Debug\net9.0\compressed\0wz98yz2xy-gtd3sm4n1q.gz
+C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor\obj\Debug\net9.0\compressed\tzxjg6is5z-qmvjbof2tn.gz
+C:\Users\Alberto\Desktop\ProyecttosC#\Pruebas\mud\pruebaMudBlazor\pruebaMudBlazor\obj\Debug\net9.0\compressed\0wz98yz2xy-jrqzp895hu.gz

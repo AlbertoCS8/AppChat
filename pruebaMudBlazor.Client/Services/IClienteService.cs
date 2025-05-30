@@ -16,6 +16,7 @@ public interface IClienteService
 
     //tarea para recuperar datos de amigos a traves de un List de usernames
     Task<List<Amigos>> ObtenerAmigosAsync(List<string> amigosUsernames);
+    Task<List<FriendRequest>> ObtenerNotisAsync(string username);
 
     //tarea para giardar en bdd un mensaje
     Task<ResponseServer> GuardarMensajeAsync(ChatMessage mensaje, string roomId);
@@ -24,4 +25,6 @@ public interface IClienteService
     Task<bool> IniciarChatAsync(string usuarioActual, string amigoUsername);
     //tarea para eliminar un amigo, le pasamos el username del usuario actual y el amigo a eliminar
     Task<bool> EliminarAmigoAsync(string usuarioActual, string amigoUsername);
+    //tarea para hacer aigos a dos usuarios 
+    Task<bool> MakeFriendAsync(string usuarioActual, string amigoUsername);
 }

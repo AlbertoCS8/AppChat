@@ -201,4 +201,34 @@ public class ClienteService : IClienteService
             }
         });
     }
+
+    public Task<List<FriendRequest>> ObtenerNotisAsync(string username)
+    {
+        // Console.WriteLine("en servicio obtener notis los datos son: " + username);
+        return _httpClient.GetFromJsonAsync<List<FriendRequest>>($"/api/obtenerNotificaciones?username={username}");
+    }
+
+    public Task<bool> MakeFriendAsync(string usuarioActual, string amigoUsername)
+    {
+        Console.WriteLine($"Haciendo amigos: {usuarioActual} -> {amigoUsername}");
+
+        var model = new
+        {
+            UsuarioActual = usuarioActual,
+            UsuarioAmigo = amigoUsername
+        };
+
+        return _httpClient.PostAsJsonAsync("/api/makeFriend", model)
+            .ContinueWith(task =>
+            {
+                if (task.Result.IsSuccessStatusCode)
+                {
+                    return true; // Devolver el tema del response server
+                }
+                else
+                {
+                    return false;
+                }
+            });
+    }
 }
