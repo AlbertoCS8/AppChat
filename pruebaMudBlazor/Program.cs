@@ -129,8 +129,8 @@ app.MapGet("/api/buscarUsuarios", async (string nombreUsuario,
     
     return Results.Ok(resultados);
 });
-// Endpoint para agregar amigos
-app.MapPost("/api/agregarAmigo", async (AmigoModel model, IMongoCollection<Usuario> usuarios) =>
+// Endpoint para mandar una solicitud de amistad
+app.MapPost("/api/agregarAmigo", async (AmigoModel model, IMongoCollection<Usuario> usuarios) => 
 {
     try
     {
@@ -165,12 +165,22 @@ app.MapPost("/api/agregarAmigo", async (AmigoModel model, IMongoCollection<Usuar
                 Mensaje = "Ya son amigos"
             });
         }
-        usuarioActual.Amigos.Add(model.UsuarioAmigo);
-        // Actualizar usuario en la base de datos
-        await usuarios.ReplaceOneAsync(u => u.Id == usuarioActual.Id, usuarioActual);
+        // usuarioActual.Amigos.Add(model.UsuarioAmigo);
+        // // Actualizar usuario en la base de datos
+        // await usuarios.ReplaceOneAsync(u => u.Id == usuarioActual.Id, usuarioActual);
+        
+        usuarioAmigo.Notificaciones.Add(new FriendRequest
+        {
+            Username = usuarioAmigo.NombreUsuario, 
+            SenderUsername = usuarioActual.NombreUsuario, // ID del usuario que envió la solicitud
+            Message = $"{usuarioActual.Nombre} {usuarioActual.Apellido} quiere ser tu amigo" 
+        });
+        // Actualizar el usuario amigo en la base de datos
+        await usuarios.ReplaceOneAsync(u => u.Id == usuarioAmigo.Id, usuarioAmigo);
         //devolvemos modelo ResponseServer
-        return Results.Ok(new ResponseServer{ 
-            CodigoError = 0, 
+        return Results.Ok(new ResponseServer
+        {
+            CodigoError = 0,
             Mensaje = "Amigo agregado exitosamente"
         });
     }
@@ -227,7 +237,7 @@ app.MapPost("/api/guardarMensaje", async (pruebaMudBlazor.Models.ChatMessage men
         return Results.Problem("Error interno del servidor", statusCode: 500);
     }
 });
-app.MapPost("/api/eliminarAmigo", async (AmigoModel model, 
+app.MapPost("/api/eliminarAmigo", async (AmigoModel model,
     IMongoCollection<Usuario> usuarios, IMongoCollection<Chat> chatsCollection) =>
 {
     try
@@ -237,38 +247,44 @@ app.MapPost("/api/eliminarAmigo", async (AmigoModel model,
         var usuarioAmigo = await usuarios.Find(u => u.NombreUsuario == model.UsuarioAmigo).FirstOrDefaultAsync();
         if (usuarioActual == null || usuarioAmigo == null)
         {
-            return Results.NotFound(new ResponseServer { 
-                CodigoError = 1, 
+            return Results.NotFound(new ResponseServer
+            {
+                CodigoError = 1,
                 Mensaje = "Uno de los usuarios no existe"
             });
         }
         // Verificar que no son el mismo usuario
         if (model.UsuarioActual == model.UsuarioAmigo)
         {
-            return Results.BadRequest(new ResponseServer{ 
-                CodigoError = 1, 
+            return Results.BadRequest(new ResponseServer
+            {
+                CodigoError = 1,
                 Mensaje = "No puedes eliminarte a ti mismo como amigo"
             });
         }
         // Verificar si son amigos
         if (!usuarioActual.Amigos.Contains(model.UsuarioAmigo))
         {
-            return Results.BadRequest(new ResponseServer{ 
-                CodigoError = 1, 
+            return Results.BadRequest(new ResponseServer
+            {
+                CodigoError = 1,
                 Mensaje = "No son amigos"
             });
         }
         usuarioActual.Amigos.Remove(model.UsuarioAmigo);
+        usuarioAmigo.Amigos.Remove(model.UsuarioActual);
+
         // Actualizar usuario en la base de datos
         await usuarios.ReplaceOneAsync(u => u.Id == usuarioActual.Id, usuarioActual);
+        await usuarios.ReplaceOneAsync(u => u.Id == usuarioAmigo.Id, usuarioAmigo);
         //borramos los chats que existan entre ambos usuarios coleccion chats (chqat tiene _id que es los dos usernames separados por _ y ordenado alfabeticamente)
         var primeroUsername = model.UsuarioActual.CompareTo(model.UsuarioAmigo) < 0 ? model.UsuarioActual : model.UsuarioAmigo;
         var segundoUsername = model.UsuarioActual.CompareTo(model.UsuarioAmigo) < 0 ? model.UsuarioAmigo : model.UsuarioActual;
         var roomId = $"{primeroUsername}_{segundoUsername}";
         // Eliminamos el chat de la colección
-         chatsCollection.DeleteOne(c =>
-            c.Id == roomId 
-            );
+        chatsCollection.DeleteOne(c =>
+           c.Id == roomId
+           );
         return Results.Ok(new ResponseServer
         {
             CodigoError = 0,
@@ -278,6 +294,87 @@ app.MapPost("/api/eliminarAmigo", async (AmigoModel model,
     catch (Exception ex)
     {
         Console.WriteLine($"Error al eliminar amigo: {ex.Message}");
+        return Results.Problem("Error interno del servidor", statusCode: 500);
+    }
+});
+// Endpoint para obtener notificaciones de un usuario
+//return _httpClient.GetFromJsonAsync<List<string>>($"/api/obtenerNotificaciones?username={username}");
+app.MapGet("/api/obtenerNotificaciones", async (string username,
+    IMongoCollection<Usuario> usuarios) =>
+{
+    try
+    {
+        var usuario = await usuarios.Find(u => u.NombreUsuario == username).FirstOrDefaultAsync();
+        if (usuario == null)
+        {
+            return Results.NotFound("Usuario no encontrado");
+        }
+        return Results.Ok(usuario.Notificaciones);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error al obtener notificaciones: {ex.Message}");
+        return Results.Problem("Error interno del servidor", statusCode: 500);
+    }
+});
+// Endpoint para hacer amighos a dos usuarios
+app.MapPost("/api/makeFriend", async (AmigoModel model,
+    IMongoCollection<Usuario> usuarios) =>
+{
+    try
+    {
+        // Verificar que ambos usuarios existen
+        var usuarioActual = await usuarios.Find(u => u.NombreUsuario == model.UsuarioActual).FirstOrDefaultAsync();
+        var usuarioAmigo = await usuarios.Find(u => u.NombreUsuario == model.UsuarioAmigo).FirstOrDefaultAsync();
+        if (usuarioActual == null || usuarioAmigo == null)
+        {
+            return Results.NotFound(new ResponseServer
+            {
+                CodigoError = 1,
+                Mensaje = "Uno de los usuarios no existe"
+            });
+        }
+        // Verificar que no son el mismo usuario
+        if (model.UsuarioActual == model.UsuarioAmigo)
+        {
+            return Results.BadRequest(new ResponseServer
+            {
+                CodigoError = 1,
+                Mensaje = "No puedes hacerte amigo de ti mismo"
+            });
+        }
+        if (usuarioActual.Amigos == null)
+        {
+            usuarioActual.Amigos = new List<string>();
+        }
+        if (usuarioActual.Amigos.Contains(model.UsuarioAmigo))
+        {
+            return Results.BadRequest(new ResponseServer
+            {
+                CodigoError = 1,
+                Mensaje = "Ya son amigos"
+            });
+        }
+        usuarioActual.Amigos.Add(model.UsuarioAmigo);
+        usuarioActual.Notificaciones.RemoveAll(n => n.SenderUsername == usuarioAmigo.NombreUsuario);
+        
+        // Actualizar usuario en la base de datos
+        await usuarios.ReplaceOneAsync(u => u.Id == usuarioActual.Id, usuarioActual);
+        
+        usuarioAmigo.Amigos.Add(model.UsuarioActual);
+        
+        // Actualizar el usuario amigo en la base de datos
+        await usuarios.ReplaceOneAsync(u => u.Id == usuarioAmigo.Id, usuarioAmigo);
+        
+        return Results.Ok(new ResponseServer
+        {
+            CodigoError = 0,
+            Mensaje = "Amigos creados exitosamente"
+        });
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error al hacer amigos: {ex.Message}");
         return Results.Problem("Error interno del servidor", statusCode: 500);
     }
 });

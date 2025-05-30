@@ -11,7 +11,7 @@
 @inject ThemeService themeService
 
 <MudContainer Class="d-flex align-center justify-center" Style="height: 100vh;" >
-    <MudPaper Elevation="4" Class="@(themeService._isDarkMode ? "pa-8 card card-dark" : "pa-8 card card-light")" Style="width: 400px;">
+    <MudPaper Elevation="4" Class="@(themeService._isDarkMode ? "pa-8 card card-dark" : "pa-8 card card-light")" Style="width: 400px; ">
         <div class="d-flex flex-column align-center mb-8">
             <MudIcon Icon="@Icons.Material.Filled.Login" Size="Size.Large" Class="mb-4" />
             <MudText Typo="Typo.h4" GutterBottom="true" Align="Align.Center">Login</MudText>
@@ -41,9 +41,12 @@
             </MudLink>
 
             <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" FullWidth="true" Class="mt-4"
-                OnClick="HandleLogin" Disabled="@IsLoginDisabled">
+                OnClick="HandleLogin" Disabled="@(IsLoginDisabled|| loading)" >
                 Haz login
             </MudButton>
+            <MudOverlay Visible="@loading" DarkBackground="true" Absolute="true">
+            <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+        </MudOverlay>
         </MudForm>
     </MudPaper>
 </MudContainer>
@@ -55,7 +58,7 @@
     private bool PasswordVisibility;
     private InputType PasswordInput = InputType.Password;
     private string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
-
+    bool loading = false;
     private bool IsLoginDisabled =>
     string.IsNullOrWhiteSpace(Email) ||
     ValidateEmail(Email) != null ||
@@ -91,6 +94,7 @@
         @* Console.WriteLine("themeservice._isDarkMode -----> " + themeService._isDarkMode); *@
         try
         {
+            loading = true;
             var respuesta = await ClienteService.LoginClienteAsync(Email, Password);
             @* Console.WriteLine("respuesta desde el server -----> " + respuesta); *@
             authService.Username = respuesta.NombreUsuario;
