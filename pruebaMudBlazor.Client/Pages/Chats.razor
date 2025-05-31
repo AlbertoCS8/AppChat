@@ -10,6 +10,7 @@
 @inject AuthService authService
 @inject ThemeService themeService
 @inject pruebaMudBlazor.Client.Services.ChatService chatService
+@inject ISnackbar SnackBar
 
 <MudContainer Class="mt-16" Style="height: 100%; min-height: 100vh; width:100%;">
 <div class="d-flex flex-grow-1 flex-row" >
@@ -67,6 +68,9 @@
         {
             <MudText Typo="Typo.body1" Class="pa-4">No tienes amigos agregados. Agrega amigos para empezar a chatear.</MudText>
         }
+         <MudOverlay Visible="@loading" DarkBackground="true" Absolute="true">
+        <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+    </MudOverlay>
     </MudPaper>
     </MudHidden>
     <MudPaper Elevation="25" Class="@(themeService._isDarkMode ? "py-1 flex-grow-1 card-dark hide-scrollbar": "py-1 flex-grow-1 card-light hide-scrollbar")" 
@@ -285,6 +289,9 @@
             </div>
         </MudCard>
     }
+     <MudOverlay Visible="@loading" DarkBackground="true" Absolute="true">
+        <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+    </MudOverlay>
 </MudDrawer>
 </MudContainer>
 <style>
@@ -304,6 +311,7 @@
 @code
 {
     bool open;
+    bool loading = false;
     bool conectadoA_unaSala;
     bool _isSubscribedToUserConnection = false;
     public List<Amigos> listaAmigos { get; set; } = new List<Amigos>();
@@ -318,12 +326,13 @@
     public string roomResponsable { get; set; } = string.Empty;
     public string lastSenderMsg { get; set; } = "";
     public string comodinHora { get; set; } = string.Empty;
+    public Dictionary<string,int> unreadMessagesCount = new Dictionary<string, int>();
     Anchor ChatDrawer { get; set; }
 
     ChatUser[] chatUsers = new ChatUser[]
-{
+    {
         new ChatUser { UserName = "Garderoben", UserRoleColor = Colors.DeepPurple.Accent4, OnlineStatus = Color.Success, Spotify = true, AvatarUrl = "https://avatars2.githubusercontent.com/u/10367109?s=460&amp;u=2abf95f9e01132e8e2915def42895ffe99c5d2c6&amp;v=4"},
-};
+    };
 
     
     public ChatUser GetUser(string username)
@@ -341,20 +350,31 @@
         if(!authService.IsAuthenticated){
             NavigationManager.NavigateTo("/", forceLoad: false);
         }else{
+        loading = true;
         listaAmigos = await ClienteService.ObtenerAmigosAsync(authService.Amigos);
-        foreach (var amigo in listaAmigos)
-        {
-            Console.WriteLine(amigo.ToString()); // Inicialmente todos están desconectados
-        }
+        @* foreach (var amigo in listaAmigos)
+        { // Inicialmente todos están desconectados
+        } *@
         @* chatService.ObsUserConnection -= OnUserConnection;//desuscripcion
         chatService.ObsUserConnection += OnUserConnection;//suscripcion *@
           if (!_isSubscribedToUserConnection)
     {
         chatService.ObsUserConnection += OnUserConnection;
+        @* chatService.ObsNotificacionRecibida += (notificacion) =>
+        {
+            if(notificacion.Tipo == "NuevoAmigo")
+            {
+                SnackBar.Add($"Tienes una nueva solicitud de amistad", MudBlazor.Severity.Info);
+            }else if(notificacion.Tipo == "NuevoMensaje")
+            {
+
+            }
+        }; *@
         _isSubscribedToUserConnection = true;
     }
         //base.OnInitialized; //
-    } }
+    } 
+    loading = false;}
     private void SelectFriend(Amigos friend)
     {
         @* Console.WriteLine($"Amigo seleccionado: {friend.Username}");
@@ -425,13 +445,17 @@
     
     
     public void EnviarMensaje(string mensaje){
+        if (string.IsNullOrWhiteSpace(mensaje) || selectedFriend == null)
+        {
+            return; 
+        }
         // Implementar la lógica para enviar un mensaje al amigo seleccionado
         @* Console.WriteLine($"Enviando mensaje a {selectedFriend.Username}: {mensaje} quer tiene de img de perfil {authService.ImagenBase64}"); *@
         //enviaremos el selectedFriend y una clase ChatMessage con el username, el mensaje , el base64 de la de perfil yl el time
         //la sobreescribiremos en el servidor pero en el cliente la renderizamos primero con la hora local
         ChatMessage mensajeRenderiz = new ChatMessage {  UserName= authService.Username, Message= mensaje, Time= DateTime.Now.ToString("dd-MM-yyyy HH:mm") };//luego obtendremos hora en servidor
         //solo necesito el mensaje porque el username ya lo estoy pasando
-        chatService.SendMessage(roomName, mensajeRenderiz);
+        chatService.SendMessage(roomName, mensajeRenderiz,selectedFriend.Username);
         //guardamos el mensaje en BD para persistirlo
         chatMessages.Add(mensajeRenderiz);
         mensajeNuevo = string.Empty; // Limpiar el campo de entrada después de enviar el mensaje

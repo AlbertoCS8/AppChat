@@ -61,6 +61,15 @@ app.UseHttpsRedirection();
 app.MapPost("/registro", async (pruebaMudBlazor.Models.UserModel registro, 
     IMongoCollection<Usuario> usuarios) =>
 {
+    if (registro == null || string.IsNullOrEmpty(registro.Email) || string.IsNullOrEmpty(registro.Password))
+    {
+        return Results.BadRequest("Datos de registro inválidos");
+    }
+    var usuarioExistente = await usuarios.Find(u => u.Email == registro.Email || u.NombreUsuario == registro.NombreUsuario).FirstOrDefaultAsync();
+    if (usuarioExistente != null)
+    {
+        return Results.Conflict("El usuario ya existe");
+    }
     Console.WriteLine("Registro de usuario recibido, procesando...");
     var usuario = UserMapper.MapToUsuario(registro);
     // Guardamos el usuario en la base de datos
@@ -165,10 +174,18 @@ app.MapPost("/api/agregarAmigo", async (AmigoModel model, IMongoCollection<Usuar
                 Mensaje = "Ya son amigos"
             });
         }
+        // Verificar si ya existe una solicitud pendiente
+        if (usuarioAmigo.Notificaciones.Any(n => n.SenderUsername == usuarioActual.NombreUsuario))
+        {
+            return Results.BadRequest(new ResponseServer{ 
+                CodigoError = 1, 
+                Mensaje = "Ya has enviado una solicitud de amistad a este usuario"
+            });
+        }
         // usuarioActual.Amigos.Add(model.UsuarioAmigo);
         // // Actualizar usuario en la base de datos
         // await usuarios.ReplaceOneAsync(u => u.Id == usuarioActual.Id, usuarioActual);
-        
+
         usuarioAmigo.Notificaciones.Add(new FriendRequest
         {
             Username = usuarioAmigo.NombreUsuario, 

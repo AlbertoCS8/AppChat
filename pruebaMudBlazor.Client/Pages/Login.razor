@@ -111,6 +111,7 @@
         }
         catch (Exception ex)
         {
+            loading = false;
             Console.WriteLine("Error: " + ex.Message);
             Snackbar.Add($"Error al iniciar sesión: {ex.Message}", MudBlazor.Severity.Error);
 

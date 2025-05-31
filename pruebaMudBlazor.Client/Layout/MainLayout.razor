@@ -3,6 +3,7 @@
 @inject ThemeService themeService
 @inject NavigationManager Navigation
 @inject pruebaMudBlazor.Client.Services.ChatService chatService
+@inject ISnackbar SnackBar
 
 <MudThemeProvider Theme="@_theme" IsDarkMode="_isDarkMode" />
 <MudPopoverProvider />
@@ -82,6 +83,7 @@
     private bool _isDarkMode = true;
     private MudTheme? _theme = null;
     private string _themeSelected = "";
+    private bool _yaSuscrito = false;
     protected override void OnInitialized()
     {
         base.OnInitialized();
@@ -107,7 +109,23 @@
             _themeSelected = "degradado-light";
             themeService.SetTheme(_isDarkMode);
         }
-    }
+        if (!_yaSuscrito)
+    {
+    Console.WriteLine("Suscribiendo a eventos de notificación");
+        chatService.ObsNotificacionRecibida += (notificacion) =>
+        {
+            if(notificacion.Tipo == "NuevoAmigo")
+            {
+                SnackBar.Add($"Tienes una nueva solicitud de amistad", MudBlazor.Severity.Info);
+            }else if(notificacion.Tipo == "NuevoMensaje")
+            {
+                @* SnackBar.Add($"Tienes un nuevo mensaje", MudBlazor.Severity.Info); *@
+                //modificamos authService para que tenga una propiedad que almacene el chat al que pertenece el mensaje
+            }
+        };
+                _yaSuscrito = true;
+
+    }}
 
     private void DrawerToggle()
     {

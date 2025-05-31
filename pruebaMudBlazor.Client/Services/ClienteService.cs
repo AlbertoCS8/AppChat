@@ -21,7 +21,10 @@ public class ClienteService : IClienteService
         {
             return await response.Content.ReadAsStringAsync();
         }
-        else
+         else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+        {
+            throw new UnauthorizedAccessException("Email y/o contraseña existentes.");
+        }else
         {
             throw new Exception("Error al registrar cliente");
         }
@@ -86,7 +89,6 @@ public class ClienteService : IClienteService
     // En ClienteService.cs
     public async Task<bool> AgregarAmigoAsync(string usuarioActual, string usuarioAmigo)
     {
-        Console.WriteLine($"Agregando amigo: {usuarioActual} -> {usuarioAmigo}");
 
         var model = new
         {
