@@ -176,11 +176,13 @@
         Antes usuario A agregaba a B y B tenia que agregar a A tambien *@
         //Vaciamos contenido de la busqueda
         searchTerm = string.Empty;
-        chatService.EnviarNotificacionAlGlobalHub(new Evento {
-    Tipo = "NuevoAmigo",
-    Mensaje = $"{authService.Username} te ha agregado como amigo",
-    UserNameDestino = Username
-});
+        await chatService.EnviarNotificacionAlGlobalHub(new Evento {
+            Tipo = "NuevoAmigo",
+            Mensaje = $"{authService.Username} te ha agregado como amigo",
+            UserNameDestino = Username
+        });
+    StateHasChanged(); // quiero tener obviados a los que ya he mandado una notificacion para evitar errores
+    //tambien al que ya tiene la notificacion de amigo, no le debe salir el usuairo que se la ha mandado al buscar
     }
     //al cargar la pagina, si hay un amigo nuevo, lo agrego a la lista de amigos
     protected override async Task OnInitializedAsync(){

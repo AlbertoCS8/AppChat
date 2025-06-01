@@ -28,9 +28,10 @@
         <MudNavLink Href="chats" Icon="@Icons.Material.Filled.Chat">Chats</MudNavLink>
         <MudNavLink Href="search" Icon="@Icons.Material.Filled.PersonAdd">Buscar amigos</MudNavLink>
     <MudMenu AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight" 
-         Dense="true" Direction="Direction.Bottom" OffsetY="true">
+         Dense="true" Direction="Direction.Bottom" OffsetY="true"
+         Style="z-index: 9999">
     <ActivatorContent>
-        <MudAvatar Size="Size.Medium" Class="ml-4 cursor-pointer">
+        <MudAvatar Size="Size.Medium" Class="ml-4 cursor-pointer" @onclick="() => {}">
             @if (!string.IsNullOrEmpty(authService.ImagenBase64))
             {
                 <MudImage Src="@authService.ImagenBase64" Alt="Foto de perfil" />
@@ -67,7 +68,7 @@
         <NavMenu />
     </MudDrawer> Vestigios de ideas pasadas 
     *@
-    <MudMainContent Class="pa-4">
+    <MudMainContent Class="pa-4 mudblazor-main-content">
         @Body
     </MudMainContent>
 </MudLayout>
@@ -125,6 +126,7 @@
                 SnackBar.Add($"Tienes una nueva solicitud de amistad", MudBlazor.Severity.Info);
             }else if(notificacion.Tipo == "NuevoMensaje")
             {
+                Console.WriteLine($"Nuevo mensaje de {notificacion.UserNameOrigen} a {notificacion.UserNameDestino}");
                 @* SnackBar.Add($"Tienes un nuevo mensaje", MudBlazor.Severity.Info); *@
                 //modificamos authService para que tenga una propiedad que almacene el chat al que pertenece el mensaje
                 //vamos a recibir un objeto notificacion que es un Evento y ahi pillamos el nombre de quien nos lo manda, lo buscamos
@@ -132,6 +134,8 @@
                 if (authService.MensajesNoLeidos.ContainsKey(notificacion.UserNameOrigen))
                 {
                     authService.MensajesNoLeidos[notificacion.UserNameOrigen]++;
+                    @* StateHasChanged(); *@
+                    authService.NotificarCambio("NuevoMensaje");
                 }
                 else
                 {
@@ -144,12 +148,12 @@
                 @* StateHasChanged(); No recarga hijos que seria chats.razor entonces llamamos al evento de authService y 
                 ponemos un observable en chats.razor y fuera --> al final estaba fallando en otra coosa asique no se si esto
                 es verdad jajaj *@
-                authService.NotificarCambioEnAmigos();
+                authService.NotificarCambio("CambiosListaAmigos");
             }else if (notificacion.Tipo == "AmigoAceptado")
             {
-                SnackBar.Add($"Tu solicitud de amistad ha sido aceptada por {notificacion.UserNameDestino}", MudBlazor.Severity.Success);
+                @* SnackBar.Add($"Tu solicitud de amistad ha sido aceptada por {notificacion.UserNameOrigen}", MudBlazor.Severity.Success); *@
                 authService.Amigos.Add(notificacion.UserNameOrigen);
-                authService.NotificarCambioEnAmigos();
+                authService.NotificarCambio("CambiosListaAmigos");
             }
             else if (notificacion.Tipo == "SolicitudAmistad")
             {
