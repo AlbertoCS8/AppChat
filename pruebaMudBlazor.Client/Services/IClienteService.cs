@@ -27,4 +27,6 @@ public interface IClienteService
     Task<bool> EliminarAmigoAsync(string usuarioActual, string amigoUsername);
     //tarea para hacer aigos a dos usuarios 
     Task<bool> MakeFriendAsync(string usuarioActual, string amigoUsername);
+    //tare3a para obtener los mensajes sin leer de un usuario
+    Task<Dictionary<string,int>> GetMensajesNoLeidosAsync(string username);
 }

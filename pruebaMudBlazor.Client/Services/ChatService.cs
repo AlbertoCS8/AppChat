@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SignalR.Client;
 using pruebaMudBlazor.Client.Models;
 
 namespace pruebaMudBlazor.Client.Services;
+
 public class ChatService
 {
 
@@ -14,6 +15,7 @@ public class ChatService
     public HubConnection _globalHubConnection; // Este lo usaremos para eventos globales como conexion de usuarios o desconexion
     public Action<ChatMessage> ObsMensajeRecibido { get; set; }// como los observables de angular!!
     public Action<string, string> ObsUserConnection { get; set; } //para el evento de conexion de usuarios
+    public Action<Evento> ObsNotificacionRecibida { get; set; } //para el evento de notificaciones globales
     private NavigationManager _navigationManager;
     public ChatService(NavigationManager navigationManager)
     {
@@ -39,6 +41,13 @@ public class ChatService
             ObsUserConnection?.Invoke(username, status);
             // Notificar cambio de Status de usuarios --> En linea o desconectado...
         });
+        
+        // Añadir la suscripción una sola vez
+        _globalHubConnection.On<Evento>("ReceiveNotification", (Evento evento) =>
+        {
+            ObsNotificacionRecibida?.Invoke(evento);
+        });
+        
         await _globalHubConnection.StartAsync();
         await _globalHubConnection.InvokeAsync("UserConnection", $"{username}", "En línea");
     }
@@ -110,13 +119,14 @@ public class ChatService
             throw;
         }
     }
-    public async Task SendMessage(string roomId, ChatMessage message)
+    public async Task SendMessage(string roomId, ChatMessage message,string SelectedUser)
     {
         try
         {
+            Console.WriteLine($"memnsje a enviar: {message.Message} de {message.UserName} estado {message.IsRead}");
             if (_hubConnection != null && _hubConnection.State == HubConnectionState.Connected)
             {
-                await _hubConnection.InvokeAsync("EnviarMensaje", roomId, message);
+                await _hubConnection.InvokeAsync("EnviarMensaje", roomId, message, SelectedUser);
 
             }
             else
@@ -155,6 +165,33 @@ public class ChatService
         {
             Console.WriteLine($"Error al obtener mensajes: {ex.Message}");
             return new List<ChatMessage>();
+        }
+    }
+    public async Task EnviarNotificacionAlGlobalHub(Evento mensaje)//vestigio de lo que hacia antes, -->
+    //los eventos como envios de mensajes a usuarios los iba a enviar por el global a todos y que ya cuando ellos recibieran
+    //el mensaje, filtraran si eran para ellos o no, muy ineficiente, pero despues de darle vueltas y sobretodo
+    //aprender bien a usar signalR pues mandaremos el mensaje a un usuario concreto por su connectionId almacenado en un
+    //diccionario de usuarios conectados en ese momento en la app
+    {
+        try
+        {
+            if (_globalHubConnection != null && _globalHubConnection.State == HubConnectionState.Connected)
+            {
+                await _globalHubConnection.InvokeAsync("EnviarNotificacion", mensaje);
+                _globalHubConnection.On<Evento>("ReceiveNotification", (Evento evento) =>
+                {
+                    ObsNotificacionRecibida?.Invoke(evento);
+                });
+            }
+            else
+            {
+                Console.WriteLine("No estás conectado al hub global.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al enviar la notificación: {ex.Message}");
+            throw;
         }
     }
 
