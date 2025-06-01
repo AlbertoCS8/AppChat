@@ -18,14 +18,23 @@ public class Rest
 
             if (dateTimeStr != null)
             {
+                Console.WriteLine($"Fecha y hora obtenida de la API: {dateTimeStr}");
                 var dateTime = DateTime.Parse(dateTimeStr);
                 return dateTime.ToString("dd-MM-yyyy HH:mm");
             }
-
+            Console.WriteLine("No se pudo obtener la fecha y hora de la API, usando la hora local.");
             return DateTime.Now.ToString("dd-MM-yyyy HH:mm");
         }
-        catch
+        catch(HttpRequestException ex)
         {
+            Console.WriteLine("Error al realizar la solicitud HTTP a la API de hora, usando la hora local.");
+            Console.WriteLine("Error: " + ex.Message);
+            return DateTime.Now.ToString("dd-MM-yyyy HH:mm");
+        }
+        catch (JsonException ex)
+        {
+            Console.WriteLine("Error al obtener la fecha y hora de la API, usando la hora local.");
+            Console.WriteLine("Error: " + ex.Message);
             return DateTime.Now.ToString("dd-MM-yyyy HH:mm");
         }
     }
