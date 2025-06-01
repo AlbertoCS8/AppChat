@@ -42,6 +42,7 @@ public class ChatHub : Hub
             UserNameDestino = userDestino,
             Mensaje = "Tienes un nuevo mensaje de " + mensaje.UserName,
             Tipo = "NuevoMensaje",
+            UserNameOrigen = mensaje.UserName,
         });
 
     }

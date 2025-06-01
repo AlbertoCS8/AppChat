@@ -10,11 +10,11 @@ public class AuthService
     public List<string> Amigos { get; set; } = new List<string>();
     public Dictionary<string, int> MensajesNoLeidos { get; set; } = new Dictionary<string, int>();
 
-    public event Action? AmigosActualizados;
+    public event Action<string> CambiosEnComponente;
 
-    public void NotificarCambioEnAmigos()
+    public void NotificarCambio(string tipoCambio)
     {
-        AmigosActualizados?.Invoke();
+        CambiosEnComponente?.Invoke(tipoCambio);
     }
 
 }

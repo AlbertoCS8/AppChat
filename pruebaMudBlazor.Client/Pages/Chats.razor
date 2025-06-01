@@ -56,7 +56,8 @@
                                     Content="@authService.MensajesNoLeidos[amigo.Username]"
                                     Overlap="true"
                                     MaxValue="99"
-                                    Class="mr-2">
+                                    Class="mr-2"
+                                    @key="@amigo.Username"> <!--Estos key son como comodines para que se actualice el valor al hacer stateHasChanged-->
                                     <MudIcon Icon="@Icons.Material.Filled.ChatBubble" Size="Size.Medium" />
                                 </MudBadge>
                             }</div>
@@ -374,10 +375,24 @@
             }
         }; *@
         _isSubscribedToUserConnection = true;
-        authService.AmigosActualizados += async () =>
+        authService.CambiosEnComponente += async (tipocambio) =>
         {
+            if (tipocambio == "CambiosListaAmigos")
+            {
+                Console.WriteLine("Recargando amigos desde el authService...");
+                @* Console.WriteLine("Recargando amigos desde el authService..."); *@
+                listaAmigos = await ClienteService.ObtenerAmigosAsync(authService.Amigos);
+            }else if (tipocambio == "NuevoMensaje"){
+                Console.WriteLine("Recargando mensajes desde el authService...");
+                foreach (var mensaje in authService.MensajesNoLeidos)
+                {
+                    Console.WriteLine($"Mensajes no leídos para {mensaje.Key}: {mensaje.Value}");
+                }
+                @* Console.WriteLine("Recargando mensajes desde el authService..."); *@
+                //aqui recargamos los mensajes de la sala actual
+            }
             //cada vez que hay unevemto de actualizacion de amigos, recargamos la lista
-            listaAmigos = await ClienteService.ObtenerAmigosAsync(authService.Amigos);
+            
             await InvokeAsync(StateHasChanged);
         };
     }
