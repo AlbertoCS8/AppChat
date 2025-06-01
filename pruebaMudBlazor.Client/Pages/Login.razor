@@ -104,6 +104,13 @@
             authService.Apellido = respuesta.Apellido;
             authService.Amigos = respuesta.Amigos;
             authService.IsAuthenticated = true;
+            //diccionario de usuarios & mensajes no leiufos
+            var MensajesNoLeidos = await ClienteService.GetMensajesNoLeidosAsync(authService.Username);
+            authService.MensajesNoLeidos = MensajesNoLeidos;
+            foreach (var mensaje in MensajesNoLeidos)
+            {
+                Console.WriteLine(mensaje.Key + " tiene " + mensaje.Value + " mensajes no leídos.");
+            }
             chatService.ConnectToGlobalHub(authService.Username);
             //una vez hago login lo guardo en el diccionario de users de la parte de back para ver que el user esta en linea
 
@@ -111,6 +118,7 @@
         }
         catch (Exception ex)
         {
+            loading = false;
             Console.WriteLine("Error: " + ex.Message);
             Snackbar.Add($"Error al iniciar sesión: {ex.Message}", MudBlazor.Severity.Error);
 

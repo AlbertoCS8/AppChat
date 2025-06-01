@@ -10,6 +10,7 @@
 @using pruebaMudBlazor.Client.Models
 @inject IClienteService ClienteService
 @inject ThemeService themeService
+@inject ChatService chatService
 
 @using System.Text.RegularExpressions
 @using System.ComponentModel.DataAnnotations
@@ -93,48 +94,48 @@
             </MudItem>
         </MudGrid>
     </MudTabPanel>
-    <!--PANEL DE NOTUIFICACIONES-->
-    <MudTabPanel Text="Friend requests">
-        <MudCard Class="@(themeService._isDarkMode ? "card-dark" : "card-light")">
-            <MudCardContent >
-                <MudGrid>
-                   @foreach (var noti in listaNotis)
-                    {
-                      <MudItem xs="12" sm="12" md="12" lg="12" class="mb-4">
-    <MudCard Elevation="5" Class="@(themeService._isDarkMode ? "card-dark mb-4" : "card-light mb-4")" >
-        <MudCardContent Class="px-4 py-3" >
-            <div class="d-flex flex-column flex-md-row justify-between align-center gap-2" style="justify-content: space-between;">
-                <MudText Typo="Typo.body1">@noti.Message</MudText>
+    <!-- PANEL DE NOTIFICACIONES -->
+<MudTabPanel Text="Friend Requests">
+    <MudCard Class="@(themeService._isDarkMode ? "card-dark" : "card-light")" Elevation="4">
+        <MudCardContent>
+            <MudGrid>
+                @foreach (var noti in listaNotis)
+                {
+                    <MudItem xs="12" class="mb-3">
+                        <MudCard Elevation="6" Class="@(themeService._isDarkMode ? "card-dark" : "card-light")">
+                            <MudCardContent Class="px-4 py-3">
+                                <div class="d-flex flex-column flex-md-row justify-between align-center gap-3">
+                                    <MudText Typo="Typo.subtitle1" Class="font-weight-bold">
+                                        @noti.Message
+                                    </MudText>
 
-                <div class="d-flex flex-column flex-sm-row gap-2">
-                    <MudButton Variant="Variant.Filled"
-                               Color="Color.Primary"
-                               Size="Size.Small"
-                               @onclick="@(() => InteracionFriend(noti, "Friend accepted", MudBlazor.Severity.Success))">
-                        Accept
-                    </MudButton>
+                                    <div class="d-flex gap-2">
+                                        <MudButton Variant="Variant.Filled"
+                                                   Color="Color.Success"
+                                                   Size="Size.Small"
+                                                   StartIcon="@Icons.Material.Filled.Check"
+                                                   @onclick="@(() => InteracionFriend(noti, "Friend accepted", MudBlazor.Severity.Success))">
+                                            Accept
+                                        </MudButton>
 
-                    <MudButton Variant="Variant.Filled"
-                               Color="Color.Error"
-                               Size="Size.Small"
-                               @onclick="@(() => InteracionFriend(noti, "Friend request rejected", MudBlazor.Severity.Error))">
-                        Reject
-                    </MudButton>
-                </div>
-            </div>
+                                        <MudButton Variant="Variant.Filled"
+                                                   Color="Color.Error"
+                                                   Size="Size.Small"
+                                                   StartIcon="@Icons.Material.Filled.Close"
+                                                   @onclick="@(() => InteracionFriend(noti, "Friend request rejected", MudBlazor.Severity.Error))">
+                                            Reject
+                                        </MudButton>
+                                    </div>
+                                </div>
+                            </MudCardContent>
+                        </MudCard>
+                    </MudItem>
+                }
+            </MudGrid>
         </MudCardContent>
     </MudCard>
-</MudItem>
+</MudTabPanel>
 
-
-                    }
-                </MudGrid>
-            </MudCardContent>
-            <MudCardActions Class="pb-4 pl-4">
-                @* <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" @onclick="@(() => SaveChanges("Notification settings saved", Severity.Success))">Save Changes</MudButton> *@
-            </MudCardActions>
-        </MudCard>
-    </MudTabPanel>
     @* PANEL DE COLEGUIS  *@
     <MudTabPanel Text="Friends">
         <MudCard Class="@(themeService._isDarkMode ? "card-dark" : "card-light")">
@@ -225,6 +226,14 @@
             authService.Amigos.Add(notificacion.SenderUsername);
             listaAmigos = await ClienteService.ObtenerAmigosAsync(authService.Amigos);
             listaNotis.Remove(notificacion);
+            // Enviar notificación al otro usuario
+            chatService.EnviarNotificacionAlGlobalHub(new Evento
+            {
+                Tipo = "AmigoAceptado",
+                UserNameOrigen = authService.Username,
+                UserNameDestino = notificacion.SenderUsername,
+                Mensaje = $"{authService.Username} ha aceptado tu solicitud de amistad."
+            });
         }
         else
         {
@@ -240,7 +249,14 @@
             authService.Amigos.Remove(friendUsername);
             listaAmigos.RemoveAll(f => f.Username == friendUsername);
             //forzar recarga porque no me lo muestra que en efecto lo esta borrando
-
+            //mandamos un mensaje popr signal para que el otro usuario sepa que le hemos borrado y recargue
+            chatService.EnviarNotificacionAlGlobalHub(new Evento
+            {
+                Tipo = "AmigoBorrado",
+                UserNameOrigen = authService.Username,
+                UserNameDestino = friendUsername,
+                Mensaje = $"{authService.Username} te ha eliminado de su lista de amigos."
+            });
             StateHasChanged();
     }
 

@@ -40,6 +40,9 @@
                     
                     <!-- Aceptar términos -->
                     <MudCheckBox T="bool" Required="true" RequiredError="Debe aceptar los términos y condiciones" Label="Acepto los términos y condiciones" />
+                <MudOverlay Visible="@loading" DarkBackground="true" Absolute="true">
+            <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+        </MudOverlay>
                 </MudForm>
             <!-- Botón de registro -->
             <MudCardActions>
@@ -64,7 +67,7 @@
     private UserModelValidator userValidator = new UserModelValidator();
     private bool valido = false;
     private bool success = false;
-
+    private bool loading = false;
    private async Task Submit(MouseEventArgs e)
 {
     await form.Validate();
@@ -72,13 +75,14 @@
     {
         try 
         {
+            loading = true;
             var respuesta = await ClienteService.RegistrarClienteAsync(model);
             Snackbar.Add("Te has registrado correctamente");
             // redirigir a la página de inicio de seson
             NavigationManager.NavigateTo("/", forceLoad: false);
         }
         catch (Exception ex)
-        {
+        {   loading = false;
             Snackbar.Add($"Error al registrar: {ex.Message}");
         }
     }
