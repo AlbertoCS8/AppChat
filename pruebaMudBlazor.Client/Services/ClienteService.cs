@@ -233,4 +233,10 @@ public class ClienteService : IClienteService
                 }
             });
     }
+
+    public Task<Dictionary<string, int>> GetMensajesNoLeidosAsync(string username)
+    {
+        // Console.WriteLine("en servicio obtener mensajes no leidos los datos son: " + username);
+        return _httpClient.GetFromJsonAsync<Dictionary<string, int>>($"/api/getMensajesNoLeidos?username={username}");
+    }
 }

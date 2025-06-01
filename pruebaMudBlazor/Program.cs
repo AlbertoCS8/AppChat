@@ -374,15 +374,15 @@ app.MapPost("/api/makeFriend", async (AmigoModel model,
         }
         usuarioActual.Amigos.Add(model.UsuarioAmigo);
         usuarioActual.Notificaciones.RemoveAll(n => n.SenderUsername == usuarioAmigo.NombreUsuario);
-        
+
         // Actualizar usuario en la base de datos
         await usuarios.ReplaceOneAsync(u => u.Id == usuarioActual.Id, usuarioActual);
-        
+
         usuarioAmigo.Amigos.Add(model.UsuarioActual);
-        
+
         // Actualizar el usuario amigo en la base de datos
         await usuarios.ReplaceOneAsync(u => u.Id == usuarioAmigo.Id, usuarioAmigo);
-        
+
         return Results.Ok(new ResponseServer
         {
             CodigoError = 0,
@@ -392,6 +392,57 @@ app.MapPost("/api/makeFriend", async (AmigoModel model,
     catch (Exception ex)
     {
         Console.WriteLine($"Error al hacer amigos: {ex.Message}");
+        return Results.Problem("Error interno del servidor", statusCode: 500);
+    }
+});
+// Endpoint para obtener mensajes no leídos de un usuario /api/getMensajesNoLeidos?username={username}"
+app.MapGet("/api/getMensajesNoLeidos", async (string username,
+    IMongoCollection<Chat> chats,IMongoCollection<Usuario> users) =>
+{
+    try
+    {
+        //obtenemos los amigos del usuario
+        var usuario = await users.Find(u => u.NombreUsuario == username).FirstOrDefaultAsync();
+        if (usuario == null)
+        {
+            return Results.NotFound("Usuario no encontrado");
+        }
+        //cremos el id de la sala de chat que es el nombre del amigo con el del usuario actual ordenado alfabeticamente
+        var idsSalas = new List<string>();
+        foreach (var amigo in usuario.Amigos)
+        {
+            var primeroUsername = username.CompareTo(amigo) < 0 ? username : amigo;
+            var segundoUsername = username.CompareTo(amigo) < 0 ? amigo : username;
+            idsSalas.Add($"{primeroUsername}_{segundoUsername}");
+        }
+        //obtenemos los chats de esas salas
+        var chatsEncontrados = await chats.Find(c => idsSalas.Contains(c.Id)).ToListAsync();
+        // Creamos un diccionario para almacenar los mensajes no leídos por sala con el nombre del que manda != a nuestro user
+        var mensajesNoLeidos = new Dictionary<string, int>();
+        foreach (var chat in chatsEncontrados)
+        {
+            // encontramos mensajes no leidos
+            var mensajesSinLeer = chat.Mensajes.Where(m => m.UserName != username && !m.IsRead).ToList();
+            //de esta lista de mensajes filtramos por nombre de usuario y contamos los mensajes no leídos
+            if (mensajesSinLeer.Count > 0)
+            {
+                // Obtenemos el nombre del amigo
+                var amigoUsername = chat.Id.Split('_').FirstOrDefault(u => u != username);
+                if (amigoUsername != null)
+                {
+                    // Agregamos al diccionario el nombre del amigo y la cantidad de mensajes no leídos
+                    mensajesNoLeidos[amigoUsername] = mensajesSinLeer.Count;
+                }
+            }
+        }
+        // Devolvemos el diccionario con los mensajes no leídos
+        return Results.Ok(mensajesNoLeidos);
+
+        
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error al obtener mensajes no leídos: {ex.Message}");
         return Results.Problem("Error interno del servidor", statusCode: 500);
     }
 });

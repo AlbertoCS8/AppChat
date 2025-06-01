@@ -33,7 +33,8 @@
                 <MudCard Elevation="2" Class=@($"ma-1 mb-1 friend-card hide-scrollbar {(selectedFriend != null && selectedFriend.Username == amigo.Username ? "selected-friend" : "")}")
                                          @onclick="() => SelectFriend(amigo)"
                                          Style="cursor: pointer;
-                                         overflow-wrap: anywhere;">
+                                         overflow-wrap: anywhere;"
+                                         @key="@amigo.Username">
                     <div class="d-flex align-center">
                         <MudAvatar Size="Size.Large" Class="mr-3">
                             @if (!string.IsNullOrEmpty(amigo.FotoPerfil))
@@ -46,7 +47,19 @@
                             }
                         </MudAvatar>
                         <div class="flex-grow-1">
+                            <div style="display: flex; align-items: center; justify-content: space-between;" class="mt-2">
                             <MudText Typo="Typo.body1">@amigo.Username</MudText>
+                            @if (authService.MensajesNoLeidos.ContainsKey(amigo.Username) && authService.MensajesNoLeidos[amigo.Username] > 0)
+                            {
+                                <MudBadge 
+                                    Color="Color.Error"
+                                    Content="@authService.MensajesNoLeidos[amigo.Username]"
+                                    Overlap="true"
+                                    MaxValue="99"
+                                    Class="mr-2">
+                                    <MudIcon Icon="@Icons.Material.Filled.ChatBubble" Size="Size.Medium" />
+                                </MudBadge>
+                            }</div>
                             @if (amigo.Status == "En línea")
                             {
                                 <MudText Typo="Typo.caption" Color="Color.Success" Style="font-size: 0.8rem;">
@@ -59,7 +72,9 @@
                                     Última conexión: @DateUtils.GetRelativeTime(amigo.UltimaConexion)
                                 </MudText>
                             }
+                          
                         </div>
+                        
                     </div>
                 </MudCard>
             }
@@ -85,7 +100,7 @@
             <MudToolBarSpacer />
             <MudIconButton Icon="@Icons.Material.Outlined.Notifications" />
             <MudIconButton Icon="@Icons.Material.Outlined.PushPin" />
-            <MudHidden Breakpoint="Breakpoint.SmAndUp">
+            <MudHidden Breakpoint="Breakpoint.MdAndUp">
                 <MudIconButton OnClick="@(() => OpenDrawer(Anchor.Right))" Icon="@Icons.Material.Outlined.PeopleAlt" Color="Color.Inherit" Class="ml-3" />
             </MudHidden>
         </MudToolBar>
@@ -253,7 +268,7 @@
         }
     </MudPaper>
 </div>
-
+<!--Lista que sale de la iz para dispo. moviles-->
 <MudDrawer @bind-Open="@open" Anchor="@ChatDrawer" Elevation="1" Variant="@DrawerVariant.Temporary">
     <MudText Typo="Typo.h6" Class="mb-4 mt-4" Align="Align.Center">Tus amigos</MudText> 
     @foreach (var friend in listaAmigos)
@@ -326,20 +341,8 @@
     public string roomResponsable { get; set; } = string.Empty;
     public string lastSenderMsg { get; set; } = "";
     public string comodinHora { get; set; } = string.Empty;
-    public Dictionary<string,int> unreadMessagesCount = new Dictionary<string, int>();
     Anchor ChatDrawer { get; set; }
 
-    ChatUser[] chatUsers = new ChatUser[]
-    {
-        new ChatUser { UserName = "Garderoben", UserRoleColor = Colors.DeepPurple.Accent4, OnlineStatus = Color.Success, Spotify = true, AvatarUrl = "https://avatars2.githubusercontent.com/u/10367109?s=460&amp;u=2abf95f9e01132e8e2915def42895ffe99c5d2c6&amp;v=4"},
-    };
-
-    
-    public ChatUser GetUser(string username)
-    {
-        var chatUser = chatUsers.FirstOrDefault(x => x.UserName == username);
-        return chatUser;
-    }
     void OpenDrawer(Anchor anchor)
     {
         ChatDrawer = anchor;
@@ -371,6 +374,12 @@
             }
         }; *@
         _isSubscribedToUserConnection = true;
+        authService.AmigosActualizados += async () =>
+        {
+            //cada vez que hay unevemto de actualizacion de amigos, recargamos la lista
+            listaAmigos = await ClienteService.ObtenerAmigosAsync(authService.Amigos);
+            await InvokeAsync(StateHasChanged);
+        };
     }
         //base.OnInitialized; //
     } 
@@ -453,7 +462,7 @@
         @* Console.WriteLine($"Enviando mensaje a {selectedFriend.Username}: {mensaje} quer tiene de img de perfil {authService.ImagenBase64}"); *@
         //enviaremos el selectedFriend y una clase ChatMessage con el username, el mensaje , el base64 de la de perfil yl el time
         //la sobreescribiremos en el servidor pero en el cliente la renderizamos primero con la hora local
-        ChatMessage mensajeRenderiz = new ChatMessage {  UserName= authService.Username, Message= mensaje, Time= DateTime.Now.ToString("dd-MM-yyyy HH:mm") };//luego obtendremos hora en servidor
+        ChatMessage mensajeRenderiz = new ChatMessage {  UserName= authService.Username, Message= mensaje, Time= DateTime.Now.ToString("dd-MM-yyyy HH:mm")};//luego obtendremos hora en servidor
         //solo necesito el mensaje porque el username ya lo estoy pasando
         chatService.SendMessage(roomName, mensajeRenderiz,selectedFriend.Username);
         //guardamos el mensaje en BD para persistirlo
@@ -464,8 +473,15 @@
     }
     private int GetUnreadCount(Amigos friend)
     {
-        //mensajes non leidos, pensar en comom hacero
-        return new Random().Next(0, 5);
+        Console.WriteLine($"Obteniendo mensajes no leídos para {friend.Username}");
+        //Obtenemos ekl diccionario de mensaujes no leidos del authService
+        if (authService.MensajesNoLeidos != null && authService.MensajesNoLeidos.ContainsKey(friend.Username))
+        {
+            Console.WriteLine($"Mensajes no leídos para {friend.Username}: {authService.MensajesNoLeidos[friend.Username]}");
+            return authService.MensajesNoLeidos[friend.Username];
+        }
+        return 0; // Si no hay mensajes no leídos, devolvemos 0
+        
     }
     public async void Dispose()
 {

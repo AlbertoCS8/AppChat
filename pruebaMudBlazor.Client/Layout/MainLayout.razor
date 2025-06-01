@@ -112,7 +112,13 @@
         if (!_yaSuscrito)
     {
     Console.WriteLine("Suscribiendo a eventos de notificación");
-        chatService.ObsNotificacionRecibida += (notificacion) =>
+        chatService.ObsNotificacionRecibida += (notificacion) => //estos eventos controlaran los cambios que no quiero que dependan
+        // de conctantes querys a la bdd, me explico: mi aplicacion tiene un servicio authService que es un singleton que se 
+        // carga cuando entro a la app con casi todos los datos que necesita pero yo no quiero que cada vez que entre a un chat
+        // le pida al server los amigos,pues pensé como puedo hacer que siempre tenga los amigos actualizados sin tener que
+        // estar haciendo querys al server? pues con eventos, entonces cada vez que se añade un amigo, se borra, se recibe un mensaje
+        // o se recibe una solicitud de amistad, se dispara un evento que actualiza el servicio authService y por tanto
+        // actualiza los componentes que lo usan o el usuario recibe una notificación en forma de snackbar asi moderno...
         {
             if(notificacion.Tipo == "NuevoAmigo")
             {
@@ -121,7 +127,37 @@
             {
                 @* SnackBar.Add($"Tienes un nuevo mensaje", MudBlazor.Severity.Info); *@
                 //modificamos authService para que tenga una propiedad que almacene el chat al que pertenece el mensaje
+                //vamos a recibir un objeto notificacion que es un Evento y ahi pillamos el nombre de quien nos lo manda, lo buscamos
+                //en nuestro diccionario y le sumamos uno a los mensajes no leidos
+                if (authService.MensajesNoLeidos.ContainsKey(notificacion.UserNameOrigen))
+                {
+                    authService.MensajesNoLeidos[notificacion.UserNameOrigen]++;
+                }
+                else
+                {
+                    //no pongo nada porque no vamos a recibir un mensaje de alguien que no sea amigo por como hemos montado la app
+                }
+            }else if(notificacion.Tipo == "AmigoBorrado")
+            {
+                SnackBar.Add($"Tu amigo {notificacion.UserNameOrigen} te ha borrado", MudBlazor.Severity.Warning);
+                authService.Amigos.Remove(notificacion.UserNameOrigen);
+                @* StateHasChanged(); No recarga hijos que seria chats.razor entonces llamamos al evento de authService y 
+                ponemos un observable en chats.razor y fuera --> al final estaba fallando en otra coosa asique no se si esto
+                es verdad jajaj *@
+                authService.NotificarCambioEnAmigos();
+            }else if (notificacion.Tipo == "AmigoAceptado")
+            {
+                SnackBar.Add($"Tu solicitud de amistad ha sido aceptada por {notificacion.UserNameDestino}", MudBlazor.Severity.Success);
+                authService.Amigos.Add(notificacion.UserNameOrigen);
+                authService.NotificarCambioEnAmigos();
             }
+            else if (notificacion.Tipo == "SolicitudAmistad")
+            {
+                SnackBar.Add($"Tienes una nueva solicitud de amistad de {notificacion.UserNameOrigen}", MudBlazor.Severity.Info);
+            }
+
+            
+            
         };
                 _yaSuscrito = true;
 
