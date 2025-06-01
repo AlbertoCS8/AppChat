@@ -123,9 +123,9 @@ public class ChatService
     {
         try
         {
+            Console.WriteLine($"memnsje a enviar: {message.Message} de {message.UserName} estado {message.IsRead}");
             if (_hubConnection != null && _hubConnection.State == HubConnectionState.Connected)
             {
-                Console.WriteLine($"Enviando mensaje a la sala {roomId}: {message.Message}");
                 await _hubConnection.InvokeAsync("EnviarMensaje", roomId, message, SelectedUser);
 
             }
@@ -167,7 +167,11 @@ public class ChatService
             return new List<ChatMessage>();
         }
     }
-    public async Task EnviarNotificacionAlGlobalHub(Evento mensaje)
+    public async Task EnviarNotificacionAlGlobalHub(Evento mensaje)//vestigio de lo que hacia antes, -->
+    //los eventos como envios de mensajes a usuarios los iba a enviar por el global a todos y que ya cuando ellos recibieran
+    //el mensaje, filtraran si eran para ellos o no, muy ineficiente, pero despues de darle vueltas y sobretodo
+    //aprender bien a usar signalR pues mandaremos el mensaje a un usuario concreto por su connectionId almacenado en un
+    //diccionario de usuarios conectados en ese momento en la app
     {
         try
         {

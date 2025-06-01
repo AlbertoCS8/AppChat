@@ -16,6 +16,6 @@ public class Evento
     public string UserNameDestino { get; set; }
     public string Mensaje { get; set; }
     public string Tipo { get; set; } // AgregarAmigo, MensajePendiente, etc.
-    public string UserNameOrigen { get; set; } // Opcional: si necesitas saber quién envió el evento
+    public string UserNameOrigen { get; set; }
 
 }

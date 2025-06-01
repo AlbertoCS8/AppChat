@@ -8,5 +8,13 @@ public class AuthService
     public string Nombre { get; set; } = "";
     public string Apellido { get; set; } = "";
     public List<string> Amigos { get; set; } = new List<string>();
+    public Dictionary<string, int> MensajesNoLeidos { get; set; } = new Dictionary<string, int>();
+
+    public event Action? AmigosActualizados;
+
+    public void NotificarCambioEnAmigos()
+    {
+        AmigosActualizados?.Invoke();
+    }
 
 }
