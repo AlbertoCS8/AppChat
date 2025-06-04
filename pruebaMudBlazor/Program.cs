@@ -129,13 +129,43 @@ app.MapPost("/api/cambiarFotoPerfil", async (FotoPerfilModel model,
     }
 });
 // Endpoint para buscar usuarios por nombre de usuario --> func buscar amigos
-app.MapGet("/api/buscarUsuarios", async (string nombreUsuario, 
+app.MapGet("/api/buscarUsuarios", async (string nombreUsuario, string currentUser, 
     IMongoCollection<Usuario> usuarios) =>
 {
-    // Buscamos usuarios que contengan el nombre de usuario
-    var filtro = Builders<Usuario>.Filter.Regex(u => u.NombreUsuario, new BsonRegularExpression(nombreUsuario, "i"));
-    var resultados = await usuarios.Find(filtro).ToListAsync();
+    // Get the current user to access their sent friend requests
+    var usuarioActual = await usuarios.Find(u => u.NombreUsuario == currentUser).FirstOrDefaultAsync();
+    if (usuarioActual == null)
+    {
+        return Results.NotFound("Usuario no encontrado");
+    }
+
+    // Get usernames of users who already have pending requests from current user
+    var pendingRequestUsernames = usuarioActual.FriendRequestEnviada?
+        .Select(fr => fr.Username)
+        .ToList() ?? new List<string>();
+
     
+    // Add the current user to the exclusion list
+    pendingRequestUsernames.Add(currentUser);
+    //añadimos tambien las notificaciones de solicitudes de amistad recibidas
+    if (usuarioActual.Notificaciones != null)
+    {
+        pendingRequestUsernames.AddRange(usuarioActual.Notificaciones.Select(n => n.SenderUsername));
+    }
+
+    // Also exclude existing friends
+    if (usuarioActual.Amigos != null)
+    {
+        pendingRequestUsernames.AddRange(usuarioActual.Amigos);
+    }
+
+    // Create filter: name matches pattern AND not in exclusion list
+    var filtro = Builders<Usuario>.Filter.And(
+        Builders<Usuario>.Filter.Regex(u => u.NombreUsuario, new BsonRegularExpression(nombreUsuario, "i")),
+        Builders<Usuario>.Filter.Nin(u => u.NombreUsuario, pendingRequestUsernames)
+    );
+
+    var resultados = await usuarios.Find(filtro).ToListAsync();
     return Results.Ok(resultados);
 });
 // Endpoint para mandar una solicitud de amistad
@@ -174,11 +204,23 @@ app.MapPost("/api/agregarAmigo", async (AmigoModel model, IMongoCollection<Usuar
                 Mensaje = "Ya son amigos"
             });
         }
+        // añadir la FriendRequestEnviada al usuario actual para poder filtrar al buscar usuarios
+        if (usuarioActual.FriendRequestEnviada == null)
+        {
+            usuarioActual.FriendRequestEnviada = new List<FriendRequest>();
+        }
+        usuarioActual.FriendRequestEnviada.Add(new FriendRequest
+        {
+            Username = usuarioAmigo.NombreUsuario, // ID del usuario al que se envía la solicitud
+            SenderUsername = usuarioActual.NombreUsuario, // ID del usuario que envía la solicitud
+            Message = $"{usuarioActual.Nombre} {usuarioActual.Apellido} quiere ser tu amigo" // Mensaje de la solicitud
+        });
         // Verificar si ya existe una solicitud pendiente
         if (usuarioAmigo.Notificaciones.Any(n => n.SenderUsername == usuarioActual.NombreUsuario))
         {
-            return Results.BadRequest(new ResponseServer{ 
-                CodigoError = 1, 
+            return Results.BadRequest(new ResponseServer
+            {
+                CodigoError = 1,
                 Mensaje = "Ya has enviado una solicitud de amistad a este usuario"
             });
         }
@@ -194,6 +236,8 @@ app.MapPost("/api/agregarAmigo", async (AmigoModel model, IMongoCollection<Usuar
         });
         // Actualizar el usuario amigo en la base de datos
         await usuarios.ReplaceOneAsync(u => u.Id == usuarioAmigo.Id, usuarioAmigo);
+        // Actualizar el usuario actual en la base de datos
+        await usuarios.ReplaceOneAsync(u => u.Id == usuarioActual.Id, usuarioActual);
         //devolvemos modelo ResponseServer
         return Results.Ok(new ResponseServer
         {
@@ -334,8 +378,8 @@ app.MapGet("/api/obtenerNotificaciones", async (string username,
         return Results.Problem("Error interno del servidor", statusCode: 500);
     }
 });
-// Endpoint para hacer amighos a dos usuarios
-app.MapPost("/api/makeFriend", async (AmigoModel model,
+// Endpoint para hacer amighos a dos usuarios, paso final del flujo de solicitud de amistad
+app.MapPost("/api/makeFriend", async (MakingFriendsModel model,
     IMongoCollection<Usuario> usuarios) =>
 {
     try
@@ -343,6 +387,22 @@ app.MapPost("/api/makeFriend", async (AmigoModel model,
         // Verificar que ambos usuarios existen
         var usuarioActual = await usuarios.Find(u => u.NombreUsuario == model.UsuarioActual).FirstOrDefaultAsync();
         var usuarioAmigo = await usuarios.Find(u => u.NombreUsuario == model.UsuarioAmigo).FirstOrDefaultAsync();
+        var IsAccepted = model.Accepted;
+        if (IsAccepted == false)
+        {
+            if (usuarioActual.Notificaciones != null)
+            {
+                usuarioActual.Notificaciones.RemoveAll(n => n.SenderUsername == usuarioAmigo.NombreUsuario);
+                usuarioAmigo.FriendRequestEnviada?.RemoveAll(fr => fr.Username == usuarioActual.NombreUsuario);
+                await usuarios.ReplaceOneAsync(u => u.Id == usuarioActual.Id, usuarioActual);
+                await usuarios.ReplaceOneAsync(u => u.Id == usuarioAmigo.Id, usuarioAmigo);
+            }
+            return Results.Ok(new ResponseServer
+            {
+                CodigoError = 0,
+                Mensaje = "Solicitud de amistad rechazada"
+            });
+        }
         if (usuarioActual == null || usuarioAmigo == null)
         {
             return Results.NotFound(new ResponseServer
@@ -374,7 +434,7 @@ app.MapPost("/api/makeFriend", async (AmigoModel model,
         }
         usuarioActual.Amigos.Add(model.UsuarioAmigo);
         usuarioActual.Notificaciones.RemoveAll(n => n.SenderUsername == usuarioAmigo.NombreUsuario);
-
+        usuarioAmigo.FriendRequestEnviada?.RemoveAll(fr => fr.Username == usuarioActual.NombreUsuario);
         // Actualizar usuario en la base de datos
         await usuarios.ReplaceOneAsync(u => u.Id == usuarioActual.Id, usuarioActual);
 
@@ -397,7 +457,7 @@ app.MapPost("/api/makeFriend", async (AmigoModel model,
 });
 // Endpoint para obtener mensajes no leídos de un usuario /api/getMensajesNoLeidos?username={username}"
 app.MapGet("/api/getMensajesNoLeidos", async (string username,
-    IMongoCollection<Chat> chats,IMongoCollection<Usuario> users) =>
+    IMongoCollection<Chat> chats, IMongoCollection<Usuario> users) =>
 {
     try
     {
@@ -438,7 +498,7 @@ app.MapGet("/api/getMensajesNoLeidos", async (string username,
         // Devolvemos el diccionario con los mensajes no leídos
         return Results.Ok(mensajesNoLeidos);
 
-        
+
     }
     catch (Exception ex)
     {
@@ -446,6 +506,53 @@ app.MapGet("/api/getMensajesNoLeidos", async (string username,
         return Results.Problem("Error interno del servidor", statusCode: 500);
     }
 });
+
+// Endpoint para actualizar mensajes no leídos de un usuario
+app.MapPost("/api/actualizarMensajesNoLeidos", async (string Username, string FriendUsername, int MensajesNoLeidos,
+    IMongoCollection<Chat> chats, IMongoCollection<Usuario> users) =>
+{
+    try
+    {
+        //obtenemos el usuario actual
+        var usuario = await users.Find(u => u.NombreUsuario == Username).FirstOrDefaultAsync();
+        if (usuario == null)
+        {
+            return Results.NotFound("Usuario no encontrado");
+        }
+
+        //creamos el id de la sala de chat
+        var primeroUsername = Username.CompareTo(FriendUsername) < 0 ? Username : FriendUsername;
+        var segundoUsername = Username.CompareTo(FriendUsername) < 0 ? FriendUsername : Username;
+        var roomId = $"{primeroUsername}_{segundoUsername}";
+
+        //obtenemos el chat de esa sala
+        var chat = await chats.Find(c => c.Id == roomId).FirstOrDefaultAsync();
+        if (chat == null)
+        {
+            return Results.NotFound("Sala de chat no encontrada");
+        }
+        // obtenemos los mensajes, los vamos a recorrer
+        var mensajesSinLeer = chat.Mensajes.Where(m => m.UserName != Username && !m.IsRead).ToList();
+        // Comprobamos si hay mensajes no leídos
+        if (mensajesSinLeer.Count > 0)
+        {
+            // Actualizamos el estado de los mensajes a leídos
+            foreach (var mensaje in mensajesSinLeer)
+            {
+                mensaje.IsRead = true;
+            }
+            // Actualizamos el chat en la base de datos
+            await chats.ReplaceOneAsync(c => c.Id == roomId, chat);
+        }
+        // Return success result if everything went fine
+        return Results.Ok("Mensajes actualizados correctamente");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error al actualizar mensajes no leídos: {ex.Message}");
+        return Results.Problem("Error interno del servidor", statusCode: 500);
+    }
+});        
 
 
 
@@ -476,4 +583,10 @@ public class FotoPerfilModel
 {
     public string Username { get; set; }
     public string Foto { get; set; }
+}
+public class MakingFriendsModel
+{
+    public string UsuarioActual { get; set; }
+    public string UsuarioAmigo { get; set; }
+    public bool Accepted { get; set; } // Indica si la solicitud fue aceptada o no
 }

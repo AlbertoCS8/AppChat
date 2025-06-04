@@ -87,39 +87,6 @@
         imageDataUrl = AuthService.ImagenBase64;
     }
     
-    @* private async Task LoadUserProfile()
-    {
-        isLoading = true;
-        try
-        {
-            // Asume que AuthService tiene un método para obtener datos del usuario
-            var userData = AuthService.Username;
-            userName = $"{userData.FirstName} {userData.LastName}";
-            
-            // Si tienes la foto guardada como base64 en tu servicio
-            if (!string.IsNullOrEmpty(AuthService.fotoPerfil))
-            {
-                // Verifica si ya tiene el prefijo data:image
-                if (!AuthService.fotoPerfil.StartsWith("data:image"))
-                {
-                    imageDataUrl = $"data:image/jpeg;base64,{AuthService.fotoPerfil}";
-                }
-                else
-                {
-                    imageDataUrl = AuthService.fotoPerfil;
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            errorMessage = "Error al cargar datos de usuario: " + ex.Message;
-        }
-        finally
-        {
-            isLoading = false;
-            StateHasChanged();
-        }
-    } *@
     
     private async Task UploadFiles(InputFileChangeEventArgs e)
     {
@@ -219,6 +186,7 @@
         await ClienteService.CambiarFotoPerfilAsync(AuthService.Username, completeImageUrl);
         
         Snackbar.Add("Foto de perfil actualizada correctamente", MudBlazor.Severity.Success);
+        StateHasChanged();
     }
     catch (Exception ex) {
         errorMessage = $"Error al guardar la foto: {ex.Message}";

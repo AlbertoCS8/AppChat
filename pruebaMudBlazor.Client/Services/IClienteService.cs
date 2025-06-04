@@ -9,7 +9,7 @@ public interface IClienteService
 
     Task<string> CambiarFotoPerfilAsync(string username, string foto);
 
-    Task<List<UserModel>> BuscarUsuariosAsync(string nombreUsuario);
+    Task<List<UserModel>> BuscarUsuariosAsync(string nombreUsuario, string currentUser);
     //tarea para agregar amigos, devuelve un obj con un codigo de error o un mensaje
 
     Task<bool> AgregarAmigoAsync(string usuarioActual, string usuarioAmigo);
@@ -26,7 +26,9 @@ public interface IClienteService
     //tarea para eliminar un amigo, le pasamos el username del usuario actual y el amigo a eliminar
     Task<bool> EliminarAmigoAsync(string usuarioActual, string amigoUsername);
     //tarea para hacer aigos a dos usuarios 
-    Task<bool> MakeFriendAsync(string usuarioActual, string amigoUsername);
+    Task<bool> MakeFriendAsync(string usuarioActual, string amigoUsername, bool accepted);
     //tare3a para obtener los mensajes sin leer de un usuario
-    Task<Dictionary<string,int>> GetMensajesNoLeidosAsync(string username);
+    Task<Dictionary<string, int>> GetMensajesNoLeidosAsync(string username);
+    //ActualizarMensajesNoLeidosAsync(authService.Username, friend.Username, 0)
+    Task<bool> ActualizarMensajesNoLeidosAsync(string username, string friendUsername, int mensajesNoLeidos);
 }

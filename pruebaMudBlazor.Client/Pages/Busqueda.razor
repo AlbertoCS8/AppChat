@@ -108,8 +108,7 @@
         try
         {
             // Obtener todos los usuarios que coincidan con la búsqueda
-            var todosLosUsuarios = await ClienteService.BuscarUsuariosAsync(searchTerm);
-            
+            var todosLosUsuarios = await ClienteService.BuscarUsuariosAsync(searchTerm, authService.Username);
             // Filtrar: excluir usuarios que ya son amigos y el propio usuario
             usuarios = todosLosUsuarios
                 .Where(u => !authService.Amigos.Contains(u.NombreUsuario) && 
@@ -128,6 +127,7 @@
         }
         finally
         {
+            @* Console.WriteLine($"Búsqueda completada: {totalUsuarios} usuarios encontrados"); *@
             isSearching = false;
             StateHasChanged();
         }
@@ -172,15 +172,13 @@
     private async void AddFriend(string Username)
     {
         var respuesta= await ClienteService.AgregarAmigoAsync(authService.Username,Username);
-        @* authService.Amigos.Add(Username);
-        Antes usuario A agregaba a B y B tenia que agregar a A tambien *@
-        //Vaciamos contenido de la busqueda
         searchTerm = string.Empty;
         await chatService.EnviarNotificacionAlGlobalHub(new Evento {
             Tipo = "NuevoAmigo",
             Mensaje = $"{authService.Username} te ha agregado como amigo",
             UserNameDestino = Username
         });
+        searchTerm = string.Empty; 
     StateHasChanged(); // quiero tener obviados a los que ya he mandado una notificacion para evitar errores
     //tambien al que ya tiene la notificacion de amigo, no le debe salir el usuairo que se la ha mandado al buscar
     }

@@ -7,15 +7,17 @@ public class ChatHub : Hub
     private readonly ChatResponsables _chatResponsables;
     private UsersConnected _usersConnected;
     private readonly IMongoCollection<Chat> _chatsCollection;
+    private readonly IMongoCollection<Usuario> _usersCollection;
     private readonly Rest _rest;
     // Inyección por constructor
-    public ChatHub(ChatResponsables chatResponsables, IMongoCollection<Chat> chatsCollection, UsersConnected usersConnected, Rest rest)
+    public ChatHub(ChatResponsables chatResponsables, IMongoCollection<Chat> chatsCollection, UsersConnected usersConnected, Rest rest, IMongoCollection<Usuario> usersCollection)
         : base()
     {
         _chatResponsables = chatResponsables;
         _chatsCollection = chatsCollection;
         _usersConnected = usersConnected;
         _rest = rest;
+        _usersCollection = usersCollection;
     }
     //funcion para enviar mensajes a un grupo, los guarda en BdD
     public async Task EnviarMensaje(string roomName, ChatMessage mensaje, string userDestino)
@@ -79,7 +81,7 @@ public class ChatHub : Hub
             // Registrar ambos: estado y connectionId
             _usersConnected.registConnection(userName, status);
             _usersConnected.RegisterConnectionId(userName, Context.ConnectionId);
-            
+
             await Clients.Others.SendAsync("UserConnection", userName, status);
         }
         catch (Exception ex)
@@ -119,13 +121,23 @@ public class ChatHub : Hub
         // Busca qué usuario corresponde a este ConnectionId
         var allUsers = _usersConnected.GetAllConnectedUsers();
         string disconnectedUser = allUsers.FirstOrDefault(x => x.Value == Context.ConnectionId).Key;
-        
+        // actualizo la ultima conexion 
+        var usuario = await _usersCollection.Find(u => u.NombreUsuario == disconnectedUser).FirstOrDefaultAsync();
+        if (usuario != null)
+        {
+            usuario.UltimaConexion = _rest.GetMadridTimeFormatted().Result;
+            await _usersCollection.ReplaceOneAsync(u => u.NombreUsuario == disconnectedUser, usuario);
+        }
         if (!string.IsNullOrEmpty(disconnectedUser))
         {
             _usersConnected.RemoveConnection(disconnectedUser);
             await Clients.Others.SendAsync("UserConnection", disconnectedUser, "Desconectado");
         }
-        
+
         await base.OnDisconnectedAsync(exception);
     }
+    public async Task LeaveRoom(string roomName)
+{
+    await Groups.RemoveFromGroupAsync(Context.ConnectionId, roomName);
+}
 }

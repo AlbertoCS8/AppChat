@@ -79,10 +79,10 @@ public class ClienteService : IClienteService
         }
     }
 
-    public Task<List<UserModel>> BuscarUsuariosAsync(string nombreUsuario)
+    public Task<List<UserModel>> BuscarUsuariosAsync(string nombreUsuario,string currentUser)
     {
         // Console.WriteLine("en servicio buscar usuarios los datos son: " + nombreUsuario);
-        return _httpClient.GetFromJsonAsync<List<UserModel>>($"/api/buscarUsuarios?nombreUsuario={nombreUsuario}");
+        return _httpClient.GetFromJsonAsync<List<UserModel>>($"/api/buscarUsuarios?nombreUsuario={nombreUsuario}&currentUser={currentUser}");
 
     }
 
@@ -210,14 +210,15 @@ public class ClienteService : IClienteService
         return _httpClient.GetFromJsonAsync<List<FriendRequest>>($"/api/obtenerNotificaciones?username={username}");
     }
 
-    public Task<bool> MakeFriendAsync(string usuarioActual, string amigoUsername)
+    public Task<bool> MakeFriendAsync(string usuarioActual, string amigoUsername,bool accepted)
     {
-        Console.WriteLine($"Haciendo amigos: {usuarioActual} -> {amigoUsername}");
+        // Console.WriteLine($"Haciendo amigos: {usuarioActual} -> {amigoUsername}");
 
         var model = new
         {
             UsuarioActual = usuarioActual,
-            UsuarioAmigo = amigoUsername
+            UsuarioAmigo = amigoUsername,
+            Accepted = accepted // Indica si la solicitud fue aceptada o no
         };
 
         return _httpClient.PostAsJsonAsync("/api/makeFriend", model)
@@ -239,4 +240,20 @@ public class ClienteService : IClienteService
         // Console.WriteLine("en servicio obtener mensajes no leidos los datos son: " + username);
         return _httpClient.GetFromJsonAsync<Dictionary<string, int>>($"/api/getMensajesNoLeidos?username={username}");
     }
+
+   public Task<bool> ActualizarMensajesNoLeidosAsync(string username, string friendUsername, int mensajesNoLeidos)
+{
+    return _httpClient.PostAsync($"/api/actualizarMensajesNoLeidos?Username={username}&FriendUsername={friendUsername}&MensajesNoLeidos={mensajesNoLeidos}", null)
+        .ContinueWith(task =>
+        {
+            if (task.Result.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        });
+}
 }

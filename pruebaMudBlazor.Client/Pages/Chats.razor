@@ -382,7 +382,7 @@
                 Console.WriteLine("Recargando amigos desde el authService...");
                 @* Console.WriteLine("Recargando amigos desde el authService..."); *@
                 listaAmigos = await ClienteService.ObtenerAmigosAsync(authService.Amigos);
-            }else if (tipocambio == "NuevoMensaje"){
+            }else if (tipocambio == "NuevoMensaje"){ //cada vez que se agrega un amiho se suma un mensaje no, es pòr otra cosa¿?¿?¿?
                 Console.WriteLine("Recargando mensajes desde el authService...");
                 foreach (var mensaje in authService.MensajesNoLeidos)
                 {
@@ -406,39 +406,65 @@
         iniciarChat(friend);
         //pendienteeeeeeeee
     }
-    private async Task iniciarChat(Amigos friend)
+   private async Task iniciarChat(Amigos friend)
+{
+    try
     {
-        try
+        // 1. Guardar el nombre de la sala actual antes de cambiarlo
+        string currentRoom = roomName;
+        bool wasConnected = conectadoA_unaSala;
+        
+        // 2. Desuscribirse de eventos anteriores
+        if (chatService.ObsMensajeRecibido != null)
         {
-            // Desuscribirse de eventos anteriores
-            if (chatService.ObsMensajeRecibido != null)
-            {
-                chatService.ObsMensajeRecibido -= OnMensajeRecibido;
-            }
-            
-            selectedFriend = friend;
-            
-            // Calcular el nombre de la sala
-            roomName = string.Compare(authService.Username, friend.Username) < 0
-                ? $"{authService.Username}_{friend.Username}"
-                : $"{friend.Username}_{authService.Username}";
-                
-            // Suscribirse al evento de mensajes recibidos
-            chatService.ObsMensajeRecibido += OnMensajeRecibido;
-            
-            // Conectar al hub y obtener la conexión
-            var connection = await chatService.ConnectToHub(authService.Username, roomName);
-            
-            // Obtener mensajes usando la misma conexión
-            chatMessages = await chatService.GetChatMessagesAsync(roomName, connection);
-            
-            StateHasChanged();
+            chatService.ObsMensajeRecibido -= OnMensajeRecibido;
         }
-        catch (Exception ex)
+        
+        // 3. Abandonar la sala actual si estamos conectados
+        if (wasConnected && !string.IsNullOrEmpty(currentRoom))
         {
-            Console.WriteLine($"Error al iniciar chat: {ex.Message}");
+            await chatService.LeaveRoomAsync(currentRoom);
+            conectadoA_unaSala = false;
+            Console.WriteLine($"Leaving room: {currentRoom}");
         }
+        
+        // 4. Limpiar mensajes y calcular el nombre de la nueva sala
+        chatMessages.Clear();
+        roomName = string.Compare(authService.Username, friend.Username) < 0
+            ? $"{authService.Username}_{friend.Username}"
+            : $"{friend.Username}_{authService.Username}";
+            
+        // 5. Actualizar el amigo seleccionado
+        selectedFriend = friend;
+
+        // 6. Marcar mensajes como leídos
+        if (authService.MensajesNoLeidos.ContainsKey(friend.Username))
+        {
+            authService.MensajesNoLeidos[friend.Username] = 0;//tanto en local...
+            //... como en la base de datos
+            await ClienteService.ActualizarMensajesNoLeidosAsync(authService.Username, friend.Username, 0);
+        }
+            
+        // 7. Suscribirse al evento de mensajes recibidos
+        chatService.ObsMensajeRecibido += OnMensajeRecibido;
+        
+        // 8. Conectar al hub y unirse a la sala
+        var connection = await chatService.ConnectToHub(authService.Username, roomName);
+        conectadoA_unaSala = true;
+        
+        // 9. Obtener mensajes
+        chatMessages = await chatService.GetChatMessagesAsync(roomName, connection);
+        
+        // 10. Cerrar drawer en móviles
+        open = false;
+
+        StateHasChanged();
     }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error al iniciar chat: {ex.Message}");
+    }
+}
     private void OnMensajeRecibido(ChatMessage message)
 {
     // Aquí puedes manejar la recepción de mensajes
@@ -500,12 +526,20 @@
     }
     public async void Dispose()
 {
+    //dispose todos los observables
+    Console.WriteLine("Desuscribiendo de eventos y limpiando recursos...");
+
     themeService.OnThemeChanged -= ThemeChanged;
     if (chatService.ObsMensajeRecibido != null)
     {
         chatService.ObsMensajeRecibido -= OnMensajeRecibido;
     }
    chatService.ObsUserConnection -= OnUserConnection;
+    if (_isSubscribedToUserConnection)
+    {
+        chatService.ObsUserConnection -= OnUserConnection;
+        _isSubscribedToUserConnection = false;
+    }
     }
      protected override void OnInitialized()
     {

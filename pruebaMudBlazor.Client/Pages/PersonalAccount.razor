@@ -114,7 +114,7 @@
                                                    Color="Color.Success"
                                                    Size="Size.Small"
                                                    StartIcon="@Icons.Material.Filled.Check"
-                                                   @onclick="@(() => InteracionFriend(noti, "Friend accepted", MudBlazor.Severity.Success))">
+                                                   @onclick="@(() => InteracionFriend(noti, "Friend accepted",true, MudBlazor.Severity.Success))">
                                             Accept
                                         </MudButton>
 
@@ -122,7 +122,7 @@
                                                    Color="Color.Error"
                                                    Size="Size.Small"
                                                    StartIcon="@Icons.Material.Filled.Close"
-                                                   @onclick="@(() => InteracionFriend(noti, "Friend request rejected", MudBlazor.Severity.Error))">
+                                                   @onclick="@(() => InteracionFriend(noti, "Friend request rejected",false, MudBlazor.Severity.Error))">
                                             Reject
                                         </MudButton>
                                     </div>
@@ -215,16 +215,17 @@
             config.ShowCloseIcon = false;
         });
     }
-    async void InteracionFriend(FriendRequest notificacion, string message, MudBlazor.Severity severity)
+    async void InteracionFriend(FriendRequest notificacion, string message, bool accepted, MudBlazor.Severity severity)
     {
         SaveChanges(message, severity);
-        @* ClienteService.InteraccionAmigoAsync(authService.Username, friendUsername); *@
-        @* Console.WriteLine($"Interacting with friend: {notificacion.Message}"); *@
-        bool response = await ClienteService.MakeFriendAsync(authService.Username, notificacion.SenderUsername);
+
+        bool response = await ClienteService.MakeFriendAsync(authService.Username, notificacion.SenderUsername, accepted);
         if(response)
-        {
+        {   
+            if (accepted)
+            {
             authService.Amigos.Add(notificacion.SenderUsername);
-            listaAmigos = await ClienteService.ObtenerAmigosAsync(authService.Amigos);
+            listaAmigos = await ClienteService.ObtenerAmigosAsync(authService.Amigos);}
             listaNotis.Remove(notificacion);
             // Enviar notificación al otro usuario
             chatService.EnviarNotificacionAlGlobalHub(new Evento
@@ -232,6 +233,7 @@
                 Tipo = "AmigoAceptado",
                 UserNameOrigen = authService.Username,
                 UserNameDestino = notificacion.SenderUsername,
+                Accepted = accepted,
                 Mensaje = $"{authService.Username} ha aceptado tu solicitud de amistad."
             });
         }
@@ -242,10 +244,10 @@
         StateHasChanged();
     }
 
-    void RemoveFriend(string friendUsername)
+    async void RemoveFriend(string friendUsername)
     {
             SaveChanges("Friend removed", MudBlazor.Severity.Warning);
-            ClienteService.EliminarAmigoAsync(authService.Username, friendUsername);
+           await ClienteService.EliminarAmigoAsync(authService.Username, friendUsername);
             authService.Amigos.Remove(friendUsername);
             listaAmigos.RemoveAll(f => f.Username == friendUsername);
             //forzar recarga porque no me lo muestra que en efecto lo esta borrando

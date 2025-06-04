@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using System.Text.Json;
 
 public class Rest
@@ -25,17 +26,24 @@ public class Rest
             Console.WriteLine("No se pudo obtener la fecha y hora de la API, usando la hora local.");
             return DateTime.Now.ToString("dd-MM-yyyy HH:mm");
         }
-        catch(HttpRequestException ex)
+        catch (HttpRequestException ex)
         {
             Console.WriteLine("Error al realizar la solicitud HTTP a la API de hora, usando la hora local.");
             Console.WriteLine("Error: " + ex.Message);
-            return DateTime.Now.ToString("dd-MM-yyyy HH:mm");
+            // return DateTime.Now.ToString("dd-MM-yyyy HH:mm");
         }
         catch (JsonException ex)
         {
             Console.WriteLine("Error al obtener la fecha y hora de la API, usando la hora local.");
             Console.WriteLine("Error: " + ex.Message);
-            return DateTime.Now.ToString("dd-MM-yyyy HH:mm");
+            // return DateTime.Now.ToString("dd-MM-yyyy HH:mm");
         }
+        
+         var madridTimeZone = TimeZoneInfo.FindSystemTimeZoneById(
+        RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "Romance Standard Time" : "Europe/Madrid");
+
+    var madridTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, madridTimeZone);
+    Console.WriteLine("Hora calculada localmente: " + madridTime);
+    return madridTime.ToString("dd-MM-yyyy HH:mm");
     }
 }

@@ -41,13 +41,13 @@ public class ChatService
             ObsUserConnection?.Invoke(username, status);
             // Notificar cambio de Status de usuarios --> En linea o desconectado...
         });
-        
+
         // Añadir la suscripción una sola vez
         _globalHubConnection.On<Evento>("ReceiveNotification", (Evento evento) =>
         {
             ObsNotificacionRecibida?.Invoke(evento);
         });
-        
+
         await _globalHubConnection.StartAsync();
         await _globalHubConnection.InvokeAsync("UserConnection", $"{username}", "En línea");
     }
@@ -119,7 +119,7 @@ public class ChatService
             throw;
         }
     }
-    public async Task SendMessage(string roomId, ChatMessage message,string SelectedUser)
+    public async Task SendMessage(string roomId, ChatMessage message, string SelectedUser)
     {
         try
         {
@@ -194,5 +194,20 @@ public class ChatService
             throw;
         }
     }
+    public async Task LeaveRoomAsync(string roomName)
+{
+    try
+    {
+        if (_hubConnection != null && _hubConnection.State == HubConnectionState.Connected)
+        {
+            await _hubConnection.InvokeAsync("LeaveRoom", roomName);
+            Console.WriteLine($"Left room: {roomName}");
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error leaving room: {ex.Message}");
+    }
+}
 
 }

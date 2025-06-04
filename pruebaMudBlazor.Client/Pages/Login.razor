@@ -107,6 +107,14 @@
             //diccionario de usuarios & mensajes no leiufos
             var MensajesNoLeidos = await ClienteService.GetMensajesNoLeidosAsync(authService.Username);
             authService.MensajesNoLeidos = MensajesNoLeidos;
+            // si hubiera algun usuario que no nos ha mandaod mensajes no leidos, lo añado al diccionario
+            foreach (var amigo in authService.Amigos)
+            {
+                if (!MensajesNoLeidos.ContainsKey(amigo))
+                {
+                    MensajesNoLeidos[amigo] = 0; // Inicializar a 0 si no hay mensajes
+                }
+            }
             foreach (var mensaje in MensajesNoLeidos)
             {
                 Console.WriteLine(mensaje.Key + " tiene " + mensaje.Value + " mensajes no leídos.");

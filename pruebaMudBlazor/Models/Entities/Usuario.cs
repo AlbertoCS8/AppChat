@@ -32,6 +32,9 @@ public class Usuario
     public string UltimaConexion { get; set; } = string.Empty; // fecha y hora de la ultima conexion --> nos evitammos formatos de fechas
     [BsonElement("notificaciones")]
     public List<FriendRequest> Notificaciones { get; set; } = new List<FriendRequest>(); // Lista de notificaciones (IDs o mensajes)
+
+    [BsonElement("FriendRequestEnviada")]
+    public List<FriendRequest> FriendRequestEnviada { get; set; } = new List<FriendRequest>(); // Lista de solicitudes de amistad enviadas
     
     
 }
