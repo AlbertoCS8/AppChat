@@ -12,7 +12,7 @@ namespace pruebaMudBlazor.Client.Models
         public string Email { get; set; } = "";
         public string FotoPerfil { get; set; } = "";
         public List<string> Amigos { get; set; } = new List<string>();
-        //podible texto de estado como el estado del wsp
+        //podible texto de estado como el estado del wsp no me dio time
              public override string ToString()
     {
         return $"Nombre: {Nombre}, Apellido: {Apellido}, Usuario: {NombreUsuario}, Email: {Email}";

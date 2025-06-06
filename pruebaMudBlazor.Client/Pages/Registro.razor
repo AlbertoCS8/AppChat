@@ -8,7 +8,7 @@
 @inject NavigationManager NavigationManager
 @inject ThemeService themeService
 
-<MudContainer Class="d-flex align-center justify-center mt-16 mb-16" Style="height: 100vh;" >
+<MudContainer Class="d-flex align-center justify-center mt-16 mb-16" >
 <MudGrid>
     <MudItem xs="12" sm="8" md="6" lg="4" class="mx-auto mt-5">
         <MudCard Elevation="5" Class="@(themeService._isDarkMode ? "card card-dark" : "card card-light")">
@@ -44,6 +44,9 @@
             <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
         </MudOverlay>
                 </MudForm>
+                <MudLink Href="/" Color="Color.Primary" Align="Align.Center">
+                ¿Ya tienes una cuenta? Haz login
+            </MudLink>
             <!-- Botón de registro -->
             <MudCardActions>
                 @* <MudButton Variant="Variant.Filled" Color="Color.Primary" Disabled="@(!valido)" Class="ml-auto w-full" OnClick="Submit">Registrar</MudButton> *@
@@ -92,7 +95,7 @@
     }
 }
 
-//probar porque en js se solapan las funcionalidades del navegador y las que ponganmos nosotrso
+//probar porque en js se solapan las funcionalidades del navegador y las que ponganmos nosotrso clases input::webkit noseque 
     bool PasswordVisibility;
     bool ConfirmarPasswordVisibility;
     InputType PasswordInput = InputType.Password;

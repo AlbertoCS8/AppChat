@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fetb2XjXQVIxThmfFLoXPNT3sYGSQitO9hYPmOPIQSA=",
+  "Hash": "xwZkB7qo0NJfT8mY8pVi+oUmzr6wCrnwOcCRa8wuMQw=",
   "Source": "pruebaMudBlazor",
   "BasePath": "_content/pruebaMudBlazor",
   "Mode": "Default",
@@ -134,8 +134,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "manifest",
-      "Fingerprint": "iqp5y74x3l",
-      "Integrity": "im+P22x2MCUjHlWmjwENrIWbdvumU/3xU2gSNqPrM90=",
+      "Fingerprint": "lgzycmap6d",
+      "Integrity": "+5MEZ22P6rbEDCFEvn2BMWQCOkaWkstDt5nCbi9AW6k=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.boot.json"
@@ -1247,8 +1247,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "symbol",
-      "Fingerprint": "803v46d7a1",
-      "Integrity": "CPMt1yLOsq3EtO4mFpZ+i8L4Su0/CGF2uA2mK3sgmTI=",
+      "Fingerprint": "4spm4ahzkb",
+      "Integrity": "/BfcmqhNM1W85JusGNP50WJCL7kxT8hsRtzCk7C48JM=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\pruebaMudBlazor.Client.pdb"
@@ -1268,8 +1268,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "9j54h4n80u",
-      "Integrity": "BaaVlB64kz84F4tzJw0tR0GRaK8obNS9+/wC+d/J/kE=",
+      "Fingerprint": "42ytlx5wlo",
+      "Integrity": "rPom2mR9+FE+U3rR5bELBEBItEJIvOk8M5sQJ/UemRw=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\pruebaMudBlazor.Client.wasm"
@@ -6021,12 +6021,12 @@
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a6xnw8fl24-vuf6bd4i5s.gz"
     },
     {
-      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-9j54h4n80u.gz",
+      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-42ytlx5wlo.gz",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Project",
       "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/pruebaMudBlazor.Client#[.{fingerprint=9j54h4n80u}]!.wasm.gz",
+      "RelativePath": "_framework/pruebaMudBlazor.Client#[.{fingerprint=42ytlx5wlo}]!.wasm.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -6035,11 +6035,11 @@
       "RelatedAsset": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\pruebaMudBlazor.Client.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "n5lpdr2a2m",
-      "Integrity": "pa+a2H4yz/KPt6GZxxjVO2iIHcV3Dc54zUTju+akOBg=",
+      "Fingerprint": "ak4sb0ivjb",
+      "Integrity": "5i5K55XVAFaEM+c32izs/mNqN8KeyYRvCsNrxs15/WQ=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-9j54h4n80u.gz"
+      "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-42ytlx5wlo.gz"
     },
     {
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\ad7a020sas-zxt8non64j.gz",
@@ -6126,7 +6126,7 @@
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\au2puf23d2-weh8h3644m.gz"
     },
     {
-      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\axk79yl5e5-iqp5y74x3l.gz",
+      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\axk79yl5e5-lgzycmap6d.gz",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Project",
       "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\",
@@ -6140,11 +6140,11 @@
       "RelatedAsset": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.boot.json",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "fvbdw4vmbc",
-      "Integrity": "pWLQ9nZDKEyoFlz+CpZVSi+RKMsiDACcLVDpLnjaqqg=",
+      "Fingerprint": "vdiamyjwjb",
+      "Integrity": "bbaVqCwAF2mB/f7/ugxHAybNsQw3S3oXIBIXAjmVk84=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\axk79yl5e5-iqp5y74x3l.gz"
+      "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\axk79yl5e5-lgzycmap6d.gz"
     },
     {
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\b17ipr5xxq-k2s3uxabyh.gz",
@@ -6924,12 +6924,12 @@
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\hux1or9hk1-bjvf21z03s.gz"
     },
     {
-      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\hv25md0tx6-77n3jmhkmk.gz",
+      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\hv25md0tx6-qs4nfq5zka.gz",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Project",
       "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "css/custom#[.{fingerprint=77n3jmhkmk}]?.css.gz",
+      "RelativePath": "css/custom#[.{fingerprint=qs4nfq5zka}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -6938,11 +6938,11 @@
       "RelatedAsset": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\wwwroot\\css\\custom.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "ot7obq7860",
-      "Integrity": "nEBxXeTZpdhiMTNNAeTC6GsG1/C07zICDa+fjqzVFIA=",
+      "Fingerprint": "otf323gwzv",
+      "Integrity": "3KBdMimmN6xUCgNDahFF7BiyFFhLKJDCSbN8ld6wLls=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\hv25md0tx6-77n3jmhkmk.gz"
+      "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\hv25md0tx6-qs4nfq5zka.gz"
     },
     {
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\i68p7kh8m8-9cby8evhb7.gz",
@@ -9045,12 +9045,12 @@
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y33ycwz49r-l50h3hda5q.gz"
     },
     {
-      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-803v46d7a1.gz",
+      "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-4spm4ahzkb.gz",
       "SourceId": "pruebaMudBlazor.Client",
       "SourceType": "Project",
       "ContentRoot": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/pruebaMudBlazor.Client#[.{fingerprint=803v46d7a1}]!.pdb.gz",
+      "RelativePath": "_framework/pruebaMudBlazor.Client#[.{fingerprint=4spm4ahzkb}]!.pdb.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -9059,11 +9059,11 @@
       "RelatedAsset": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\pruebaMudBlazor.Client.pdb",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "gqb1gqgrwz",
-      "Integrity": "qGktyMZKpZBdkH4M0y7tQM6/XUduZZAhFR70yIUvn+o=",
+      "Fingerprint": "bbrx89y16c",
+      "Integrity": "hzRJa5yQIiQDj98BjaObqfQQTlbBkKftfrlDc5IQdqw=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-803v46d7a1.gz"
+      "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-4spm4ahzkb.gz"
     },
     {
       "Identity": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\yam2dj9q8c-fha2j28yuo.gz",
@@ -9395,8 +9395,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "77n3jmhkmk",
-      "Integrity": "zUzp07tnPczxHLaFZ6NpbNK0Y23xF8Vqu0EbHS4wsfk=",
+      "Fingerprint": "qs4nfq5zka",
+      "Integrity": "Cp8PlMEiDPtWGKQ4mDQsB4Rqti6n6zVcLp1alY3+iuE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\wwwroot\\css\\custom.css"
@@ -10232,28 +10232,28 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"im+P22x2MCUjHlWmjwENrIWbdvumU/3xU2gSNqPrM90=\""
+          "Value": "\"+5MEZ22P6rbEDCFEvn2BMWQCOkaWkstDt5nCbi9AW6k=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 22:24:49 GMT"
+          "Value": "Fri, 06 Jun 2025 01:19:32 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-im+P22x2MCUjHlWmjwENrIWbdvumU/3xU2gSNqPrM90="
+          "Value": "sha256-+5MEZ22P6rbEDCFEvn2BMWQCOkaWkstDt5nCbi9AW6k="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\axk79yl5e5-iqp5y74x3l.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\axk79yl5e5-lgzycmap6d.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000075648687"
+          "Quality": "0.000075660135"
         }
       ],
       "ResponseHeaders": [
@@ -10271,15 +10271,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "13218"
+          "Value": "13216"
         },
         {
           "Name": "ETag",
-          "Value": "\"pWLQ9nZDKEyoFlz+CpZVSi+RKMsiDACcLVDpLnjaqqg=\""
+          "Value": "\"bbaVqCwAF2mB/f7/ugxHAybNsQw3S3oXIBIXAjmVk84=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 22:19:08 GMT"
+          "Value": "Fri, 06 Jun 2025 01:18:15 GMT"
         },
         {
           "Name": "Vary",
@@ -10291,19 +10291,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"im+P22x2MCUjHlWmjwENrIWbdvumU/3xU2gSNqPrM90=\""
+          "Value": "W/\"+5MEZ22P6rbEDCFEvn2BMWQCOkaWkstDt5nCbi9AW6k=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-im+P22x2MCUjHlWmjwENrIWbdvumU/3xU2gSNqPrM90="
+          "Value": "sha256-+5MEZ22P6rbEDCFEvn2BMWQCOkaWkstDt5nCbi9AW6k="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json.gz",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\axk79yl5e5-iqp5y74x3l.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\axk79yl5e5-lgzycmap6d.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10320,7 +10320,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "13218"
+          "Value": "13216"
         },
         {
           "Name": "Content-Type",
@@ -10328,11 +10328,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pWLQ9nZDKEyoFlz+CpZVSi+RKMsiDACcLVDpLnjaqqg=\""
+          "Value": "\"bbaVqCwAF2mB/f7/ugxHAybNsQw3S3oXIBIXAjmVk84=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 22:19:08 GMT"
+          "Value": "Fri, 06 Jun 2025 01:18:15 GMT"
         },
         {
           "Name": "Vary",
@@ -10342,7 +10342,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pWLQ9nZDKEyoFlz+CpZVSi+RKMsiDACcLVDpLnjaqqg="
+          "Value": "sha256-bbaVqCwAF2mB/f7/ugxHAybNsQw3S3oXIBIXAjmVk84="
         }
       ]
     },
@@ -25682,168 +25682,7 @@
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.803v46d7a1.pdb",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\pruebaMudBlazor.Client.pdb",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "100352"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"CPMt1yLOsq3EtO4mFpZ+i8L4Su0/CGF2uA2mK3sgmTI=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 22:24:48 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "803v46d7a1"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-CPMt1yLOsq3EtO4mFpZ+i8L4Su0/CGF2uA2mK3sgmTI="
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/pruebaMudBlazor.Client.pdb"
-        }
-      ]
-    },
-    {
-      "Route": "_framework/pruebaMudBlazor.Client.803v46d7a1.pdb",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-803v46d7a1.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000012846700"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "77840"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"qGktyMZKpZBdkH4M0y7tQM6/XUduZZAhFR70yIUvn+o=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 22:24:49 GMT"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"CPMt1yLOsq3EtO4mFpZ+i8L4Su0/CGF2uA2mK3sgmTI=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "803v46d7a1"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-CPMt1yLOsq3EtO4mFpZ+i8L4Su0/CGF2uA2mK3sgmTI="
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/pruebaMudBlazor.Client.pdb"
-        }
-      ]
-    },
-    {
-      "Route": "_framework/pruebaMudBlazor.Client.803v46d7a1.pdb.gz",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-803v46d7a1.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "77840"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"qGktyMZKpZBdkH4M0y7tQM6/XUduZZAhFR70yIUvn+o=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 22:24:49 GMT"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "803v46d7a1"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-qGktyMZKpZBdkH4M0y7tQM6/XUduZZAhFR70yIUvn+o="
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/pruebaMudBlazor.Client.pdb.gz"
-        }
-      ]
-    },
-    {
-      "Route": "_framework/pruebaMudBlazor.Client.9j54h4n80u.wasm",
+      "Route": "_framework/pruebaMudBlazor.Client.42ytlx5wlo.wasm",
       "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\pruebaMudBlazor.Client.wasm",
       "Selectors": [],
       "ResponseHeaders": [
@@ -25857,7 +25696,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "177941"
+          "Value": "178453"
         },
         {
           "Name": "Content-Type",
@@ -25865,21 +25704,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"BaaVlB64kz84F4tzJw0tR0GRaK8obNS9+/wC+d/J/kE=\""
+          "Value": "\"rPom2mR9+FE+U3rR5bELBEBItEJIvOk8M5sQJ/UemRw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 22:24:48 GMT"
+          "Value": "Fri, 06 Jun 2025 01:12:28 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "9j54h4n80u"
+          "Value": "42ytlx5wlo"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-BaaVlB64kz84F4tzJw0tR0GRaK8obNS9+/wC+d/J/kE="
+          "Value": "sha256-rPom2mR9+FE+U3rR5bELBEBItEJIvOk8M5sQJ/UemRw="
         },
         {
           "Name": "label",
@@ -25888,13 +25727,13 @@
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.9j54h4n80u.wasm",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-9j54h4n80u.gz",
+      "Route": "_framework/pruebaMudBlazor.Client.42ytlx5wlo.wasm",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-42ytlx5wlo.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000015705737"
+          "Quality": "0.000015604276"
         }
       ],
       "ResponseHeaders": [
@@ -25912,15 +25751,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "63670"
+          "Value": "64084"
         },
         {
           "Name": "ETag",
-          "Value": "\"pa+a2H4yz/KPt6GZxxjVO2iIHcV3Dc54zUTju+akOBg=\""
+          "Value": "\"5i5K55XVAFaEM+c32izs/mNqN8KeyYRvCsNrxs15/WQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 22:24:49 GMT"
+          "Value": "Fri, 06 Jun 2025 01:12:29 GMT"
         },
         {
           "Name": "Vary",
@@ -25932,17 +25771,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"BaaVlB64kz84F4tzJw0tR0GRaK8obNS9+/wC+d/J/kE=\""
+          "Value": "W/\"rPom2mR9+FE+U3rR5bELBEBItEJIvOk8M5sQJ/UemRw=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "9j54h4n80u"
+          "Value": "42ytlx5wlo"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-BaaVlB64kz84F4tzJw0tR0GRaK8obNS9+/wC+d/J/kE="
+          "Value": "sha256-rPom2mR9+FE+U3rR5bELBEBItEJIvOk8M5sQJ/UemRw="
         },
         {
           "Name": "label",
@@ -25951,8 +25790,8 @@
       ]
     },
     {
-      "Route": "_framework/pruebaMudBlazor.Client.9j54h4n80u.wasm.gz",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-9j54h4n80u.gz",
+      "Route": "_framework/pruebaMudBlazor.Client.42ytlx5wlo.wasm.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-42ytlx5wlo.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -25969,7 +25808,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "63670"
+          "Value": "64084"
         },
         {
           "Name": "Content-Type",
@@ -25977,11 +25816,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pa+a2H4yz/KPt6GZxxjVO2iIHcV3Dc54zUTju+akOBg=\""
+          "Value": "\"5i5K55XVAFaEM+c32izs/mNqN8KeyYRvCsNrxs15/WQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 22:24:49 GMT"
+          "Value": "Fri, 06 Jun 2025 01:12:29 GMT"
         },
         {
           "Name": "Vary",
@@ -25991,11 +25830,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "9j54h4n80u"
+          "Value": "42ytlx5wlo"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-pa+a2H4yz/KPt6GZxxjVO2iIHcV3Dc54zUTju+akOBg="
+          "Value": "sha256-5i5K55XVAFaEM+c32izs/mNqN8KeyYRvCsNrxs15/WQ="
         },
         {
           "Name": "label",
@@ -26004,6 +25843,167 @@
       ]
     },
     {
+      "Route": "_framework/pruebaMudBlazor.Client.4spm4ahzkb.pdb",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\pruebaMudBlazor.Client.pdb",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "100428"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/BfcmqhNM1W85JusGNP50WJCL7kxT8hsRtzCk7C48JM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 06 Jun 2025 01:18:14 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4spm4ahzkb"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-/BfcmqhNM1W85JusGNP50WJCL7kxT8hsRtzCk7C48JM="
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/pruebaMudBlazor.Client.pdb"
+        }
+      ]
+    },
+    {
+      "Route": "_framework/pruebaMudBlazor.Client.4spm4ahzkb.pdb",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-4spm4ahzkb.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000012887760"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "77592"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hzRJa5yQIiQDj98BjaObqfQQTlbBkKftfrlDc5IQdqw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 06 Jun 2025 01:18:15 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"/BfcmqhNM1W85JusGNP50WJCL7kxT8hsRtzCk7C48JM=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4spm4ahzkb"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-/BfcmqhNM1W85JusGNP50WJCL7kxT8hsRtzCk7C48JM="
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/pruebaMudBlazor.Client.pdb"
+        }
+      ]
+    },
+    {
+      "Route": "_framework/pruebaMudBlazor.Client.4spm4ahzkb.pdb.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-4spm4ahzkb.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "77592"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hzRJa5yQIiQDj98BjaObqfQQTlbBkKftfrlDc5IQdqw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 06 Jun 2025 01:18:15 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4spm4ahzkb"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hzRJa5yQIiQDj98BjaObqfQQTlbBkKftfrlDc5IQdqw="
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/pruebaMudBlazor.Client.pdb.gz"
+        }
+      ]
+    },
+    {
       "Route": "_framework/pruebaMudBlazor.Client.pdb",
       "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\pruebaMudBlazor.Client.pdb",
       "Selectors": [],
@@ -26018,7 +26018,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "100352"
+          "Value": "100428"
         },
         {
           "Name": "Content-Type",
@@ -26026,28 +26026,28 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"CPMt1yLOsq3EtO4mFpZ+i8L4Su0/CGF2uA2mK3sgmTI=\""
+          "Value": "\"/BfcmqhNM1W85JusGNP50WJCL7kxT8hsRtzCk7C48JM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 22:24:48 GMT"
+          "Value": "Fri, 06 Jun 2025 01:18:14 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-CPMt1yLOsq3EtO4mFpZ+i8L4Su0/CGF2uA2mK3sgmTI="
+          "Value": "sha256-/BfcmqhNM1W85JusGNP50WJCL7kxT8hsRtzCk7C48JM="
         }
       ]
     },
     {
       "Route": "_framework/pruebaMudBlazor.Client.pdb",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-803v46d7a1.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-4spm4ahzkb.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000012846700"
+          "Quality": "0.000012887760"
         }
       ],
       "ResponseHeaders": [
@@ -26065,15 +26065,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "77840"
+          "Value": "77592"
         },
         {
           "Name": "ETag",
-          "Value": "\"qGktyMZKpZBdkH4M0y7tQM6/XUduZZAhFR70yIUvn+o=\""
+          "Value": "\"hzRJa5yQIiQDj98BjaObqfQQTlbBkKftfrlDc5IQdqw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 22:24:49 GMT"
+          "Value": "Fri, 06 Jun 2025 01:18:15 GMT"
         },
         {
           "Name": "Vary",
@@ -26085,19 +26085,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"CPMt1yLOsq3EtO4mFpZ+i8L4Su0/CGF2uA2mK3sgmTI=\""
+          "Value": "W/\"/BfcmqhNM1W85JusGNP50WJCL7kxT8hsRtzCk7C48JM=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-CPMt1yLOsq3EtO4mFpZ+i8L4Su0/CGF2uA2mK3sgmTI="
+          "Value": "sha256-/BfcmqhNM1W85JusGNP50WJCL7kxT8hsRtzCk7C48JM="
         }
       ]
     },
     {
       "Route": "_framework/pruebaMudBlazor.Client.pdb.gz",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-803v46d7a1.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\y8a08le7jf-4spm4ahzkb.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -26114,7 +26114,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "77840"
+          "Value": "77592"
         },
         {
           "Name": "Content-Type",
@@ -26122,11 +26122,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"qGktyMZKpZBdkH4M0y7tQM6/XUduZZAhFR70yIUvn+o=\""
+          "Value": "\"hzRJa5yQIiQDj98BjaObqfQQTlbBkKftfrlDc5IQdqw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 22:24:49 GMT"
+          "Value": "Fri, 06 Jun 2025 01:18:15 GMT"
         },
         {
           "Name": "Vary",
@@ -26136,7 +26136,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-qGktyMZKpZBdkH4M0y7tQM6/XUduZZAhFR70yIUvn+o="
+          "Value": "sha256-hzRJa5yQIiQDj98BjaObqfQQTlbBkKftfrlDc5IQdqw="
         }
       ]
     },
@@ -26155,7 +26155,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "177941"
+          "Value": "178453"
         },
         {
           "Name": "Content-Type",
@@ -26163,28 +26163,28 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"BaaVlB64kz84F4tzJw0tR0GRaK8obNS9+/wC+d/J/kE=\""
+          "Value": "\"rPom2mR9+FE+U3rR5bELBEBItEJIvOk8M5sQJ/UemRw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 22:24:48 GMT"
+          "Value": "Fri, 06 Jun 2025 01:12:28 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-BaaVlB64kz84F4tzJw0tR0GRaK8obNS9+/wC+d/J/kE="
+          "Value": "sha256-rPom2mR9+FE+U3rR5bELBEBItEJIvOk8M5sQJ/UemRw="
         }
       ]
     },
     {
       "Route": "_framework/pruebaMudBlazor.Client.wasm",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-9j54h4n80u.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-42ytlx5wlo.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000015705737"
+          "Quality": "0.000015604276"
         }
       ],
       "ResponseHeaders": [
@@ -26202,15 +26202,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "63670"
+          "Value": "64084"
         },
         {
           "Name": "ETag",
-          "Value": "\"pa+a2H4yz/KPt6GZxxjVO2iIHcV3Dc54zUTju+akOBg=\""
+          "Value": "\"5i5K55XVAFaEM+c32izs/mNqN8KeyYRvCsNrxs15/WQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 22:24:49 GMT"
+          "Value": "Fri, 06 Jun 2025 01:12:29 GMT"
         },
         {
           "Name": "Vary",
@@ -26222,19 +26222,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"BaaVlB64kz84F4tzJw0tR0GRaK8obNS9+/wC+d/J/kE=\""
+          "Value": "W/\"rPom2mR9+FE+U3rR5bELBEBItEJIvOk8M5sQJ/UemRw=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-BaaVlB64kz84F4tzJw0tR0GRaK8obNS9+/wC+d/J/kE="
+          "Value": "sha256-rPom2mR9+FE+U3rR5bELBEBItEJIvOk8M5sQJ/UemRw="
         }
       ]
     },
     {
       "Route": "_framework/pruebaMudBlazor.Client.wasm.gz",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-9j54h4n80u.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\a9n67kl6hv-42ytlx5wlo.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -26251,7 +26251,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "63670"
+          "Value": "64084"
         },
         {
           "Name": "Content-Type",
@@ -26259,11 +26259,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pa+a2H4yz/KPt6GZxxjVO2iIHcV3Dc54zUTju+akOBg=\""
+          "Value": "\"5i5K55XVAFaEM+c32izs/mNqN8KeyYRvCsNrxs15/WQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 22:24:49 GMT"
+          "Value": "Fri, 06 Jun 2025 01:12:29 GMT"
         },
         {
           "Name": "Vary",
@@ -26273,7 +26273,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pa+a2H4yz/KPt6GZxxjVO2iIHcV3Dc54zUTju+akOBg="
+          "Value": "sha256-5i5K55XVAFaEM+c32izs/mNqN8KeyYRvCsNrxs15/WQ="
         }
       ]
     },
@@ -75448,174 +75448,13 @@
       ]
     },
     {
-      "Route": "css/custom.77n3jmhkmk.css",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\hv25md0tx6-77n3jmhkmk.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.001597444089"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "625"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"nEBxXeTZpdhiMTNNAeTC6GsG1/C07zICDa+fjqzVFIA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:28:44 GMT"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"zUzp07tnPczxHLaFZ6NpbNK0Y23xF8Vqu0EbHS4wsfk=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "77n3jmhkmk"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-zUzp07tnPczxHLaFZ6NpbNK0Y23xF8Vqu0EbHS4wsfk="
-        },
-        {
-          "Name": "label",
-          "Value": "css/custom.css"
-        }
-      ]
-    },
-    {
-      "Route": "css/custom.77n3jmhkmk.css",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\wwwroot\\css\\custom.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1918"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"zUzp07tnPczxHLaFZ6NpbNK0Y23xF8Vqu0EbHS4wsfk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:28:44 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "77n3jmhkmk"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-zUzp07tnPczxHLaFZ6NpbNK0Y23xF8Vqu0EbHS4wsfk="
-        },
-        {
-          "Name": "label",
-          "Value": "css/custom.css"
-        }
-      ]
-    },
-    {
-      "Route": "css/custom.77n3jmhkmk.css.gz",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\hv25md0tx6-77n3jmhkmk.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "625"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"nEBxXeTZpdhiMTNNAeTC6GsG1/C07zICDa+fjqzVFIA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:28:44 GMT"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "77n3jmhkmk"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-nEBxXeTZpdhiMTNNAeTC6GsG1/C07zICDa+fjqzVFIA="
-        },
-        {
-          "Name": "label",
-          "Value": "css/custom.css.gz"
-        }
-      ]
-    },
-    {
       "Route": "css/custom.css",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\hv25md0tx6-77n3jmhkmk.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\hv25md0tx6-qs4nfq5zka.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001597444089"
+          "Quality": "0.001356852103"
         }
       ],
       "ResponseHeaders": [
@@ -75633,15 +75472,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "625"
+          "Value": "736"
         },
         {
           "Name": "ETag",
-          "Value": "\"nEBxXeTZpdhiMTNNAeTC6GsG1/C07zICDa+fjqzVFIA=\""
+          "Value": "\"3KBdMimmN6xUCgNDahFF7BiyFFhLKJDCSbN8ld6wLls=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:28:44 GMT"
+          "Value": "Fri, 06 Jun 2025 01:19:20 GMT"
         },
         {
           "Name": "Vary",
@@ -75653,13 +75492,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"zUzp07tnPczxHLaFZ6NpbNK0Y23xF8Vqu0EbHS4wsfk=\""
+          "Value": "W/\"Cp8PlMEiDPtWGKQ4mDQsB4Rqti6n6zVcLp1alY3+iuE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-zUzp07tnPczxHLaFZ6NpbNK0Y23xF8Vqu0EbHS4wsfk="
+          "Value": "sha256-Cp8PlMEiDPtWGKQ4mDQsB4Rqti6n6zVcLp1alY3+iuE="
         }
       ]
     },
@@ -75678,7 +75517,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1918"
+          "Value": "2207"
         },
         {
           "Name": "Content-Type",
@@ -75686,23 +75525,23 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"zUzp07tnPczxHLaFZ6NpbNK0Y23xF8Vqu0EbHS4wsfk=\""
+          "Value": "\"Cp8PlMEiDPtWGKQ4mDQsB4Rqti6n6zVcLp1alY3+iuE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:28:44 GMT"
+          "Value": "Fri, 06 Jun 2025 01:19:20 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-zUzp07tnPczxHLaFZ6NpbNK0Y23xF8Vqu0EbHS4wsfk="
+          "Value": "sha256-Cp8PlMEiDPtWGKQ4mDQsB4Rqti6n6zVcLp1alY3+iuE="
         }
       ]
     },
     {
       "Route": "css/custom.css.gz",
-      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\hv25md0tx6-77n3jmhkmk.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\hv25md0tx6-qs4nfq5zka.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -75719,7 +75558,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "625"
+          "Value": "736"
         },
         {
           "Name": "Content-Type",
@@ -75727,11 +75566,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"nEBxXeTZpdhiMTNNAeTC6GsG1/C07zICDa+fjqzVFIA=\""
+          "Value": "\"3KBdMimmN6xUCgNDahFF7BiyFFhLKJDCSbN8ld6wLls=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 00:28:44 GMT"
+          "Value": "Fri, 06 Jun 2025 01:19:20 GMT"
         },
         {
           "Name": "Vary",
@@ -75741,7 +75580,168 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-nEBxXeTZpdhiMTNNAeTC6GsG1/C07zICDa+fjqzVFIA="
+          "Value": "sha256-3KBdMimmN6xUCgNDahFF7BiyFFhLKJDCSbN8ld6wLls="
+        }
+      ]
+    },
+    {
+      "Route": "css/custom.qs4nfq5zka.css",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\hv25md0tx6-qs4nfq5zka.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001356852103"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "736"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3KBdMimmN6xUCgNDahFF7BiyFFhLKJDCSbN8ld6wLls=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 06 Jun 2025 01:19:20 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"Cp8PlMEiDPtWGKQ4mDQsB4Rqti6n6zVcLp1alY3+iuE=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qs4nfq5zka"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Cp8PlMEiDPtWGKQ4mDQsB4Rqti6n6zVcLp1alY3+iuE="
+        },
+        {
+          "Name": "label",
+          "Value": "css/custom.css"
+        }
+      ]
+    },
+    {
+      "Route": "css/custom.qs4nfq5zka.css",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\wwwroot\\css\\custom.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2207"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Cp8PlMEiDPtWGKQ4mDQsB4Rqti6n6zVcLp1alY3+iuE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 06 Jun 2025 01:19:20 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qs4nfq5zka"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Cp8PlMEiDPtWGKQ4mDQsB4Rqti6n6zVcLp1alY3+iuE="
+        },
+        {
+          "Name": "label",
+          "Value": "css/custom.css"
+        }
+      ]
+    },
+    {
+      "Route": "css/custom.qs4nfq5zka.css.gz",
+      "AssetFile": "C:\\Users\\Alberto\\Desktop\\ProyecttosC#\\Pruebas\\mud\\pruebaMudBlazor\\pruebaMudBlazor.Client\\obj\\Debug\\net9.0\\compressed\\hv25md0tx6-qs4nfq5zka.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "736"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3KBdMimmN6xUCgNDahFF7BiyFFhLKJDCSbN8ld6wLls=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 06 Jun 2025 01:19:20 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qs4nfq5zka"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3KBdMimmN6xUCgNDahFF7BiyFFhLKJDCSbN8ld6wLls="
+        },
+        {
+          "Name": "label",
+          "Value": "css/custom.css.gz"
         }
       ]
     },

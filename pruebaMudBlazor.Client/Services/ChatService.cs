@@ -1,12 +1,10 @@
-using System.Net.Http.Json;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using pruebaMudBlazor.Client.Models;
 
 namespace pruebaMudBlazor.Client.Services;
 
-public class ChatService
+public class ChatService : IDisposable
 {
 
     public HubConnection _hubConnection; // hace referencia al hub de chat del servidor 
@@ -16,22 +14,26 @@ public class ChatService
     public Action<ChatMessage> ObsMensajeRecibido { get; set; }// como los observables de angular!!
     public Action<string, string> ObsUserConnection { get; set; } //para el evento de conexion de usuarios
     public Action<Evento> ObsNotificacionRecibida { get; set; } //para el evento de notificaciones globales
-    private NavigationManager _navigationManager;
+                                                                // private NavigationManager _navigationManager;
+                                                                // public ChatService(NavigationManager navigationManager)
+                                                                // {
+                                                                //     _navigationManager = navigationManager;
+                                                                // }
+                                                                // private string baseUrl => _navigationManager.BaseUri;
+    private NavigationManager  _navigationManager;
     public ChatService(NavigationManager navigationManager)
     {
         _navigationManager = navigationManager;
     }
-    private string baseUrl => _navigationManager.BaseUri;
     public async Task ConnectToGlobalHub(string username)
     {
-        // Descartar conexión previa si existe
         if (_globalHubConnection != null)
         {
             await _globalHubConnection.DisposeAsync();
         }
         Console.WriteLine("Conectando al hub global...");
         _globalHubConnection = new HubConnectionBuilder()
-             .WithUrl($"{baseUrl}chathub")
+             .WithUrl($"{_navigationManager.BaseUri}chathub") 
             .WithAutomaticReconnect()
             .Build();
 
@@ -51,24 +53,20 @@ public class ChatService
         await _globalHubConnection.StartAsync();
         await _globalHubConnection.InvokeAsync("UserConnection", $"{username}", "En línea");
     }
-    //Método para desconectar del hub global
     public async Task DisconnectFromGlobalHub(string username)
     {
         try
         {
             if (_globalHubConnection != null && _globalHubConnection.State == HubConnectionState.Connected)
             {
-                Console.WriteLine($"Notificando desconexión del usuario {username}");
-
-                // Notificar la desconexión antes de cerrar la conexión
+                //Console.WriteLine($"Notificando desconexión del usuario {username}");
                 await _globalHubConnection.InvokeAsync("UserConnection", username, "Desconectado");
 
-                // Detener la conexión
                 await _globalHubConnection.StopAsync();
                 await _globalHubConnection.DisposeAsync();
                 _globalHubConnection = null;
 
-                Console.WriteLine("Desconexión del hub global completada");
+                //Console.WriteLine("Desconexión del hub global completada");
             }
         }
         catch (Exception ex)
@@ -83,21 +81,19 @@ public class ChatService
             // Si ya hay una conexión activa, la reutilizamos
             if (_hubConnection != null && _hubConnection.State == HubConnectionState.Connected)
             {
-                // Cambiar de sala si es necesario
                 await _hubConnection.InvokeAsync("UnirASala", UserName, roomId);
                 return _hubConnection;
             }
 
-            // Descartar conexión previa si existe pero no está conectada
             if (_hubConnection != null)
             {
                 await _hubConnection.DisposeAsync();
                 _hubConnection = null;
             }
 
-            Console.WriteLine("Conectando al hub de chat...");
+            //Console.WriteLine("Conectando al hub de chat...");
             _hubConnection = new HubConnectionBuilder()
-                .WithUrl($"{baseUrl}chathub")
+                .WithUrl($"{_navigationManager.BaseUri}chathub")
                 .WithAutomaticReconnect()
                 .Build();
 
@@ -105,12 +101,12 @@ public class ChatService
             //se ejecuta el codigo
             _hubConnection.On<ChatMessage>("ReceiveMessage", (ChatMessage mensaje) =>
             {
-                Console.WriteLine($"Mensaje recibido: {mensaje.Message} de parte de {mensaje.UserName}");
+                //Console.WriteLine($"Mensaje recibido: {mensaje.Message} de parte de {mensaje.UserName}");
                 ObsMensajeRecibido?.Invoke(mensaje);
             });
             await _hubConnection.StartAsync();
             await _hubConnection.InvokeAsync("UnirASala", UserName, roomId);
-            Console.WriteLine("Conectado al hub de chat.");
+            //Console.WriteLine("Conectado al hub de chat.");
             return _hubConnection;
         }
         catch (Exception ex)
@@ -123,7 +119,7 @@ public class ChatService
     {
         try
         {
-            Console.WriteLine($"memnsje a enviar: {message.Message} de {message.UserName} estado {message.IsRead}");
+            //Console.WriteLine($"memnsje a enviar: {message.Message} de {message.UserName} estado {message.IsRead}");
             if (_hubConnection != null && _hubConnection.State == HubConnectionState.Connected)
             {
                 await _hubConnection.InvokeAsync("EnviarMensaje", roomId, message, SelectedUser);
@@ -145,14 +141,13 @@ public class ChatService
     {
         try
         {
-            // Usar la conexión proporcionada o la existente
             var hubConnection = connection ?? _hubConnection;
 
             if (hubConnection != null && hubConnection.State == HubConnectionState.Connected)
             {
-                Console.WriteLine("Obteniendo mensajes de la sala...");
+                //Console.WriteLine("Obteniendo mensajes de la sala...");
                 var mensajes = await hubConnection.InvokeAsync<List<ChatMessage>>("ObtenerMensajes", roomId);
-                Console.WriteLine($"Mensajes de la sala {roomId} obtenidos: {mensajes.Count} mensajes.");
+                //Console.WriteLine($"Mensajes de la sala {roomId} obtenidos: {mensajes.Count} mensajes.");
                 return mensajes;
             }
             else
@@ -178,10 +173,6 @@ public class ChatService
             if (_globalHubConnection != null && _globalHubConnection.State == HubConnectionState.Connected)
             {
                 await _globalHubConnection.InvokeAsync("EnviarNotificacion", mensaje);
-                _globalHubConnection.On<Evento>("ReceiveNotification", (Evento evento) =>
-                {
-                    ObsNotificacionRecibida?.Invoke(evento);
-                });
             }
             else
             {
@@ -210,4 +201,65 @@ public class ChatService
     }
 }
 
+// Esto es porque el ultimo dia me dio un monton de problemas con un observable duplicado..
+private readonly HashSet<Action<Evento>> _notificacionSuscriptores = new();
+private readonly HashSet<Action<ChatMessage>> _mensajeSuscriptores = new();
+private readonly HashSet<Action<string, string>> _conexionSuscriptores = new();
+
+// Agregar suscriptor de notificaciones con manejo de duplicados
+public void SuscribirNotificacion(Action<Evento> handler)
+{
+    if (!_notificacionSuscriptores.Contains(handler))
+    {
+        ObsNotificacionRecibida += handler;
+        _notificacionSuscriptores.Add(handler);
+        Console.WriteLine($"Suscripción añadida. Total: {_notificacionSuscriptores.Count}");
+    }
+}
+
+// Eliminar suscriptor de notificaciones, hace un commit no se manejaban aqui, se manejaban en el MainLaout las suscripciones
+public void DesuscribirNotificacion(Action<Evento> handler)
+{
+    if (_notificacionSuscriptores.Contains(handler))
+    {
+        ObsNotificacionRecibida -= handler;
+        _notificacionSuscriptores.Remove(handler);
+        Console.WriteLine($"Suscripción eliminada. Total: {_notificacionSuscriptores.Count}");
+    }
+}
+
+// Método para depuración
+public int ContarSuscriptoresNotificacion()
+{
+    return _notificacionSuscriptores.Count;
+}
+
+// Implementación de IDisposable
+public void Dispose()
+{
+    Console.WriteLine("Liberando recursos del ChatService...");
+
+    // Limpiar conexiones
+    if (_hubConnection != null)
+    {
+        _hubConnection.DisposeAsync().AsTask().Wait();
+        _hubConnection = null;
+    }
+
+    if (_globalHubConnection != null)
+    {
+        _globalHubConnection.DisposeAsync().AsTask().Wait();
+        _globalHubConnection = null;
+    }
+
+    // Limpiar eventos
+    ObsMensajeRecibido = null;
+    ObsUserConnection = null;
+    ObsNotificacionRecibida = null;
+
+    // Limpiar listas de suscriptores
+    _notificacionSuscriptores.Clear();
+    _mensajeSuscriptores.Clear();
+    _conexionSuscriptores.Clear();
+}
 }

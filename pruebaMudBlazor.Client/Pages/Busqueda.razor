@@ -127,7 +127,6 @@
         }
         finally
         {
-            @* Console.WriteLine($"Búsqueda completada: {totalUsuarios} usuarios encontrados"); *@
             isSearching = false;
             StateHasChanged();
         }
@@ -135,9 +134,6 @@
 
     private void UpdatePagination()
     {
-        @* Console.WriteLine($"Actualizando paginación: página {currentPage} de {totalPages}"); *@
-        
-        // Calcular índice inicial y final para la paginación
         int startIndex = (currentPage - 1) * pageSize;
         
         if (startIndex >= usuarios.Count)
@@ -150,13 +146,10 @@
             .Skip(startIndex)
             .Take(pageSize)
             .ToList();
-        
-        @* Console.WriteLine($"Mostrando usuarios {startIndex+1} a {Math.Min(startIndex+pageSize, totalUsuarios)} de {totalUsuarios}"); *@
-    }
+            }
 
     private void PageChanged(int page)
     {
-        @* Console.WriteLine($"Cambiando a página: {page}"); *@
         currentPage = page;
         UpdatePagination();
     }

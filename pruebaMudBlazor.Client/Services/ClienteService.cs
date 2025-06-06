@@ -7,10 +7,11 @@ using System.Net.Http.Json;
 public class ClienteService : IClienteService
 {
     private readonly HttpClient _httpClient;
-
-    public ClienteService(HttpClient httpClient)
+    private AuthService _authService;
+    public ClienteService(HttpClient httpClient, AuthService authService)
     {
         _httpClient = httpClient;
+        _authService = authService;
     }
 
     public async Task<string> RegistrarClienteAsync(UserModel registro)
@@ -31,9 +32,6 @@ public class ClienteService : IClienteService
     }
     public async Task<UserModel> LoginClienteAsync(string email, string password)
     {
-        // Console.WriteLine("en servicio login los datos son: " + email + " " + password);
-
-        // Crea un objeto de login explícito
         var loginData = new
         {
             Email = email,
@@ -57,9 +55,7 @@ public class ClienteService : IClienteService
 
     public async Task<string> CambiarFotoPerfilAsync(string username, string foto)
     {
-        Console.WriteLine("en servicio cambiar foto los datos son: " + username);
-
-        // Enviar los datos como un objeto JSON
+        //Console.WriteLine("en servicio cambiar foto los datos son: " + username);
         var model = new
         {
             Username = username,
@@ -81,12 +77,10 @@ public class ClienteService : IClienteService
 
     public Task<List<UserModel>> BuscarUsuariosAsync(string nombreUsuario,string currentUser)
     {
-        // Console.WriteLine("en servicio buscar usuarios los datos son: " + nombreUsuario);
         return _httpClient.GetFromJsonAsync<List<UserModel>>($"/api/buscarUsuarios?nombreUsuario={nombreUsuario}&currentUser={currentUser}");
 
     }
 
-    // En ClienteService.cs
     public async Task<bool> AgregarAmigoAsync(string usuarioActual, string usuarioAmigo)
     {
 
@@ -103,12 +97,12 @@ public class ClienteService : IClienteService
             var resultado = await response.Content.ReadFromJsonAsync<ResponseServer>();
             if (resultado.CodigoError == 0)
             {
-                Console.WriteLine("Amigo agregado exitosamente.");
+                //Console.WriteLine("Amigo agregado exitosamente.");
                 return true;
             }
             else
             {
-                Console.WriteLine($"Error al agregar amigo: {resultado.Mensaje}");
+                //Console.WriteLine($"Error al agregar amigo: {resultado.Mensaje}");
                 return false;
             }
         }

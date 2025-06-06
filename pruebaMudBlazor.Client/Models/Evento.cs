@@ -2,21 +2,18 @@ public class Evento
 {
      public Evento()
     {
-        // Initialize with default values
-        Accepted = false;  // Default value
+        Accepted = false;  
     }
     
-    // Constructor for common properties
     public Evento(string userNameDestino, string mensaje, string tipo, string userNameOrigen)
     {
         UserNameDestino = userNameDestino;
         Mensaje = mensaje;
         Tipo = tipo;
         UserNameOrigen = userNameOrigen;
-        Accepted = false;  // Default value
+        Accepted = false;  // Default value --> para la friend request
     }
 
-    // Constructor that includes the Accepted property
     public Evento(string userNameDestino, string mensaje, string tipo, string userNameOrigen, bool accepted)
     {
         UserNameDestino = userNameDestino;

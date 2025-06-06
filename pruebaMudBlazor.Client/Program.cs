@@ -15,5 +15,6 @@ builder.Services.AddBlazoredModal();
 builder.Services.AddScoped<ChatService>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<ThemeService>();
+builder.Services.AddScoped<NotificacionService>();
 
 await builder.Build().RunAsync();

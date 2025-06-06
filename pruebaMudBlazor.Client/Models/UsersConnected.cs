@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 
-public class UsersConnected
+public class UsersConnected //--> instantanea de lo que habra en la parte del servidor, para que el cliente pueda ver los usuarios conectados
 {
     public ConcurrentDictionary<string, string> ConnectedUsers { get; } = new();
 

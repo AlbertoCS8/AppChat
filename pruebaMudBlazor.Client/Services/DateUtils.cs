@@ -1,5 +1,6 @@
 using System.Globalization;
-
+//obtenemos el tiempo que hace que ha pasado un evento (en este caso recibir un mensaje) y te lo da a modo
+//whatsapp, por ejemplo: "hace 2 min", "ayer", "hace 3 semanas", etc.
 public static class DateUtils
 {
     public static string GetRelativeTime(string rawTime)
@@ -26,6 +27,6 @@ public static class DateUtils
             return parsedDate.ToString("dd-MM-yyyy HH:mm");
         }
 
-        return rawTime; 
+        return rawTime;
     }
 }

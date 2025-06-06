@@ -1,9 +1,10 @@
+# movidote al desplegar, render no tiene soporte para .net 9.0, por lo que se ha de usar una imagen base de .net 9.0
 # Imagen base runtime .NET 9.0
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 WORKDIR /app
 EXPOSE 8080
 
-# 🛠️ Instalar certificados y librerías necesarias para TLS/MongoDB Atlas
+# Instalar certificados y librerías necesarias para TLS/MongoDB Atlas  -- liada al desplegar
 RUN apt-get update && apt-get install -y \
     ca-certificates \
     openssl \

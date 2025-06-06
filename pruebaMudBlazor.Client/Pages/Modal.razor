@@ -76,7 +76,7 @@
 
 @code {
     private string imageDataUrl;
-    private string userName = ""; // Reemplazar con datos reales del usuario
+    private string userName = ""; 
     private bool isLoading = false;
     private string errorMessage = string.Empty;
     private const long maxFileSize = 5 * 1024 * 1024; // 5MB
@@ -97,14 +97,12 @@
         {
             var file = e.File;
             
-            // Validar tamaño
             if (file.Size > maxFileSize)
             {
                 errorMessage = "El archivo es demasiado grande. El tamaño máximo es 5MB.";
                 return;
             }
             
-            // Validar tipo
             string extension = Path.GetExtension(file.Name).ToLowerInvariant();
             if (!(extension == ".jpg" || extension == ".jpeg" || extension == ".png"))
             {
@@ -112,11 +110,9 @@
                 return;
             }
             
-            // Leer y convertir a base64
             var buffer = new byte[file.Size];
             await file.OpenReadStream(maxFileSize).ReadAsync(buffer);
             
-            // Determinar el tipo MIME basado en la extensión
             string mimeType = extension switch
             {
                 ".png" => "image/png",

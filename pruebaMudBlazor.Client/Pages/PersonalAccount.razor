@@ -73,20 +73,13 @@
                                     <b>Visible Only To Friends</b>
                                 </MudText>
                                 <MudText Typo="Typo.body2">
-                                    @* Means that only your friends will be able to see your contact details.
-    using Blazored.Modal.Services;
-    using Blazored.Modal.Services; *@
+                                   
                                 </MudText>
-                                @* <MudSwitch @bind-Checked="@FriendSwitch" Color="Color.Secondary" /> *@
                             </MudItem>
                         </MudGrid>
-    @* using pruebaMudBlazor.Client.Models;
-    using Blazored.Modal.Services;
-    using Blazored.Modal.Services; *@
+
                     </MudCardContent>
                     <MudCardActions Class="pb-4 pl-4">
-                        @* <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" @onclick="@(() => SaveChanges("Profile details saved", Severity.Warning))">Save Changes</MudButton> *@
-                        @* <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" @onclick="@(() => ModalService.Show<Counter>("Modal prueba"))">Editar Perfil</MudButton> *@
                         @inject IDialogService DialogService
                         <MudButton @onclick="OpenDialogAsync" Variant="Variant.Filled" Color="Color.Primary">Cambiar foto de perfil</MudButton>
                     </MudCardActions>
@@ -99,6 +92,12 @@
     <MudCard Class="@(themeService._isDarkMode ? "card-dark" : "card-light")" Elevation="4">
         <MudCardContent>
             <MudGrid>
+                @if (listaNotis.Count == 0)
+                {
+                    <MudItem xs="12">
+                        <MudText>No tienes solicitudes de amistad pendientes.</MudText>
+                    </MudItem>
+                }
                 @foreach (var noti in listaNotis)
                 {
                     <MudItem xs="12" class="mb-3">
@@ -142,6 +141,12 @@
             
             <MudCardContent >
                 <MudGrid>
+                    @if (listaAmigos.Count == 0)
+                    {
+                        <MudItem xs="12">
+                            <MudText>No tienes amigos aún. ¡Empieza a hacer amigos!</MudText>
+                        </MudItem>
+                    }
                     @foreach (var friend in listaAmigos)
                     {
                         <MudItem xs="12" sm="6" md="4" lg="2" class="mb-4 ">

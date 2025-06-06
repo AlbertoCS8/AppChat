@@ -4,6 +4,7 @@
 @inject NavigationManager Navigation
 @inject pruebaMudBlazor.Client.Services.ChatService chatService
 @inject ISnackbar SnackBar
+@inject NotificacionService notificacionService
 
 <MudThemeProvider Theme="@_theme" IsDarkMode="_isDarkMode" />
 <MudPopoverProvider />
@@ -56,18 +57,10 @@
         }
         else
         {
-            @* <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" /> *@
             <MudIconButton Icon="@(DarkLightModeButtonIcon)" Color="Color.Inherit" OnClick="@DarkModeToggle" />
             <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
         }
     </MudAppBar>
-    @* <MudDrawer @bind-Open="_drawerOpen" Elevation="1">
-        <MudDrawerHeader>
-            <MudText Typo="Typo.h6">Lista de amigos</MudText>
-        </MudDrawerHeader>
-        <NavMenu />
-    </MudDrawer> Vestigios de ideas pasadas 
-    *@
     <MudMainContent Class="pa-4 mudblazor-main-content">
         @Body
     </MudMainContent>
@@ -110,13 +103,7 @@
             _themeSelected = "degradado-light";
             themeService.SetTheme(_isDarkMode);
         }
-        if (!_yaSuscrito)
-    {
-    Console.WriteLine("Suscribiendo a eventos de notificación");
-       chatService.ObsNotificacionRecibida += HandleNotificacion;
-                _yaSuscrito = true;
-
-    }}
+      }
 
     private void DrawerToggle()
     {
@@ -135,13 +122,8 @@
         AppbarText = "#424242",
         AppbarBackground = "rgba(255,255,255,0.8)",
         DrawerBackground = "#ffffff",
-        @* TextPrimary = "#000000", tendría que cambiar el color de los iconos tbn conforme al tema, futura actualizacion
-        TextSecondary = "#000000", *@
         GrayLight = "#e8e8e8",
         GrayLighter = "#f9f9f9",
-        @* --mud-palette-primary
-rgb(66 124 161)
-: rgb(66 124 161); *@
         Primary = "#4284a1",
 
     };
@@ -195,62 +177,7 @@ rgb(66 124 161)
         authService.Amigos.Clear();
         Navigation.NavigateTo("/");
     }
-    private void HandleNotificacion(Evento notificacion)
-{
-    if (notificacion.Tipo == "NuevoAmigo")
-    {
-        SnackBar.Add($"Tienes una nueva solicitud de amistad", MudBlazor.Severity.Info);
-    }
-    else if (notificacion.Tipo == "NuevoMensaje")
-    {
-        Console.WriteLine($"Nuevo mensaje de {notificacion.UserNameOrigen} a {notificacion.UserNameDestino}");
-
-        if (authService.MensajesNoLeidos.ContainsKey(notificacion.UserNameOrigen))
-        {
-            Console.WriteLine($"Entramos en el if de notificacion de nuevo mensaje");
-            authService.MensajesNoLeidos[notificacion.UserNameOrigen]++;
-            authService.NotificarCambio("NuevoMensaje");
-        }
-        else
-        {
-            Console.WriteLine($"No existe el usuario {notificacion.UserNameOrigen} en el diccionario de mensajes no leidos");
-            authService.MensajesNoLeidos.Add(notificacion.UserNameOrigen, 1);
-            authService.NotificarCambio("NuevoMensaje");
-        }
-    }
-    else if (notificacion.Tipo == "AmigoBorrado")
-    {
-        SnackBar.Add($"Tu amigo {notificacion.UserNameOrigen} te ha borrado", MudBlazor.Severity.Warning);
-        authService.Amigos.Remove(notificacion.UserNameOrigen);
-        authService.MensajesNoLeidos.Remove(notificacion.UserNameOrigen);
-        authService.NotificarCambio("CambiosListaAmigos");
-    }
-    else if (notificacion.Tipo == "AmigoAceptado")
-    {
-        if (notificacion.Accepted)
-        {
-            authService.Amigos.Add(notificacion.UserNameOrigen);
-            authService.MensajesNoLeidos.Add(notificacion.UserNameOrigen, 0);
-            authService.NotificarCambio("CambiosListaAmigos");
-        }
-        else
-        {
-            SnackBar.Add($"Tu solicitud de amistad ha sido rechazada por {notificacion.UserNameOrigen}", MudBlazor.Severity.Error);
-        }
-    }
-    else if (notificacion.Tipo == "SolicitudAmistad")
-    {
-        SnackBar.Add($"Tienes una nueva solicitud de amistad de {notificacion.UserNameOrigen}", MudBlazor.Severity.Info);
-    }
-}
-public void Dispose()
-{
-    if (_yaSuscrito)
-    {
-        chatService.ObsNotificacionRecibida -= HandleNotificacion;
-        _yaSuscrito = false;
-    }
-}
+    
 
 
 }

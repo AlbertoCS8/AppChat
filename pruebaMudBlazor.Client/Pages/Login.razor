@@ -10,7 +10,7 @@
 @inject ChatService chatService
 @inject ThemeService themeService
 
-<MudContainer Class="d-flex align-center justify-center" Style="height: 100vh;" >
+<MudContainer Class="d-flex align-center justify-center" Style="min-height: 100vh; height: 100%;">
     <MudPaper Elevation="4" Class="@(themeService._isDarkMode ? "pa-8 card card-dark" : "pa-8 card card-light")" Style="width: 400px; ">
         <div class="d-flex flex-column align-center mb-8">
             <MudIcon Icon="@Icons.Material.Filled.Login" Size="Size.Large" Class="mb-4" />
@@ -80,7 +80,6 @@
         if (string.IsNullOrWhiteSpace(email))
             return "El email es requerido";
 
-        // Validación más robusta de formato de email con regex
         var emailRegex = new System.Text.RegularExpressions.Regex(
         @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
         System.Text.RegularExpressions.RegexOptions.Compiled
@@ -115,10 +114,6 @@
                     MensajesNoLeidos[amigo] = 0; // Inicializar a 0 si no hay mensajes
                 }
             }
-            foreach (var mensaje in MensajesNoLeidos)
-            {
-                Console.WriteLine(mensaje.Key + " tiene " + mensaje.Value + " mensajes no leídos.");
-            }
             chatService.ConnectToGlobalHub(authService.Username);
             //una vez hago login lo guardo en el diccionario de users de la parte de back para ver que el user esta en linea
 
@@ -127,6 +122,7 @@
         catch (Exception ex)
         {
             loading = false;
+            StateHasChanged();
             Console.WriteLine("Error: " + ex.Message);
             Snackbar.Add($"Error al iniciar sesión: {ex.Message}", MudBlazor.Severity.Error);
 

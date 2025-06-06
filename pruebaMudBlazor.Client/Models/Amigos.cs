@@ -18,7 +18,7 @@ public class Amigos
     public string FotoPerfil { get; set; }
     public string Status { get; set; } = "Desconectado"; // "En línea" o "Desconectado"
     public string UltimaConexion { get; set; } = string.Empty; // Fecha y hora de la última conexión
-    //problema: lo genera en puto UTC, y no en la hora local del usuario
+    //problema: lo genera en puto UTC, y no en la hora local del usuario, uso api y si no una funcion local
 
      public override string ToString()
     {
